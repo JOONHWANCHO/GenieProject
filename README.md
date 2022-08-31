@@ -69,7 +69,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 }
 
-7.genie 클라스 생성 
+7.genie, home 클라스 생성 
 
 .genie{
 	height: 15vh;
@@ -77,3 +77,9 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	background-size: cover;
 	background-position: center; 
 }
+
+8.화면 구성시, home 
+
+<sction class="home">
+	자유롭게 변경가능!
+</sction>
