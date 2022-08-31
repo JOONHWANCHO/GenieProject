@@ -20,13 +20,12 @@
 
 	<div class="genie">
 		<nav>
-			<h2 class="logo">GE<span>NIE</span></h2>
+			<h2 class="logo"><a href="/">GE<span>NIE</a></span></h2>
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href="/board/boardList">게시판</a></li>
-				<li><a href="/data/dataList">자료실</a></li>
-				<li><a href="/member/login">로그인</a></li>
-				<li><a href="/member/memberForm">회원가입</a></li>
+				<li><a href="/user/genie">Genie</a></li>
+				<li><a href="/user/product">전체상품보기</a></li>
+				<li><a href="/login">로그인</a></li>
 			</ul>
 		</nav>
 	</div>
