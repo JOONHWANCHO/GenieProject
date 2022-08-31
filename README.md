@@ -4,9 +4,8 @@
 
 1.gradle Update
 
-		//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	
 	//뷰를 jsp로 사용하기 위해서 프레임워크를 추가한다.
 	// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.58'
@@ -61,7 +60,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 				jspPropertyGroup.setDefaultContentType("text/html");
 				
 				JspPropertyGroupDescriptorImpl jspPropertyGroupDescriptor = new JspPropertyGroupDescriptorImpl(jspPropertyGroup);
-				context.setJspConfigDescriptor(new JspConfigDescriptorImpl(Collections.singletonList(jspPropertyGroupDescriptor), Collections.emptyList()));
+				context.setJspConfigDescriptor(new JspConfigDescriptorImpl(Collections.singletonList(jspPropertyGroupDescriptor), 					Collections.emptyList()));
 						
 				
 			}
