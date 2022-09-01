@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <style>
-section{
-	
-}
+
 .home{
 	position: relative;
 	width: 100%;
@@ -56,8 +54,8 @@ section{
 }
 </style>
 
-<section>
-	<div class="home">
+<section class="home">
+	<div class="genie_01">
 		<p>어떤분에게 선물할 계획이세요?</p>
 		<div class="box">
 			<a href="/user/genie_02"><input type ="button" id="button" value ="부모님"></a>

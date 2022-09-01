@@ -15,8 +15,8 @@
 }
 </style>
 
-<section>
-	<div class="home">
+<section class="home">
+	<div class="genie_04">
 	<p>선물주시는 분의 나이가 어떻게 되시나요?</p>
 	<a href="/"><button>10대</button></a>
 	<a href="/"><button>20~30대</button></a>
