@@ -11,6 +11,7 @@
 	background-position: center;
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
+	align-items: center;
 }
 .genie_02 p{
 	padding:60px;
@@ -18,35 +19,47 @@
 	font-size: 3em;
 	text-align: center;
 }
-.genie_02 button{
-	border: none;
-	display: inline-block;
-	font-size: 40px;
-	margin: 80px 30px 30px 200px;
-	color: #48FFD5;
-	border-radius: 9px;
-	transition: ease .40s;
-}
-.genie_02 button:hover{
+
+#button:hover{
 	color:#56D8FF;
 	transition: .4s;
 	transform: scale(1.1);
 }
 
+#button{
+	border: none;
+	font-size: 40px;
+	margin: 10px;
+	padding:10px;
+	color: #48FFD5;
+	border-radius: 9px;
+	transition: ease .40s;
+}
+
+.box button{
+	margin:0 auto;
+	text-align:center;
+}
+
+.box{
+	align-items:center;
+	text-align:center;
+	padding:150px;
+}
 </style>
 
 <section class="home">
 	<div class="genie_02">
-	<p>선물 예산은 얼마정도로 생각하고 계세요?</p>
-	<span>
-	<a href="/user/genie_03"><button>1만원</button></a>
-	<a href="/user/genie_03"><button>2~3만원</button></a>
-	<a href="/user/genie_03"><button>5만원</button></a>
-	<a href="/user/genie_03"><button>10만원</button></a><br><br>
-	<a href="/user/genie_03"><button>20만원</button></a>
-	<a href="/user/genie_03"><button>30만원</button></a>
-	<a href="/user/genie_03"><button>40만원</button></a>
-	<a href="/user/genie_03"><button>50만원</button></a>
-	</span>
+		<p>선물 예산은 얼마정도로 생각하고 계세요?</p>
+		<div class="box">
+			<a href="/user/genie_03"><input type ="button" id="button" value ="1만원"></a>
+			<a href="/user/genie_03"><input type ="button" id="button" value ="2만원"></a>
+			<a href="/user/genie_03"><input type ="button" id="button" value ="5만원"></a>
+			<a href="/user/genie_03"><input type ="button" id="button" value ="10만원"></a>
+			<a href="/user/genie_03"><input type ="button" id="button" value ="20만원"></a>
+			<a href="/user/genie_03"><input type ="button" id="button" value ="30만원"></a>
+			<a href="/user/genie_03"><input type ="button" id="button" value ="40만원"></a>
+			<a href="/user/genie_03"><input type ="button" id="button" value ="50만원"></a>
+		</div>
 	</div>
 </section>
