@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <style>
-
 .home{
 	position: relative;
 	width: 100%;
@@ -14,11 +13,10 @@
 	grid-template-columns: repeat(1, 1fr);
 	align-items: center;
 }
-.home p{
+.genie_01 p{
 	margin:0;
 	padding:1rem;
-	
-	font-size: 4rem;
+	font-size: 50px;
 	font-weight: 400;
 	text-align: center;
 	text-decoration: none;
@@ -54,7 +52,12 @@
 	transform: scale(1.1);
 }
 </style>
+<script>
+	window.scrollTo(0, document.body.scrollHeight);
+	// 스크립트 저 부분이 맞는 함수인가요? 구글에쳐도 잘 나오질 않네요. 좀만 쉬다 오겠습니다.넹
 
+</script>
+<!-- 이게 자동으로 페이지 끝까지 내려가는 함수인데 작동이 안되네요 스프링에서 실행하면 되려나요? -->
 <section class="home">
 	<div class="genie_01">
 		<p>어떤분에게 선물할 계획이세요?</p>

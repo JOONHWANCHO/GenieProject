@@ -23,6 +23,10 @@ public class UserController {
 	public String genie_04() {
 		return null;
 	}
+	@GetMapping("memberform")
+	public String memberform() {
+		return null;
+	}
 }
 
 
