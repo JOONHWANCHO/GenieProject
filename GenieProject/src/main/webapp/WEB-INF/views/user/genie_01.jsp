@@ -35,6 +35,7 @@
 	margin: 10px;
 	padding: 0.5rem 1rem;
 	
+	color:#48FFD5;
 	font-size: 2rem;
 	font-weight: 400;
 	text-decoration: none;
