@@ -28,13 +28,13 @@ section{
 	
 	letter-spacing:3px;
 }
-.home span{
+.box{
 	align-items:center;
 	text-align:center;
 	padding:150px;
 }
-.home button{
-	margin: 0;
+#button{
+	margin: 10px;
 	padding: 0.5rem 1rem;
 	
 	font-size: 2rem;
@@ -46,11 +46,10 @@ section{
 	
 	border: none;
 	border-radius: 10px;
-	border-padding: 20px;
-	
 	letter-spacing: 5px;
 }
-.home button:hover{
+
+#button:hover{
 	color:#56D8FF;
 	transition: .4s;
 	transform: scale(1.1);
@@ -59,16 +58,16 @@ section{
 
 <section>
 	<div class="home">
-	<p>어떤분에게 선물할 계획이세요?</p>
-	<span>
-	<a href="/user/genie_02"><button>부모님</button></a>
-	<a href="/user/genie_02"><button>배우자</button></a>
-	<a href="/user/genie_02"><button>연인</button></a>
-	<a href="/user/genie_02"><button>친구</button></a><br><br>
-	<a href="/user/genie_02"><button>회사</button></a>
-	<a href="/user/genie_02"><button>친인척</button></a>
-	<a href="/user/genie_02"><button>스승</button></a>
-	<a href="/user/genie_02"><button>가족</button></a>
-	</span>
+		<p>어떤분에게 선물할 계획이세요?</p>
+		<div class="box">
+			<a href="/user/genie_02"><input type ="button" id="button" value ="부모님"></a>
+			<a href="/user/genie_02"><input type ="button" id="button" value ="배우자"></a>
+			<a href="/user/genie_02"><input type ="button" id="button" value ="연인"></a>
+			<a href="/user/genie_02"><input type ="button" id="button" value ="친구"></a>
+			<a href="/user/genie_02"><input type ="button" id="button" value ="회사"></a>
+			<a href="/user/genie_02"><input type ="button" id="button" value ="친인척"></a>
+			<a href="/user/genie_02"><input type ="button" id="button" value ="스승"></a>
+			<a href="/user/genie_02"><input type ="button" id="button" value ="가족"></a>
+		</div>
 	</div>
 </section>
