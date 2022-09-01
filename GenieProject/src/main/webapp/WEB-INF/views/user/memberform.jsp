@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <style>
      .home{
@@ -76,8 +78,8 @@
         width:29%;
 		height:50px;
 		border-radius:15px;
-		font-size:30px;
-		padding:20px;
+		text-align:center;
+		font-size:20px;
     }
     #zipcode{
         width:33%;
@@ -101,6 +103,20 @@
 		transition: ease .40s;
     }
 </style>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	window.onload = function(){
+		document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+			//카카오 지도 발생
+			new daum.Postcode({
+				oncomplete: function(data) { //선택시 입력값 세팅
+					document.getElementById("address_kakao").value = data.address; // 주소 넣기
+					document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+				}
+			}).open();
+		});
+	}
+</script>
 </head>
 <section class="home">
 		<div class="container">
@@ -121,9 +137,17 @@
 <%-- ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ --%>
                     <div id="phoneForm">
 						<p>휴대폰 번호</p>
-                        <input type ="text" name = "phone_num1" id ="phone_num1" size = "2"/> -
-				        <input type ="text" name = "phone_num2" id ="phone_num2" size = "4"/> -
-			 	        <input type ="text" name = "phone_num3" id ="phone_num3" size = "4"/>
+                        <select id = "phone_num1" name = "phone_num1" size = "1">
+							<option value="">선택하세요.</option>
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+							<option value="017">017</option>
+							<option value="018">018</option>
+							<option value="019">019</option>
+						</select>-
+				        <input type ="text" name = "phone_num2" id ="phone_num2" maxlength = "4"/> -
+			 	        <input type ="text" name = "phone_num3" id ="phone_num3" maxlength = "4"/>
 					</div>
                     <div id="emailForm">
 						<p>이메일</p>
