@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 .home{
 	position: relative;
@@ -16,7 +16,7 @@
 .genie_02 p{
 	padding:60px;
 	color:#fff;
-	font-size: 3em;
+	font-size: 50px;
 	text-align: center;
 }
 
