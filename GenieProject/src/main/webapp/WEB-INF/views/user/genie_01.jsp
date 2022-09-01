@@ -1,11 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style>
 section{
@@ -27,7 +20,6 @@ section{
 	margin:0;
 	padding:1rem;
 	
-	font-family: "Noto Sans KR", sans-serif;
 	font-size: 4rem;
 	font-weight: 400;
 	text-align: center;
@@ -53,28 +45,30 @@ section{
 	width: auto;
 	
 	border: none;
-	border-radius: 4px;
+	border-radius: 10px;
+	border-padding: 20px;
 	
 	letter-spacing: 5px;
-}	
+}
+.home button:hover{
+	color:#56D8FF;
+	transition: .4s;
+	transform: scale(1.1);
+}
 </style>
-<script>
-</script>
-</head>
-	<section>
-		<div class="home">
-		<p>어떤분에게 선물할 계획이세요?</p>
-		<span>
-		<button>부모님</button>
-		<button>배우자</button>
-		<button>연인</button>
-		<button>친구</button><br><br>
-		<button>회사</button>
-		<button>친인척</button>
-		<button>스승</button>
-		<button>가족</button>
-		</span>
-		</div>
-	</section>
-</body>
-</html>
+
+<section>
+	<div class="home">
+	<p>어떤분에게 선물할 계획이세요?</p>
+	<span>
+	<a href="/user/genie_02"><button>부모님</button></a>
+	<a href="/user/genie_02"><button>배우자</button></a>
+	<a href="/user/genie_02"><button>연인</button></a>
+	<a href="/user/genie_02"><button>친구</button></a><br><br>
+	<a href="/user/genie_02"><button>회사</button></a>
+	<a href="/user/genie_02"><button>친인척</button></a>
+	<a href="/user/genie_02"><button>스승</button></a>
+	<a href="/user/genie_02"><button>가족</button></a>
+	</span>
+	</div>
+</section>

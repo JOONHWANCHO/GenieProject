@@ -41,12 +41,13 @@ section{
 	border-radius: 4px;
 	transition: ease .40s;
 }
-.home-btn:hover{w
+.home-btn:hover{
 	background: var(--bg-color);
 	transform: scale(1.1);
 }
 
 </style>
+
 <script src="https://kit.fontawesome.com/8d73d915f1.js" crossorigin="anonymous"></script>
 
 	<!--Genie 메인화면--->
@@ -54,6 +55,6 @@ section{
 		<div class="home-text">
 			<h1>NOW IS THE PRESENT 2022</h1>
 			<p>어떤 선물을 찾고 있나요?<br> 고민이 되신다면 AI추천서비스를 이용해보세요</p>
-			<a href="/user/genie" class="home-btn"><i class="fa-solid fa-gift fa-2xl"></i></a>
+			<a href="/user/genie_01" class="home-btn"><i class="fa-solid fa-gift fa-2xl"></i></a>
 		</div>
 	</section>
