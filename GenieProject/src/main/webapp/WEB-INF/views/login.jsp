@@ -20,6 +20,7 @@
 	grid-template-columns: repeat(1, 1fr);
 	align-items: center;
 }
+
 </style>
 <script>
 </script>
