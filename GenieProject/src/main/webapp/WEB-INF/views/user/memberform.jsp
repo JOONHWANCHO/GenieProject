@@ -93,7 +93,7 @@
 		color: #48FFD5;
 		transform: scale(1.1);
 	}
-    #zipSearch{
+    #address_kakao{
         padding:10px;
 		display:inline-block;
 		font-size: 15px;
@@ -106,12 +106,12 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	window.onload = function(){
-		document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+		document.getElementById("address_kakao").addEventListener("click", function(){ 
 			//카카오 지도 발생
 			new daum.Postcode({
 				oncomplete: function(data) { //선택시 입력값 세팅
-					document.getElementById("address_kakao").value = data.address; // 주소 넣기
-					document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+					document.getElementById("zipcode").value = data.zonecode; 
+					document.getElementById("addr").value = data.address; 
 				}
 			}).open();
 		});
@@ -138,7 +138,7 @@
                     <div id="phoneForm">
 						<p>휴대폰 번호</p>
                         <select id = "phone_num1" name = "phone_num1" size = "1">
-							<option value="">선택하세요.</option>
+							<option value="">선택하세요</option>
 							<option value="010">010</option>
 							<option value="011">011</option>
 							<option value="016">016</option>
@@ -158,7 +158,7 @@
 						<input type="text" id="addr" name="addr" placeholder="입력하세비밀번호를 요"> --%>
                         <p>우편번호</p>
                         <p><input type ="text" name = "zipcode" id ="zipcode"/>
-                            <input type = "button" value = "우편번호찾기" id = "zipSearch"/><br/>
+                            <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
                         <p>주소</p>
                         <p><input type = "text" name = "addr" id ="addr" style = "width=90%"/></p>
                         <p>상세주소</p>
