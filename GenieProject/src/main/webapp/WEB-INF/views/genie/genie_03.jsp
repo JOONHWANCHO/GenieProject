@@ -57,9 +57,9 @@
 	<div class="genie_03">
 		<p>선물받는분의 성별은 어떻게 되시나요?</p>
 		<div class="box">
-			<a href="/user/genie_04"><input type ="button" id="button" value ="남자"></a>
-			<a href="/user/genie_04"><input type ="button" id="button" value ="여자"></a>
-			<a href="/user/genie_04"><input type ="button" id="button" value ="남여공용"></a>
+			<a href="/genie/genie_04"><input type ="button" id="button" value ="남자"></a>
+			<a href="/genie/genie_04"><input type ="button" id="button" value ="여자"></a>
+			<a href="/genie/genie_04"><input type ="button" id="button" value ="남여공용"></a>
 		</div>
 	</div>
 </section>

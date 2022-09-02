@@ -182,7 +182,7 @@
 		<div class="container">
 			<div class="tab">
 				<li><a href="/login">로그인</a></li>
-				<li><a href="/user/memberform">회원가입</a></li>
+				<li><a href="/user/MemberForm">회원가입</a></li>
 			</div>
 			<form method="get" action="/" id="logFrm">
 				<ul class="loginForm">
