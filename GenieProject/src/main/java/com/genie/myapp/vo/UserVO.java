@@ -17,6 +17,7 @@ public class UserVO {
     private String sign_in_date;
     private String payment_method;
 
+
     @Override
     public String toString() {
         return "UserVO [payment_method=" + payment_method + ", sign_in_date=" + sign_in_date + ", tel1=" + tel1
@@ -106,11 +107,5 @@ public class UserVO {
     }
     public void setPayment_method(String payment_method) {
         this.payment_method = payment_method;
-    }
-
-
-
-
-  
-    
+    }   
 }

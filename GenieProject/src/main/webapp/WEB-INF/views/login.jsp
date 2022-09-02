@@ -113,7 +113,7 @@
 					<p>비밀번호</p>
 					<input type="password" id="userpwd" name="userpwd" placeholder="비밀번호를 입력하세요">
 				</div>
-				 <li><input type = "submit" id="login" value = "로그인"/></li>
+				<li><input type = "submit" id="login" value = "로그인"/></li>
 			</ul>
 		</form>
 	</div>	
