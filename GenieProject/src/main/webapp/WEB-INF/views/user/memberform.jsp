@@ -116,41 +116,64 @@
 			}).open();
 		});
 	}
-
+</script>
+<script>
 	 $(function(){
-        $("#logFrm").submit(function(){
+       	$("#logFrm").submit(function(){
+
+			// 아이디, 비밀번호
             if($("#userid").val()==""){
-                alert("아이디를 입력하세요..");
+                alert("아이디를 입력하세요");
 				$("#userid").focus();
                 return false;
             }
             if($("#userpwd").val()==""){
-                alert("비밀번호를 입력하세요..");
+                alert("비밀번호를 입력하세요");
 				$("#userpwd").focus();
                 return false;
             }
 
-			if($("#userpwd").val()==""){
-                alert("비밀번호를 입력하세요..");
-				$("#userpwd").focus();
+			// 전화번호
+			if($("#phone_num1").val()==""){
+                alert("전화번호를 입력하세요");
+				$("#phone_num1").focus();
                 return false;
             }
-			if($("#userpwd").val()==""){
-                alert("비밀번호를 입력하세요..");
-				$("#userpwd").focus();
+			if($("#phone_num2").val()==""){
+                alert("전화번호를 입력하세요");
+				$("phone_num2").focus();
                 return false;
             }
-			if($("#userpwd").val()==""){
-                alert("비밀번호를 입력하세요..");
-				$("#userpwd").focus();
+			if($("#phone_num3").val()==""){
+                alert("전화번호를 입력하세요");
+				$("#phone_num3").focus();
                 return false;
             }
-			if($("#userpwd").val()==""){
-                alert("비밀번호를 입력하세요..");
-				$("#userpwd").focus();
+
+			// 우편번호
+			if($("#zipcode").val()==""){
+                alert("우편번호를 선택하세요");
+				$("#zipcode").focus();
                 return false;
             }
-                return true;
+			if($("#addr").val()==""){
+                alert("주소를 입력하세요");
+				$("#addr").focus();
+                return false;
+            }
+			if($("#detailaddr").val()==""){
+                alert("주소를 입력하세요");
+				$("#detailaddr").focus();
+                return false;
+            }
+
+			// 이메일
+			if($("#email").val()==""){
+                alert("이메일을 입력하세요..");
+				$("#email").focus();
+                return false;
+            }
+        return true;
         });
     });
 </script>
@@ -171,7 +194,6 @@
 						<p>비밀번호</p>
 						<input type="password" id="userpwd" name="userpwd" placeholder="비밀번호를 입력하세요">
 					</div>
-<%-- ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ --%>
                     <div id="phoneForm">
 						<p>휴대폰 번호</p>
                         <select id = "phone_num1" name = "phone_num1" size = "1">
@@ -191,8 +213,6 @@
 						<input type="email" id="email" name="email" placeholder="이메일을 입력하세요">
 					</div>
                     <div id="addrForm">
-						<%-- <p>주소</p>
-						<input type="text" id="addr" name="addr" placeholder="입력하세비밀번호를 요"> --%>
                         <p>우편번호</p>
                         <p><input type ="text" name = "zipcode" id ="zipcode"/>
                             <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
