@@ -16,7 +16,7 @@
 		<ul>
 			<li><a href="/">Home</a></li>
 			<li><a href="/user/genie_01">Genie</a></li>
-			<li><a href="/user/product">전체상품보기</a></li>
+			<li><a href="/product">전체상품보기</a></li>
 			<li><a href="/login">로그인</a></li>
 		</ul>
 	</nav>

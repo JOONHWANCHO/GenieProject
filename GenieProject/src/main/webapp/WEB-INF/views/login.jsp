@@ -103,7 +103,7 @@
 			<li><a href="/login">로그인</a></li>
 			<li><a href="/user/memberform">회원가입</a></li>
 		</div>
-		<form method="get" action="#" id="logFrm">
+		<form method="post" action="#" id="logFrm">
 			<ul class="loginForm">
 				<div id="idForm">
 					<p>아이디</p>
