@@ -52,14 +52,14 @@
 	<div class="genie_02">
 		<p>선물 예산은 얼마정도로 생각하고 계세요?</p>
 		<div class="box">
-			<a href="/user/genie_03"><input type ="button" id="button" value ="1만원"></a>
-			<a href="/user/genie_03"><input type ="button" id="button" value ="2만원"></a>
-			<a href="/user/genie_03"><input type ="button" id="button" value ="5만원"></a>
-			<a href="/user/genie_03"><input type ="button" id="button" value ="10만원"></a>
-			<a href="/user/genie_03"><input type ="button" id="button" value ="20만원"></a>
-			<a href="/user/genie_03"><input type ="button" id="button" value ="30만원"></a>
-			<a href="/user/genie_03"><input type ="button" id="button" value ="40만원"></a>
-			<a href="/user/genie_03"><input type ="button" id="button" value ="50만원"></a>
+			<a href="/genie/genie_03"><input type ="button" id="button" value ="1만원"></a>
+			<a href="/genie/genie_03"><input type ="button" id="button" value ="2만원"></a>
+			<a href="/genie/genie_03"><input type ="button" id="button" value ="5만원"></a>
+			<a href="/genie/genie_03"><input type ="button" id="button" value ="10만원"></a>
+			<a href="/genie/genie_03"><input type ="button" id="button" value ="20만원"></a>
+			<a href="/genie/genie_03"><input type ="button" id="button" value ="30만원"></a>
+			<a href="/genie/genie_03"><input type ="button" id="button" value ="40만원"></a>
+			<a href="/genie/genie_03"><input type ="button" id="button" value ="50만원"></a>
 		</div>
 	</div>
 </section>
