@@ -116,6 +116,43 @@
 			}).open();
 		});
 	}
+
+	 $(function(){
+        $("#logFrm").submit(function(){
+            if($("#userid").val()==""){
+                alert("아이디를 입력하세요..");
+				$("#userid").focus();
+                return false;
+            }
+            if($("#userpwd").val()==""){
+                alert("비밀번호를 입력하세요..");
+				$("#userpwd").focus();
+                return false;
+            }
+
+			if($("#userpwd").val()==""){
+                alert("비밀번호를 입력하세요..");
+				$("#userpwd").focus();
+                return false;
+            }
+			if($("#userpwd").val()==""){
+                alert("비밀번호를 입력하세요..");
+				$("#userpwd").focus();
+                return false;
+            }
+			if($("#userpwd").val()==""){
+                alert("비밀번호를 입력하세요..");
+				$("#userpwd").focus();
+                return false;
+            }
+			if($("#userpwd").val()==""){
+                alert("비밀번호를 입력하세요..");
+				$("#userpwd").focus();
+                return false;
+            }
+                return true;
+        });
+    });
 </script>
 </head>
 <section class="home">
@@ -124,7 +161,7 @@
 				<li><a href="/login">로그인</a></li>
 				<li><a href="/user/memberform">회원가입</a></li>
 			</div>
-			<form method="get" action="/" id="log">
+			<form method="get" action="/" id="logFrm">
 				<ul class="loginForm">
 					<div id="idForm">
 						<p>아이디</p>
