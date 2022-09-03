@@ -129,11 +129,15 @@
 </script>
 <script>
 	$(function(){
+		$("#idCheck").click(function(){
+			window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
+		});
+
+		$("#user_id").change(function(){
+			$("#idCheckState").val("N");
+		});
+		//유효성 검사
        	$("#logFrm").submit(function(){
-			
-			$("#idCheck").click(function(){
-				window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
-			});
 			
 			$("#userid").change(function(){
 				$("#idCheckState").val("N");
@@ -162,7 +166,7 @@
 			}
 
 			// 전화번호
-			if($("##user_phone_num1").val()=="" || $("#user_phone_num2").val()=="" || $("#user_phone_num3").val()==""){
+			if($("#user_phone_num1").val()=="" || $("#user_phone_num2").val()=="" || $("#user_phone_num3").val()==""){
 				alert("연락처를 입력하세요");
 				return false;
 			}
@@ -194,6 +198,7 @@
     });
 </script>
 </head>
+<body>
 <section class="home">
 		<div class="container">
 			<div class="tab">
@@ -234,10 +239,10 @@
 					</div>
                     <div id="addrForm">
                         <p>우편번호</p>
-                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode"/>
+                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode" readonly/>
                             <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
                         <p>주소</p>
-                        <p><input type = "text" name = "user_addr" id ="user_addr"/></p>
+                        <p><input type = "text" name = "user_addr" id ="user_addr" readonly/></p>
                         <p>상세주소</p>
                         <p><input type ="text" name = "user_detailaddr" id ="user_detailaddr"/></p>	
 
@@ -251,4 +256,5 @@
 			</form>
 		</div>	
 	</section>
+	</body>
 </html>

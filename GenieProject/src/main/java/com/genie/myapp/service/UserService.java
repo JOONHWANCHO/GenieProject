@@ -1,10 +1,8 @@
 package com.genie.myapp.service;
 
-import org.springframework.stereotype.Service;
-
 import com.genie.myapp.vo.UserVO;
 
-@Service
+
 public interface UserService {
     
     //아이디 중복검사

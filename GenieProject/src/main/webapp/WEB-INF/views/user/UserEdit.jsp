@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
 <style>
   .home{
 		position: relative;
@@ -106,30 +113,25 @@
 		margin-bottom:10px;
 	}
 </style>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	window.onload = function(){
+		document.getElementById("address_kakao").addEventListener("click", function(){ 
+			//카카오 지도 발생
+			new daum.Postcode({
+				oncomplete: function(data) { //선택시 입력값 세팅
+					document.getElementById("user_zipcode").value = data.zonecode; 
+					document.getElementById("user_addr").value = data.address; 
+				}
+			}).open();
+		});
+	}
+</script>
 <script>
 $(function(){
        	$("#logFrm").submit(function(){
 			
-			$("#idCheck").click(function(){
-				window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
-			});
-			
-			$("#userid").change(function(){
-				$("#idCheckState").val("N");
-			});
-
-			// 아이디, 비밀번호
-			if($("#user_id").val()==""){
-				alert("아이디를 입력하세요");
-				$("#user_id").focus();
-				return false;
-			}
-			//아이디 중복검사여부
-			if($("#idCheckState").val()!='Y'){
-				alert("아이디를 중복검사 하세요");
-				return false;
-			}
-
+			 //비밀번호
 			if($("#user_pwd").val()==""){
 				alert("비밀번호를 입력하세요");
 				$("#user_pwd").focus();
@@ -141,7 +143,7 @@ $(function(){
 			}
 
 			// 전화번호
-			if($("##user_phone_num1").val()=="" || $("#user_phone_num2").val()=="" || $("#user_phone_num3").val()==""){
+			if($("#user_phone_num1").val()=="" || $("#user_phone_num2").val()=="" || $("#user_phone_num3").val()==""){
 				alert("연락처를 입력하세요");
 				return false;
 			}
@@ -172,18 +174,16 @@ $(function(){
 		});
     });
 </script>
+</head>
 <body>
+<section class="home">
 	<div class="container">
-			<div class="tab">
-				<%-- <li><a href="/login">로그인</a></li>
-				<li><a href="/user/MemberForm">회원가입</a></li> --%>
-			</div>
-			<form method="get" action="/user/userEditOk" id="logFrm">
+			<form method="get" action="/user/UserEditOk" id="logFrm">
 				<ul class="loginForm">
 					<div id="idForm">
 						<p>아이디</p>
-						<input type="text" id="user_id" name="user_id" value= "${vo.user_id}" placeholder="아이디를 입력하세요" readonly>
-						<input type ="hidden" id = "idCheckState" value = "N"/>
+						<input type="text" id="user_id" name="user_id" value= "${vo.user_id}" readonly>
+						<input type ="hidden" id = "idCheckState" value = "Y"/>
 					</div>
 					<div id="passwordForm">
 						<p>비밀번호</p>
@@ -211,10 +211,10 @@ $(function(){
 					</div>
                     <div id="addrForm">
                         <p>우편번호</p>
-                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode" value =" ${vo.user_zipcode}" />
+                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode" value =" ${vo.user_zipcode}" readonly />
                             <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
                         <p>주소</p>
-                        <p><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}"/></p>
+                        <p><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></p>
                         <p>상세주소</p>
                         <p><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/></p>	
 
@@ -222,5 +222,6 @@ $(function(){
 				</ul>
 			</form>
 		</div>	
-</body>
+	</section>
+	</body>
 </html>
