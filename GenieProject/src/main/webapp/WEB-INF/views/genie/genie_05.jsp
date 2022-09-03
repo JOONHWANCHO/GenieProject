@@ -17,11 +17,11 @@
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 }
-.genie_04 h2{
+.genie_02 h2{
 	margin-bottom: 2em;
 	color: #1a534e;
-	width: 34ch;
-	animation: typing 2s steps(34), blink .5s step-end infinite alternate;
+	width: 28ch;
+	animation: typing 2s steps(28), blink .5s step-end infinite alternate;
   	white-space: nowrap;
 	overflow: hidden;
 	border-right: .09em solid;
@@ -41,7 +41,7 @@
 	background-color: #fff;
 	color: #1a534e;
 	margin: 1%;
-	padding: .8em 1.5em;
+	padding: .8em 1.8em;
 	font-size: 1.7em;
 	font-weight: bold;
 	border-radius: 25px;
@@ -52,21 +52,45 @@
 </style>
 
 <section class="home">
-	<div class="genie_04">
-		<h2>선물 받는 분의 나이대가 어떻게 되시나요?</h2>
+	<div class="genie_02">
+		<h2>어떤 특별한 날에 드릴 선물인가요?</h2>
 	</div>
 		<div class="gird-container">
 			<div class="button">
-				<a href="/genie/genie_05">10대</a>
+				<a href="/">생일</a>
 			</div>
 			<div class="button">
-				<a href="/genie/genie_05">20-30대</a>
+				<a href="/">기념일</a>
 			</div>
 			<div class="button">
-				<a href="/genie/genie_05">30-40대</a>
+				<a href="/">백일</a>
 			</div>
 			<div class="button">
-				<a href="/genie/genie_05">50대 이상</a>
+				<a href="/">집들이</a>
+			</div>
+			<div class="button">
+				<a href="/">서프라이즈</a>
+			</div>
+			<div class="button">
+				<a href="/">응원</a>
+			</div>
+			<div class="button">
+				<a href="/">감사</a>
+			</div>
+			<div class="button">
+				<a href="/">결혼</a>
+			</div>
+			<div class="button">
+				<a href="/">출산</a>
+			</div>
+			<div class="button">
+				<a href="/">임신</a>
+			</div>
+			<div class="button">
+				<a href="/">개업</a>
+			</div>
+			<div class="button">
+				<a href="/">위로</a>
 			</div>
 		</div>
 	</div>

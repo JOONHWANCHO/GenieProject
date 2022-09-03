@@ -5,69 +5,81 @@
 	position: relative;
 	width: 100%;
 	height: 100vh;
+	margin: 0;
+    padding:6% 23%;
+
 	/*background: url(../img/background.jpg);*/
-	background: linear-gradient(to top, #56D8FF, #48FFD5);
+	background: #d3f1ee;
 	background-size: cover;
 	background-position: center;
+}
+.grid-container{
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	align-items: center;
-	
+	grid-template-columns: repeat(4, 1fr);
 }
-.genie_01 p{
-	margin:0;
-	padding:1rem;
-	font-size: 50px;
-	font-weight: 400;
-	text-align: center;
-	text-decoration: none;
-	color: #fff;
-	letter-spacing:3px;
+.genie_01 h2{
+	margin-bottom: 2em;
+	color: #1a534e;
+	width: 28ch;
+	animation: typing 2s steps(28), blink .5s step-end infinite alternate;
+  	white-space: nowrap;
+	overflow: hidden;
+	border-right: .09em solid;
 }
-.box{
-	align-items:center;
-	text-align:center;
-	padding:150px;
+@keyframes typing {
+  from {
+    width: 0
+  }
 }
-#button{
-	margin: 10px;
-	padding: 0.5rem 1rem;
-	
-	color:#48FFD5;
-	font-size: 2rem;
-	font-weight: 400;
-	text-decoration: none;
-	
-	display: inline-block;
-	width: auto;
-	
-	border: none;
-	border-radius: 10px;
-	letter-spacing: 5px;
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
 }
-
-#button:hover{
-	color:#56D8FF;
-	transition: .4s;
-	transform: scale(1.1);
+.button a{
+	float: left;
+	background-color: #fff;
+	color: #1a534e;
+	margin: 1%;
+	padding: .8em 2em;
+	font-size: 1.7em;
+	font-weight: bold;
+	border-radius: 25px;
 }
+.button a:hover{
+	background-color: #f3e7b1;
+} 
 </style>
-<script>
-document.body.scrollTop = document.body.scrollHeight;
-</script>
 
 <section class="home">
 	<div class="genie_01">
-		<p>어떤분에게 선물할 계획이세요?</p>
-		<div class="box">
-			<a href="/genie/genie_02"><input type ="button" id="button" value ="부모님"></a>
-			<a href="/genie/genie_02"><input type ="button" id="button" value ="배우자"></a>
-			<a href="/genie/genie_02"><input type ="button" id="button" value ="연인"></a>
-			<a href="/genie/genie_02"><input type ="button" id="button" value ="친구"></a>
-			<a href="/genie/genie_02"><input type ="button" id="button" value ="회사"></a>
-			<a href="/genie/genie_02"><input type ="button" id="button" value ="친인척"></a>
-			<a href="/genie/genie_02"><input type ="button" id="button" value ="스승"></a>
-			<a href="/genie/genie_02"><input type ="button" id="button" value ="가족"></a>
+		<h2>어느 분에게 선물할 계획이신가요?</h2>
+	</div>
+		<div class="gird-container">
+			<div class="button">
+				<a href="/genie/genie_02">부모님</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_02">배우자</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_02">연인</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_02">친구</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_02">동료</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_02">친척</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_02">스승</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_02">가족</a>
+			</div>
 		</div>
 	</div>
 </section>

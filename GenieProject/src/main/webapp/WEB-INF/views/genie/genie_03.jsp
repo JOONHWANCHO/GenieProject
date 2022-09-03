@@ -1,65 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <style>
-.home{
+.home {
 	position: relative;
 	width: 100%;
 	height: 100vh;
+	margin: 0;
+    padding:6% 23%;
+
 	/*background: url(../img/background.jpg);*/
-	background: linear-gradient(to top, #56D8FF, #48FFD5);
+	background: #d3f1ee;
 	background-size: cover;
 	background-position: center;
+}
+.grid-container{
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 }
-.genie_03 p{
-	margin:0;
-	padding:120px 80px 50px 80px;
-	
-	font-size: 50px;
-	font-weight: 400;
-	text-align: center;
-	text-decoration: none;
-	color: #fff;
-	
-	letter-spacing:3px;
+.genie_03 h2{
+	margin-bottom: 2em;
+	color: #1a534e;
+	width: 32ch;
+	animation: typing 2s steps(32), blink .5s step-end infinite alternate;
+  	white-space: nowrap;
+	overflow: hidden;
+	border-right: .09em solid;
 }
-.box{
-	align-items:center;
-	text-align:center;
-	padding:100px;
+@keyframes typing {
+  from {
+    width: 0
+  }
 }
-#button{
-	margin: 10px 40px;
-	padding: 0.5rem 1rem;
-	
-	color:#48FFD5;
-	font-size: 2rem;
-	font-weight: 400;
-	text-decoration: none;
-	
-	display: inline-block;
-	width: auto;
-	
-	border: none;
-	border-radius: 10px;
-	letter-spacing: 5px;
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
 }
-
-#button:hover{
-	color:#56D8FF;
-	transition: .4s;
-	transform: scale(1.1);
+.button a{
+	float: left;
+	background-color: #fff;
+	color: #1a534e;
+	margin: 1%;
+	padding: .8em 2em;
+	font-size: 1.7em;
+	font-weight: bold;
+	border-radius: 25px;
 }
+.button a:hover{
+	background-color: #f3e7b1;
+} 
 </style>
 
 <section class="home">
 	<div class="genie_03">
-		<p>선물받는분의 성별은 어떻게 되시나요?</p>
-		<div class="box">
-			<a href="/genie/genie_04"><input type ="button" id="button" value ="남자"></a>
-			<a href="/genie/genie_04"><input type ="button" id="button" value ="여자"></a>
-			<a href="/genie/genie_04"><input type ="button" id="button" value ="남여공용"></a>
+		<h2>선물 받는 분의 성별이 어떻게 되시나요?</h2>
+	</div>
+		<div class="gird-container">
+			<div class="button">
+				<a href="/genie/genie_04">남자</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_04">여자</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_04">남여공용</a>
+			</div>
 		</div>
 	</div>
 </section>

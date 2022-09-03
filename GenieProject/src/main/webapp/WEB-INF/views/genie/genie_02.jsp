@@ -1,65 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <style>
-.home{
+.home {
 	position: relative;
 	width: 100%;
 	height: 100vh;
+	margin: 0;
+    padding:6% 23%;
+
 	/*background: url(../img/background.jpg);*/
-	background: linear-gradient(to top, #56D8FF, #48FFD5);
+	background: #d3f1ee;
 	background-size: cover;
 	background-position: center;
+}
+.grid-container{
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	align-items: center;
+	grid-template-columns: repeat(4, 1fr);
 }
-.genie_02 p{
-	padding:60px;
-	color:#fff;
-	font-size: 50px;
-	text-align: center;
+.genie_02 h2{
+	margin-bottom: 2em;
+	color: #1a534e;
+	width: 35ch;
+	animation: typing 2s steps(35), blink .5s step-end infinite alternate;
+  	white-space: nowrap;
+	overflow: hidden;
+	border-right: .09em solid;
 }
-
-#button:hover{
-	color:#56D8FF;
-	transition: .4s;
-	transform: scale(1.1);
+@keyframes typing {
+  from {
+    width: 0
+  }
 }
-
-#button{
-	border: none;
-	font-size: 40px;
-	margin: 10px;
-	padding:10px;
-	color: #48FFD5;
-	border-radius: 9px;
-	transition: ease .40s;
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
 }
-
-.box button{
-	margin:0 auto;
-	text-align:center;
+.button a{
+	float: left;
+	background-color: #fff;
+	color: #1a534e;
+	margin: 1%;
+	padding: .8em 1.8em;
+	font-size: 1.7em;
+	font-weight: bold;
+	border-radius: 25px;
 }
-
-.box{
-	align-items:center;
-	text-align:center;
-	padding:150px;
-}
+.button a:hover{
+	background-color: #f3e7b1;
+} 
 </style>
 
 <section class="home">
 	<div class="genie_02">
-		<p>선물 예산은 얼마정도로 생각하고 계세요?</p>
-		<div class="box">
-			<a href="/genie/genie_03"><input type ="button" id="button" value ="1만원"></a>
-			<a href="/genie/genie_03"><input type ="button" id="button" value ="2만원"></a>
-			<a href="/genie/genie_03"><input type ="button" id="button" value ="5만원"></a>
-			<a href="/genie/genie_03"><input type ="button" id="button" value ="10만원"></a>
-			<a href="/genie/genie_03"><input type ="button" id="button" value ="20만원"></a>
-			<a href="/genie/genie_03"><input type ="button" id="button" value ="30만원"></a>
-			<a href="/genie/genie_03"><input type ="button" id="button" value ="40만원"></a>
-			<a href="/genie/genie_03"><input type ="button" id="button" value ="50만원"></a>
+		<h2>선물 예산은 어느정도로 생각하고 계신가요?</h2>
+	</div>
+		<div class="gird-container">
+			<div class="button">
+				<a href="/genie/genie_03">1만원</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_03">2만원</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_03">5만원</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_03">10만원</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_03">20만원</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_03">30만원</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_03">40만원</a>
+			</div>
+			<div class="button">
+				<a href="/genie/genie_03">50만원</a>
+			</div>
 		</div>
 	</div>
 </section>

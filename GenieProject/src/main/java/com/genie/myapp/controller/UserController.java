@@ -1,8 +1,9 @@
 package com.genie.myapp.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,13 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/user/*")
 public class UserController {
-	// @Inject
-	// UserService service;
+	//@Inject
+	//UserService service;
 
-	@GetMapping("MemberForm")
+	@GetMapping("UserForm")
 	public ModelAndView UserForm() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/user/MemberForm");
+		mav.setViewName("/user/UserForm");
 		return mav;
 	}
 

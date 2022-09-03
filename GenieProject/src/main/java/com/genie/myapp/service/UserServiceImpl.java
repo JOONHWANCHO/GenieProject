@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int userWrite(UserVO vo) {
-        return dao.userWrite(vo);
+    public int UserWrite(UserVO vo) {
+        return dao.UserWrite(vo);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int userEditOk(UserVO vo) {
-        return dao.userEditOk(vo);
+    public int UserEditOk(UserVO vo) {
+        return dao.UserEditOk(vo);
     }
 }
  
