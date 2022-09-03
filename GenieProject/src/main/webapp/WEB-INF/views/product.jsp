@@ -110,9 +110,6 @@ jQuery(document).ready(function($){
 setInterval(function(){
     var size = randomValue(sArray);
     $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
-
-    // Animate each bubble to the top (bottom 100%) and reduce opacity as it moves
-    // Callback function used to remove finsihed animations from the page
     $('.individual-bubble').animate({
         'bottom': '100%',
         'opacity' : '-=0.7'

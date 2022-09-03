@@ -24,4 +24,8 @@ public class GenieController {
 	public String genie_04() {
 		return null;
 	}
+	@GetMapping("genie_05")
+	public String genie_05() {
+		return null;
+	}
 }

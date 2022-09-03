@@ -4,6 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.genie.myapp.dao.UserDAO">
 	<select id = "idCheck" resultType="int">
-		select count(user_id) cnt from user where user_id =#{param1}
+		select count(user_id,administer_code,seller_id) cnt from user,administer,seller where user_id =#{param1} or seller_id={param1} or administer_code={param1}
+	</select>
+    <insert id = "UserWrite">
+		insert into user(user_id, user_pwd, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr)
+		values(#{user_id}, #{user_pwd}, #{user_phone_num}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr})
+	</insert>
+    <update id ="UserEditOk">
+		update user set user_phone_num =#{user_phone_num}, user_email=#{user_email}, user_zipcode =#{user_zipcode}, user_addr=#{user_addr}, user_detailaddr =#{user_detailaddr}
+		where user_id =#{user_id} and user_pwd=#{user_pwd}
+	</update>
+    <select id = "getUser" resultType = "UserVO">
+		select user_id, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr
+		from user
+		where user_id=#{param1}
 	</select>
 </mapper>

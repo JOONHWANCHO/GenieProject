@@ -101,17 +101,17 @@
 	<div class="container">
 		<div class="tab">
 			<li><a href="/login">로그인</a></li>
-			<li><a href="/user/MemberForm">회원가입</a></li>
+			<li><a href="/user/UserForm">회원가입</a></li>
 		</div>
-		<form method="post" action="#" id="logFrm">
+		<form method="post" action="/user/" id="logFrm">
 			<ul class="loginForm">
 				<div id="idForm">
 					<p>아이디</p>
-					<input type="text" id="userid" name="userid" placeholder="아이디를 입력하세요">
+					<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요">
 				</div>
 				<div id="passwordForm">
 					<p>비밀번호</p>
-					<input type="password" id="userpwd" name="userpwd" placeholder="비밀번호를 입력하세요">
+					<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
 				</div>
 				<li><input type = "submit" id="login" value = "로그인"/></li>
 			</ul>
