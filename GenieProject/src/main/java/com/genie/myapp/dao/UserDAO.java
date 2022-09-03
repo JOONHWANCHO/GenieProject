@@ -1,7 +1,12 @@
 package com.genie.myapp.dao;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
 import com.genie.myapp.vo.UserVO;
 
+@Mapper
+@Repository
 public interface UserDAO {
 
     //아이디 중복검사

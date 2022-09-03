@@ -17,7 +17,15 @@
 			<li><a href="/">Home</a></li>
 			<li><a href="/genie/genie_01">Genie</a></li>
 			<li><a href="/product">전체상품보기</a></li>
-			<li><a href="/login">로그인</a></li>
+			<c:if test ="${logStatus !='Y'}">
+			<li><a href = "/login">로그인</a></li>
+			<a href = "/user/UserForm">회원가입</a>
+			</c:if>
+			
+			<c:if test ="${logStatus =='Y'}">	
+				${vo.user_id}님<a href ="/user/logout">로그아웃</a>
+				<a href = "/user/UserEdit">회원정보수정</a>
+			</c:if>
 		</ul>
 	</nav>
 </div>

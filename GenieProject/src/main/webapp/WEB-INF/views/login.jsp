@@ -9,17 +9,17 @@
 <script>
     $(function(){
         $("#logFrm").submit(function(){
-            if($("#userid").val()==""){
+            if($("#user_id").val()==""){
                 alert("아이디를 입력하세요..");
-				$("#userid").focus();
+				$("#user_id").focus();
                 return false;
             }
-            if($("#userpwd").val()==""){
+            if($("#user_pwd").val()==""){
                 alert("비밀번호를 입력하세요..");
-				$("#userpwd").focus();
+				$("#user_pwd").focus();
                 return false;
             }
-                return true;
+            return true;
         });
     });
 </script>
@@ -82,7 +82,7 @@
 		padding-left:0;
 	}
 	
-	#userid, #userpwd{
+	#user_id, #user_pwd{
 		width:100%;
 		height:50px;
 		border-radius:15px;
@@ -103,7 +103,7 @@
 			<li><a href="/login">로그인</a></li>
 			<li><a href="/user/UserForm">회원가입</a></li>
 		</div>
-		<form method="post" action="/user/" id="logFrm">
+		<form method="post" action="/user/loginOK" id="logFrm">
 			<ul class="loginForm">
 				<div id="idForm">
 					<p>아이디</p>

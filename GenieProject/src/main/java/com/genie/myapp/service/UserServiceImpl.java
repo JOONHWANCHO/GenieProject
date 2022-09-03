@@ -2,9 +2,12 @@ package com.genie.myapp.service;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import com.genie.myapp.dao.UserDAO;
 import com.genie.myapp.vo.UserVO;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Inject

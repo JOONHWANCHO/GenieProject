@@ -22,7 +22,7 @@
 		<input type = "button" value = "아이디 사용하기" id="setId"/>
 	</c:if>
 	<c:if test="${idCnt>0}">
-		<b>${userid}는 사용 불가능한 아이디 입니다.</b>
+		<b>${user_id}는 사용 불가능한 아이디 입니다.</b>
 	</c:if>
 
 	<hr/>
