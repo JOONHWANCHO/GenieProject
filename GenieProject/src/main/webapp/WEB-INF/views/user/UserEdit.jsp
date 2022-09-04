@@ -175,7 +175,6 @@ $(function(){
     });
 </script>
 </head>
-</head>
 <body>
 <section class="home">
 	<div class="container">
