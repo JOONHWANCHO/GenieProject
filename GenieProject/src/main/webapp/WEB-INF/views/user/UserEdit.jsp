@@ -178,7 +178,6 @@ $(function(){
 </head>
 <body>
 <section class="home">
-<section class="home">
 	<div class="container">
 			<form method="get" action="/user/UserEditOk" id="logFrm">
 				<ul class="loginForm">
@@ -225,6 +224,5 @@ $(function(){
 			</form>
 		</div>	
 	</section>
-		</section>
 	</body>
 </html>
