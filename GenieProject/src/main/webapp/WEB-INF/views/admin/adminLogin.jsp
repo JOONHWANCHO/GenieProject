@@ -163,7 +163,7 @@
     <h1>GENIE</h1>
 
     <!-- 로그인폼-->
-    <form method="post" action="/member/loginOK" id="log">
+    <form method="post" action="/user/loginOK" id="log">
     	<p>아이디</p>
       <input type="text" id="userid" class="second" name="userid" placeholder="아이디">
     <p>비밀번호</p>
@@ -173,7 +173,7 @@
 
     <!-- 비밀번호 -->
     <!-- 로그인폼-->
-    <form method="post" action="/member/loginOK" id="log">
+    <form method="post" action="/user/loginOK" id="log">
       <input class="userReg" value="일반회원 회원가입">
       <input class="comReg" value="기업회원 회원가입">
     </form>
