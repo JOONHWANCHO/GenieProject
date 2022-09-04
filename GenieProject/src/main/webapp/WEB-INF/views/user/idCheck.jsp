@@ -28,6 +28,6 @@
 	<hr/>
 	<form method = "get" action="/user/idCheck">
 		아이디 : <input type = "text" name = "user_id" id = "user_id"/>
-		<input type = "submit" value ="아이디중복검사하기"/>
+		<input type = "submit" value ="아이디 중복 검사하기"/>
 	</form>
 </div>

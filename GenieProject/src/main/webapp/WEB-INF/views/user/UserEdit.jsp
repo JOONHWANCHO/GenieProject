@@ -92,7 +92,7 @@
 		height:50px;
 		border-radius:15px;
 		font-size:30px;
-		padding:20px;
+		padding:10px;
     }
 	#login:hover{
 		background: #56D8FF;
@@ -113,6 +113,20 @@
 		margin-bottom:10px;
 	}
 </style>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	window.onload = function(){
+		document.getElementById("address_kakao").addEventListener("click", function(){ 
+			//카카오 지도 발생
+			new daum.Postcode({
+				oncomplete: function(data) { //선택시 입력값 세팅
+					document.getElementById("user_zipcode").value = data.zonecode; 
+					document.getElementById("user_addr").value = data.address; 
+				}
+			}).open();
+		});
+	}
+</script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	window.onload = function(){
@@ -175,7 +189,9 @@ $(function(){
     });
 </script>
 </head>
+</head>
 <body>
+<section class="home">
 <section class="home">
 	<div class="container">
 			<form method="get" action="/user/UserEditOk" id="logFrm">
@@ -202,8 +218,8 @@ $(function(){
 							<option value="018">018</option>
 							<option value="019">019</option>
 						</select>-
-				        <input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4" value = "${vo.user_phone_num2}"/> -
-			 	        <input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4" value = "${vo.user_phone_num3}"/>
+				        <input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4" value ="${vo.user_phone_num2}"/> -
+			 	        <input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4" value ="${vo.user_phone_num3}"/>
 					</div>
                     <div id="emailForm">
 						<p>이메일</p>
@@ -214,14 +230,15 @@ $(function(){
                         <p><input type ="text" name = "user_zipcode" id ="user_zipcode" value =" ${vo.user_zipcode}" readonly />
                             <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
                         <p>주소</p>
-                        <p><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></p>
+                        <p><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly readonly/></p>
                         <p>상세주소</p>
                         <p><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/></p>	
 
-					 <li><input type = "submit" id="login" value = "회원가입하기"/></li>
+					 <li><input type = "submit" id="login" value = "회원정보 수정"/></li>
 				</ul>
 			</form>
 		</div>	
 	</section>
+		</section>
 	</body>
 </html>
