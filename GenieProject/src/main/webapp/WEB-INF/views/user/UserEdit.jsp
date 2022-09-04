@@ -175,9 +175,7 @@ $(function(){
     });
 </script>
 </head>
-</head>
 <body>
-<section class="home">
 <section class="home">
 	<div class="container">
 			<form method="get" action="/user/UserEditOk" id="logFrm">
