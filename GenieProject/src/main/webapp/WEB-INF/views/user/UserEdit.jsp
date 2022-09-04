@@ -227,10 +227,10 @@ $(function(){
 					</div>
                     <div id="addrForm">
                         <p>우편번호</p>
-                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode" value =" ${vo.user_zipcode}" readonly />
+                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode" value ="${vo.user_zipcode}" readonly />
                             <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
                         <p>주소</p>
-                        <p><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly readonly/></p>
+                        <p><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></p>
                         <p>상세주소</p>
                         <p><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/></p>	
 
