@@ -17,7 +17,7 @@
     font-size: 30px;
     font-weight: 600;
     margin-left: 30px;
-    color: #2DCEF8; 
+    color: #2DCEF8;
     margin-bottom: 50px;
   }
 
@@ -35,7 +35,7 @@
     font-size: 16px;
     font-weight: 600;
     margin-left: 30px;
-    color: #ccc; 
+    color: #ccc;
     margin-bottom: 50px;
   }
   p{
@@ -172,8 +172,8 @@
     </form>
     <!-- 로그인폼-->
     <form method="post" action="/user/loginOK" id="log">
-      <a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a>
-      <a href="/"><input type="button" id="comReg" value="기업회원 회원가입"></a>
+      <a href=""><input type="button" id="userReg" value="일반회원 회원가입"></a>
+      <input type="button" id="comReg" value="기업회원 회원가입">
     </form>
   </div>
 </div>

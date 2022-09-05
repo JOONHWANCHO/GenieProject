@@ -23,6 +23,7 @@
 			
 			<c:if test ="${logStatus =='Y'}">	
 				<li>${vo.user_id}님<a href ="/user/logout">로그아웃</a></li>
+				<li><a href ="/user/UserDashboard">마이페이지</a></li>
 				<li><a href = "/user/UserEdit">회원정보수정</a></li>
 			</c:if>
 		</ul>
