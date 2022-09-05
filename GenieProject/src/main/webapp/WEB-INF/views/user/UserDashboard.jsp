@@ -8,7 +8,11 @@ body {
   line-height: 1.5;
   min-height: 100vh;
   font-family: "Be Vietnam Pro", sans-serif;
-  background: #f2f2f2;
+  /* background: #f2f2f2; */
+  background: #d3f1ee;
+	background-size: cover;
+	background-position: center;
+  
 }
 .responsive-wrapper {
   width: 100%;
@@ -48,6 +52,7 @@ body {
   margin-bottom: 3em;
 }
 .content-main-top {
+    padding:10px;
     background: white;
     width: 100%;
     height: 200px;
@@ -85,13 +90,24 @@ body {
   }
 }
 
-.card {
+.card, .content-main-top {
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: #1f635c;
+  box-shadow: 0 0 15px #278178;
+  flex-direction: column;
+}
+
+/* .card {
   background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .card-header {
   display: flex;
@@ -143,7 +159,7 @@ body {
 <div class="responsive-wrapper">
   <div class="content">
     <div class="content-panel">
-      <h3>(회원이름)님</h3>
+      <h3>${vo.user_id}님</h3>
         <ul class="fa-ul">
           <li><i class="fa-solid fa-circle-user"></i><a href="#">회원정보 확인/수정</a></li>
           <li><i class="fa-solid fa-cart-plus"></i><a href="#">주문목록/배송조회</a></li>
