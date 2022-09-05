@@ -90,7 +90,7 @@
     border-radius: 10px 10px 10px 10px;
   }
 
-  input[type=text] {
+  input[type=text],[type=password] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -109,7 +109,7 @@
     color: #cccccc;
   }
 
-  .userReg {
+  #userReg {
     background-color: #F7D25A;
     border: none;
     color: #fff;
@@ -125,7 +125,7 @@
     border-radius: 10px 10px 10px 10px;
   }
 
-  .comReg{
+  #comReg{
     background-color: #E162A2;
     border: none;
     color: #fff;
@@ -140,15 +140,14 @@
     border-radius: 10px 10px 10px 10px;
   }
 </style>
-
 <script>
 	$(function(){
 		$('#log').submit(function(){
-			if($("#userid").val()==""){
+			if($("#user_id").val()==""){
 				alert("아이디를 입력하세요..");
 				return false;
 			}
-			if($("#userpwd").val()==""){
+			if($("#user_pwd").val()==""){
 				alert("비밀번호를 입력하세요..");
 				return false;
 			}
@@ -165,18 +164,16 @@
     <!-- 로그인폼-->
     <form method="post" action="/user/loginOK" id="log">
     	<p>아이디</p>
-      <input type="text" id="userid" class="second" name="userid" placeholder="아이디">
-    <p>비밀번호</p>
-      <input type="text" id="userpwd" class="third" name="userpwd" placeholder="비밀번호">
-      <input type="submit" class="fourth" value="Log In">
-    </form>
-
+      <input type="text" id="user_id" class="second" name="user_id" placeholder="아이디를 입력하세요">
     <!-- 비밀번호 -->
+    <p>비밀번호</p>
+      <input type="password" id="user_pwd" class="third" name="user_pwd" placeholder="비밀번호를 입력하세요">
+      <input type="submit" class="fourth" value="로그인">
+    </form>
     <!-- 로그인폼-->
     <form method="post" action="/user/loginOK" id="log">
-      <input class="userReg" value="일반회원 회원가입">
-      <input class="comReg" value="기업회원 회원가입">
+      <a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a>
+      <a href="/"><input type="button" id="comReg" value="기업회원 회원가입"></a>
     </form>
-
   </div>
 </div>

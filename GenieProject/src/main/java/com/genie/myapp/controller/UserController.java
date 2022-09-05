@@ -26,6 +26,14 @@ public class UserController {
 	@Inject
 	UserService service;
 
+	@GetMapping("login")
+	public ModelAndView adminLogin() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("user/login");
+		return mav;
+	}
+
+
 	//회원가입 폼으로 이동
 	@GetMapping("UserForm")
 	public ModelAndView UserForm() {
@@ -118,7 +126,7 @@ public class UserController {
 		return mav;
 	}
 	//회원정보 수정 DB
-	@PostMapping("memberEditOk")
+	@PostMapping("UserEditOk")
 	public ResponseEntity<String> memberEditOk(UserVO vo) {// @RequestParam, @ReturnValue
 		
 		ResponseEntity<String> entity = null;
@@ -135,7 +143,7 @@ public class UserController {
 		}else {//수정못함
 			msg+="alert('회원 정보 수정이 실패하였습니다.');";	
 		}
-		msg+="location.href='/member/memberEdit';</script>";
+		msg+="location.href='/user/UserEdit';</script>";
 		
 		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
 		return entity;
