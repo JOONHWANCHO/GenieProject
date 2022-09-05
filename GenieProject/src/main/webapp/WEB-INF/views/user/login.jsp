@@ -3,16 +3,18 @@
 <style>
   @import url('https://fonts.googleapis.com/css?family=Poppins');
 
-  /* 기본구조 */
-
-  a {
-    color: #92badd;
-    display:inline-block;
-    text-decoration: none;
-    font-weight: 400;
+  .home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding:6% 23%;
+    background: #d3f1ee;
+    background-size: cover;
+    background-position: center;
   }
-
-  h1 {
+  /* 기본구조 */
+  h2 {
     text-align: left;
     font-size: 30px;
     font-weight: 600;
@@ -21,22 +23,30 @@
     margin-bottom: 50px;
   }
 
-  h2 {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    display:inline-block;
-    margin: 40px 8px 10px 8px; 
-    color: #cccccc;
+  .home .bubbles{
+      display:flex;
+      justify-content: center;
+      align-items: center;
   }
-  h3 {
-    text-align: left;
-    font-size: 16px;
-    font-weight: 600;
-    margin-left: 30px;
-    color: #ccc;
-    margin-bottom: 50px;
+  .bubbles {
+      display: inline-block;
+      font-family: 'Josefin Sans', sans-serif;
+      position: relative;
+      /* margin-bottom: 6em; */
+  }
+  .bubbles h1 {
+      position: relative;
+      margin: 1em 0 0;
+      font-family: 'Josefin Sans', sans-serif;
+      color: #1a534e;
+      z-index: 2;
+  }
+  .individual-bubble {
+      position: absolute;
+      border-radius: 100%;
+      bottom: 10px;
+      background-color: #81d8d0;
+      z-index: 1;
   }
   p{
     text-align: left;
@@ -52,10 +62,10 @@
     display: flex;
     align-items: center;
     flex-direction: column; 
-    justify-content: center;
+    /* justify-content: center; */
     width: 100%;
     min-height: 100%;
-    padding: 20px;
+    margin-top:6em;
   }
 
   #formContent {
@@ -155,11 +165,38 @@
 		});
 	});
 </script>
+<script>
+jQuery(document).ready(function($){
+ var bArray = [];
+ var sArray = [4,6,8,10];
+    for (var i = 0; i < $('.bubbles').width(); i++) {
+    bArray.push(i);
+    }
+ function randomValue(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+ }
+setInterval(function(){
+    var size = randomValue(sArray);
+    $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+    $('.individual-bubble').animate({
+        'bottom': '100%',
+        'opacity' : '-=0.7'
+    }, 3000, function(){
+        $(this).remove()
+    });
+    }, 350);
+});
+</script>
+<section class="home">
+
+<div class="bubbles">
+  <h1>지니에서 당신의 마음을 찾아보세요</h1>
+</div>
 
 <div class="wrapper">
   <div id="formContent">
     <!-- 타이틀 -->
-    <h1>GENIE</h1>
+    <h2>GENIE</h2>
 
     <!-- 로그인폼-->
     <form method="post" action="/user/loginOK" id="log">
@@ -172,8 +209,9 @@
     </form>
     <!-- 로그인폼-->
     <form method="post" action="/user/loginOK" id="log">
-      <a href=""><input type="button" id="userReg" value="일반회원 회원가입"></a>
-      <input type="button" id="comReg" value="기업회원 회원가입">
+      <li><a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
+      <li><a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a></li>
     </form>
   </div>
 </div>
+<section>

@@ -33,6 +33,32 @@ public class UserController {
 		return mav;
 	}
 
+	@PostMapping("loginOK")
+	public ModelAndView loginOk(UserVO vo, HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
+		UserVO logVO = service.loginOk(vo);
+	
+		if(logVO != null) {//로그인 성공
+			session.setAttribute("logId", logVO.getUser_id());
+			session.setAttribute("logStatus","Y");
+			mav.setViewName("redirect:/");
+			
+		}else {//로그인 실패
+			
+			mav.setViewName("redirect:/login");
+		}
+		return mav;
+	}
+
+	@GetMapping("logout")
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		session.invalidate();
+		mav.setViewName("redirect:/");
+		
+		return mav;
+	}
 
 	//회원가입 폼으로 이동
 	@GetMapping("UserForm")
@@ -47,14 +73,13 @@ public class UserController {
 	public ModelAndView idCheck(String userid) {
 		ModelAndView mav = new ModelAndView();
 		
-		
 		//DB조회  : 아이디가 존재하는지 확인
 		 int cnt = service.idCheck(userid);
 		 
-		 mav.addObject("idCnt",cnt);
-		 mav.addObject("userid",userid);
-		
+		mav.addObject("idCnt",cnt);
+		mav.addObject("userid",userid);
 		mav.setViewName("member/idCheck");
+
 		return mav;
 	}
 
@@ -85,32 +110,6 @@ public class UserController {
 		}
 		return entity;
 	}
-	@PostMapping("loginOK")
-	public ModelAndView loginOk(UserVO vo, HttpSession session) {
-		
-		ModelAndView mav = new ModelAndView();
-		UserVO logVO = service.loginOk(vo);
-	
-		if(logVO != null) {//로그인 성공
-			session.setAttribute("logId", logVO.getUser_id());
-			session.setAttribute("logStatus","Y");
-			mav.setViewName("redirect:/");
-			
-		}else {//로그인 실패
-			
-			mav.setViewName("redirect:/login");
-		}
-		return mav;
-	}
-
-	@GetMapping("logout")
-	public ModelAndView logout(HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		session.invalidate();
-		mav.setViewName("redirect:/");
-		
-		return mav;
-	}
 
 	@GetMapping("UserEdit")
 	public ModelAndView memberEdit(HttpSession session) {
@@ -120,20 +119,19 @@ public class UserController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("vo",vo); // 회원정보가 들어있는vo
+		mav.addObject("vo",vo);
 		mav.setViewName("user/UserEdit");
 			
 		return mav;
 	}
 	//회원정보 수정 DB
 	@PostMapping("UserEditOk")
-	public ResponseEntity<String> memberEditOk(UserVO vo) {// @RequestParam, @ReturnValue
+	public ResponseEntity<String> memberEditOk(UserVO vo) {
 		
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type","text/html; charset=UTF-8");
-		
 		
 		String msg = "<script>";
 		int cnt = service.UserEditOk(vo);
@@ -146,7 +144,17 @@ public class UserController {
 		msg+="location.href='/user/UserEdit';</script>";
 		
 		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
+
 		return entity;
+	}
+	
+	//마이페이지
+	@GetMapping("UserDashboard")
+	public ModelAndView UserDashboard() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/user/UserDashboard");
+		
+		return mav;
 	}
 }
 
