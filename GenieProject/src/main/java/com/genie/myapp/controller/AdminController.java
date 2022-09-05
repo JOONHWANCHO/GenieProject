@@ -9,13 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/admin/*")
 public class AdminController {
 		
-    @GetMapping("adminLogin")
-		public ModelAndView adminLogin() {
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("admin/adminLogin");
-			return mav;
-		}
-		
 		@GetMapping("adminMain")
 		public ModelAndView adminMain() {
 			ModelAndView mav = new ModelAndView();
