@@ -1,22 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./inc/top.jspf" %>
-
+<%@ include file="./inc/top.jspf"%>
 <style>
-
 section{
 	padding: 80px 18%;
 }
-.home{
+.home {
 	position: relative;
 	width: 100%;
 	height: 100vh;
+	margin: 0;
+    padding:6% 23%;
+
 	/*background: url(../img/background.jpg);*/
-	background: linear-gradient(to top, #56D8FF, #48FFD5);
+	background: #d3f1ee;
 	background-size: cover;
 	background-position: center;
-	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	align-items: center;
 }
 .home-text h1{
 	font-size: 40px;
