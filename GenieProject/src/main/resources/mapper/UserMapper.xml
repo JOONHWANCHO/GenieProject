@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.genie.myapp.dao.UserDAO">
+	<select id = "idCheck" resultType="int">
+		select count(cnt) user_id from 
+			(select count(user_id) cnt from user 
+			join seller on user_id=seller_id 
+			union All 
+			select count(seller_id) cnt from seller  
+			join administer on seller_id = administer_code) k  
+			where user_id=#{user_id}
+	</select>
+    <insert id = "UserWrite">
+		insert into user(user_id, user_pwd, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr)
+		values(#{user_id}, #{user_pwd}, #{user_phone_num}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr})
+	</insert>
+    <update id ="UserEditOk">
+		update user set user_phone_num =#{user_phone_num}, user_email=#{user_email}, user_zipcode =#{user_zipcode}, user_addr=#{user_addr}, user_detailaddr =#{user_detailaddr}
+		where user_id =#{user_id} and user_pwd=#{user_pwd}
+	</update>
+    <select id = "getUser" resultType = "UserVO">
+		select user_id, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr
+		from user
+		where user_id=#{param1}
+	</select>
+	<select id = "loginOk" resultType = "UserVO">
+		select user_id from user where user_id=#{user_id} and user_pwd=#{user_pwd}
+	</select>
+</mapper>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./inc/top.jspf" %>
 
 <style>
 
@@ -55,6 +56,6 @@ section{
 		<div class="home-text">
 			<h1>NOW IS THE PRESENT 2022</h1>
 			<p>어떤 선물을 찾고 있나요?<br> 고민이 되신다면 AI추천서비스를 이용해보세요</p>
-			<a href="/user/genie_01" class="home-btn"><i class="fa-solid fa-gift fa-2xl"></i></a>
+			<a href="/genie/genie_01" class="home-btn"><i class="fa-solid fa-gift fa-2xl"></i></a>
 		</div>
 	</section>
