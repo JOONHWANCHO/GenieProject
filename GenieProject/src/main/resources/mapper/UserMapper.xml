@@ -4,7 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.genie.myapp.dao.UserDAO">
 	<select id = "idCheck" resultType="int">
-		select count(user_id,administer_code,seller_id) cnt from user,administer,seller where user_id =#{param1} or seller_id={param1} or administer_code={param1}
+		select count(cnt) user_id from 
+			(select count(user_id) cnt from user 
+			join seller on user_id=seller_id 
+			union All 
+			select count(seller_id) cnt from seller  
+			join administer on seller_id = administer_code) k  
+			where user_id=#{user_id}
 	</select>
     <insert id = "UserWrite">
 		insert into user(user_id, user_pwd, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr)
