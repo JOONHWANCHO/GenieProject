@@ -166,52 +166,52 @@
 	});
 </script>
 <script>
-jQuery(document).ready(function($){
- var bArray = [];
- var sArray = [4,6,8,10];
-    for (var i = 0; i < $('.bubbles').width(); i++) {
-    bArray.push(i);
-    }
- function randomValue(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
- }
-setInterval(function(){
-    var size = randomValue(sArray);
-    $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
-    $('.individual-bubble').animate({
-        'bottom': '100%',
-        'opacity' : '-=0.7'
-    }, 3000, function(){
-        $(this).remove()
-    });
-    }, 350);
+  jQuery(document).ready(function($){
+  var bArray = [];
+  var sArray = [4,6,8,10];
+      for (var i = 0; i < $('.bubbles').width(); i++) {
+      bArray.push(i);
+      }
+  function randomValue(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+  }
+  setInterval(function(){
+      var size = randomValue(sArray);
+      $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+      $('.individual-bubble').animate({
+          'bottom': '100%',
+          'opacity' : '-=0.7'
+      }, 3000, function(){
+          $(this).remove()
+      });
+      }, 350);
 });
 </script>
 <section class="home">
 
-<div class="bubbles">
-  <h1>지니에서 당신의 마음을 찾아보세요</h1>
-</div>
-
-<div class="wrapper">
-  <div id="formContent">
-    <!-- 타이틀 -->
-    <h2>GENIE</h2>
-
-    <!-- 로그인폼-->
-    <form method="post" action="/user/loginOK" id="log">
-    	<p>아이디</p>
-      <input type="text" id="user_id" class="second" name="user_id" placeholder="아이디를 입력하세요">
-    <!-- 비밀번호 -->
-    <p>비밀번호</p>
-      <input type="password" id="user_pwd" class="third" name="user_pwd" placeholder="비밀번호를 입력하세요">
-      <input type="submit" class="fourth" value="로그인">
-    </form>
-    <!-- 로그인폼-->
-    <form method="post" action="/user/loginOK" id="log">
-      <li><a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
-      <li><a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a></li>
-    </form>
+  <div class="bubbles">
+    <h1>지니에서 당신의 마음을 찾아보세요</h1>
   </div>
-</div>
+
+  <div class="wrapper">
+    <div id="formContent">
+      <!-- 타이틀 -->
+      <h2>GENIE</h2>
+
+      <!-- 로그인폼-->
+      <form method="post" action="/user/loginOK" id="log">
+        <p>아이디</p>
+        <input type="text" id="user_id" class="second" name="user_id" placeholder="아이디를 입력하세요">
+      <!-- 비밀번호 -->
+      <p>비밀번호</p>
+        <input type="password" id="user_pwd" class="third" name="user_pwd" placeholder="비밀번호를 입력하세요">
+        <input type="submit" class="fourth" value="로그인">
+      </form>
+      <!-- 로그인폼-->
+      <form method="post" action="/user/loginOK" id="log">
+        <li><a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
+        <li><a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a></li>
+      </form>
+    </div>
+  </div>
 <section>
