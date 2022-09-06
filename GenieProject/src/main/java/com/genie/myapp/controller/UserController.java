@@ -61,10 +61,10 @@ public class UserController {
 	}
 
 	//회원가입 폼으로 이동
-	@GetMapping("UserForm")
-	public ModelAndView UserForm() {
+	@GetMapping("Registragion")
+	public ModelAndView RegistragionForm() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/user/UserForm");
+		mav.setViewName("/user/Registragion");
 		return mav;
 	}
 
@@ -111,19 +111,6 @@ public class UserController {
 		return entity;
 	}
 
-	@GetMapping("UserEdit")
-	public ModelAndView memberEdit(HttpSession session) {
-		String userid = (String)session.getAttribute("logId");
-		
-		UserVO vo = service.getUser(userid);
-		
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("vo",vo);
-		mav.setViewName("user/UserEdit");
-			
-		return mav;
-	}
 	//회원정보 수정 DB
 	@PostMapping("UserEditOk")
 	public ResponseEntity<String> memberEditOk(UserVO vo) {
@@ -141,7 +128,7 @@ public class UserController {
 		}else {//수정못함
 			msg+="alert('회원 정보 수정이 실패하였습니다.');";	
 		}
-		msg+="location.href='/user/UserEdit';</script>";
+		msg+="location.href='/user/UserDashboard';</script>";
 		
 		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
 
@@ -149,10 +136,40 @@ public class UserController {
 	}
 	
 	//마이페이지
-	@GetMapping("UserDashboard")
-	public ModelAndView UserDashboard() {
+	@GetMapping("MyPage")
+	public ModelAndView UserDashboard(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId");
+
+		UserVO vo = service.getUser(user_id);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/user/UserDashboard");
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/MyPage");
+	
+		return mav;
+	}
+
+	//주문목록/배송조회
+	@GetMapping("MyOrderList")
+	public ModelAndView MyOrderList(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId");
+
+		UserVO vo = service.getUser(user_id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/MyOrderList");
+	
+		return mav;
+	}
+
+	//나의 문의사항 
+	@GetMapping("MyInquiryList") 
+	public ModelAndView MyInquiryList(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId");
+
+		UserVO vo = service.getUser(user_id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/MyInquiryList");
 	
 		return mav;
 	}
