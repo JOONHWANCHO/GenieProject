@@ -44,6 +44,7 @@
 .content-panel>ul>li:last-child{
   margin-bottom: 3em;
 }
+
 /* ------------------------여기까지는 왼쪽 상자박스----------------------------------- */
 .content-main{
   display: flex;
@@ -59,6 +60,7 @@
 .content-main>ul{
   margin: 0;
   padding: 0;
+
 }
 .content-main h1{
   margin-bottom: 1em;
