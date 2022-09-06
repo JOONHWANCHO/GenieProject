@@ -258,7 +258,7 @@
 <div class="responsive-wrapper">
  	<div class="content">
 		<div class="content-panel">
-			<h3>${logId}님</h3>
+			<h3>${vo.user_name}님</h3>
 				<ul class="fa-ul">
 					<li><i class="fa-solid fa-circle-user"></i><a href="/user/MyPage">회원정보 확인/수정</a></li>
 					<li><i class="fa-brands fa-shopify"></i><a href="/user/MyOrderList">주문목록/배송조회</a></li>
@@ -274,6 +274,10 @@
 								<p>아이디</p>
 								<input type="text" id="user_id" name="user_id" value= "${vo.user_id}" readonly>
 								<input type ="hidden" id = "idCheckState" value = "Y"/>
+							</div>
+							<div id="name">
+								<p>이름</p>
+								<input type="text" id="user_name" name="user_name" value= "${vo.user_name}" readonly>
 							</div>
 							<div id="passwordForm">
 								<p>비밀번호 <input type="button" id="find_pwd" value="비밀번호 변경"/></p>

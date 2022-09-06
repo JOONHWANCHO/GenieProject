@@ -174,8 +174,14 @@
 				$("#user_pwd").focus();
 				return false;
 			}
-			if($("#user_pwd").val()!=$("#userpwd2").val()){
+			if($("#user_pwd").val()!=$("#user_pwd2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+
+			if($("#user_name").val()==""){
+				alert("이름을 입력하세요");
+				$("#user_name").focus();
 				return false;
 			}
 
@@ -216,7 +222,7 @@
 <section class="home">
 	<div class="container">
 		<h1>일반회원 회원가입</h1>
-		<form method="get" action="/" id="logFrm">
+		<form method="post" action="/user/UserWrite" id="logFrm">
 			<ul class="userForm">
 				<div id="idForm">
 					<p>아이디</p>
@@ -230,6 +236,10 @@
 					<p>비밀번호 확인</p>
 					<input type="password" id="user_pwd2" name="user_pwd2" placeholder="비밀번호를 입력하세요">
 				</div>
+				<div id="name">
+					<p>이름</p>
+					<input type="text" id="user_name" name="user_name" placeholder="이름을 입력하세요">
+				<div>
                 <div id="phoneForm">
 					<p>휴대폰 번호</p>
                     <select id = "user_phone_num1" name = "user_phone_num1" size = "1">
@@ -259,8 +269,8 @@
 				</div>
                 <div id="user_gender">
 					<p>성별</p>
-					<input type="radio" name="radio_gender" id="radio_male"><label for="radio_male">남성</label>
-                    <input type="radio" name="radio_gender" id="radio_female"><label for="radio_female">여성</label>
+					<input type="radio" name="radio_gender" id="male"><label for="radio_male">남성</label>
+                    <input type="radio" name="radio_gender" id="female"><label for="radio_female">여성</label>
 				</div>
 				 <li><input type = "submit" id="formSubmit" value = "회원가입하기"/></li>
 			</ul>

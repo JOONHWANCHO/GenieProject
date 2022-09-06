@@ -41,6 +41,7 @@ public class UserController {
 	
 		if(logVO != null) {//로그인 성공
 			session.setAttribute("logId", logVO.getUser_id());
+			session.setAttribute("logName", logVO.getUser_name());
 			session.setAttribute("logStatus","Y");
 			mav.setViewName("redirect:/");
 			
@@ -74,7 +75,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		
 		//DB조회  : 아이디가 존재하는지 확인
-		 int cnt = service.idCheck(user_id);
+		int cnt = service.idCheck(user_id);
 		 
 		mav.addObject("idCnt",cnt);
 		mav.addObject("user_id",user_id);
@@ -85,7 +86,7 @@ public class UserController {
 
 	//회원 가입하기
 	@PostMapping("UserWrite") 
-	public ResponseEntity<String> memberWrite(UserVO vo) {
+	public ResponseEntity<String> UserWrite(UserVO vo) {
 		
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
