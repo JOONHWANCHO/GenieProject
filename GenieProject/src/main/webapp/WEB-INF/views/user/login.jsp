@@ -7,7 +7,7 @@
     position: relative;
     width: 100%;
     margin: 0;
-    padding:6% 23%;
+    padding: 2% 23%;
     background: #d3f1ee;
     background-size: cover;
     background-position: center;
@@ -54,8 +54,8 @@
     flex-direction: column; 
     /* justify-content: center; */
     width: 100%;
-    min-height: 100%;
-    margin-top:6em;
+    height: 100vh;
+    margin-top: 3em;
   }
 
   #formContent {
