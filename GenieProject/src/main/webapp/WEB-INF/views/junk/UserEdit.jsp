@@ -9,28 +9,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <style>
-     .home{
+.home{
 		position: relative;
 		width: 100%;
-		height: 100vh;
+		/*height: 100vh;*/
 		/*background: url(../img/background.jpg);*/
-		background: linear-gradient(to top, #56D8FF, #48FFD5);
+		background: #fafbfc;
 		background-size: cover;
 		background-position: center;
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
 		align-items: center;
-	}
+}
 	.container{
 		padding:30px;
 		width:600px;
-		height:1000px;
+		height:1600px;
 		background-color:white;
 		margin:0 auto;
 		font-size:20px;
 		box-sizing: border-box;
 		border-radius:15px;
-        overflow:auto;
+		-webkit-border-radius: 10px 10px 10px 10px;
+		-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    	box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+	    overflow:auto;
 	}
 	.tab {
 		width:100%;
@@ -57,6 +60,7 @@
 		border-radius: 10px;
 		transition: ease .40s;
 	}
+	
 	.loginForm{
 		width:400px;
 		height:1000px;
@@ -65,14 +69,9 @@
 		padding:10px;
         padding-bottom:30px;
 	}
-	#passwordForm p,#phoneForm p,#addrForm p, #emailForm p,#user_gender p,#user_detailaddr p{
+	#idForm p,#passwordForm p,#phoneForm p,#addrForm p, #emailForm p,#user_gender p,#user_detailaddr p{
 		padding:10px;
         padding-left:0;
-	}
-	#idForm p{
-		float:left;
-		margin:10px;
-		margin-left:0; 
 	}
 	#user_id, #user_pwd, #user_addr, #user_email,#user_detailaddr{
 		width:100%;
@@ -93,7 +92,7 @@
 		height:50px;
 		border-radius:15px;
 		font-size:30px;
-		padding:20px;
+		padding:10px;
     }
 	#login:hover{
 		background: #56D8FF;
@@ -129,33 +128,10 @@
 	}
 </script>
 <script>
-	$(function(){
-		$("#idCheck").click(function(){
-			window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
-		});
-
-		$("#user_id").change(function(){
-			$("#idCheckState").val("N");
-		});
-		//유효성 검사
+$(function(){
        	$("#logFrm").submit(function(){
 			
-			$("#userid").change(function(){
-				$("#idCheckState").val("N");
-			});
-
-			// 아이디, 비밀번호
-			if($("#user_id").val()==""){
-				alert("아이디를 입력하세요");
-				$("#user_id").focus();
-				return false;
-			}
-			//아이디 중복검사여부
-			if($("#idCheckState").val()!='Y'){
-				alert("아이디를 중복검사 하세요");
-				return false;
-			}
-
+			 //비밀번호
 			if($("#user_pwd").val()==""){
 				alert("비밀번호를 입력하세요");
 				$("#user_pwd").focus();
@@ -201,18 +177,14 @@
 </head>
 <body>
 <section class="home">
-		<div class="container">
-			<div class="tab">
-				<%-- <li><a href="/login">로그인</a></li>
-				<li><a href="/user/MemberForm">회원가입</a></li> --%>
-			</div>
-			<form method="get" action="/" id="logFrm">
+	<div class="container">
+			회원정보 수정
+			<form method="get" action="/user/UserEditOk" id="logFrm">
 				<ul class="loginForm">
 					<div id="idForm">
 						<p>아이디</p>
-						<input type="button" value="아이디 중복검사" id="idCheck">
-						<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요" readonly>
-						<input type ="hidden" id = "idCheckState" value = "N"/>
+						<input type="text" id="user_id" name="user_id" value= "${vo.user_id}" readonly>
+						<input type ="hidden" id = "idCheckState" value = "Y"/>
 					</div>
 					<div id="passwordForm">
 						<p>비밀번호</p>
@@ -222,7 +194,7 @@
 					</div>
                     <div id="phoneForm">
 						<p>휴대폰 번호</p>
-                        <select id = "user_phone_num1" name = "user_phone_num1" size = "1">
+                        <select id = "user_phone_num1" name = "user_phone_num1" size = "1" value = "${vo.user_phone_num1}">
 							<option value="">선택하세요</option>
 							<option value="010">010</option>
 							<option value="011">011</option>
@@ -231,28 +203,23 @@
 							<option value="018">018</option>
 							<option value="019">019</option>
 						</select>-
-				        <input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4"/> -
-			 	        <input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4"/>
+				        <input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4" value ="${vo.user_phone_num2}"/> -
+			 	        <input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4" value ="${vo.user_phone_num3}"/>
 					</div>
                     <div id="emailForm">
 						<p>이메일</p>
-						<input type="email" id="user_email" name="user_email" placeholder="이메일을 입력하세요">
+						<input type="email" id="user_email" name="user_email" value =" ${vo.user_email}" placeholder="이메일을 입력하세요">
 					</div>
                     <div id="addrForm">
                         <p>우편번호</p>
-                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode" readonly/>
+                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode" value ="${vo.user_zipcode}" readonly />
                             <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
                         <p>주소</p>
-                        <p><input type = "text" name = "user_addr" id ="user_addr" readonly/></p>
+                        <p><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></p>
                         <p>상세주소</p>
-                        <p><input type ="text" name = "user_detailaddr" id ="user_detailaddr"/></p>	
+                        <p><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/></p>	
 
-                    <div id="user_gender">
-						<p>성별</p>
-						<input type="radio" name="radio_gender" id="radio_male"><label for="radio_male">남성</label>
-                        <input type="radio" name="radio_gender" id="radio_female"><label for="radio_female">여성</label>
-					</div>
-					 <li><input type = "submit" id="login" value = "회원가입하기"/></li>
+					 <li><input type = "submit" id="login" value = "회원정보 수정"/></li>
 				</ul>
 			</form>
 		</div>	

@@ -6,7 +6,6 @@
   .home {
     position: relative;
     width: 100%;
-    height: 100vh;
     margin: 0;
     padding:6% 23%;
     background: #d3f1ee;
@@ -14,15 +13,6 @@
     background-position: center;
   }
   /* 기본구조 */
-  h2 {
-    text-align: left;
-    font-size: 30px;
-    font-weight: 600;
-    margin-left: 30px;
-    color: #2DCEF8;
-    margin-bottom: 50px;
-  }
-
   .home .bubbles{
       display:flex;
       justify-content: center;
@@ -196,7 +186,7 @@
   <div class="wrapper">
     <div id="formContent">
       <!-- 타이틀 -->
-      <h2>GENIE</h2>
+
 
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="log">
@@ -209,7 +199,7 @@
       </form>
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="log">
-        <li><a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
+        <li><a href="/user/Registragion"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
         <li><a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a></li>
       </form>
     </div>

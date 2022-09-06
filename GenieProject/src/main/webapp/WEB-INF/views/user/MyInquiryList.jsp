@@ -44,7 +44,6 @@
 .content-panel>ul>li:last-child{
   margin-bottom: 3em;
 }
-
 /* ------------------------여기까지는 왼쪽 상자박스----------------------------------- */
 .content-main{
   display: flex;
@@ -60,7 +59,6 @@
 .content-main>ul{
   margin: 0;
   padding: 0;
-
 }
 .content-main h1{
   margin-bottom: 1em;
@@ -87,7 +85,6 @@
 		$("#idCheck").click(function(){
 			window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
 		});
-
 		$("#user_id").change(function(){
 			$("#idCheckState").val("N");
 		});
@@ -97,7 +94,6 @@
 			$("#userid").change(function(){
 				$("#idCheckState").val("N");
 			});
-
 			// 아이디, 비밀번호
 			if($("#user_id").val()==""){
 				alert("아이디를 입력하세요");
@@ -109,7 +105,6 @@
 				alert("아이디를 중복검사 하세요");
 				return false;
 			}
-
 			if($("#user_pwd").val()==""){
 				alert("비밀번호를 입력하세요");
 				$("#user_pwd").focus();
@@ -119,7 +114,6 @@
 				alert("비밀번호가 일치하지 않습니다.");
 				return false;
 			}
-
 			// 전화번호
 			if($("#user_phone_num1").val()=="" || $("#user_phone_num2").val()=="" || $("#user_phone_num3").val()==""){
 				alert("연락처를 입력하세요");
@@ -158,10 +152,9 @@
     <div class="content-panel">
       <h3>${vo.user_id}님</h3>
         <ul class="fa-ul">
-          <li><i class="fa-solid fa-circle-user"></i><a href="/user/UserDashboard">회원정보 확인/수정</a></li>
-          <li><i class="fa-brands fa-shopify"></i><a href="#">주문목록/배송조회</a></li>
-          <li><i class="fa-solid fa-cart-plus"></i><a href="#">장바구니 목록</a></li>
-          <li><i class="fa-solid fa-clipboard"></i><a href="#">나의 문의사항</a></li>
+          <li><i class="fa-solid fa-circle-user"></i><a href="/user/MyPage">회원정보 확인/수정</a></li>
+          <li><i class="fa-brands fa-shopify"></i><a href="/user/MyOrderList">주문목록/배송조회</a></li>
+          <li><i class="fa-solid fa-clipboard"></i><a href="/user/MyInquiryList">나의 문의사항</a></li>
         </ul>
     </div>
     <div class="content-main">
