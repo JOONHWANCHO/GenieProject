@@ -70,15 +70,15 @@ public class UserController {
 
 	 //아이디 중복검사
 	@GetMapping("idCheck")
-	public ModelAndView idCheck(String userid) {
+	public ModelAndView idCheck(String user_id) {
 		ModelAndView mav = new ModelAndView();
 		
 		//DB조회  : 아이디가 존재하는지 확인
-		 int cnt = service.idCheck(userid);
+		 int cnt = service.idCheck(user_id);
 		 
 		mav.addObject("idCnt",cnt);
-		mav.addObject("userid",userid);
-		mav.setViewName("member/idCheck");
+		mav.addObject("user_id",user_id);
+		mav.setViewName("user/idCheck");
 
 		return mav;
 	}
@@ -153,7 +153,7 @@ public class UserController {
 	public ModelAndView UserDashboard() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/user/UserDashboard");
-		
+	
 		return mav;
 	}
 }

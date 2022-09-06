@@ -23,8 +23,7 @@
 			</c:if> 
 			
 			<c:if test ="${logStatus =='Y'}">
-				<li><a href = "/user/UserEdit"><i class="fa-solid fa-address-card"></i></a></li>
-				<li><a href = "/user/UserDashboard"><i class="fa-solid fa-info"></i></a></li>
+				<li><a href = "/user/UserDashboard"><i class="fa-solid fa-address-card"></i></a></li>
 				<li>${vo.user_id} <a href ="/user/logout">님 로그아웃</a></li>
 			</c:if>
 		</ul>

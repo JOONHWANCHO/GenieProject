@@ -211,7 +211,7 @@
 					<div id="idForm">
 						<p>아이디</p>
 						<input type="button" value="아이디 중복검사" id="idCheck">
-						<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요">
+						<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요" readonly>
 						<input type ="hidden" id = "idCheckState" value = "N"/>
 					</div>
 					<div id="passwordForm">
@@ -249,8 +249,8 @@
 
                     <div id="user_gender">
 						<p>성별</p>
-						<input type="radio" name="radio_male" id="radio_male"><label for="radio_male">남성</label>
-                        <input type="radio" name="radio_female" id="radio_female"><label for="radio_female">여성</label>
+						<input type="radio" name="radio_gender" id="radio_male"><label for="radio_male">남성</label>
+                        <input type="radio" name="radio_gender" id="radio_female"><label for="radio_female">여성</label>
 					</div>
 					 <li><input type = "submit" id="login" value = "회원가입하기"/></li>
 				</ul>
