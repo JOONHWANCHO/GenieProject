@@ -13,7 +13,6 @@
 	height: 4%;
 	width: 100%;
 	background-size: cover;
-	background-position: center; 
 }
 nav{
 	display: flex;
@@ -23,17 +22,17 @@ nav{
 
 }
 .logo{
-	color: black;
+	color: #96aee0;
 	font-size: 35px;
 	letter-spacing: 1px;
 	cursor: pointer;
 }
 span{
-	color:#48FFD5}
+	color:#9ce0da}
 nav ul li{
 	list-style-type: none;
 	display:inline-block;
-	padding-right: 2.5vw;
+	padding-left: 2.5vw;
 }
 nav ul li a{
 	color: black;
@@ -42,6 +41,6 @@ nav ul li a{
 	text-transform: capitalize;
 }
 nav ul li a:hover{
-	color:#48FFD5;
+	color:#81d8d0;
 	transition: .4s;
 }

@@ -3,40 +3,40 @@
 <style>
   @import url('https://fonts.googleapis.com/css?family=Poppins');
 
+  .home {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 2% 23%;
+    background: #d3f1ee;
+    background-size: cover;
+    background-position: center;
+  }
   /* 기본구조 */
-
-  a {
-    color: #92badd;
-    display:inline-block;
-    text-decoration: none;
-    font-weight: 400;
+  .home .bubbles{
+      display:flex;
+      justify-content: center;
+      align-items: center;
   }
-
-  h1 {
-    text-align: left;
-    font-size: 30px;
-    font-weight: 600;
-    margin-left: 30px;
-    color: #2DCEF8; 
-    margin-bottom: 50px;
+  .bubbles {
+      display: inline-block;
+      font-family: 'Josefin Sans', sans-serif;
+      position: relative;
+      /* margin-bottom: 6em; */
   }
-
-  h2 {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    display:inline-block;
-    margin: 40px 8px 10px 8px; 
-    color: #cccccc;
+  .bubbles h1 {
+      position: relative;
+      margin: 1em 0 0;
+      font-family: 'Josefin Sans', sans-serif;
+      color: #1a534e;
+      z-index: 2;
   }
-  h3 {
-    text-align: left;
-    font-size: 16px;
-    font-weight: 600;
-    margin-left: 30px;
-    color: #ccc; 
-    margin-bottom: 50px;
+  .individual-bubble {
+      position: absolute;
+      border-radius: 100%;
+      bottom: 10px;
+      background-color: #81d8d0;
+      z-index: 1;
   }
   p{
     text-align: left;
@@ -52,10 +52,10 @@
     display: flex;
     align-items: center;
     flex-direction: column; 
-    justify-content: center;
+    /* justify-content: center; */
     width: 100%;
-    min-height: 100%;
-    padding: 20px;
+    height: 100vh;
+    margin-top: 3em;
   }
 
   #formContent {
@@ -155,25 +155,53 @@
 		});
 	});
 </script>
+<script>
+  jQuery(document).ready(function($){
+  var bArray = [];
+  var sArray = [4,6,8,10];
+      for (var i = 0; i < $('.bubbles').width(); i++) {
+      bArray.push(i);
+      }
+  function randomValue(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+  }
+  setInterval(function(){
+      var size = randomValue(sArray);
+      $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+      $('.individual-bubble').animate({
+          'bottom': '100%',
+          'opacity' : '-=0.7'
+      }, 3000, function(){
+          $(this).remove()
+      });
+      }, 350);
+});
+</script>
+<section class="home">
 
-<div class="wrapper">
-  <div id="formContent">
-    <!-- 타이틀 -->
-    <h1>GENIE</h1>
-
-    <!-- 로그인폼-->
-    <form method="post" action="/user/loginOK" id="log">
-    	<p>아이디</p>
-      <input type="text" id="user_id" class="second" name="user_id" placeholder="아이디를 입력하세요">
-    <!-- 비밀번호 -->
-    <p>비밀번호</p>
-      <input type="password" id="user_pwd" class="third" name="user_pwd" placeholder="비밀번호를 입력하세요">
-      <input type="submit" class="fourth" value="로그인">
-    </form>
-    <!-- 로그인폼-->
-    <form method="post" action="/user/loginOK" id="log">
-      <a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a>
-      <a href="/"><input type="button" id="comReg" value="기업회원 회원가입"></a>
-    </form>
+  <div class="bubbles">
+    <h1>지니에서 당신의 마음을 찾아보세요</h1>
   </div>
-</div>
+
+  <div class="wrapper">
+    <div id="formContent">
+      <!-- 타이틀 -->
+
+
+      <!-- 로그인폼-->
+      <form method="post" action="/user/loginOK" id="log">
+        <p>아이디</p>
+        <input type="text" id="user_id" class="second" name="user_id" placeholder="아이디를 입력하세요">
+      <!-- 비밀번호 -->
+      <p>비밀번호</p>
+        <input type="password" id="user_pwd" class="third" name="user_pwd" placeholder="비밀번호를 입력하세요">
+        <input type="submit" class="fourth" value="로그인">
+      </form>
+      <!-- 로그인폼-->
+      <form method="post" action="/user/loginOK" id="log">
+        <li><a href="/user/Registragion"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
+        <li><a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a></li>
+      </form>
+    </div>
+  </div>
+<section>

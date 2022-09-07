@@ -19,7 +19,7 @@ public class AdminController {
 			mav.setViewName("admin/adminLogin");
 			return mav;
 		}
-		
+
 		@GetMapping("adminMain")
 		public ModelAndView adminMain() {
 			ModelAndView mav = new ModelAndView();

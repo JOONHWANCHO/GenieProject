@@ -9,28 +9,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <style>
-  .home{
+.home{
 		position: relative;
 		width: 100%;
-		height: 100vh;
+		/*height: 100vh;*/
 		/*background: url(../img/background.jpg);*/
-		background: linear-gradient(to top, #56D8FF, #48FFD5);
+		background: #fafbfc;
 		background-size: cover;
 		background-position: center;
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
 		align-items: center;
-	}
+}
 	.container{
 		padding:30px;
 		width:600px;
-		height:1000px;
+		height:1600px;
 		background-color:white;
 		margin:0 auto;
 		font-size:20px;
 		box-sizing: border-box;
 		border-radius:15px;
-        overflow:auto;
+		-webkit-border-radius: 10px 10px 10px 10px;
+		-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    	box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+	    overflow:auto;
 	}
 	.tab {
 		width:100%;
@@ -57,6 +60,7 @@
 		border-radius: 10px;
 		transition: ease .40s;
 	}
+	
 	.loginForm{
 		width:400px;
 		height:1000px;
@@ -65,14 +69,9 @@
 		padding:10px;
         padding-bottom:30px;
 	}
-	#passwordForm p,#phoneForm p,#addrForm p, #emailForm p,#user_gender p,#user_detailaddr p{
+	#idForm p,#passwordForm p,#phoneForm p,#addrForm p, #emailForm p,#user_gender p,#user_detailaddr p{
 		padding:10px;
         padding-left:0;
-	}
-	#idForm p{
-		float:left;
-		margin:10px;
-		margin-left:0; 
 	}
 	#user_id, #user_pwd, #user_addr, #user_email,#user_detailaddr{
 		width:100%;
@@ -179,6 +178,7 @@ $(function(){
 <body>
 <section class="home">
 	<div class="container">
+			회원정보 수정
 			<form method="get" action="/user/UserEditOk" id="logFrm">
 				<ul class="loginForm">
 					<div id="idForm">
