@@ -117,6 +117,7 @@ body {
 
 table {
   font-family: arial, sans-serif;
+  font-size: 15px;
   border-collapse: collapse;
   width: 100%;
 }
@@ -130,12 +131,13 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-
-
 </style>
 
 <script>
+function changeContent()
+{
 
+}
 </script>
 <main class="main">
 
@@ -158,7 +160,7 @@ tr:nth-child(even) {
 			<div class="content-main">
 				<div class="content-main-top">
 					<p>Disney님 주문관리 Dashboard</p>
-					<table>
+					<table id="table">
 					      <tr>
 					        <th>주문코드</th>
 					        <th>주문날짜</th>
@@ -169,6 +171,7 @@ tr:nth-child(even) {
 					        <th>주문자명</th>
 					        <th>수령자명</th>
 					        <th>주소</th>
+							<th></th>
 					      </tr>
 					      <tr>
 					        <td>1</td>
@@ -180,6 +183,7 @@ tr:nth-child(even) {
 					        <td>김민진</td>
 					        <td>이서현</td>
 					        <td>서울시 고구마구 고구마동 고구마</td>
+							<td><input type="button" value="Cancel" onclick="changeContent"></td>
 					      </tr>
 					      <tr>
 					        <td>2</td>
@@ -191,6 +195,7 @@ tr:nth-child(even) {
 					        <td>채한준</td>
 					        <td>조준환</td>
 					        <td>서울시 당근구 당근동 당근</td>
+							<td><input type="button" value="Cancel" onclick=""></td>
 					      </tr>
 					      <tr>
 					        <tr>
@@ -203,8 +208,10 @@ tr:nth-child(even) {
 					        <td>오세영</td>
 					        <td>홍세호</td>
 					        <td>서울시 감자구 감자동 감자</td>
+							<td><input type="button" value="Cancel" onclick=""></td>
 					      </tr>
 					  </table>
+			
 					  
 				</div>
 			</div>

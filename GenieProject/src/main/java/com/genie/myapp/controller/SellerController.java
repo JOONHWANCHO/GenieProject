@@ -18,6 +18,14 @@ public class SellerController {
 		mav.setViewName("seller/sellerForm");
 		return mav;
 	}
+	// Seller
+	@GetMapping("sellerHome")
+	public ModelAndView sellerHome() {
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerHome");
+		return mav;
+	}
+
 	// Seller 홈
 	@GetMapping("sellerMain")
 	public ModelAndView sellerMain() {
