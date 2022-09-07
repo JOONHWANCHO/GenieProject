@@ -186,11 +186,7 @@
   <div class="wrapper">
     <div id="formContent">
       <!-- 타이틀 -->
-<<<<<<< HEAD
-      <h2>GENIE</h2>
-=======
 
->>>>>>> 83ffc1673ba45d5ae803a5ba8891c12fd3fd14f6
 
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="log">
@@ -203,11 +199,7 @@
       </form>
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="log">
-<<<<<<< HEAD
-        <li><a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
-=======
         <li><a href="/user/Registragion"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
->>>>>>> 83ffc1673ba45d5ae803a5ba8891c12fd3fd14f6
         <li><a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a></li>
       </form>
     </div>

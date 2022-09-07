@@ -9,22 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <style>
-<<<<<<< HEAD:GenieProject/src/main/webapp/WEB-INF/views/user/UserEdit.jsp
-	.home {
-		position: relative;
-		width: 100%;
-		/*height: 100vh;*/
-		/*background: url(../img/background.jpg);*/
-		background: #fafbfc;
-		background-size: cover;
-		background-position: center;
-		display: grid;
-		grid-template-columns: repeat(1, 1fr);
-		align-items: center;
-}
-	.container{
-		padding:30px;
-=======
 .home{
 		position: relative;
 		width: 100%;
@@ -41,29 +25,15 @@
 		padding:30px;
 		width:600px;
 		height:1600px;
->>>>>>> 83ffc1673ba45d5ae803a5ba8891c12fd3fd14f6:GenieProject/src/main/webapp/WEB-INF/views/junk/UserEdit.jsp
 		background-color:white;
 		margin:0 auto;
 		font-size:20px;
 		box-sizing: border-box;
 		border-radius:15px;
 		-webkit-border-radius: 10px 10px 10px 10px;
-<<<<<<< HEAD:GenieProject/src/main/webapp/WEB-INF/views/user/UserEdit.jsp
-		border-radius: 10px 10px 10px 10px;
-		background: #fff;
-		padding: 30px;
-		width: 90%;
-		max-width: 540px;
-		position: relative;
-		padding: 20px;
-		-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-		box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-		text-align: center;
-=======
 		-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     	box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 	    overflow:auto;
->>>>>>> 83ffc1673ba45d5ae803a5ba8891c12fd3fd14f6:GenieProject/src/main/webapp/WEB-INF/views/junk/UserEdit.jsp
 	}
 	.tab {
 		width:100%;
@@ -90,23 +60,7 @@
 		border-radius: 10px;
 		transition: ease .40s;
 	}
-<<<<<<< HEAD:GenieProject/src/main/webapp/WEB-INF/views/user/UserEdit.jsp
-	#formContent {
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 30px;
-    width: 90%;
-    max-width: 450px;
-    position: relative;
-    padding: 20px;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    text-align: center;
-  }
-=======
 	
->>>>>>> 83ffc1673ba45d5ae803a5ba8891c12fd3fd14f6:GenieProject/src/main/webapp/WEB-INF/views/junk/UserEdit.jsp
 	.loginForm{
 		width:400px;
 		height:1000px;
