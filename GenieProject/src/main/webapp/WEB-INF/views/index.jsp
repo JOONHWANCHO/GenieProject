@@ -7,7 +7,7 @@
 	width: 100%;
 	height: 100vh;
 	margin: 0;
-	padding:6% 13%;
+	padding: 6% 15%;
 
 	/*background: url(../img/background.jpg);*/
 	background: #d3f1ee;
@@ -16,30 +16,33 @@
 }
 h1 {
 	position: relative;
-	margin: 1em 0 0;
+	margin: 0 0 .7em 0;
 	color: #96aee0;
-	font-size:4em;
+	font-size: 3.8em;
 }
 .home-text p{
 	color: #91ddd6;
-	font-size:  2em;
-	font-weight: 400;
-	line-height: 38px;
-	margin: 1em 0;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-top: -.5em;
 }
 .home-btn{
-	display: inline-block;
-	font-size: 1em;
-	padding: 3%;
-	background: #ffffffbf;
-	color: #96aee0;
-	border-radius: 100%;
+	display: relative;
+	font-size: .7em;
+	padding: 2% 1.7%;
+	background: #96aee0;
+	color: #fff;
+	border-radius: 50%;
 	transition: ease .40s;
-	box-shadow: 0 0 15px #278178;
+	margin-left: 36vw;
+	margin-bottom: 10vh;
+	
 }
 .home-btn:hover{
-	background: var(--bg-color);
+	background: #fff;
 	transform: scale(1.1);
+	box-shadow: 0 0 7px #278178;
+	color: #96aee0;
 }
 </style>
 
@@ -50,7 +53,7 @@ h1 {
 		<h1>NOW IS THE PRESENT 2022</h1>
 		<div class="home-text">
 			<p>어떤 선물을 찾고 있나요?</p>
-			<p>고민이 되신다면 AI추천서비스를 이용해보세요</p>
 			<a href="/genie/genie_01" class="home-btn"><i class="fa-solid fa-gift fa-2xl"></i></a>
+			<p>고민이 되신다면 AI추천서비스를 이용해보세요</p>
 		</div>
 	</section>
