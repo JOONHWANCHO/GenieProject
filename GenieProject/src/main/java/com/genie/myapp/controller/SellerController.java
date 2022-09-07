@@ -19,4 +19,11 @@ public class SellerController {
 		return mav;
 	}
 	
+	//업체 상품등록 폼 보기
+	@GetMapping("productForm")
+	public ModelAndView productForm() {
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerProductForm");
+		return mav;
+	}
 }
