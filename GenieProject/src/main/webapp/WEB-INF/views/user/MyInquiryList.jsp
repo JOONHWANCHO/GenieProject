@@ -63,6 +63,14 @@
 .content-main h1{
   margin-bottom: 1em;
 }
+.inquiry>ul>li{
+  float: left;
+  width: 15%;
+  margin-bottom: 2em;
+}
+.inquiry>ul>li:nth-child(3n+1){
+  width: 70%;
+}
 /* -----------------------여기는 오른쪽박스----------------------------- */
 </style>
 <!-- -----------------------------------------스크립트부분---------------------------------- -->
@@ -93,7 +101,13 @@
     </div>
     <div class="content-main">
 		<h1>내가 작성한 글</h1>
-
+      <div class="inquiry">
+        <ul>
+          <li>문의내역</li>
+          <li>문의일</li>
+          <li>답변여부</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
