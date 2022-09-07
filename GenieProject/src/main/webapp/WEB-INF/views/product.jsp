@@ -37,11 +37,6 @@
     background-color: #81d8d0;
     z-index: 1;
 }
-/* h1{
-    margin-bottom: 4em;
-    text-align: center;
-    color:#fff;
-} */
 img{
     width: 100%;
     height: auto;

@@ -4,6 +4,7 @@ public class UserVO {
     private String user_id;
 	private String user_pwd;
 	
+    private String user_name;
 	private String user_phone_num;
 	private String user_phone_num1;
 	private String user_phone_num2;
@@ -17,19 +18,15 @@ public class UserVO {
     private String sign_in_date;
     private String payment_method;
 
-
-    
-  
-
     @Override
     public String toString() {
         return "UserVO [payment_method=" + payment_method + ", sign_in_date=" + sign_in_date + ", user_addr="
                 + user_addr + ", user_detailaddr=" + user_detailaddr + ", user_email=" + user_email + ", user_gender="
-                + user_gender + ", user_id=" + user_id + ", user_phone_num=" + user_phone_num + ", user_phone_num1="
-                + user_phone_num1 + ", user_phone_num2=" + user_phone_num2 + ", user_phone_num3=" + user_phone_num3
-                + ", user_pwd=" + user_pwd + ", user_zipcode=" + user_zipcode + "]";
+                + user_gender + ", user_id=" + user_id + ", user_name=" + user_name + ", user_phone_num="
+                + user_phone_num + ", user_phone_num1=" + user_phone_num1 + ", user_phone_num2=" + user_phone_num2
+                + ", user_phone_num3=" + user_phone_num3 + ", user_pwd=" + user_pwd + ", user_zipcode=" + user_zipcode
+                + "]";
     }
-
     public String getUser_id() {
         return user_id;
     }
@@ -113,5 +110,11 @@ public class UserVO {
         this.payment_method = payment_method;
     }
 
+    public String getUser_name() {
+        return user_name;
+    }
 
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
 }

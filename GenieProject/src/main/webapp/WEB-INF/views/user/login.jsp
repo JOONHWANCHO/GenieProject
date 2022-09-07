@@ -6,23 +6,13 @@
   .home {
     position: relative;
     width: 100%;
-    height: 100vh;
     margin: 0;
-    padding:6% 23%;
+    padding: 2% 23%;
     background: #d3f1ee;
     background-size: cover;
     background-position: center;
   }
   /* 기본구조 */
-  h2 {
-    text-align: left;
-    font-size: 30px;
-    font-weight: 600;
-    margin-left: 30px;
-    color: #2DCEF8;
-    margin-bottom: 50px;
-  }
-
   .home .bubbles{
       display:flex;
       justify-content: center;
@@ -64,8 +54,8 @@
     flex-direction: column; 
     /* justify-content: center; */
     width: 100%;
-    min-height: 100%;
-    margin-top:6em;
+    height: 100vh;
+    margin-top: 3em;
   }
 
   #formContent {
@@ -196,7 +186,11 @@
   <div class="wrapper">
     <div id="formContent">
       <!-- 타이틀 -->
+<<<<<<< HEAD
       <h2>GENIE</h2>
+=======
+
+>>>>>>> 83ffc1673ba45d5ae803a5ba8891c12fd3fd14f6
 
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="log">
@@ -209,7 +203,11 @@
       </form>
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="log">
+<<<<<<< HEAD
         <li><a href="/user/UserForm"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
+=======
+        <li><a href="/user/Registragion"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
+>>>>>>> 83ffc1673ba45d5ae803a5ba8891c12fd3fd14f6
         <li><a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a></li>
       </form>
     </div>
