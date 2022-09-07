@@ -56,12 +56,28 @@
   border-radius: 10px;
   padding: 3em;
 }
-.content-main>ul{
-  margin: 0;
-  padding: 0;
-}
 .content-main h1{
   margin-bottom: 1em;
+}
+.order>ul>li:nth-child(2n+2){
+  margin-bottom: 1em;
+  font-size: .8em;
+}
+.order-title>ul>li{
+  float: left;
+  width: 10%;
+  margin-bottom: 2em;
+}
+.order-title>ul>li:nth-child(3n+1){
+  width: 80%;
+}
+.order-detail>ul>li{
+  float:left;
+  width: 20%;
+  margin-bottom: 10em;
+}
+.order-detail>ul>li:nth-child(3n+1){
+  width: 60%;
 }
 /* -----------------------여기는 오른쪽박스----------------------------- */
 </style>
@@ -92,14 +108,28 @@
         </ul>
     </div>
     <div class="content-main">
-		<h1>주문한 내역</h1>
-		<ul>
-			<li></li>
-		</ul>
-		<h2>배송조회</h2>
-		<ul>
-			<li></li>
-		</ul>
+
+    <h1>주문목록</h1>
+      <div class="order">
+        <ul>
+          <li>주문번호 : {vo.product_no}</li>
+          <li>주문일 : {vo.order_writedate}</li>
+        </ul>
+      </div>
+      <div class="order-title">
+        <ul>
+          <li>상품명</li>
+          <li>수량</li>
+          <li>가격</li>
+        </ul>
+      </div>
+      <div class="order-detail">
+        <ul>
+          <li>{product_title}</li>
+          <li>{product-quantity}</li>
+          <li>{product_price}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
