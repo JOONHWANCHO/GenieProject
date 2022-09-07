@@ -56,12 +56,28 @@
   border-radius: 10px;
   padding: 3em;
 }
-.content-main>ul{
-  margin: 0;
-  padding: 0;
-}
 .content-main h1{
   margin-bottom: 1em;
+}
+.order>ul>li:nth-child(2n+2){
+  margin-bottom: 1em;
+  font-size: .8em;
+}
+.order-title>ul>li{
+  float: left;
+  width: 10%;
+  margin-bottom: 2em;
+}
+.order-title>ul>li:nth-child(3n+1){
+  width: 80%;
+}
+.order-detail>ul>li{
+  float:left;
+  width: 20%;
+  margin-bottom: 10em;
+}
+.order-detail>ul>li:nth-child(3n+1){
+  width: 60%;
 }
 /* -----------------------여기는 오른쪽박스----------------------------- */
 </style>
@@ -80,72 +96,6 @@
 		});
 	}
 </script>
-<script>
-	$(function(){
-		$("#idCheck").click(function(){
-			window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
-		});
-		$("#user_id").change(function(){
-			$("#idCheckState").val("N");
-		});
-		//유효성 검사
-       	$("#logFrm").submit(function(){
-			
-			$("#userid").change(function(){
-				$("#idCheckState").val("N");
-			});
-			// 아이디, 비밀번호
-			if($("#user_id").val()==""){
-				alert("아이디를 입력하세요");
-				$("#user_id").focus();
-				return false;
-			}
-			//아이디 중복검사여부
-			if($("#idCheckState").val()!='Y'){
-				alert("아이디를 중복검사 하세요");
-				return false;
-			}
-			if($("#user_pwd").val()==""){
-				alert("비밀번호를 입력하세요");
-				$("#user_pwd").focus();
-				return false;
-			}
-			if($("#user_pwd").val()!=$("#userpwd2").val()){
-				alert("비밀번호가 일치하지 않습니다.");
-				return false;
-			}
-			// 전화번호
-			if($("#user_phone_num1").val()=="" || $("#user_phone_num2").val()=="" || $("#user_phone_num3").val()==""){
-				alert("연락처를 입력하세요");
-				return false;
-			}
-			return true;
-			// 우편번호
-			if($("#user_zipcode").val()==""){
-				alert("우편번호를 선택하세요");
-				$("#user_zipcode").focus();
-				return false;
-			}
-			if($("#user_addr").val()==""){
-				alert("주소를 입력하세요");
-				$("#user_addr").focus();
-				return false;
-			}
-			if($("#user_detailaddr").val()==""){
-				alert("상세 주소를 입력하세요");
-				$("#user_detailaddr").focus();
-				return false;
-			}
-			// 이메일
-			if($("#user_email").val()==""){
-				alert("이메일을 입력하세요");
-				$("#user_email").focus();
-				return false;
-			}
-			return true;
-		});
-    });
-</script>
 <!-- ------------------------------------스크립트부분 끝---------------------------------------- -->
 <div class="responsive-wrapper">
   <div class="content">
@@ -158,6 +108,7 @@
         </ul>
     </div>
     <div class="content-main">
+<<<<<<< HEAD
 			<h1>회원정보 수정</h1>
 			<form method="get" action="/user/UserEditOk" id="logFrm">
 				<ul class="loginForm">
@@ -206,6 +157,30 @@
           </div>
 				</ul>
 			</form>
+=======
+
+    <h1>주문목록</h1>
+      <div class="order">
+        <ul>
+          <li>주문번호 : {vo.product_no}</li>
+          <li>주문일 : {vo.order_writedate}</li>
+        </ul>
+      </div>
+      <div class="order-title">
+        <ul>
+          <li>상품명</li>
+          <li>수량</li>
+          <li>가격</li>
+        </ul>
+      </div>
+      <div class="order-detail">
+        <ul>
+          <li>{product_title}</li>
+          <li>{product-quantity}</li>
+          <li>{product_price}</li>
+        </ul>
+      </div>
+>>>>>>> 00ec4c55091196f84c323b5f0be4e0a931412c4f
     </div>
   </div>
 </div>

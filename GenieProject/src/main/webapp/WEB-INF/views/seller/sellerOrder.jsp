@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
 nav {
@@ -62,7 +58,7 @@ body {
 .vertical-tabs a {
   
   align-items: center;
-  padding: 0.75em 1em;
+  padding: 0.3em 1em;
   background-color: transparent;
   border-radius: 3px;
   text-decoration: none;
@@ -119,12 +115,29 @@ body {
   flex-grow: 1;
 }
 
+table {
+  font-family: arial, sans-serif;
+  font-size: 15px;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
 
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 </style>
 
 <script>
+function changeContent()
+{
 
+}
 </script>
 <main class="main">
 
@@ -147,8 +160,7 @@ body {
 			<div class="content-main">
 				<div class="content-main-top">
 					<p>Disney님 주문관리 Dashboard</p>
-					<table class="table table-striped">
-					    <thead>
+					<table id="table">
 					      <tr>
 					        <th>주문코드</th>
 					        <th>주문날짜</th>
@@ -159,9 +171,8 @@ body {
 					        <th>주문자명</th>
 					        <th>수령자명</th>
 					        <th>주소</th>
+							<th></th>
 					      </tr>
-					    </thead>
-					    <tbody>
 					      <tr>
 					        <td>1</td>
 					        <td>2022/9/6</td>
@@ -172,6 +183,7 @@ body {
 					        <td>김민진</td>
 					        <td>이서현</td>
 					        <td>서울시 고구마구 고구마동 고구마</td>
+							<td><input type="button" value="Cancel" onclick="changeContent"></td>
 					      </tr>
 					      <tr>
 					        <td>2</td>
@@ -183,6 +195,7 @@ body {
 					        <td>채한준</td>
 					        <td>조준환</td>
 					        <td>서울시 당근구 당근동 당근</td>
+							<td><input type="button" value="Cancel" onclick=""></td>
 					      </tr>
 					      <tr>
 					        <tr>
@@ -195,10 +208,10 @@ body {
 					        <td>오세영</td>
 					        <td>홍세호</td>
 					        <td>서울시 감자구 감자동 감자</td>
+							<td><input type="button" value="Cancel" onclick=""></td>
 					      </tr>
-					      </tr>
-					    </tbody>
 					  </table>
+			
 					  
 				</div>
 			</div>
