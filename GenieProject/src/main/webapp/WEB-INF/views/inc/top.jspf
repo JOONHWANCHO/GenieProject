@@ -17,7 +17,7 @@
 		<ul>
 			<li><a href="/genie/genie_01">Genie</a></li>
 			<li><a href="/product"><i class="fa-solid fa-gift"></i></a></li>
-			<li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+			<li><a href="/cartcart"><i class="fa-solid fa-cart-shopping"></i></a></li>
 			<c:if test ="${logStatus !='Y'}">
 				<li><a href = "/user/login"><i class="fa-solid fa-user"></i></a></li>
 			</c:if> 

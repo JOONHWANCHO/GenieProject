@@ -13,13 +13,15 @@
 	.home {
 		position: relative;
 		width: 100%;
-		height: 100vh;
-		margin: 0;
-		padding:6% 23%;
-		background: #d3f1ee;
+		/*height: 100vh;*/
+		/*background: url(../img/background.jpg);*/
+		background: #fafbfc;
 		background-size: cover;
 		background-position: center;
-	}
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		align-items: center;
+}
 	.container{
 		padding:30px;
 =======
