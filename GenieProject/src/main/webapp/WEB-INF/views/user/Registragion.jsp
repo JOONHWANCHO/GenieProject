@@ -173,7 +173,7 @@
 				$("#user_pwd").focus();
 				return false;
 			}
-			if($("#user_pwd").val()!=$("#userpwd2").val()){
+			if($("#user_pwd").val()!=$("#user_pwd2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
 				return false;
 			}
