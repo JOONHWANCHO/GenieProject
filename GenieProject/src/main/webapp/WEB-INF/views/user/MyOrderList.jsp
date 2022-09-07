@@ -108,57 +108,6 @@
         </ul>
     </div>
     <div class="content-main">
-<<<<<<< HEAD
-			<h1>회원정보 수정</h1>
-			<form method="get" action="/user/UserEditOk" id="logFrm">
-				<ul class="loginForm">
-					<div id="idForm">
-						<li>아이디</li>
-						<input type="text" id="user_id" name="user_id" value= "${vo.user_id}">
-						<input type ="hidden" id = "idCheckState" value = "Y"/>
-					</div>
-					<div id="name">
-						<p>이름</p>
-						<input type="text" id="user_name" name="user_name" value= "${vo.user_name}" readonly>
-					</div>
-					<div id="passwordForm">
-						<li>비밀번호</li>
-						<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
-						<li>비밀번호 확인</li>
-						<input type="password" id="user_pwd" name="user_pwd2" placeholder="비밀번호를 입력하세요">
-					</div>
-          <div id="phoneForm">
-						<li>휴대폰 번호</li>
-              <select id = "user_phone_num1" name = "user_phone_num1" size = "1" value = "${vo.user_phone_num1}">
-							<option value="">선택하세요</option>
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="018">018</option>
-							<option value="019">019</option>
-						</select>-
-				        <input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4" value ="${vo.user_phone_num2}"/> -
-			 	        <input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4" value ="${vo.user_phone_num3}"/>
-					</div>
-          <div id="emailForm">
-						<li>이메일</li>
-						<input type="email" id="user_email" name="user_email" value =" ${vo.user_email}" placeholder="이메일을 입력하세요">
-					</div>
-          <div id="addrForm">
-            <li>우편번호</li>
-            <li><input type ="text" name = "user_zipcode" id ="user_zipcode" value ="${vo.user_zipcode}" readonly />
-                <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
-            <li>주소</li>
-            <li><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></li>
-            <li>상세주소</li>
-            <li><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/></li>	
-					 <input type = "submit" id="login" value = "회원정보 수정"/>
-          </div>
-				</ul>
-			</form>
-=======
-
     <h1>주문목록</h1>
       <div class="order">
         <ul>
@@ -180,7 +129,6 @@
           <li>{product_price}</li>
         </ul>
       </div>
->>>>>>> 00ec4c55091196f84c323b5f0be4e0a931412c4f
     </div>
   </div>
 </div>
