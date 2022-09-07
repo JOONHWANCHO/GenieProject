@@ -51,6 +51,7 @@ public class AdminController {
 		// 	mav.setViewName("admin/adminCategoryTag");
 		// 	return mav;
 		// }
+
 		
 		//카테고리 
 		@GetMapping("adminCategoryTag")

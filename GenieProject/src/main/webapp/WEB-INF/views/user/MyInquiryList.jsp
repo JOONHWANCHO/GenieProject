@@ -101,6 +101,7 @@
     </div>
     <div class="content-main">
 		<h1>내가 작성한 글</h1>
+
       <div class="inquiry">
         <ul>
           <li>문의내역</li>
