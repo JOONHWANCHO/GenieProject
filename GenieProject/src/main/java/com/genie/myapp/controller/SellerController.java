@@ -33,8 +33,7 @@ public class SellerController {
 		mav.setViewName("seller/sellerOrder");
 		return mav;
 	}
-
-		
+	
 	// Seller 매출관리
 	@GetMapping("sellerSales")
 	public ModelAndView sellerSales() {
