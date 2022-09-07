@@ -17,15 +17,14 @@
 		<ul>
 			<li><a href="/genie/genie_01">Genie</a></li>
 			<li><a href="/product"><i class="fa-solid fa-gift"></i></a></li>
-			<li><a href="/"><i class="fa-solid fa-cart-shopping"></i></a></li>
+			<li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
 			<c:if test ="${logStatus !='Y'}">
 				<li><a href = "/user/login"><i class="fa-solid fa-user"></i></a></li>
 			</c:if> 
 			
 			<c:if test ="${logStatus =='Y'}">
-				<li><a href = "/user/UserEdit"><i class="fa-solid fa-address-card"></i></a></li>
-				<li><a href = "/user/UserDashboard"><i class="fa-solid fa-info"></i></a></li>
-				<li>${vo.user_id} <a href ="/user/logout">님 로그아웃</a></li>
+				<li><a href = "/user/MyPage"><i class="fa-solid fa-address-card"></i></a></li>
+				<li>${logName}<a href ="/user/logout">님 로그아웃</a></li>
 			</c:if>
 		</ul>
 	</nav>
