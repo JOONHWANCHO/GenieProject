@@ -24,8 +24,7 @@
 			
 			<c:if test ="${logStatus =='Y'}">
 				<li><a href = "/user/MyPage"><i class="fa-solid fa-address-card"></i></a></li>
-				<li>${logId}<a href ="/user/logout">님 로그아웃</a></li>
-
+				<li>${logName}<a href ="/user/logout">님 로그아웃</a></li>
 			</c:if>
 		</ul>
 	</nav>

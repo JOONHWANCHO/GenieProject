@@ -41,6 +41,7 @@ public class UserController {
 	
 		if(logVO != null) {//로그인 성공
 			session.setAttribute("logId", logVO.getUser_id());
+			session.setAttribute("logName", logVO.getUser_name());
 			session.setAttribute("logStatus","Y");
 			mav.setViewName("redirect:/");
 			
@@ -74,7 +75,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		
 		//DB조회  : 아이디가 존재하는지 확인
-		 int cnt = service.idCheck(user_id);
+		int cnt = service.idCheck(user_id);
 		 
 		mav.addObject("idCnt",cnt);
 		mav.addObject("user_id",user_id);
@@ -85,14 +86,16 @@ public class UserController {
 
 	//회원 가입하기
 	@PostMapping("UserWrite") 
-	public ResponseEntity<String> memberWrite(UserVO vo) {
-		
+	public ResponseEntity<String> UserWrite(UserVO vo) {
+
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type","text/html; charset=utf-8");
 		
 		try {//회원가입 성공
+			int result = service.UserWrite(vo);
+
 			String msg = "<script>";
 			msg += "alert('회원가입이 성공하였습니다.');";
 			msg += "location.href='/user/login'";
@@ -109,6 +112,19 @@ public class UserController {
 			e.printStackTrace();
 		}
 		return entity;
+	}
+
+	//마이페이지
+	@GetMapping("MyPage")
+	public ModelAndView MyPage(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId");
+
+		UserVO vo = service.getUser(user_id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/MyPage");
+	
+		return mav;
 	}
 
 	//회원정보 수정 DB
@@ -128,24 +144,54 @@ public class UserController {
 		}else {//수정못함
 			msg+="alert('회원 정보 수정이 실패하였습니다.');";	
 		}
-		msg+="location.href='/user/UserDashboard';</script>";
+		msg+="location.href='/user/MyPage';</script>";
 		
 		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
 
 		return entity;
 	}
-	
-	//마이페이지
-	@GetMapping("MyPage")
-	public ModelAndView UserDashboard(HttpSession session) {
-		String user_id = (String)session.getAttribute("logId");
 
-		UserVO vo = service.getUser(user_id);
+
+
+
+//////////////////////////////////////////////////////////
+	//비밀번호 변경 창
+	@GetMapping("ModifyPassword")
+	public ModelAndView ModifyPassword(String user_id, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("vo",vo);
-		mav.setViewName("/user/MyPage");
-	
+		
+		//DB조회  : 아이디가 존재하는지 확인
+		int cnt = service.idCheck(user_id);
+		 
+		mav.addObject("idCnt",cnt);
+		mav.addObject("user_id",user_id);
+		mav.setViewName("/user/ModifyPassword");
+
 		return mav;
+	}
+	
+	//비밀번호 변경
+	@GetMapping("ModifyPasswordOk")
+	public ResponseEntity<String> ModifyPassword(UserVO vo) {
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type","text/html; charset=UTF-8");
+		
+		String msg = "<script>";
+		int cnt = service.UserEditOk(vo);
+			
+		if(cnt>0) {//수정됨
+			msg+="alert('비밀번호가 수정되었습니다.');";
+		}else {//수정못함
+			msg+="alert('비밀번호 수정이 실패하였습니다.');";	
+		}
+		msg+="location.href='/user/MyPage';</script>";
+		
+		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
+
+		return entity;
 	}
 
 	//주문목록/배송조회

@@ -18,5 +18,36 @@ public class SellerController {
 		mav.setViewName("seller/sellerForm");
 		return mav;
 	}
+	// Seller
+	@GetMapping("sellerHome")
+	public ModelAndView sellerHome() {
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerHome");
+		return mav;
+	}
+
+	// Seller 홈
+	@GetMapping("sellerMain")
+	public ModelAndView sellerMain() {
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerMain");
+		return mav;
+	}
+	
+	// Seller 주문관리 
+	@GetMapping("sellerOrder")
+	public ModelAndView sellerOrder() {
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerOrder");
+		return mav;
+	}
+	
+	// Seller 매출관리
+	@GetMapping("sellerSales")
+	public ModelAndView sellerSales() {
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerSales");
+		return mav;
+	}
 	
 }

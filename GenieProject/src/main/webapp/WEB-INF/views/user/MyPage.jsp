@@ -3,49 +3,49 @@
 <script src="https://kit.fontawesome.com/8d73d915f1.js" crossorigin="anonymous"></script>
 
 <style>
-.responsive-wrapper {
-  background-color: #effaf9;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 1% 12%;
-}
-/* ------------------여기까지는 nav바 빼고 나머지 밑에 페이지 설정--------------------- */
-.content {
-  display: flex;
-  align-items: flex-start;
-}
-.content-panel {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  margin-right: 1em;
-  background-color: #fff;
-  color: #1f635c;
-  box-shadow: 0 0 15px #278178;
-  font-weight: bold;
-  border-radius: 10px;
-}
-.content-panel h3{
-  padding: 2.8em;
-}
-.content-panel>ul{
-  margin: 0;
-  padding: 0;
-}
-.content-panel>ul>li{
-  padding: 1em;
-  font-size: 14px; 
-}
-.content-panel>ul>li>i{
-  margin: 0 1em; 
-}
-.content-panel>ul>li:last-child{
-  margin-bottom: 3em;
-}
+	.responsive-wrapper {
+		background-color: #effaf9;
+		background-size: cover;
+		width: 100%;
+		height: 100vh;
+		margin: 0;
+		padding: 1% 12%;
+	}
+	/* ------------------여기까지는 nav바 빼고 나머지 밑에 페이지 설정--------------------- */
+	.content {
+		display: flex;
+		align-items: flex-start;
+	}
+	.content-panel {
+		display: flex;
+		flex-direction: column;
+		width: 25%;
+		margin-right: 1em;
+		background-color: #fff;
+		color: #1f635c;
+		box-shadow: 0 0 15px #278178;
+		font-weight: bold;
+		border-radius: 10px;
+	}
+	.content-panel h3{
+		padding: 2.8em;
+	}
+	.content-panel>ul{
+		margin: 0;
+		padding: 0;
+	}
+	.content-panel>ul>li{
+		padding: 1em;
+		font-size: 14px; 
+	}
+	.content-panel>ul>li>i{
+		margin: 0 1em; 
+	}
+	.content-panel>ul>li:last-child{
+		margin-bottom: 3em;
+	}
 
-/* ---------------------------------여기까지는 왼쪽 상자박스----------------------------------- */
+/* ---------------------------------여기는 왼쪽 상자박스----------------------------------- */
 
 	#modyfiy-tag{
 		float:left;
@@ -123,6 +123,7 @@
 		margin:10px;
 		margin-left:0;
 	}
+	
 	input[type=text], input[type=password], input[type=email]{
 		width:100%;
 		height:50px;
@@ -145,7 +146,7 @@
         width:50%;
     }
 
-    #address_kakao, #idCheck{
+    #address_kakao, #idCheck, #find_pwd{
 		width:35%;
 		padding:10px;
 		display:inline-block;
@@ -155,9 +156,8 @@
 		border:none;
 		border-radius: 10px;
 		transition: ease .40s;
-		float:right;
 		margin:10px;
-	}
+	} 
 
 	#formSubmit{
 		padding:10px 100px 10px 100px;
@@ -183,7 +183,7 @@
     	border-radius: 10px 10px 10px 10px;
 	}
 
-/* -----------------------여기는 오른쪽박스----------------------------- */
+/* -----------------------여기까지는 오른쪽박스----------------------------- */
 </style>
 <!-- -----------------------------------------스크립트 부분 시작---------------------------------- -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -203,31 +203,15 @@
 <!-- -----------------------------카카오api 가져온부분-------------------------- -->
 <script>
 	$(function(){
-		$("#idCheck").click(function(){
-			window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
+
+		$("#find_pwd").change(function(){
+				window.open("/user/ModifyPassword","modify_pwd","width=500,height=500");
 		});
-		$("#user_id").change(function(){
-			$("#idCheckState").val("N");
-		});
+
+
 		//유효성 검사
        	$("#logFrm").submit(function(){
 			
-			$("#userid").change(function(){
-				$("#idCheckState").val("N");
-			});
-
-			// 아이디, 비밀번호
-			if($("#user_id").val()==""){
-				alert("아이디를 입력하세요");
-				$("#user_id").focus();
-				return false;
-			}
-			//아이디 중복검사여부
-			if($("#idCheckState").val()!='Y'){
-				alert("아이디를 중복검사 하세요");
-				return false;
-			}
-
 			if($("#user_pwd").val()==""){
 				alert("비밀번호를 입력하세요");
 				$("#user_pwd").focus();
@@ -274,29 +258,29 @@
 <div class="responsive-wrapper">
  	<div class="content">
 		<div class="content-panel">
-			<h3>${logId}님</h3>
+			<h3>${vo.user_name}님</h3>
 				<ul class="fa-ul">
-					<li><i class="fa-solid fa-circle-user"></i><a href="/user/Mypage">회원정보 확인/수정</a></li>
+					<li><i class="fa-solid fa-circle-user"></i><a href="/user/MyPage">회원정보 확인/수정</a></li>
 					<li><i class="fa-brands fa-shopify"></i><a href="/user/MyOrderList">주문목록/배송조회</a></li>
 					<li><i class="fa-solid fa-clipboard"></i><a href="/user/MyInquiryList">나의 문의사항</a></li>
 				</ul>
 		</div>
-			<form method="get" action="/" id="logFrm">
 			<div class="container">
 				<h1>회원정보 수정</h1>
 				<ul class="userForm">
-					<form method="get" action="/user/UserEditOk" id="logFrm">
+					<form method="post" action="/user/UserEditOk" id="logFrm">
 						<ul class="loginForm">
 							<div id="idForm">
 								<p>아이디</p>
 								<input type="text" id="user_id" name="user_id" value= "${vo.user_id}" readonly>
 								<input type ="hidden" id = "idCheckState" value = "Y"/>
 							</div>
+							<div id="name">
+								<p>이름</p>
+								<input type="text" id="user_name" name="user_name" value= "${vo.user_name}" readonly>
+							</div>
 							<div id="passwordForm">
-								<p>비밀번호</p>
-								<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
-								<p>비밀번호 확인</p>
-								<input type="password" id="user_pwd" name="user_pwd2" placeholder="비밀번호를 입력하세요">
+								<p>비밀번호 <input type="button" id="find_pwd" value="비밀번호 변경"/></p>
 							</div>
 							<div id="phoneForm">
 								<p>휴대폰 번호</p>
@@ -314,23 +298,21 @@
 							</div>
 							<div id="emailForm">
 								<p>이메일</p>
-								<input type="email" id="user_email" name="user_email" value =" ${vo.user_email}" placeholder="이메일을 입력하세요">
+								<input type="email" id="user_email" name="user_email" value ="${vo.user_email}" placeholder="이메일을 입력하세요">
 							</div>
 							<div id="addrForm">
 								<p>우편번호</p>
-								<p><input type ="text" name = "user_zipcode" id ="user_zipcode" value ="${vo.user_zipcode}" readonly />
+									<input type ="text" name = "user_zipcode" id ="user_zipcode" value ="${vo.user_zipcode}" readonly/>
 									<input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
 								<p>주소</p>
-								<p><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></p>
+									<input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/>
 								<p>상세주소</p>
-								<p><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/></p>	
-
+								<input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/>
 							<li><input type = "submit" id="formSubmit" value = "회원정보 수정"/></li>
 						</ul>
 					</form>
 				</ul>
 			</div>
-			</form>
 		</div>
 	</div>
 </div>
