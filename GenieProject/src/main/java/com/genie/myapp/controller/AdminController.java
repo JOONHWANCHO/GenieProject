@@ -85,6 +85,6 @@ public class AdminController {
 			return mav;
 		}
 
-		//test
+		//test 테스트2
 		
 }
