@@ -87,13 +87,15 @@ public class UserController {
 	//회원 가입하기
 	@PostMapping("UserWrite") 
 	public ResponseEntity<String> UserWrite(UserVO vo) {
-		
+
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type","text/html; charset=utf-8");
 		
 		try {//회원가입 성공
+			int result = service.UserWrite(vo);
+
 			String msg = "<script>";
 			msg += "alert('회원가입이 성공하였습니다.');";
 			msg += "location.href='/user/login'";
@@ -152,7 +154,7 @@ public class UserController {
 
 
 
-
+//////////////////////////////////////////////////////////
 	//비밀번호 변경 창
 	@GetMapping("ModifyPassword")
 	public ModelAndView ModifyPassword(String user_id, HttpSession session) {
@@ -167,6 +169,7 @@ public class UserController {
 
 		return mav;
 	}
+	
 	//비밀번호 변경
 	@GetMapping("ModifyPasswordOk")
 	public ResponseEntity<String> ModifyPassword(UserVO vo) {
@@ -191,10 +194,6 @@ public class UserController {
 		return entity;
 	}
 
-
-
-
-	
 	//주문목록/배송조회
 	@GetMapping("MyOrderList")
 	public ModelAndView MyOrderList(HttpSession session) {
