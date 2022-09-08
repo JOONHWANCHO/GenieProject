@@ -84,5 +84,7 @@ public class AdminController {
 			mav.setViewName("admin/adminTag");
 			return mav;
 		}
+
+		//test
 		
 }
