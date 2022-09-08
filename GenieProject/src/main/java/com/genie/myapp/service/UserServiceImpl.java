@@ -44,5 +44,10 @@ public class UserServiceImpl implements UserService{
     public List<String> FindId(String email) {
         return dao.FindId(email);
     }
+
+    @Override
+    public int PwdEditOk(UserVO vo) {
+        return dao.PwdEditOk(vo);
+    }
 }
  
