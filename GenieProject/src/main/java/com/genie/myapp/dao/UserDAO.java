@@ -1,5 +1,7 @@
 package com.genie.myapp.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +21,6 @@ public interface UserDAO {
 	public UserVO getUser(String user_id);
 	//회원 정보 수정: DB 업데이트
 	public int UserEditOk(UserVO vo);
+	//아이디 찾기
+	public List<String> FindId(String email);
 }

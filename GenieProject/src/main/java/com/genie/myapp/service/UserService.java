@@ -1,5 +1,7 @@
 package com.genie.myapp.service;
 
+import java.util.List;
+
 import com.genie.myapp.vo.UserVO;
 
 
@@ -15,4 +17,7 @@ public interface UserService {
 	public UserVO getUser(String user_id);
 	//회원 정보 수정: DB 업데이트
 	public int UserEditOk(UserVO vo);
+	//아이디 찾기
+	public List<String> FindId(String email);
+	
 }
