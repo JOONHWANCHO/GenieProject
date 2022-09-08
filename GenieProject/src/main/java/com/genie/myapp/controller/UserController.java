@@ -26,10 +26,11 @@ import com.genie.myapp.vo.UserVO;
 public class UserController {
 	@Inject
 	UserService service;
+	ModelAndView mav;
 
 	@GetMapping("login")
 	public ModelAndView adminLogin() {
-		ModelAndView mav = new ModelAndView();
+		mav = new ModelAndView();
 		mav.setViewName("user/login");
 		return mav;
 	}
@@ -37,7 +38,7 @@ public class UserController {
 	@PostMapping("loginOK")
 	public ModelAndView loginOk(UserVO vo, HttpSession session) {
 		
-		ModelAndView mav = new ModelAndView();
+		mav = new ModelAndView();
 		UserVO logVO = service.loginOk(vo);
 	
 		if(logVO != null) {//로그인 성공
@@ -55,7 +56,7 @@ public class UserController {
 
 	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session) {
-		ModelAndView mav = new ModelAndView();
+		mav = new ModelAndView();
 		session.invalidate();
 		mav.setViewName("redirect:/");
 		
@@ -65,7 +66,7 @@ public class UserController {
 	//회원가입 폼으로 이동
 	@GetMapping("Registration")
 	public ModelAndView RegistragionForm() {
-		ModelAndView mav = new ModelAndView();
+		mav = new ModelAndView();
 		mav.setViewName("/user/Registration");
 		return mav;
 	}
@@ -73,7 +74,7 @@ public class UserController {
 	 //아이디 중복검사
 	@GetMapping("idCheck")
 	public ModelAndView idCheck(String user_id) {
-		ModelAndView mav = new ModelAndView();
+		mav = new ModelAndView();
 		
 		//DB조회  : 아이디가 존재하는지 확인
 		int cnt = service.idCheck(user_id);
@@ -115,9 +116,23 @@ public class UserController {
 		return entity;
 	}
 
+//////////////////////////////////////////////////////////
+
+	//마이페이지
+	@GetMapping("MyPage")
+	public ModelAndView MyPage(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId"); 
+
+		UserVO vo = service.getUser(user_id);
+		mav = new ModelAndView();
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/MyPage");
+	
+		return mav;
+	}
 	//회원정보 수정 DB
 	@PostMapping("UserEditOk")
-	public ResponseEntity<String> memberEditOk(UserVO vo) {
+	public ResponseEntity<String> UserEditOk(UserVO vo) {
 		
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
@@ -139,23 +154,7 @@ public class UserController {
 		return entity;
 	}
 
-
-
-
-//////////////////////////////////////////////////////////
-
-	//마이페이지
-	@GetMapping("MyPage")
-	public ModelAndView MyPage(HttpSession session) {
-		String user_id = (String)session.getAttribute("logId"); 
-
-		UserVO vo = service.getUser(user_id);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("vo",vo);
-		mav.setViewName("/user/MyPage");
 	
-		return mav;
-	}
 
 	//주문목록/배송조회
 	@GetMapping("MyOrderList")
@@ -163,7 +162,7 @@ public class UserController {
 		String user_id = (String)session.getAttribute("logId");
 
 		UserVO vo = service.getUser(user_id);
-		ModelAndView mav = new ModelAndView();
+		mav = new ModelAndView();
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyOrderList");
 	
@@ -176,7 +175,7 @@ public class UserController {
 		String user_id = (String)session.getAttribute("logId");
 
 		UserVO vo = service.getUser(user_id);
-		ModelAndView mav = new ModelAndView();
+		new ModelAndView();
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyDeliveryList");
 	
@@ -198,17 +197,56 @@ public class UserController {
 
 	@GetMapping("FindId")
 	public ModelAndView FindId() {
-		ModelAndView mav = new ModelAndView();
+		mav = new ModelAndView();
 		mav.setViewName("/user/FindId");
 		return mav;
 	}
 
 	@GetMapping("FindPwd")
 	public ModelAndView FindPwd() {
-		ModelAndView mav = new ModelAndView();
+		mav = new ModelAndView();
 		mav.setViewName("/user/FindPwd");
 		return mav;
 	}
+
+	@GetMapping("PwdEdit")
+	public ModelAndView PwdChange(HttpSession session) {
+		
+		String user_id = (String)session.getAttribute("logId"); 
+		UserVO vo = service.getUser(user_id);
+		
+		mav = new ModelAndView();
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/PwdEdit");
+		
+		return mav;
+	}
+
+	@PostMapping("PwdEditOk")
+	public ResponseEntity<String> PwdEditOk(UserVO vo) {
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type","text/html; charset=UTF-8");
+		
+		String msg = "<script>";
+		int cnt = service.PwdEditOk(vo);
+		
+		if(cnt>0) {//수정됨
+			msg+="alert('비밀번호가 수정되었습니다.');";
+		}else {//수정못함
+			msg+="alert('비밀번호 수정이 실패하였습니다.');";	
+		}
+		msg+="window.close();</script>";
+		
+		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
+
+		return entity;
+	}
+
+
+
 	// 메일로 아이디 보내기
 	@PostMapping("/find/id/sendUsernames")
 	public ResponseEntity<Object> sendEmail(String user_email){
