@@ -269,7 +269,7 @@
 								</select>
 								<input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4" value ="${vo.user_phone_num2}"/>
 								<input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4" value ="${vo.user_phone_num3}"/>
-
+							<br/>
 							</div>
 							<div id="emailForm">
 								<p>이메일</p>
