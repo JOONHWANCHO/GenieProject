@@ -1,6 +1,7 @@
 package com.genie.myapp.controller;
 
 import java.nio.charset.Charset;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -62,10 +63,10 @@ public class UserController {
 	}
 
 	//회원가입 폼으로 이동
-	@GetMapping("Registragion")
+	@GetMapping("Registration")
 	public ModelAndView RegistragionForm() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/user/Registragion");
+		mav.setViewName("/user/Registration");
 		return mav;
 	}
 
@@ -114,19 +115,6 @@ public class UserController {
 		return entity;
 	}
 
-	//마이페이지
-	@GetMapping("MyPage")
-	public ModelAndView MyPage(HttpSession session) {
-		String user_id = (String)session.getAttribute("logId");
-
-		UserVO vo = service.getUser(user_id);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("vo",vo);
-		mav.setViewName("/user/MyPage");
-	
-		return mav;
-	}
-
 	//회원정보 수정 DB
 	@PostMapping("UserEditOk")
 	public ResponseEntity<String> memberEditOk(UserVO vo) {
@@ -155,43 +143,18 @@ public class UserController {
 
 
 //////////////////////////////////////////////////////////
-	//비밀번호 변경 창
-	@GetMapping("ModifyPassword")
-	public ModelAndView ModifyPassword(String user_id, HttpSession session) {
+
+	//마이페이지
+	@GetMapping("MyPage")
+	public ModelAndView MyPage(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId"); 
+
+		UserVO vo = service.getUser(user_id);
 		ModelAndView mav = new ModelAndView();
-		
-		//DB조회  : 아이디가 존재하는지 확인
-		int cnt = service.idCheck(user_id);
-		 
-		mav.addObject("idCnt",cnt);
-		mav.addObject("user_id",user_id);
-		mav.setViewName("/user/ModifyPassword");
-
-		return mav;
-	}
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/MyPage");
 	
-	//비밀번호 변경
-	@GetMapping("ModifyPasswordOk")
-	public ResponseEntity<String> ModifyPassword(UserVO vo) {
-		
-		ResponseEntity<String> entity = null;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
-		headers.add("Content-Type","text/html; charset=UTF-8");
-		
-		String msg = "<script>";
-		int cnt = service.UserEditOk(vo);
-			
-		if(cnt>0) {//수정됨
-			msg+="alert('비밀번호가 수정되었습니다.');";
-		}else {//수정못함
-			msg+="alert('비밀번호 수정이 실패하였습니다.');";	
-		}
-		msg+="location.href='/user/MyPage';</script>";
-		
-		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
-
-		return entity;
+		return mav;
 	}
 
 	//주문목록/배송조회
@@ -207,6 +170,18 @@ public class UserController {
 		return mav;
 	}
 
+	//배송지 관리
+	@GetMapping("MyDeliveryList") 
+	public ModelAndView MyDeliveryLIst(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId");
+
+		UserVO vo = service.getUser(user_id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/MyDeliveryList");
+	
+		return mav;
+	}
 	//나의 문의사항 
 	@GetMapping("MyInquiryList") 
 	public ModelAndView MyInquiryList(HttpSession session) {
@@ -219,6 +194,34 @@ public class UserController {
 	
 		return mav;
 	}
+	////////////////////////////////////////////////////////////////////
+
+	@GetMapping("FindId")
+	public ModelAndView FindId() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/user/FindId");
+		return mav;
+	}
+
+	@GetMapping("FindPwd")
+	public ModelAndView FindPwd() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/user/FindPwd");
+		return mav;
+	}
+	// 메일로 아이디 보내기
+	@PostMapping("/find/id/sendUsernames")
+	public ResponseEntity<Object> sendEmail(String user_email){
+		List<String> usernames =service.FindId(user_email);
+	
+		if(usernames.size() != 0) {
+			//MailService.sendUsernames(user_email, usernames);
+		}
+		
+		return new ResponseEntity<Object>(HttpStatus.OK);
+	}
+
+	/////////////////////////////////////////////////////////////////////
 }
 
 

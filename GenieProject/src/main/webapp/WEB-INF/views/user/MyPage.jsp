@@ -64,10 +64,6 @@
 	.content-main>ul{
 		margin: 0;
 		padding: 0;
-
-	}
-	.content-main h1{
-		margin-bottom: 1em;
 	}
 
 	.home{
@@ -85,7 +81,7 @@
 	.container{
 		padding:30px;
 		width:600px;
-		height:60em;
+		height:55em;
 		background-color:white;
 		margin:0 auto;
 		margin-left:5em;
@@ -101,9 +97,7 @@
 		font-size:27px;
 		margin-top:20px;
 		margin-bottom:20px;
-		margin-left:65px;
-		padding:10px;
-		
+		margin-left:65px;		
 	}
 	.userForm{
 		width:400px;
@@ -158,6 +152,9 @@
 		transition: ease .40s;
 		margin:10px;
 	} 
+	#find_pwd{
+		float:right;
+	}
 
 	#formSubmit{
 		padding:10px 100px 10px 100px;
@@ -262,6 +259,7 @@
 				<ul class="fa-ul">
 					<li><i class="fa-solid fa-circle-user"></i><a href="/user/MyPage">회원정보 확인/수정</a></li>
 					<li><i class="fa-brands fa-shopify"></i><a href="/user/MyOrderList">주문목록/배송조회</a></li>
+					<li><i class="fa-sharp fa-solid fa-truck"></i><a href="/user/MyDeliveryList">배송지 관리</a></li>
 					<li><i class="fa-solid fa-clipboard"></i><a href="/user/MyInquiryList">나의 문의사항</a></li>
 				</ul>
 		</div>
@@ -280,7 +278,13 @@
 								<input type="text" id="user_name" name="user_name" value= "${vo.user_name}" readonly>
 							</div>
 							<div id="passwordForm">
-								<p>비밀번호 <input type="button" id="find_pwd" value="비밀번호 변경"/></p>
+								<p>현재 비밀번호</p>
+									<input type="text" id="user_pwd" name="user_pwd" placeholder="현재 비밀번호를 입력하세요">
+								<p>새 비밀번호</p>
+									<input type="text" id="user_pwd" name="user_pwd2" placeholder="새 비밀번호를 입력하세요">
+								<p>새 비밀번호 다시 입력</p>
+									<input type="text" id="user_pwd" name="user_pwd2" placeholder="새 비밀번호를 입력하세요">
+									<input type="button" id="find_pwd" value="비밀번호 변경"/><br/><br/><br/>
 							</div>
 							<div id="phoneForm">
 								<p>휴대폰 번호</p>
@@ -295,19 +299,20 @@
 								</select>
 								<input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4" value ="${vo.user_phone_num2}"/>
 								<input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4" value ="${vo.user_phone_num3}"/>
+								<input type="button" id="find_pwd" value="전화번호 변경"/><br/><br/><br/>
 							</div>
 							<div id="emailForm">
 								<p>이메일</p>
 								<input type="email" id="user_email" name="user_email" value ="${vo.user_email}" placeholder="이메일을 입력하세요">
 							</div>
-							<div id="addrForm">
+							<%-- <div id="addrForm">
 								<p>우편번호</p>
 									<input type ="text" name = "user_zipcode" id ="user_zipcode" value ="${vo.user_zipcode}" readonly/>
 									<input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
 								<p>주소</p>
 									<input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/>
 								<p>상세주소</p>
-								<input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/>
+								<input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/> --%>
 							<li><input type = "submit" id="formSubmit" value = "회원정보 수정"/></li>
 						</ul>
 					</form>
