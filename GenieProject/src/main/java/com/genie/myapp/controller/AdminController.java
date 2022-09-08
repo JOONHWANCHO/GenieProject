@@ -24,17 +24,6 @@ public class AdminController {
 			return mav;
 		}
 
-	@Autowired
-	AdminService service;
-	ModelAndView mav = null;
-	
-		@GetMapping("adminLogin")
-		public ModelAndView adminLogin() {
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("admin/adminLogin");
-			return mav;
-		}
-
 		@GetMapping("adminMain")
 		public ModelAndView adminMain() {
 			ModelAndView mav = new ModelAndView();
@@ -86,5 +75,5 @@ public class AdminController {
 		}
 
 		//test 테스트2
-		
+		//테스트3
 }
