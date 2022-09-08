@@ -251,7 +251,9 @@
 								<input type="text" id="user_name" name="user_name" value= "${vo.user_name}" readonly>
 							</div>
 							<div id="passwordForm">
+
 								<p>비밀번호<input type="button" id="Find_pwd" value="비밀번호 변경"/></p><br/>
+
 							</div>
 							<div id="phoneForm">
 								<p>휴대폰 번호</p>
@@ -266,12 +268,13 @@
 								</select>
 								<input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4" value ="${vo.user_phone_num2}"/>
 								<input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4" value ="${vo.user_phone_num3}"/>
-								<br/>
+
 							</div>
 							<div id="emailForm">
 								<p>이메일</p>
 								<input type="email" id="user_email" name="user_email" value ="${vo.user_email}" placeholder="이메일을 입력하세요">
 							</div>
+
 							<li><input type = "submit" id="formSubmit" value = "회원정보 수정"/></li>
 						</ul>
 					</form>

@@ -20,6 +20,7 @@
 </style>
 <script>
 	$(document).ready(function() {
+
 		$(".find_btn").click(function() {
 			if($("#user_pwd").val()==""){
           		alert("이메일을 입력하세요..");

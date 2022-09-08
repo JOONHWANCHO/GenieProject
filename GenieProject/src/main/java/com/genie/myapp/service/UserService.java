@@ -20,6 +20,5 @@ public interface UserService {
 	//아이디 찾기
 	public List<String> FindId(String email);
 	//비밀번호 변경
-    public int PwdEditOk(UserVO vo);
-	
+  public int PwdEditOk(UserVO vo);
 }

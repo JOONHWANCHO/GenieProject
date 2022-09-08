@@ -130,6 +130,7 @@ public class UserController {
 	
 		return mav;
 	}
+  
 	//회원정보 수정 DB
 	@PostMapping("UserEditOk")
 	public ResponseEntity<String> UserEditOk(UserVO vo) {
@@ -153,8 +154,6 @@ public class UserController {
 
 		return entity;
 	}
-
-	
 
 	//주문목록/배송조회
 	@GetMapping("MyOrderList")
@@ -181,6 +180,7 @@ public class UserController {
 	
 		return mav;
 	}
+  
 	//나의 문의사항 
 	@GetMapping("MyInquiryList") 
 	public ModelAndView MyInquiryList(HttpSession session) {
@@ -193,6 +193,7 @@ public class UserController {
 	
 		return mav;
 	}
+  
 	////////////////////////////////////////////////////////////////////
 
 	@GetMapping("FindId")
@@ -245,8 +246,6 @@ public class UserController {
 		return entity;
 	}
 
-
-
 	// 메일로 아이디 보내기
 	@PostMapping("/find/id/sendUsernames")
 	public ResponseEntity<Object> sendEmail(String user_email){
@@ -261,5 +260,3 @@ public class UserController {
 
 	/////////////////////////////////////////////////////////////////////
 }
-
-
