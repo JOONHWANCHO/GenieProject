@@ -149,7 +149,6 @@
 		$("#user_id").change(function(){
 			$("#idCheckState").val("N");
 		});
-		
 		//유효성 검사
        	$("#logFrm").submit(function(){
 			
@@ -176,12 +175,6 @@
 			}
 			if($("#user_pwd").val()!=$("#user_pwd2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
-				return false;
-			}
-
-			if($("#user_name").val()==""){
-				alert("이름을 입력하세요");
-				$("#user_name").focus();
 				return false;
 			}
 
@@ -220,61 +213,57 @@
 </head>
 <body>
 <section class="home">
-	<div class="container">
-		<h1>일반회원 회원가입</h1>
-		<form method="post" action="/user/UserWrite" id="logFrm">
-			<ul class="userForm">
-				<div id="idForm">
-					<p>아이디</p>
-					<input type="button" value="아이디 중복검사" id="idCheck">
-					<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요" readonly>
-					<input type ="hidden" id = "idCheckState" value = "N"/>
-				</div>
-				<div id="passwordForm">
-					<p>비밀번호</p>
-					<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
-					<p>비밀번호 확인</p>
-					<input type="password" id="user_pwd2" name="user_pwd2" placeholder="비밀번호를 입력하세요">
-				</div>
-				<div id="name">
-					<p>이름</p>
-					<input type="text" id="user_name" name="user_name" placeholder="이름을 입력하세요">
-				<div>
-                <div id="phoneForm">
-					<p>휴대폰 번호</p>
-                    <select id = "user_phone_num1" name = "user_phone_num1" size = "1">
-						<option value="">선택하세요</option>
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-						<option value="017">017</option>
-						<option value="018">018</option>
-						<option value="019">019</option>
-					</select>
-			        <input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4"/>
-		 	        <input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4"/>
-				</div>
-                <div id="emailForm">
-					<p>이메일</p>
-					<input type="email" id="user_email" name="user_email" placeholder="이메일을 입력하세요">
-				</div>
-                <div id="addrForm">
-                    <p>우편번호</p>
-                    	<input type ="text" name = "user_zipcode" id ="user_zipcode" readonly/>
-                        <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
-                    <p>주소</p>
-                		<input type = "text" name = "user_addr" id ="user_addr" readonly/>
-                    <p>상세주소</p>
-                    	<input type ="text" name = "user_detailaddr" id ="user_detailaddr"/>	
-				</div>
-                <div id="user_gender">
-					<p>성별</p>
-					<input type="radio" name="radio_gender" id="male"><label for="radio_male">남성</label>
-                    <input type="radio" name="radio_gender" id="female"><label for="radio_female">여성</label>
-				</div>
-				 <li><input type = "submit" id="formSubmit" value = "회원가입하기"/></li>
-			</ul>
-		</form>
+		<div class="container">
+			<h1>일반회원 회원가입</h1>
+			<form method="get" action="/" id="logFrm">
+				<ul class="userForm">
+					<div id="idForm">
+						<p>아이디</p>
+						<input type="button" value="아이디 중복검사" id="idCheck">
+						<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요">
+						<input type ="hidden" id = "idCheckState" value = "N"/>
+					</div>
+					<div id="passwordForm">
+						<p>비밀번호</p>
+						<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
+						<p>비밀번호 확인</p>
+						<input type="password" id="user_pwd" name="user_pwd2" placeholder="비밀번호를 입력하세요">
+					</div>
+                    <div id="phoneForm">
+						<p>휴대폰 번호</p>
+                        <select id = "user_phone_num1" name = "user_phone_num1" size = "1">
+							<option value="">선택하세요</option>
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+							<option value="017">017</option>
+							<option value="018">018</option>
+							<option value="019">019</option>
+						</select>
+				        <input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4"/>
+			 	        <input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4"/>
+					</div>
+                    <div id="emailForm">
+						<p>이메일</p>
+						<input type="email" id="user_email" name="user_email" placeholder="이메일을 입력하세요">
+					</div>
+                    <div id="addrForm">
+                        <p>우편번호</p>
+                        <p><input type ="text" name = "user_zipcode" id ="user_zipcode" readonly/>
+                            <input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
+                        <p>주소</p>
+                        <p><input type = "text" name = "user_addr" id ="user_addr" readonly/></p>
+                        <p>상세주소</p>
+                        <p><input type ="text" name = "user_detailaddr" id ="user_detailaddr"/></p>	
+
+                    <div id="user_gender">
+						<p>성별</p>
+						<input type="radio" name="radio_gender" id="radio_male"><label for="radio_male">남성</label>
+                        <input type="radio" name="radio_gender" id="radio_female"><label for="radio_female">여성</label>
+					</div>
+					 <li><input type = "submit" id="formSubmit" value = "회원가입하기"/></li>
+				</ul>
+			</form>
 		</div>	
 	</section>
 	</body>

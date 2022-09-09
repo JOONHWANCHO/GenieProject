@@ -3,8 +3,10 @@ package com.genie.myapp.vo;
 public class UserVO {
     private String user_id;
 	private String user_pwd;
-	
+    private String user_pwd2;
+  	
     private String user_name;
+    
 	private String user_phone_num;
 	private String user_phone_num1;
 	private String user_phone_num2;
@@ -24,9 +26,10 @@ public class UserVO {
                 + user_addr + ", user_detailaddr=" + user_detailaddr + ", user_email=" + user_email + ", user_gender="
                 + user_gender + ", user_id=" + user_id + ", user_name=" + user_name + ", user_phone_num="
                 + user_phone_num + ", user_phone_num1=" + user_phone_num1 + ", user_phone_num2=" + user_phone_num2
-                + ", user_phone_num3=" + user_phone_num3 + ", user_pwd=" + user_pwd + ", user_zipcode=" + user_zipcode
-                + "]";
+                + ", user_phone_num3=" + user_phone_num3 + ", user_pwd=" + user_pwd + ", user_pwd2="
+                + user_pwd2 + ", user_zipcode=" + user_zipcode + "]";
     }
+    
     public String getUser_id() {
         return user_id;
     }
@@ -117,4 +120,14 @@ public class UserVO {
     public void setUser_name(String user_name) {
         this.user_name = user_name;
     }
+
+    public String getUser_pwd2() {
+        return user_pwd2;
+    }
+
+    public void setUser_pwd2(String user_pwd2) {
+        this.user_pwd2 = user_pwd2;
+    }
+
 }
+

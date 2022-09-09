@@ -64,10 +64,6 @@
 	.content-main>ul{
 		margin: 0;
 		padding: 0;
-
-	}
-	.content-main h1{
-		margin-bottom: 1em;
 	}
 
 	.home{
@@ -85,7 +81,7 @@
 	.container{
 		padding:30px;
 		width:600px;
-		height:60em;
+		height:40em;
 		background-color:white;
 		margin:0 auto;
 		margin-left:5em;
@@ -101,9 +97,7 @@
 		font-size:27px;
 		margin-top:20px;
 		margin-bottom:20px;
-		margin-left:65px;
-		padding:10px;
-		
+		margin-left:65px;		
 	}
 	.userForm{
 		width:400px;
@@ -146,7 +140,7 @@
         width:50%;
     }
 
-    #address_kakao, #idCheck, #find_pwd{
+    #address_kakao, #idCheck, #Find_pwd{
 		width:35%;
 		padding:10px;
 		display:inline-block;
@@ -158,6 +152,9 @@
 		transition: ease .40s;
 		margin:10px;
 	} 
+	#Find_pwd{
+		float:right;
+	}
 
 	#formSubmit{
 		padding:10px 100px 10px 100px;
@@ -186,41 +183,14 @@
 /* -----------------------여기까지는 오른쪽박스----------------------------- */
 </style>
 <!-- -----------------------------------------스크립트 부분 시작---------------------------------- -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-	window.onload = function(){
-		document.getElementById("address_kakao").addEventListener("click", function(){ 
-			//카카오 지도 발생
-			new daum.Postcode({
-				oncomplete: function(data) { //선택시 입력값 세팅
-					document.getElementById("user_zipcode").value = data.zonecode; 
-					document.getElementById("user_addr").value = data.address; 
-				}
-			}).open();
-		});
-	}
-</script>
-<!-- -----------------------------카카오api 가져온부분-------------------------- -->
 <script>
 	$(function(){
-
-		$("#find_pwd").change(function(){
-				window.open("/user/ModifyPassword","modify_pwd","width=500,height=500");
+		$("#Find_pwd").click(function(){
+			window.open("/user/PwdEdit","PwdEdit","width=400,height=300");
 		});
-
-
+		
 		//유효성 검사
        	$("#logFrm").submit(function(){
-			
-			if($("#user_pwd").val()==""){
-				alert("비밀번호를 입력하세요");
-				$("#user_pwd").focus();
-				return false;
-			}
-			if($("#user_pwd").val()!=$("#user_pwd2").val()){
-				alert("비밀번호가 일치하지 않습니다.");
-				return false;
-			}
 
 			// 전화번호
 			if($("#user_phone_num1").val()=="" || $("#user_phone_num2").val()=="" || $("#user_phone_num3").val()==""){
@@ -254,7 +224,7 @@
 		});
     });
 </script>
-<!-- ------------------------------------스크립트부분 끝---------------------------------------- -->
+<!-- ------------------------------------스크립트부분 끝------------------------------------------->
 <div class="responsive-wrapper">
  	<div class="content">
 		<div class="content-panel">
@@ -262,6 +232,7 @@
 				<ul class="fa-ul">
 					<li><i class="fa-solid fa-circle-user"></i><a href="/user/MyPage">회원정보 확인/수정</a></li>
 					<li><i class="fa-brands fa-shopify"></i><a href="/user/MyOrderList">주문목록/배송조회</a></li>
+					<li><i class="fa-sharp fa-solid fa-truck"></i><a href="/user/MyDeliveryList">배송지 관리</a></li>
 					<li><i class="fa-solid fa-clipboard"></i><a href="/user/MyInquiryList">나의 문의사항</a></li>
 				</ul>
 		</div>
@@ -280,7 +251,9 @@
 								<input type="text" id="user_name" name="user_name" value= "${vo.user_name}" readonly>
 							</div>
 							<div id="passwordForm">
-								<p>비밀번호 <input type="button" id="find_pwd" value="비밀번호 변경"/></p>
+
+								<p>비밀번호<input type="button" id="Find_pwd" value="비밀번호 변경"/></p><br/>
+
 							</div>
 							<div id="phoneForm">
 								<p>휴대폰 번호</p>
@@ -295,19 +268,13 @@
 								</select>
 								<input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4" value ="${vo.user_phone_num2}"/>
 								<input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4" value ="${vo.user_phone_num3}"/>
+							<br/>
 							</div>
 							<div id="emailForm">
 								<p>이메일</p>
 								<input type="email" id="user_email" name="user_email" value ="${vo.user_email}" placeholder="이메일을 입력하세요">
 							</div>
-							<div id="addrForm">
-								<p>우편번호</p>
-									<input type ="text" name = "user_zipcode" id ="user_zipcode" value ="${vo.user_zipcode}" readonly/>
-									<input type = "button" value = "우편번호찾기" id = "address_kakao"/><br/>
-								<p>주소</p>
-									<input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/>
-								<p>상세주소</p>
-								<input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}"/>
+
 							<li><input type = "submit" id="formSubmit" value = "회원정보 수정"/></li>
 						</ul>
 					</form>

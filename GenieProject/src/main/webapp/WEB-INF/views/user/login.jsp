@@ -142,15 +142,24 @@
 </style>
 <script>
 	$(function(){
+
+    $("#idCheck").click(function(){
+			window.open("/user/FindId","FindId","width=400,height=300");
+		});
+
+     $("#PwdCheck").click(function(){
+			window.open("/user/FindPwd","FindPwd","width=400,height=300");
+		});
+
 		$('#log').submit(function(){
-			if($("#user_id").val()==""){
-				alert("아이디를 입력하세요..");
-				return false;
-			}
-			if($("#user_pwd").val()==""){
-				alert("비밀번호를 입력하세요..");
-				return false;
-			}
+        if($("#user_id").val()==""){
+          alert("아이디를 입력하세요..");
+          return false;
+        }
+        if($("#user_pwd").val()==""){
+          alert("비밀번호를 입력하세요..");
+          return false;
+        }
 			return true;
 		});
 	});
@@ -196,10 +205,11 @@
       <p>비밀번호</p>
         <input type="password" id="user_pwd" class="third" name="user_pwd" placeholder="비밀번호를 입력하세요">
         <input type="submit" class="fourth" value="로그인">
+          <p style="text-align:center"><a href="" id="idCheck">아이디찾기</a> | <a href="" id="PwdCheck">비밀번호 찾기</a></p>
       </form>
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="log">
-        <li><a href="/user/Registragion"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
+        <li><a href="/user/Registration"><input type="button" id="userReg" value="일반회원 회원가입"></a></li>
         <li><a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a></li>
       </form>
     </div>

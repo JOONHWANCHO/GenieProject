@@ -101,7 +101,7 @@
         </ul>
     </div>
     <div class="content-main">
-		<h1>내가 작성한 글</h1>
+		<h1>배송지 확인</h1>
 
       <div class="inquiry">
         <ul>
