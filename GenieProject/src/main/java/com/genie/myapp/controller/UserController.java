@@ -1,11 +1,14 @@
 package com.genie.myapp.controller;
 
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.genie.myapp.service.MailService;
 import com.genie.myapp.service.UserService;
 import com.genie.myapp.vo.UserVO;
 
@@ -24,8 +28,13 @@ import com.genie.myapp.vo.UserVO;
 @Controller
 @RequestMapping("/user/*")
 public class UserController {
+
 	@Inject
 	UserService service;
+
+	@Autowired
+	private MailService mailService;
+
 	ModelAndView mav;
 
 	@GetMapping("login")
@@ -196,20 +205,6 @@ public class UserController {
   
 	////////////////////////////////////////////////////////////////////
 
-	@GetMapping("FindId")
-	public ModelAndView FindId() {
-		mav = new ModelAndView();
-		mav.setViewName("/user/FindId");
-		return mav;
-	}
-
-	@GetMapping("FindPwd")
-	public ModelAndView FindPwd() {
-		mav = new ModelAndView();
-		mav.setViewName("/user/FindPwd");
-		return mav;
-	}
-
 	@GetMapping("PwdEdit")
 	public ModelAndView PwdChange(HttpSession session) {
 		
@@ -245,18 +240,48 @@ public class UserController {
 
 		return entity;
 	}
+////////////////////////////////////////////////////////////////
+
+	@GetMapping("FindId")
+	public ModelAndView FindId() {
+		mav = new ModelAndView();
+		mav.setViewName("/user/FindId");
+
+		return mav;
+	}
 
 	// 메일로 아이디 보내기
-	@PostMapping("/find/id/sendUsernames")
+	@PostMapping("/user/sendUserId")
 	public ResponseEntity<Object> sendEmail(String user_email){
-		List<String> usernames =service.FindId(user_email);
+		List<String> user_name =service.FindId(user_email);
 	
-		if(usernames.size() != 0) {
-			//MailService.sendUsernames(user_email, usernames);
+		if(user_name.size() != 0) {
+			mailService.sendUserId(user_email, user_name);
 		}
-		
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
+
+	@GetMapping("FindPwd")
+	public ModelAndView FindPwd() {
+		mav = new ModelAndView();
+		mav.setViewName("/user/FindPwd");
+
+		return mav;
+	}
+
+	@PostMapping("/find/password/auth")
+	public ResponseEntity<Object> authenticateUser(String user_name, HttpSession session) {
+
+    	Map<String, Object> authStatus = new HashMap<>();
+		authStatus.put("username", user_name);
+		authStatus.put("status", false);
+		
+		session.setMaxInactiveInterval(300);
+		session.setAttribute("authStatus", authStatus);
+
+		return new ResponseEntity<Object>(user_name, HttpStatus.OK);
+	}
+	
 
 	/////////////////////////////////////////////////////////////////////
 }

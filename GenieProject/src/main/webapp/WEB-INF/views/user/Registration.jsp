@@ -140,6 +140,7 @@
 		});
 	}
 </script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 <script>
 	$(function(){
 		$("#idCheck").click(function(){
@@ -157,18 +158,18 @@
 			});
 
 			// 아이디, 비밀번호
-			if($("#user_id").val()==""){
+			if($("#user_id").val().trim()==""){
 				alert("아이디를 입력하세요");
 				$("#user_id").focus();
 				return false;
 			}
 			//아이디 중복검사여부
-			if($("#idCheckState").val()!='Y'){
+			if($("#idCheckState").val().trim()!='Y'){
 				alert("아이디를 중복검사 하세요");
 				return false;
 			}
 
-			if($("#user_pwd").val()==""){
+			if($("#user_pwd").val().trim()==""){
 				alert("비밀번호를 입력하세요");
 				$("#user_pwd").focus();
 				return false;
@@ -201,7 +202,7 @@
 				return false;
 			}
 			// 이메일
-			if($("#user_email").val()==""){
+			if($("#user_email").val().trim()==""){
 				alert("이메일을 입력하세요");
 				$("#user_email").focus();
 				return false;
@@ -215,7 +216,7 @@
 <section class="home">
 		<div class="container">
 			<h1>일반회원 회원가입</h1>
-			<form method="get" action="/" id="logFrm">
+			<form method="post" action="/user/UserWrite" id="logFrm" onsubmint="hashForm(this); return false;">
 				<ul class="userForm">
 					<div id="idForm">
 						<p>아이디</p>
@@ -227,7 +228,11 @@
 						<p>비밀번호</p>
 						<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
 						<p>비밀번호 확인</p>
-						<input type="password" id="user_pwd" name="user_pwd2" placeholder="비밀번호를 입력하세요">
+						<input type="password" id="user_pwd2" name="user_pwd2" placeholder="비밀번호를 입력하세요">
+					</div>
+					<div id="idForm">
+						<p>이름</p>
+						<input type="text" name="user_name" id="user_name" placeholder="이름을 입력하세요">
 					</div>
                     <div id="phoneForm">
 						<p>휴대폰 번호</p>
