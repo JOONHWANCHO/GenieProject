@@ -28,12 +28,12 @@
 			window.close();
 		});
 	});
-	console.log(idCnt);
+
 </script>
 <section class="home">
     <div class="find_info">
-		<h3>아이디를 입력해주세요</h3>
-		<input type="email" name="email" class="email">
+		<h3>가입하신 아이디를 입력해주세요</h3>
+		<input type="text" name="user_name" class="user_name">
 		<button class="find_btn">찾기</button>
 	</div>
 <section>
