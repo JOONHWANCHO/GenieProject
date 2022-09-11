@@ -64,7 +64,7 @@ public class UserController {
 		return mav;
 	}
 
-	//회원가입 폼으로 이동
+	//회원가입 폼으로 이동.
 	@GetMapping("Registration")
 	public ModelAndView RegistragionForm() {
 		mav = new ModelAndView();
