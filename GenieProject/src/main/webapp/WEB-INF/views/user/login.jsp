@@ -93,11 +93,11 @@
 	$(function(){
 
     $("#idCheck").click(function(){
-			window.open("/user/FindId","FindId","width=400, height=300");
+			window.open("/cert/FindId","FindId","width=400, height=300");
 		});
 
      $("#PwdCheck").click(function(){
-			window.open("/user/FindPwd","FindPwd","width=400, height=300");
+			window.open("/cert/FindPwd","FindPwd","width=400, height=300");
 		});
 
 		$('#log').submit(function(){
