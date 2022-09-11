@@ -3,7 +3,7 @@
 
 <style>
 .wrapper{
-    background-color: #f5fcfb;
+    background-color: #f5f5f7;
     width: 100%;
     height: 100vh;
     margin:0;
@@ -14,13 +14,13 @@
     width: auto;
     height: 100%;
     margin: 0;
-    box-shadow: 0 0 15px #278178;
+    box-shadow: 0 0 5px #b4b4b4;
     font-weight: bold;
     border-radius: 10px;
 }
 .cart h1{
     padding: 1em 1em 1.5em 1em;
-    color: #278178;
+    color: #1d1d1f;
 
 }
 .cart>h1>i{
@@ -29,7 +29,7 @@
 .line{
     width : 90%;
     height: .2vh;
-    background-color: #278178;
+    background-color: #6e6e73;
     margin: 0 5%;
 }
 .cart-product{
@@ -51,7 +51,7 @@
     float: left;
     border : 1px solid #fff;
     border-radius: 5px;
-    box-shadow: 0 0 1px #278178;
+    box-shadow: 0 0 5px #b4b4b4;
 }
 .cart-content>ul>li:nth-child(4n+2){
     width: 62%;
@@ -59,8 +59,8 @@
 /* -----------------------------------리스트스타일----------------------------------------- */
 .buy a{
     margin: 30% 1% 1% 80%;
-    background-color: #96aee0;
-    color: #2b4b91;
+    background-color: #0071e3;
+    color: #fff;
     padding: 1%;
     width: 10%;
     display: flex;
@@ -68,8 +68,8 @@
     border-radius: 15px
 }
 .buy a:hover{
-    background-color: #2b4b91;
-    color: #dbe3f4;
+    background-color: #0077ed;
+    color: #fff;
 	transition: .4s;
 }
 /* --------------------------------구매하기버튼---------------------- */

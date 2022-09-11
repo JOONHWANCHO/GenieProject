@@ -4,7 +4,7 @@
 
 <style>
 	.responsive-wrapper {
-		background-color: #effaf9;
+		background-color: #f5f5f7;
 		background-size: cover;
 		width: 100%;
 		height: 100vh;
@@ -22,8 +22,8 @@
 		width: 25%;
 		margin-right: 1em;
 		background-color: #fff;
-		color: #1f635c;
-		box-shadow: 0 0 15px #278178;
+		color: #1d1d1f;
+		box-shadow: 0 0 1px #dfdfdf;
 		font-weight: bold;
 		border-radius: 10px;
 	}
