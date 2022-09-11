@@ -29,7 +29,7 @@
         	}
 		
 			$.ajax({
-				url: "/user/sendUserId",
+				url: "/cert/sendUserId",
 				type: "POST",
 				data: { user_email: user_email }
 			}).done(function() {
