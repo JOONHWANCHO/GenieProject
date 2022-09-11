@@ -10,18 +10,18 @@
 	padding: 6% 15%;
 
 	/*background: url(../img/background.jpg);*/
-	background: #d3f1ee;
+	background: #f5f5f7;
 	background-size: cover;
 	background-position: center;
 }
 h1 {
 	position: relative;
 	margin: 0 0 .7em 0;
-	color: #96aee0;
+	color: #1d1d1f;
 	font-size: 3.8em;
 }
 .home-text p{
-	color: #91ddd6;
+	color: #6e6e73;
 	font-size: 1.5em;
 	font-weight: bold;
 	margin-top: -.5em;
