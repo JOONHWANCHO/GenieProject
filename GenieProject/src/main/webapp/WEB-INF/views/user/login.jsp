@@ -10,8 +10,6 @@
     margin: 0;
     padding: 3% 23%;
     background: #f5f5f7;
-    background-size: cover;
-    background-position: center;
   }
   /* 폼을 세로로 정렬하기 위한 css */
   .wrapper {
@@ -52,7 +50,7 @@
     color: #cccccc;
   }
   /* 로그인(submit) */
-  .fourth {
+  input[type=submit] {
     background-color: #56baed;
     color: #fff;
     padding: 1em;
@@ -122,11 +120,11 @@
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="log">
         <p>아이디</p>
-        <input type="text" id="user_id" class="second" name="user_id" placeholder="아이디를 입력하세요">
+        <input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요">
       <!-- 비밀번호 -->
         <p>비밀번호</p>
-        <input type="password" id="user_pwd" class="third" name="user_pwd" placeholder="비밀번호를 입력하세요">
-        <input type="submit" class="fourth" value="로그인">
+        <input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
+        <input type="submit" value="로그인">
         <h3><a href="" id="idCheck">아이디찾기</a> | <a href="" id="PwdCheck">비밀번호 찾기</a></h3>
       <!-- 로그인폼-->
         <a href="/user/Registration"><input type="button" id="userReg" value="일반회원 회원가입"></a>

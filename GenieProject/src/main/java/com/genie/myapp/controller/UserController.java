@@ -269,7 +269,7 @@ public class UserController {
 		return mav;
 	}
 
-	@PostMapping("/find/password/auth")
+	@PostMapping("/user/password_auth")
 	public ResponseEntity<Object> authenticateUser(String user_name, HttpSession session) {
 
     	Map<String, Object> authStatus = new HashMap<>();
@@ -282,6 +282,22 @@ public class UserController {
 		return new ResponseEntity<Object>(user_name, HttpStatus.OK);
 	}
 	
+	@GetMapping("/user/password_authOk")
+	public String auth(String user_name, HttpSession session) {
+		Map<String, Object> authStatus = (Map<String, Object>) session.getAttribute("authStatus");
+		if(authStatus == null || !user_name.equals(authStatus.get("user_name"))) {
+			return "redirect:/user/FindPwd";
+		}
+		
+		return "user/FindPwd_auth";
+	}
+
+	@GetMapping("/user/pwd_emailCheck")
+	public ResponseEntity<Boolean> emailCheck(String user_name, String user_email){
+    boolean emailCheck = mailService.emailCheck(user_name, user_email);
+
+    	return new ResponseEntity<Boolean>(emailCheck, HttpStatus.OK);
+	}
+}
 
 	/////////////////////////////////////////////////////////////////////
-}
