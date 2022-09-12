@@ -90,28 +90,41 @@
   }
 </style>
 <script>
+
 	$(function(){
 
     $("#idCheck").click(function(){
 			window.open("/cert/FindId","FindId","width=400, height=300");
 		});
 
-     $("#PwdCheck").click(function(){
+    $("#PwdCheck").click(function(){
 			window.open("/cert/FindPwd","FindPwd","width=400, height=300");
 		});
 
 		$('#log').submit(function(){
         if($("#user_id").val()==""){
+
           alert("아이디를 입력하세요..");
           return false;
         }
+
         if($("#user_pwd").val()==""){
+
           alert("비밀번호를 입력하세요..");
           return false;
         }
-			return true;
-		});
-	});
+
+			  return true;
+	  });
+
+  //   $(function(){
+  //     const msg = "${msg}";
+  //     if(msg != null){
+  //       alert(msg);
+  //     }
+  //   });
+});
+
 </script>
 
 <section class="login">
