@@ -27,7 +27,7 @@
 
 	<update id ="PwdEditOk">
 		update user 
-		set user_pwd=#{user_pwd2}  
+		set user_pwd=#{user_pwd2}
 		where user_id=#{user_id} and user_pwd=#{user_pwd}
 	</update>
 	

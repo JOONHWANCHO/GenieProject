@@ -65,19 +65,20 @@
 }
 .order-title>ul>li{
   float: left;
-  width: 10%;
+  width: 20%;
   margin-bottom: 2em;
+
 }
 .order-title>ul>li:nth-child(3n+1){
-  width: 80%;
+  width: 60%;
 }
 .order-detail>ul>li{
   float:left;
-  width: 20%;
+  width: 25%;
   margin-bottom: 10em;
 }
 .order-detail>ul>li:nth-child(3n+1){
-  width: 60%;
+  width: 50%;
 }
 /* -----------------------여기는 오른쪽박스----------------------------- */
 </style>
@@ -112,7 +113,7 @@
     <h1>주문목록</h1>
       <div class="order">
         <ul>
-          <li>주문번호 : {vo.product_no}</li>
+          <li>주문번호 : {vo.product_id}</li>
           <li>주문일 : {vo.order_writedate}</li>
         </ul>
       </div>
@@ -125,9 +126,9 @@
       </div>
       <div class="order-detail">
         <ul>
-          <li>{product_title}</li>
-          <li>{product-quantity}</li>
-          <li>{product_price}</li>
+          <li>{vo.product_name}</li>
+          <li>{vo.product-quantity}</li>
+          <li>{vo.product_price}</li>
         </ul>
       </div>
     </div>

@@ -55,11 +55,11 @@ public class CertController {
 		return mav;
 	}
 
-	@PostMapping("/cert/password_auth")
+	@PostMapping("/cert/FindPwd_auth")
 	public ResponseEntity<Object> authenticateUser(String user_name, HttpSession session) {
 
     	Map<String, Object> authStatus = new HashMap<>();
-		authStatus.put("username", user_name);
+		authStatus.put("user_name", user_name);
 		authStatus.put("status", false);
 		
 		session.setMaxInactiveInterval(300);
@@ -68,8 +68,8 @@ public class CertController {
 		return new ResponseEntity<Object>(user_name, HttpStatus.OK);
 	}
 
-	
-	@GetMapping("/cert/password_authOk")
+	//인증번호 보내기 페이지
+	@GetMapping("/cert/FindPwd_authOk")
 	public String auth(String user_name, HttpSession session) {
 		Map<String, Object> authStatus = (Map<String, Object>) session.getAttribute("authStatus");
 		if(authStatus == null || !user_name.equals(authStatus.get("user_name"))) {
@@ -104,8 +104,8 @@ public class CertController {
 		
 		
 		Map<String, Object> authNumMap = new HashMap<>();
-		long createTime = System.currentTimeMillis(); // 인증번호 생성시간
-		long endTime = createTime + (300 *1000);	// 인증번호 만료시간
+		long createTime = System.currentTimeMillis();
+		long endTime = createTime + (300 *1000);
 		
 		authNumMap.put("createTime", createTime);
 		authNumMap.put("endTime", endTime);
@@ -118,7 +118,7 @@ public class CertController {
 	}
 
 	// 인증 완료 후
-	@PostMapping("/cert/completion")
+	@PostMapping("/cert/expiration")
 	public ResponseEntity<String> authCompletion(HttpSession session) {
 		Map<String, Object> authStatus = (Map<String, Object>) session.getAttribute("authStatus");
 		if(authStatus == null) {
