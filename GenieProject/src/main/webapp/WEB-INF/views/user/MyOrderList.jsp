@@ -82,22 +82,7 @@
 }
 /* -----------------------여기는 오른쪽박스----------------------------- */
 </style>
-<!-- -----------------------------------------스크립트부분---------------------------------- -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-	window.onload = function(){
-		document.getElementById("address_kakao").addEventListener("click", function(){ 
-			//카카오 지도 발생
-			new daum.Postcode({
-				oncomplete: function(data) { //선택시 입력값 세팅
-					document.getElementById("user_zipcode").value = data.zonecode; 
-					document.getElementById("user_addr").value = data.address; 
-				}
-			}).open();
-		});
-	}
-</script>
-<!-- ------------------------------------스크립트부분 끝---------------------------------------- -->
+
 <div class="responsive-wrapper">
   <div class="content">
     <div class="content-panel">

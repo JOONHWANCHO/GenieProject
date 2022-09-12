@@ -128,7 +128,7 @@
     <div class="my-delivery">
       <h2>${vo.user_name}님의 배송지 목록</h2>
         <ul id="delivery_1">
-          <li>배송지1</li>
+          <h3>배송지1</h3>
 
           <li>우편번호</li>
           <input type ="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
@@ -138,7 +138,7 @@
           <li><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}" /></li><br>
         </ul>
         <ul id="delivery_2">
-          <li>배송지1</li>
+          <h3>배송지2</h3>
 
           <li>우편번호</li>
           <input type ="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
@@ -147,7 +147,7 @@
           <li>상세주소</li>
           <li><input type ="text" name = "user_detailaddr" id ="user_detailaddr"/></li><br>
         <ul id="delivery_3">
-          <li>배송지3</li>
+          <h3>배송지3</h3>
 
           <li>우편번호</li>
           <input type ="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
