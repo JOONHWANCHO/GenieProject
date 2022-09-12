@@ -1,25 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/top.jspf"%>
 <style>
-.home{
+/* ------------------뒤쪽 백그라운드 설정----------------- */
+.product {
 	position: relative;
 	width: 100%;
     margin: 0;
     padding:3em 13em;
-
-	/*background: url(../img/background.jpg);*/
 	background: #f5f5f7;
-	background-size: cover;
-	background-position: center;
 }
-.home .bubbles{
+/* ----------------------------버블과 시작문구 설정------------------------------------ */
+.bubbles {
     display:flex;
     justify-content: center;
     align-items: center;
-}
-.bubbles {
-    display: inline-block;
-    font-family: 'Josefin Sans', sans-serif;
     position: relative;
     margin-bottom: 6em;
 }
@@ -37,10 +31,12 @@
     background-color: #6e6e73;
     z-index: 1;
 }
+/* -------------------------------컨테이너 안 이미지 설정------------------------------------------ */
 img{
     width: 100%;
     height: auto;
 }
+/* ------------------------그리드 설정과 이미지 설정------------------- */
 .grid-container{
     /* grid style */
 	display: grid;
@@ -93,6 +89,7 @@ img{
 .product-list:hover .item img {
     filter: blur(2px);
 }
+/* --------------------------상품정보설정(글자)------------------------- */
 .wrapper>ul>li:nth-child(1){
     color: #c8c8c8;
     padding-top: .6em;
@@ -133,7 +130,7 @@ setInterval(function(){
 });
 </script>
 
-<section class="home">
+<section class="product ">
     <div class="bubbles">
         <h1>찾으시는 선물이 없으셨나요? 그럼 전체 상품을 둘러보세요!</h1>
     </div>
@@ -149,9 +146,9 @@ setInterval(function(){
                 </div>
             </article>
             <ul>
-                <li>판매자</li>
-                <li>상품이름</li>
-                <li>가격</li>
+                <li>{vo.company_name}</li>
+                <li>{vo.product_name}</li>
+                <li>{vo.product_price}</li>
             </ul>
         </div>
         <div class="wrapper">

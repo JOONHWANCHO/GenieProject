@@ -159,9 +159,10 @@ public class UserController {
 	//주문목록/배송조회
 	@GetMapping("MyOrderList")
 	public ModelAndView MyOrderList(HttpSession session) {
-		String user_id = (String)session.getAttribute("logId");
 
+		String user_id = (String)session.getAttribute("logId");
 		UserVO vo = service.getUser(user_id);
+		
 		mav = new ModelAndView();
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyOrderList");
