@@ -21,6 +21,7 @@
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+
 $(document).ready(function(){
 	
 	function usernameCheck() {
@@ -75,6 +76,7 @@ $(document).ready(function(){
 	
 		
 	})
+
 
 </script>
 <section class="home">
