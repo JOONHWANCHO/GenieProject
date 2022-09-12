@@ -110,7 +110,7 @@ public class UserController {
 			int result = service.UserWrite(vo);
 
 			String msg = "<script>";
-			msg += "alert('회원가입이 성공하였습니다.');";
+			msg += "alert('회원가입을 성공하였습니다.');";
 			msg += "location.href='/user/login'";
 			msg += "</script>";
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);

@@ -108,19 +108,7 @@ label {
 </style>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-window.onload = function(){
-	document.getElementById("address_kakao").addEventListener("click", function(){ 
-		//카카오 지도 발생
-		new daum.Postcode({
-			oncomplete: function(data) { //선택시 입력값 세팅
-				document.getElementById("user_zipcode").value = data.zonecode; 
-				document.getElementById("user_addr").value = data.address; 
-			}
-		}).open();
-	});
-}
-</script>
+<script src="../js_css/KakaoAddress.js"></script>
 
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 <script>
@@ -134,10 +122,7 @@ $(function(){
 	});
 	//유효성 검사
 	$("#logFrm").submit(function(){
-		
-		$("#userid").change(function(){
-			$("#idCheckState").val("N");
-		});
+
 
 		// 아이디, 비밀번호
 		if($("#user_id").val().trim()==""){
@@ -166,7 +151,7 @@ $(function(){
 			alert("연락처를 입력하세요");
 			return false;
 		}
-		return true;
+
 		// 우편번호
 		if($("#user_zipcode").val()==""){
 			alert("우편번호를 선택하세요");
@@ -189,15 +174,46 @@ $(function(){
 			$("#user_email").focus();
 			return false;
 		}
+
 		return true;
 	});
 });
+</script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+<script>
+
+   var hashcode_num = false;
+
+	function hashForm(form) {
+
+		form.user_pwd.value = form.user_pwd.value.trim();
+        if(form.user_pwd.value.length == 0) {
+			alert('비밀번호를 입력해주세요.');
+			form.user_pwd.focus();
+
+			return;
+		}
+
+		form.user_pwd2.value = form.user_pwd2.value.trim();
+		if(form.user_pwd2.value.length == 0) {
+			alert('비밀번호를 입력해주세요.');
+			form.user_pwd2.focus();
+
+			return;
+		}
+	
+		form.user_pwd2.value = sha256(form.user_pwd.value);
+		form.user_pwd.value = form.user_pwd2.value;
+		
+		form.submit();
+		hashcode_num = true;
+	}
 </script>
 
 <section class="registration">
 	<div class="wrapper">
 		<h1>일반회원 회원가입</h1>
-		<form method="post" action="/user/UserWrite" id="logFrm" onsubmint="hashForm(this); return false;">
+		<form method="post" action="/user/UserWrite" id="logFrm" onsubmit="hashForm(this); return false;">
 			<ul class="idForm">
 				<li>아이디</li>
 				<li>
