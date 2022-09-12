@@ -39,7 +39,8 @@
 			return;
 		}
 	
-		form.user_pwd2.value = sha256(form.user_pwd1.value);
+		form.user_pwd2.value = sha256(form.user_pwd.value);
+		form.user_pwd.value = form.user_pwd2.value;
 		
 		form.submit();
 		hashcode_num = true;
