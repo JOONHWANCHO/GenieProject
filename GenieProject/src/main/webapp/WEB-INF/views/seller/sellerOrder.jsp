@@ -171,6 +171,7 @@ function changeContent()
 					        <th>주문자명</th>
 					        <th>수령자명</th>
 					        <th>주소</th>
+							<th>요청사항</th>
 							<th></th>
 					      </tr>
 					      <tr>
@@ -183,6 +184,7 @@ function changeContent()
 					        <td>김민진</td>
 					        <td>이서현</td>
 					        <td>서울시 고구마구 고구마동 고구마</td>
+							<td>문앞에 놔주세요</td>
 							<td><input type="button" value="Cancel" onclick="changeContent"></td>
 					      </tr>
 					      <tr>
@@ -195,6 +197,7 @@ function changeContent()
 					        <td>채한준</td>
 					        <td>조준환</td>
 					        <td>서울시 당근구 당근동 당근</td>
+							<td>문앞에 놔주세요</td>
 							<td><input type="button" value="Cancel" onclick=""></td>
 					      </tr>
 					      <tr>
@@ -208,6 +211,7 @@ function changeContent()
 					        <td>오세영</td>
 					        <td>홍세호</td>
 					        <td>서울시 감자구 감자동 감자</td>
+							<td>문앞에 놔주세요</td>
 							<td><input type="button" value="Cancel" onclick=""></td>
 					      </tr>
 					  </table>
