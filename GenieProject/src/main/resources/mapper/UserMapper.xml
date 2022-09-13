@@ -5,30 +5,30 @@
 <mapper namespace = "com.genie.myapp.dao.UserDAO">
 
 	<select id = "idCheck" resultType="int">
-		select count(user_id) cnt from user where user_id =#{user_id}; 
+		select count(user_id) cnt from user where user_id=#{user_id}; 
 	</select>
 
     <insert id = "UserWrite">
 		insert into user(user_id, user_pwd, user_name, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr, user_gender)
-		values(#{user_id}, #{user_pwd}, #{user_name}, #{user_phone_num}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr}, #{user_gender})
+		values(#{user_id}, sha2(#{user_pwd},256), #{user_name}, #{user_phone_num}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr}, #{user_gender})
 	</insert>
 
 	<select id = "loginOk" resultType = "UserVO">
 		select user_id, user_name 
 		from user 
-		where user_id=#{user_id} and user_pwd=#{user_pwd}
+		where user_id=#{user_id} and user_pwd=sha2(#{user_pwd},256)
 	</select>
 
     <update id ="UserEditOk">
 		update user 
 		set user_phone_num=#{user_phone_num}, user_email=#{user_email} 
-		where user_id =#{user_id}
+		where user_id=#{user_id}
 	</update>
 
 	<update id ="PwdEditOk">
 		update user 
-		set user_pwd=#{user_pwd2}
-		where user_id=#{user_id} and user_pwd=#{user_pwd}
+		set user_pwd=sha2(#{user_pwd2},256)
+		where user_id=#{user_id} and user_pwd=sha2(#{user_pwd},256)
 	</update>
 	
     <select id = "getUser" resultType = "UserVO">
