@@ -90,8 +90,6 @@
   }
 </style>
 <script>
-
-
 	$(function(){
 
     $("#idCheck").click(function(){
@@ -111,8 +109,18 @@
 
 	function hashForm(form) {
 
+    form.user_id.value= form.user_id.value.trim();
+    if(form.user_id.value.length == 0) {
+
+			alert('아이디를 입력해주세요.');
+			form.user_id.focus();
+
+			return;
+		}
+
 		form.user_pwd.value = form.user_pwd.value.trim();
     if(form.user_pwd.value.length == 0) {
+
 			alert('비밀번호를 입력해주세요.');
 			form.user_pwd.focus();
 
