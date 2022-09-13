@@ -4,14 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-import com.genie.myapp.vo.AdminVO;
+
+import com.genie.myapp.vo.AdminProductVO;
 //추상클래스 
 @Mapper
 @Repository
-public interface AdminDAO {
-	//글목록
-	public List<AdminVO> adminCategoryTag(AdminVO VO);
+public interface AdminProductDAO {
 
-	public List<AdminVO> adminTag(AdminVO VO);
-	
+	public List<AdminProductVO> adminProduct(AdminProductVO VO);
 }
