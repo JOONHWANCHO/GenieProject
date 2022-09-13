@@ -113,6 +113,7 @@ label {
 <script>
 $(function(){
 
+
 	$("#idCheck").click(function(){
 		window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
 	});
