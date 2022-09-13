@@ -90,8 +90,6 @@
   }
 </style>
 <script>
-
-
 	$(function(){
 
     $("#idCheck").click(function(){
@@ -104,27 +102,22 @@
 });
 
 </script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 <script>
-
-   var hashcode_num = false;
-
-	function hashForm(form) {
-
-		form.user_pwd.value = form.user_pwd.value.trim();
-    if(form.user_pwd.value.length == 0) {
-			alert('비밀번호를 입력해주세요.');
-			form.user_pwd.focus();
-
-			return;
-		}
-
-	
-		form.user_pwd.value = sha256(form.user_pwd.value);
-
-		form.submit();
-		hashcode_num = true;
-	}
+    $(function(){
+        $("#logFrm").submit(function(){
+            if($("#user_id").val()==""){
+                alert("아이디를 입력하세요..");
+				$("#user_id").focus();
+                return false;
+            }
+            if($("#user_pwd").val()==""){
+                alert("비밀번호를 입력하세요..");
+				$("#user_pwd").focus();
+                return false;
+            }
+            return true;
+        });
+    });
 </script>
 
 <section class="login">
@@ -133,7 +126,7 @@
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="logFrm" onsubmit="hashForm(this); return false;">
         <p>아이디</p>
-        <input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요" onsubmit="hashForm(this); return false;">
+        <input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요">
       <!-- 비밀번호 -->
         <p>비밀번호</p>
         <input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
