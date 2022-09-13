@@ -10,7 +10,7 @@
 
     <insert id = "UserWrite">
 		insert into user(user_id, user_pwd, user_name, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr, user_gender)
-		values(#{user_id}, #{user_pwd2}, #{user_name}, #{user_phone_num}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr}, #{user_gender})
+		values(#{user_id}, #{user_pwd}, #{user_name}, #{user_phone_num}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr}, #{user_gender})
 	</insert>
 
 	<select id = "loginOk" resultType = "UserVO">
