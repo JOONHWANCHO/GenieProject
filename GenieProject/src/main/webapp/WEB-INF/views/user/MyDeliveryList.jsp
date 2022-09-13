@@ -1,29 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jspf" %>
-<script src="https://kit.fontawesome.com/8d73d915f1.js" crossorigin="anonymous"></script>
 
 <style>
-.responsive-wrapper {
-  background-color: #effaf9;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 1% 12%;
-}
-/* ------------------여기까지는 nav바 빼고 나머지 부분설정--------------------- */
+  .responsive-wrapper {
+    background-color: #f5f5f7;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 1% 12%;
+  }
+  /* ------------------여기까지는 nav바 빼고 나머지 부분(회색부분)설정--------------------- */
 .content {
   display: flex;
   align-items: flex-start;
 }
+.content h2{
+  margin-bottom: 1em;
+}
+/* 박스를 가로로 정렬하기 위한 설정과 오른쪽 박스들의 h2 설정 */
 .content-panel {
   display: flex;
   flex-direction: column;
   width: 25%;
   margin-right: 1em;
   background-color: #fff;
-  color: #1f635c;
-  box-shadow: 0 0 15px #278178;
+  color: #1d1d1f;
+  box-shadow: 0 0 1px #dfdfdf;
   font-weight: bold;
   border-radius: 10px;
 }
@@ -48,10 +51,10 @@
 .content-main{
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 30%;
   background-color: #fff;
-  color: #1f635c;
-  box-shadow: 0 0 15px #278178;
+  color: #1d1d1f;
+  box-shadow: 0 0 1px #dfdfdf;
   font-weight: bold;
   border-radius: 10px;
   padding: 3em;
@@ -63,15 +66,21 @@
 .content-main h1{
   margin-bottom: 1em;
 }
-.inquiry>ul>li{
-  float: left;
-  width: 15%;
-  margin-bottom: 2em;
+
+/* -----------------------여기까지는 첫번째오른쪽박스----------------------------- */
+.my-delivery{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  background-color: #fff;
+  color: #1d1d1f;
+  box-shadow: 0 0 1px #dfdfdf;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 3em;
+  margin-left: 1em;
 }
-.inquiry>ul>li:nth-child(3n+1){
-  width: 70%;
-}
-/* -----------------------여기는 오른쪽박스----------------------------- */
+/* --------------------------여기까지 두번째 오른쪽박스----------------------------*/
 </style>
 <!-- -----------------------------------------스크립트부분---------------------------------- -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -101,15 +110,52 @@
         </ul>
     </div>
     <div class="content-main">
-		<h1>배송지 확인</h1>
+      <h2>새로운 배송지</h2>
+        <div class="inquiry">
+          <ul id="addrForm">
+            <li>우편번호</li>
+            <li>
+              <input type ="text" name = "user_zipcode" id ="user_zipcode" readonly/>
+              <input type = "button" value = "우편번호찾기" id = "address_kakao"/>
+            </li>
+            <li>주소</li>
+            <li><input type = "text" name = "user_addr" id ="user_addr" readonly/></li>
+            <li>상세주소</li>
+            <li><input type ="text" name = "user_detailaddr" id ="user_detailaddr" /></li>	
+          </ul>
+        </div>
+    </div>
+    <div class="my-delivery">
+      <h2>${vo.user_name}님의 배송지 목록</h2>
+        <ul id="delivery_1">
+          <h3>배송지1</h3>
 
-      <div class="inquiry">
-        <ul>
-          <li>문의내역</li>
-          <li>문의일</li>
-          <li>답변여부</li>
+          <li>우편번호</li>
+          <input type ="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
+           <li>주소</li>
+          <li><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></li>
+          <li>상세주소</li>
+          <li><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}" /></li><br>
         </ul>
-      </div>
+        <ul id="delivery_2">
+          <h3>배송지2</h3>
+
+          <li>우편번호</li>
+          <input type ="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
+           <li>주소</li>
+          <li><input type = "text" name = "user_addr" id ="user_addr" readonly/></li>
+          <li>상세주소</li>
+          <li><input type ="text" name = "user_detailaddr" id ="user_detailaddr"/></li><br>
+        <ul id="delivery_3">
+          <h3>배송지3</h3>
+
+          <li>우편번호</li>
+          <input type ="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
+          <li>주소</li>
+          <li><input type = "text" name = "user_addr" id ="user_addr" readonly/></li>
+          <li>상세주소</li>
+          <li><input type ="text" name = "user_detailaddr" id ="user_detailaddr"/></li>
+        </ul>
     </div>
   </div>
 </div>

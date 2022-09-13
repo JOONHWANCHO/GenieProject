@@ -1,6 +1,5 @@
 package com.genie.myapp.service;
 
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -41,13 +40,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<String> FindId(String email) {
-        return dao.FindId(email);
-    }
-
-    @Override
     public int PwdEditOk(UserVO vo) {
         return dao.PwdEditOk(vo);
-    }
+    }    
 }
  

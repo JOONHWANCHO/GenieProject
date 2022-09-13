@@ -18,15 +18,31 @@
 	padding: 0 5px;
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
-
 		$(".find_btn").click(function() {
-			if($("#user_pwd").val()==""){
+			const user_email = $(".email").val();
+			if($("#user_email").val()==""){
           		alert("이메일을 입력하세요..");
           		return false;
         	}
-			return true;
+		
+			$.ajax({
+				url: "/cert/sendUserId",
+				type: "POST",
+				data: { user_email: user_email }
+			}).done(function() {
+			const html =`<div class="send_email">
+							<div>
+								<span>입력하신 이메일로 아이디를 전송했습니다</span><br>
+								<div>가입한 적이 없는 이메일 주소나<br> 올바르지 않은 이메일 주소를 입력하신 경우에는<br> 메일을 받을 수 없습니다.</div>	
+							</div>
+						</div>`;
+ 
+					$(".home").html(html);
+ 
+			});
 		});
 	});
 </script>

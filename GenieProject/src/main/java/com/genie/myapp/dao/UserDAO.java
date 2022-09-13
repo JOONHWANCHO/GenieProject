@@ -1,7 +1,5 @@
 package com.genie.myapp.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +10,7 @@ import com.genie.myapp.vo.UserVO;
 public interface UserDAO {
 
     //아이디 중복검사
-	public int idCheck(String user__id);
+	public int idCheck(String user_id);
 	// 회원가입
 	public int UserWrite(UserVO vo);
 	// 로그인
@@ -21,8 +19,8 @@ public interface UserDAO {
 	public UserVO getUser(String user_id);
 	//회원 정보 수정: DB 업데이트
 	public int UserEditOk(UserVO vo);
-	//아이디 찾기
-	public List<String> FindId(String email);
 	//비밀번호 변경
 	public int PwdEditOk(UserVO vo);
+	
+	
 }
