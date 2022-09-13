@@ -109,8 +109,7 @@ label {
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js_css/KakaoAddress.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
-<script src="../js_css/encryption.js"></script>
+<script src="../js_css/Registration.js"></script>
 <script>
 $(function(){
 

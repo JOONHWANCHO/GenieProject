@@ -146,7 +146,7 @@ setInterval(function(){
                 </div>
             </article>
             <ul>
-                <li>{vo.company_name}</li>
+                <li>{vo.seller_id}</li>
                 <li>{vo.product_name}</li>
                 <li>{vo.product_price}</li>
             </ul>
