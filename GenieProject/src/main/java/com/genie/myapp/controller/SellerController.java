@@ -1,13 +1,20 @@
 package com.genie.myapp.controller;
 
+import javax.inject.Inject;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.genie.myapp.service.SellerService;
+
 @RestController
 @RequestMapping("/seller/*")
 public class SellerController {
+	
+	@Inject
+	SellerService service;
 	
 	ModelAndView mav = null;
 	
@@ -55,6 +62,22 @@ public class SellerController {
 	public ModelAndView productForm() {
 		mav = new ModelAndView();
 		mav.setViewName("seller/sellerProductForm");
+		return mav;
+	}
+	
+	//seller 상품관리 페이지
+	@GetMapping("sellerProduct")
+	public ModelAndView sellerProduct() {
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerProduct");
+		return mav;
+	}
+	
+	//아이디 중복검사
+	@GetMapping("sellerIdCheck")
+	public ModelAndView sellerIdCheck(String seller_id) {
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerIdCheck");
 		return mav;
 	}
 }

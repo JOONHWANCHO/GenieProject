@@ -84,7 +84,7 @@
 	#sel_zipcode{
 		width:50%;
 	}
-	#idChk, #zipSearch{
+	#idCheck, #zipSearch{
 		width:35%;
 		padding:10px;
 		display:inline-block;
@@ -127,8 +127,8 @@
 		});
 		
 		//아이디 중복검사
-		$("#idChk").click(function(){
-			window.open("/seller/selidCheck?seller_id="+$("#seller_id").val(),"idChk","width=400, height=200");
+		$("#idCheck").click(function(){
+			window.open("/seller/sellerIdCheck?seller_id="+$("#seller_id").val(),"sellerIdCheck","width=400, height=200");
 		});
 		$("#seller_id").change(function(){
 			$("#idCheckState").val("N");
@@ -208,23 +208,23 @@
 			<ul class="selForm">
 				<div id="idForm">
 					<p>아이디</p>
-					<input type="button" value="아이디 중복검사" id="idChk"/>
-					<input type="text" id="seller_id" name="seller_id" placeholder="">
+					<input type="button" value="아이디 중복검사" id="idCheck"/>
+					<input type="text" id="seller_id" name="seller_id" placeholder="아이디를 입력하세요">
 					<input type="hidden" id="idCheckState" value="N"/>
 				</div>
 				<div id="pwdForm">
 					<p>비밀번호</p>
-					<input type="password" id="seller_pwd" name="seller_pwd">
+					<input type="password" id="seller_pwd" name="seller_pwd" placeholder="비밀번호를 입력하세요">
 					<p>비밀번호 확인</p>
-					<input type="password" id="seller_pwd2" name="seller_pwd2">
+					<input type="password" id="seller_pwd2" name="seller_pwd2" placeholder="비밀번호를 입력하세요">
 				</div>
 				<div>
 					<p>회사명</p>
-					<input type="text" id="company_name" name="company_name" placeholder="">
+					<input type="text" id="company_name" name="company_name" placeholder="회사명을 입력하세요">
 				</div>
 				<div>
 					<p>대표자명</p>
-					<input type="text" id="ceo_name" name="ceo_name" placeholder="">
+					<input type="text" id="ceo_name" name="ceo_name" placeholder="대표자명을 입력하세요">
 				</div>
 				<div id="telForm">
 					<p>전화번호</p>
@@ -234,11 +234,11 @@
 				</div>
 				<div>
 					<p>이메일</p>
-					<input type="text" id="seller_email" name="seller_email" placeholder="">
+					<input type="text" id="seller_email" name="seller_email" placeholder="이메일을 입력하세요">
 				</div>
 				<div>
 					<p>홈페이지</p>
-					<input type="text" id="seller_website" name="seller_website" placeholder="">
+					<input type="text" id="seller_website" name="seller_website" placeholder="홈페이지를 입력하세요">
 				</div>
 				<div id="regForm">
 					<p>사업자 등록증</p>
