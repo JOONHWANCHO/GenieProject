@@ -30,11 +30,11 @@
     <div id="passwordForm">
 		<input type="hidden" value="${vo.user_id}" name="user_id"/>
 		<p>비밀번호</p>
-			<input type="text" id="user_pwd" name="user_pwd" placeholder="현재 비밀번호를 입력하세요">
+			<input type="password" id="user_pwd" name="user_pwd" placeholder="현재 비밀번호를 입력하세요">
 		<p>새 비밀번호</p>
-			<input type="text" id="user_pwd1" name="user_pwd1" placeholder="새 비밀번호를 입력하세요">
+			<input type="password" id="user_pwd1" name="user_pwd1" placeholder="새 비밀번호를 입력하세요">
 		<p>새 비밀번호 다시 입력</p>
-			<input type="text" id="user_pwd2" name="user_pwd2" placeholder="새 비밀번호를 입력하세요"><br/><br/>
+			<input type="password" id="user_pwd2" name="user_pwd2" placeholder="새 비밀번호를 입력하세요"><br/><br/>
 			<input type="submit" id="Find_pwd" value="비밀번호 변경"/><br/>
 	</div>
 </form>

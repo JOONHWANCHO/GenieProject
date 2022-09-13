@@ -141,14 +141,14 @@ setInterval(function(){
                 <a class="product-title" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div class="item">
                     <a href="#">
-                        <img src="https://media.tiffany.com/is/image/tiffanydm/GTD_FooterLinks_Guide?$tile$&wid=988&hei=988&fmt=webp">
+                        ${jp.product_image1}
                     </a>
                 </div>
             </article>
             <ul>
-                <li>{vo.seller_id}</li>
-                <li>{vo.product_name}</li>
-                <li>{vo.product_price}</li>
+                <li>${jp.seller_id}</li>
+                <li>${jp.product_name}</li>
+                <li>${jp.product_price}</li>
             </ul>
         </div>
         <div class="wrapper">

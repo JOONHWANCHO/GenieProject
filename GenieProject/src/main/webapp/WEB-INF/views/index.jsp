@@ -5,7 +5,7 @@
 .index {
 	position: relative;
 	width: 100%;
-	height: 100vh;
+	/* height: 100vh; */
 	margin: 0;
 	padding: 3% 15%;
 	background: #f5f5f7;
