@@ -25,7 +25,7 @@ public class SellerController {
 		mav.setViewName("seller/sellerForm");
 		return mav;
 	}
-	// Seller
+	// Seller(UI 참고용)
 	@GetMapping("sellerHome")
 	public ModelAndView sellerHome() {
 		mav = new ModelAndView();
@@ -33,7 +33,7 @@ public class SellerController {
 		return mav;
 	}
 
-	// Seller 홈
+	// Seller 메인페이지
 	@GetMapping("sellerMain")
 	public ModelAndView sellerMain() {
 		mav = new ModelAndView();
