@@ -1,4 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -114,6 +115,7 @@ body {
        column-gap: 1.5rem;
   row-gap: 1.5rem;
 }
+/* 태그 파트 안됨 
 @media (min-width: 600px) {
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -124,7 +126,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
+*/
 .card {
   background-color: #fff;
   border-radius: 8px;
@@ -211,51 +213,41 @@ body {
 						<div class="card-header">
 							<div>
 								<span><img src="https://pngimg.com/uploads/circle/circle_PNG23.png" /></span>
-								<h3>입점요청</h3>
+								<h3>카테고리</h3>
 							</div>
 
 						</div>
 						<div class="card-body">
-							<h3>알라딘</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-body">
-							<h3>자스민</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-body">
-							<h3>자파</h3>
-							<p>G2208001</p>
+							<c:forEach var="vo" items="${list }">
+								<h3>${vo.category_id}</h3>
+								<p>${vo.product_category}</p>
+							</c:forEach>
 						</div>
 						<div class="card-footer">
 							<a href="#">더 보기</a>
 						</div>
 					</article>
+					<!-- 태그 파트 절반 
 					<article class="card">
 						<div class="card-header">
 							<div>
 								<span><img src="https://pngimg.com/uploads/circle/circle_PNG23.png" /></span>
-								<h3>주요사항</h3>
+								<h3>태그</h3>
 							</div>
 						</div>
 						<div class="card-body">
-							<h3>입점요청 100건</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-body">
-							<h3>상품배송지연</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-body">
-							<h3>입점문의</h3>
-							<p>G2208001</p>
+							<c:forEach var="vo" items="${list }">
+								<h3>${vo.product_tag_id}</h3>
+								<p>${vo.product_tag}</p>
+							</c:forEach>
 						</div>
 						<div class="card-footer">
 							<a href="#">더 보기</a>
 						</div>
 					</article>
+					-->
 				</div>
 			</div>
 		</div>
 	</div>
-</main> -->
+</main>

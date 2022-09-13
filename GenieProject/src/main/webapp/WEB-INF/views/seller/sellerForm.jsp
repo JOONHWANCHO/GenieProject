@@ -76,10 +76,7 @@
 		border: 2px solid #f6f6f6;
     	border-radius: 10px 10px 10px 10px;
 	}
-	input[type=file]{
-		
-		
-	}
+
 	#tel1, #tel2, #tel3{
 		width:29%;
 		
@@ -97,7 +94,6 @@
 		border:none;
 		border-radius: 10px;
 		transition: ease .40s;
-		float:right;
 		margin:10px;
 	}
 	#regForm input{

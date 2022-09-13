@@ -1,5 +1,6 @@
 package com.genie.myapp.service;
 
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -37,5 +38,10 @@ public class UserServiceImpl implements UserService{
     public int UserEditOk(UserVO vo) {
         return dao.UserEditOk(vo);
     }
+
+    @Override
+    public int PwdEditOk(UserVO vo) {
+        return dao.PwdEditOk(vo);
+    }    
 }
  
