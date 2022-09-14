@@ -16,7 +16,7 @@
 		width: 100%;
 		/*height: 100vh;*/
 		/*background: url(../img/background.jpg);*/
-		background: #fafbfc;
+		background: #f5f5f7;
 		background-size: cover;
 		background-position: center;
 		display: grid;
@@ -29,7 +29,7 @@
 		height:1600px;
 		background-color:white;
 		margin:0 auto;
-		font-size:20px;
+		font-size:1.2em;
 		box-sizing: border-box;
 		border-radius:15px;
 		-webkit-border-radius: 10px 10px 10px 10px;
@@ -39,16 +39,18 @@
 	}
 	h1{
 		font-size:27px;
-		margin-top:20px;
+		/*margin-top:20px;
 		margin-bottom:20px;
 		margin-left:65px;
-		padding:10px;
+		padding:10px;*/
+		margin:1em;
+		text-align:center;
 		
 	}
 	.selForm{
-		width: 400px;
+		width: 500px;
 	    height: 1000px;
-	    margin: 30px auto;
+	    margin: 0px auto;
 	    margin-top: 0;
 	    padding: 10px;
 	    padding-bottom: 30px;
@@ -58,11 +60,11 @@
 		padding-left:0;
 		font-weight:bold;
 	}
-	#idForm p{
+	/*#idForm p{
 		float:left;
 		margin:10px;
 		margin-left:0;
-	}
+	}*/
 	input[type=text], input[type=password]{
 		width:100%;
 		height:50px;
@@ -70,7 +72,7 @@
     	border: none;
     	color: #0d0d0d;
 		border-radius:15px;
-		font-size:20px;
+		font-size:1em;
 		padding:20px;
 		margin:5px;
 		border: 2px solid #f6f6f6;
@@ -80,6 +82,9 @@
 	#tel1, #tel2, #tel3{
 		width:29%;
 		
+	}
+	#seller_id{
+		width:55%;
 	}
 	#sel_zipcode{
 		width:50%;
@@ -204,12 +209,12 @@
 <section class="home">
 	<div class="container">
 		<h1>기업회원 회원가입</h1>
-		<form method="post" action="" id="sellerFrm">
+		<form method="post" action="/seller/sellerWrite" id="sellerFrm">
 			<ul class="selForm">
 				<div id="idForm">
 					<p>아이디</p>
-					<input type="button" value="아이디 중복검사" id="idCheck"/>
 					<input type="text" id="seller_id" name="seller_id" placeholder="아이디를 입력하세요">
+					<input type="button" value="아이디 중복검사" id="idCheck"/>
 					<input type="hidden" id="idCheckState" value="N"/>
 				</div>
 				<div id="pwdForm">
