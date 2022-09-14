@@ -5,13 +5,16 @@
 <mapper namespace = "com.genie.myapp.dao.UserDAO">
 
 
-    <insert id = "UserWrite">
-	begin;
-		insert into user(genie_id, user_name, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr, user_gender) 
-		values(#{genie_id}, #{user_name}, #{user_phone_num}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr}, #{user_gender});
-		insert into account(genie_id,genie_pwd) 
-		values(#{genie_id},#{genie_pwd});
-	commit;
+    <insert id = "UserWrite">	
+		<!-- insert into account(genie_num, genie_id, genie_pwd) 
+		values(#{genie_num},#{genie_id}, sha2(#{genie_pwd},256)); -->
+
+		START TRANSACTION;
+			insert into user(genie_id, user_name, user_tel, user_email, user_zipcode, user_addr, user_detailaddr, user_gender) 
+			values(#{genie_id}, #{user_name}, #{user_tel}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr}, #{user_gender});
+			insert into account(genie_id,genie_pwd) 
+			values(#{genie_id},sha2(#{genie_pwd},256));
+		COMMIT;
 	</insert>
 
 	<select id = "loginOk" resultType = "UserVO">
@@ -20,7 +23,7 @@
 		from user u 
 		join account a 
 		on a.genie_id=u.genie_id 
-		where a.genie_id=#{genie_id} and a.genie_pwd=#{genie_pwd} 
+		where a.genie_id=#{genie_id} and a.genie_pwd=sha2(#{genie_pwd},256)
 
 	</select>
 
@@ -36,12 +39,12 @@
 	
     <update id ="UserEditOk">
 		update user 
-		set user_phone_num=#{user_phone_num}, user_email=#{user_email} 
+		set user_tel=#{user_tel}, user_email=#{user_email} 
 		where genie_id=#{genie_id}
 	</update>
 
     <select id = "getUser" resultType = "UserVO">
-		select genie_id, user_name, user_phone_num, user_email, user_zipcode, user_addr, user_detailaddr
+		select genie_id, user_name, user_tel, user_email, user_zipcode, user_addr, user_detailaddr
 		from user
 		where genie_id=#{genie_id}
 	</select>

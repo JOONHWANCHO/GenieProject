@@ -4,10 +4,13 @@ public class UserVO {
     private String genie_id;
 	private String genie_pwd;
     private String genie_pwd2;
+
+    private String genie_num;
+    private String user_num;
   	
     private String user_name;
     
-	private String user_phone_num;
+	private String user_tel;
 	private String user_phone_num1;
 	private String user_phone_num2;
 	private String user_phone_num3;
@@ -21,17 +24,18 @@ public class UserVO {
     private String payment_method;
 
 
-    
+
+   
     @Override
     public String toString() {
-        return "UserVO [genie_id=" + genie_id + ", genie_pwd=" + genie_pwd + ", genie_pwd2=" + genie_pwd2
-                + ", payment_method=" + payment_method + ", sign_in_date=" + sign_in_date + ", user_addr=" + user_addr
-                + ", user_detailaddr=" + user_detailaddr + ", user_email=" + user_email + ", user_gender=" + user_gender
-                + ", user_name=" + user_name + ", user_phone_num=" + user_phone_num + ", user_phone_num1="
-                + user_phone_num1 + ", user_phone_num2=" + user_phone_num2 + ", user_phone_num3=" + user_phone_num3
-                + ", user_zipcode=" + user_zipcode + "]";
+        return "UserVO [genie_id=" + genie_id + ", genie_num=" + genie_num + ", genie_pwd=" + genie_pwd
+                + ", genie_pwd2=" + genie_pwd2 + ", payment_method=" + payment_method + ", sign_in_date=" + sign_in_date
+                + ", user_addr=" + user_addr + ", user_detailaddr=" + user_detailaddr + ", user_email=" + user_email
+                + ", user_gender=" + user_gender + ", user_name=" + user_name + ", user_num=" + user_num
+                + ", user_phone_num1=" + user_phone_num1 + ", user_phone_num2=" + user_phone_num2 + ", user_phone_num3="
+                + user_phone_num3 + ", user_tel=" + user_tel + ", user_zipcode=" + user_zipcode + "]";
     }
-
+    
     public void setGenie_id(String genie_id) {
         this.genie_id = genie_id;
     }
@@ -54,12 +58,12 @@ public class UserVO {
         this.genie_id = genie_id;
     }
  
-    public String getUser_phone_num() {
+    public String getUser_tel() {
         return user_phone_num1 + "-"+user_phone_num2+"-"+user_phone_num3;
     }
-    public void setUser_phone_num(String user_phone_num) {
-        this.user_phone_num = user_phone_num;
-        String telSplit[] = user_phone_num.split("-");
+    public void setUser_tel(String user_tel) {
+        this.user_tel = user_tel;
+        String telSplit[] = user_tel.split("-");
 		user_phone_num1 = telSplit[0];
 		user_phone_num2 = telSplit[1];
 		user_phone_num3 = telSplit[2];
@@ -131,6 +135,20 @@ public class UserVO {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public String getUser_num() {
+        return user_num;
+    }
+
+    public void setUser_num(String user_num) {
+        this.user_num = user_num;
+    }
+    public String getGenie_num() {
+        return genie_num;
+    }
+    public void setGenie_num(String genie_num) {
+        this.genie_num = genie_num;
     }
 
 }
