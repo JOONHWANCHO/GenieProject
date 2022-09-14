@@ -185,7 +185,7 @@ input[type=text], input[type=email]{
 					<form method="post" action="/user/UserEditOk" id="logFrm">
 						<ul id="idForm">
 							<li>아이디</li>
-							<input type="text" id="user_id" name="user_id" value= "${vo.user_id}" readonly>
+							<input type="text" id="genie_id" name="genie_id" value= "${vo.genie_id}" readonly>
 							<input type ="hidden" id = "idCheckState" value = "Y"/>
 						</ul>
 						<ul id="name">
