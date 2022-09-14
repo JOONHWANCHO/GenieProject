@@ -5,19 +5,19 @@
 <script>
     $(function(){
         $("#logFrm").submit(function(){
-            if($("#user_pwd").val()==""){
+            if($("#genie_pwd").val()==""){
                 alert("비밀번호를 입력하세요..");
-				$("#user_id").focus();
+				$("#genie_id").focus();
                 return false;
             }
-            if($("#user_pwd1").val()==""){
+            if($("#genie_pwd1").val()==""){
                 alert("비밀번호를 입력하세요..");
-				$("#user_pwd").focus();
+				$("#genie_pwd").focus();
                 return false;
             }
-			if($("#user_pwd1").val() != $("#user_pwd2").val()){
+			if($("#genie_pwd1").val() != $("#genie_pwd2").val()){
                 alert("비밀번호가 일치하지 않습니다.");
-				$("#user_pwd").focus();
+				$("#genie_pwd").focus();
                 return false;
             }
             return true;
@@ -28,13 +28,13 @@
 <section class="home">
 <form method="post" action="/user/PwdEditOk" id="logFrm">
     <div id="passwordForm">
-		<input type="hidden" value="${vo.user_id}" name="user_id"/>
+		<input type="hidden" value="${vo.genie_id}" name="genie_id"/>
 		<p>비밀번호</p>
-			<input type="password" id="user_pwd" name="user_pwd" placeholder="현재 비밀번호를 입력하세요">
+			<input type="password" id="genie_pwd" name="genie_pwd" placeholder="현재 비밀번호를 입력하세요">
 		<p>새 비밀번호</p>
-			<input type="password" id="user_pwd1" name="user_pwd1" placeholder="새 비밀번호를 입력하세요">
+			<input type="password" id="genie_pwd1" name="genie_pwd1" placeholder="새 비밀번호를 입력하세요">
 		<p>새 비밀번호 다시 입력</p>
-			<input type="password" id="user_pwd2" name="user_pwd2" placeholder="새 비밀번호를 입력하세요"><br/><br/>
+			<input type="password" id="genie_pwd2" name="genie_pwd2" placeholder="새 비밀번호를 입력하세요"><br/><br/>
 			<input type="submit" id="Find_pwd" value="비밀번호 변경"/><br/>
 	</div>
 </form>
