@@ -29,18 +29,19 @@
 	color: #6e6e73;
 	font-size: 1em;
 	font-weight: bold;
-	margin-top: -1em;
+	margin: .5vh;
 }
 /* -------------------선물상자 버튼설정----------------- */
 .index-btn {
-	display: relative;
+	position: relative;
 	font-size: 1.3em;
 	padding: .5em;
 	background: #96aee0;
 	color: #fff;
 	border-radius: 10px;
 	transition: ease .40s;
-	margin-left: 24vw;
+	top: -5vh;
+	left: 25vw;
 }
 .index-btn:hover {
 	background: #fff;
@@ -48,6 +49,7 @@
 	box-shadow: 0 0 7px #b4b4b4;
 	color: #96aee0;
 }
+
 /* --------------------------------------------------------------------------- */
 /* --------------------카테고리 설정--------------------- */
 .category h2{
@@ -127,19 +129,16 @@
 	box-shadow: 0 0 10px #b4b4b4;
 }
 
-
-
-
-
 </style>
 
 <!--Genie 메인화면--->
 <section class="index">
 	<div class="index-list">
 		<h1>NOW IS THE PRESENT 2022</h1>
-		<div class="index-text">
-			<p>어떤 선물을 찾고 있나요?<a href="/genie/genie_01" class="index-btn"><i class="fa-solid fa-robot"></i></a></p>
+		<div class="index-text">			
+			<p>어떤 선물을 찾고 있나요?</p>
 			<p>고민이 되신다면 AI추천서비스를 이용해보세요</p>
+			<a href="/genie/genie_01" class="index-btn"><i class="fa-solid fa-robot"></i></a>
 		</div>
 	</div>
 	<div class="category">
