@@ -19,10 +19,11 @@ public class SellerServiceImpl implements SellerService {
 	@Inject
 	SellerDAO dao;
   
-	// 주문목록
+// 주문목록
   @Override
 	public List<OrderVO> sellerOrder(OrderVO vo) {
 		return dao.sellerOrder(vo);
+	}
 
   @Override
 	public int idCheck(String seller_id) {
