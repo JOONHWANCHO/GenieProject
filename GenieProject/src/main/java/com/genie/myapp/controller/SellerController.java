@@ -1,13 +1,21 @@
 package com.genie.myapp.controller;
 
+import java.nio.charset.Charset;
+
 import javax.inject.Inject;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.SellerService;
+import com.genie.myapp.vo.SellerVO;
 
 @RestController
 @RequestMapping("/seller/*")
@@ -76,8 +84,45 @@ public class SellerController {
 	//아이디 중복검사
 	@GetMapping("sellerIdCheck")
 	public ModelAndView sellerIdCheck(String seller_id) {
+		
+		//DB조회 : 아이디 중복 확인
+		int cnt = service.idCheck(seller_id);
+		
 		mav = new ModelAndView();
+		mav.addObject("idCnt",cnt);
+		mav.addObject("seller_id",seller_id);
 		mav.setViewName("seller/sellerIdCheck");
 		return mav;
+	}
+	
+	//seller 회원가입하기
+	@PostMapping("sellerWrite")
+	public ResponseEntity<String> sellerWrite(SellerVO vo){
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type", "text/html; charset=utf-8");
+		
+		try {//회원가입성공
+			int result = service.sellerWrite(vo);
+			
+			String msg = "<script>";
+			msg += "alert('회원가입을 성공하였습니다.');";
+			msg += "location.href='/user/login';";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+			
+		}catch(Exception e) {//회원가입실패
+			
+			String msg = "<script>";
+			msg += "alert('회원가입에 실패하였습니다.');";
+			msg += "history.back();";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
+			
+			e.printStackTrace();
+		}
+		return entity;
 	}
 }

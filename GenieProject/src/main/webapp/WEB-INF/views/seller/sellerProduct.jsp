@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
@@ -122,7 +122,7 @@ td, th {
 }
 
 </style>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 
 </script>
@@ -138,10 +138,10 @@ td, th {
 						<span><img src="../images/seller/profile-1.png" /></span>
 						<h3>업체이름</h3>
 					</div>
-					<a href="#"><ul class="fa-ul"><li><i class="fa fa-plus-circle" aria-hidden="true"></i> 상품등록</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa fa-gift" aria-hidden="true"></i> 상품관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa fa-shopping-cart" aria-hidden="true"></i> 주문관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa fa-area-chart" aria-hidden="true"></i> 매출관리</li></ul></a>
+					<a href="/seller/productForm"><ul class="fa-ul"><li><i class="fa fa-plus-circle" aria-hidden="true"></i> 상품등록</li></ul></a>
+					<a href="/seller/sellerProduct"><ul class="fa-ul"><li><i class="fa fa-gift" aria-hidden="true"></i> 상품관리</li></ul></a>
+					<a href="/seller/sellerOrder"><ul class="fa-ul"><li><i class="fa fa-shopping-cart" aria-hidden="true"></i> 주문관리</li></ul></a>
+					<a href="/seller/sellerSales"><ul class="fa-ul"><li><i class="fa fa-area-chart" aria-hidden="true"></i> 매출관리</li></ul></a>
 					<a href="#"><ul class="fa-ul"><li><i class="fa fa-question-circle" aria-hidden="true"></i> 문의관리</li></ul></a>				
 				</div>
 			</div>
@@ -155,6 +155,26 @@ td, th {
 							<th>가격</th>
 							<th>카테고리</th>
 							<th>태그</th>
+							<th>수정</th>
+							<th>삭제</th>
+						</tr>
+						<tr>
+							<td>1234</td>
+							<td>무드등</td>
+							<td>19800</td>
+							<td>생일</td>
+							<td>친구/지인,생일,집들이,10-20대,남여공용</td>
+							<td><input type="button" value="수정"></td>
+							<td><input type="button" value="삭제"></td>
+						</tr>
+						<tr>
+							<td>1255</td>
+							<td>스피커</td>
+							<td>34800</td>
+							<td>생일</td>
+							<td>친구/지인,생일,집들이,10-20대,20-30대,남여공용</td>
+							<td><input type="button" value="수정"></td>
+							<td><input type="button" value="삭제"></td>
 						</tr>
 					</table>
 				</div>
