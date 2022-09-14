@@ -3,24 +3,43 @@ package com.genie.myapp.vo;
 public class OrderVO {
     
     private int order_num;
-    private String user_id;
+    private String genie_id;
     private int product_id;
-    private String recipent_name;
-    private String recipent_phone;
-    private String recipent_address;
-    private String recipent_request;
-    private String recipent_delivery_status;
+    private String recipient_name;
+    private String recipient_phone;
+    private String recipient_address;
+    private String recipient_request;
+    private String recipient_delivery_status;
     private int order_price;
     private int order_qty;
     private String order_writedate;
-
+    private String payment_mehtod;
+    private String product_name;
+    
     @Override
     public String toString() {
-        return "OrderVO [order_num=" + order_num + ", order_price=" + order_price + ", order_qty=" + order_qty
-                + ", order_writedate=" + order_writedate + ", product_id=" + product_id + ", recipent_address="
-                + recipent_address + ", recipent_delivery_status=" + recipent_delivery_status + ", recipent_name="
-                + recipent_name + ", recipent_phone=" + recipent_phone + ", recipent_request=" + recipent_request
-                + ", user_id=" + user_id + "]";
+        return "OrderVO [genie_id=" + genie_id + ", order_num=" + order_num + ", order_price=" + order_price
+                + ", order_qty=" + order_qty + ", order_writedate=" + order_writedate + ", payment_mehtod="
+                + payment_mehtod + ", product_id=" + product_id + ", product_name=" + product_name
+                + ", recipient_address=" + recipient_address + ", recipient_delivery_status="
+                + recipient_delivery_status + ", recipient_name=" + recipient_name + ", recipient_phone="
+                + recipient_phone + ", recipient_request=" + recipient_request + "]";
+    }
+
+    public int getOrder_num() {
+        return order_num;
+    }
+
+    public void setOrder_num(int order_num) {
+        this.order_num = order_num;
+    }
+
+    public String getGenie_id() {
+        return genie_id;
+    }
+
+    public void setGenie_id(String genie_id) {
+        this.genie_id = genie_id;
     }
 
     public int getProduct_id() {
@@ -29,6 +48,46 @@ public class OrderVO {
 
     public void setProduct_id(int product_id) {
         this.product_id = product_id;
+    }
+
+    public String getRecipient_name() {
+        return recipient_name;
+    }
+
+    public void setRecipient_name(String recipient_name) {
+        this.recipient_name = recipient_name;
+    }
+
+    public String getRecipient_phone() {
+        return recipient_phone;
+    }
+
+    public void setRecipient_phone(String recipient_phone) {
+        this.recipient_phone = recipient_phone;
+    }
+
+    public String getRecipient_address() {
+        return recipient_address;
+    }
+
+    public void setRecipient_address(String recipient_address) {
+        this.recipient_address = recipient_address;
+    }
+
+    public String getRecipient_request() {
+        return recipient_request;
+    }
+
+    public void setRecipient_request(String recipient_request) {
+        this.recipient_request = recipient_request;
+    }
+
+    public String getRecipient_delivery_status() {
+        return recipient_delivery_status;
+    }
+
+    public void setRecipient_delivery_status(String recipient_delivery_status) {
+        this.recipient_delivery_status = recipient_delivery_status;
     }
 
     public int getOrder_price() {
@@ -47,62 +106,6 @@ public class OrderVO {
         this.order_qty = order_qty;
     }
 
-    public int getOrder_num() {
-        return order_num;
-    }
-
-    public void setOrder_num(int order_num) {
-        this.order_num = order_num;
-    }
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getRecipent_name() {
-        return recipent_name;
-    }
-
-    public void setRecipent_name(String recipent_name) {
-        this.recipent_name = recipent_name;
-    }
-
-    public String getRecipent_phone() {
-        return recipent_phone;
-    }
-
-    public void setRecipent_phone(String recipent_phone) {
-        this.recipent_phone = recipent_phone;
-    }
-
-    public String getRecipent_address() {
-        return recipent_address;
-    }
-
-    public void setRecipent_address(String recipent_address) {
-        this.recipent_address = recipent_address;
-    }
-
-    public String getRecipent_request() {
-        return recipent_request;
-    }
-
-    public void setRecipent_request(String recipent_request) {
-        this.recipent_request = recipent_request;
-    }
-
-    public String getRecipent_delivery_status() {
-        return recipent_delivery_status;
-    }
-
-    public void setRecipent_delivery_status(String recipent_delivery_status) {
-        this.recipent_delivery_status = recipent_delivery_status;
-    }
-
     public String getOrder_writedate() {
         return order_writedate;
     }
@@ -111,6 +114,21 @@ public class OrderVO {
         this.order_writedate = order_writedate;
     }
 
-    
+    public String getPayment_mehtod() {
+        return payment_mehtod;
+    }
+
+    public void setPayment_mehtod(String payment_mehtod) {
+        this.payment_mehtod = payment_mehtod;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
     
 }
