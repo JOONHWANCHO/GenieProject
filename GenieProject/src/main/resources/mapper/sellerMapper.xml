@@ -3,5 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.genie.myapp.dao.SellerDAO">
-
+	<select id="idCheck" resultType="int">
+		select count(seller_id) cnt from seller where seller_id=#{seller_id};
+	</select>
+	
+	<insert id="sellerWrite">
+		insert into seller(seller_id, seller_pwd, company_name, ceo_name, seller_tel, seller_email, seller_website, seller_reg_no, seller_address, seller_status) 
+		values(#{seller_id}, #{seller_pwd}, #{company_name}, #{ceo_name}, #{seller_tel}, #{seller_email}, #{seller_website}, #{seller_reg_no}, #{seller_address}, "N")
+	</insert>
 </mapper>
