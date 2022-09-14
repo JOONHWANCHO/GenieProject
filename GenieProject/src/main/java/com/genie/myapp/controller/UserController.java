@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.UserService;
+import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.UserVO;
 
 
@@ -170,12 +171,13 @@ public class UserController {
 
 	//주문목록/배송조회
 	@GetMapping("MyOrderList")
-	public ModelAndView MyOrderList(HttpSession session) {
+	public ModelAndView MyOrderList(HttpSession session, ProductVO pVo) {
 
 		String user_id = (String)session.getAttribute("logId");
 		UserVO vo = service.getUser(user_id);
 		
 		mav = new ModelAndView();
+		mav.addObject("pVo",pVo);
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyOrderList");
 	

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
@@ -218,9 +218,54 @@ body {
 		transition: ease .40s;
 	}
 </style>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-
+	$(function(){
+		//유효성 검사
+		$("#productFrm").submit(function(){
+			//상품명
+			if($("#product_name").val()==""){
+				alert("상품명을 입력하세요.");
+				return false;
+			}
+			//금액
+			if($("#product_price").val()==""){
+				alert("판매금액을 입력하세요.");
+				return false;
+			}
+			//상품설명
+			if($("#product_info").val()==""){
+				alert("상품설명을 입력하세요.");
+				return false;
+			}
+			//상품수량
+			if($("#product_stock").val()==""){
+				alert("상품수량을 입력하세요.");
+				return false;
+			}
+			//이미지1
+			if($("#product_image1").val()==""){
+				alert("상품이미지(1)를 첨부하세요.");
+				return false;
+			}
+			//이미지2
+			if($("#product_image2").val()==""){
+				alert("상품이미지(2)를 첨부하세요.");
+				return false;
+			}
+			//이미지3
+			if($("#product_image3").val()==""){
+				alert("상품이미지(3)를 첨부하세요.");
+				return false;
+			}
+			//카테고리
+			
+			//태그
+			
+			
+			return true;
+		});
+	});
 </script>
 
 <main class="main">
@@ -234,39 +279,39 @@ body {
 						<span><img src="../images/seller/profile-1.png" /></span>
 						<h3>업체이름</h3>
 					</div>
-					<a href="#"><ul class="fa-ul"><li><i class="fa fa-plus-circle" aria-hidden="true"></i> 상품등록</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa fa-gift" aria-hidden="true"></i> 상품관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa fa-shopping-cart" aria-hidden="true"></i> 주문관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa fa-area-chart" aria-hidden="true"></i> 매출관리</li></ul></a>
+					<a href="/seller/productForm"><ul class="fa-ul"><li><i class="fa fa-plus-circle" aria-hidden="true"></i> 상품등록</li></ul></a>
+					<a href="/seller/sellerProduct"><ul class="fa-ul"><li><i class="fa fa-gift" aria-hidden="true"></i> 상품관리</li></ul></a>
+					<a href="/seller/sellerOrder"><ul class="fa-ul"><li><i class="fa fa-shopping-cart" aria-hidden="true"></i> 주문관리</li></ul></a>
+					<a href="/seller/sellerSales"><ul class="fa-ul"><li><i class="fa fa-area-chart" aria-hidden="true"></i> 매출관리</li></ul></a>
 					<a href="#"><ul class="fa-ul"><li><i class="fa fa-question-circle" aria-hidden="true"></i> 문의관리</li></ul></a>				
 				</div>
 			</div>
 			<div class="content-main">
 				<div class="container">
 					<p>상품등록</p>
-					<form method="post" action="" id="productFrm">
+					<form method="post" action="/seller/productWrite" id="productFrm">
 						<ul class="proFrm">
 							<div id="nameDiv">
 								<p>상품명</p>
-								<input type="text" id="" name="" placeholder="상품명을 입력하세요"/>
+								<input type="text" id="product_name" name="product_name" placeholder="상품명을 입력하세요"/>
 							</div>
 							<div id="priceDiv">
 								<p>판매금액</p>
-								<input type="text" id="" name="" placeholder="판매금액을 입력하세요"/>
+								<input type="text" id="product_price" name="product_price" placeholder="판매금액을 입력하세요"/>
 							</div>
 							<div id="infoDiv">
 								<p>상품설명</p>
-								<textarea rows="4"></textarea>
+								<textarea rows="4" id="product_info" name="product_info"></textarea>
 							</div>
 							<div id="countDiv">
 								<p>상품수량</p>
-								<input type="text" id="" name="" placeholder="상품수량을 입력하세요"/>
+								<input type="text" id="product_stock" name="product_stock" placeholder="상품수량을 입력하세요"/>
 							</div>
 							<div>
 								<p>상품이미지</p>
-								<input type="file" name="" id=""/>
-								<input type="file" name="" id=""/>
-								<input type="file" name="" id=""/>
+								<input type="file" name="product_image1" id="product_image1"/>
+								<input type="file" name="product_image2" id="product_image2"/>
+								<input type="file" name="product_image3" id="product_image3"/>
 							</div>
 							<div>
 								<p>카테고리</p>
