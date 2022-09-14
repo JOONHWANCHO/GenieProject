@@ -5,7 +5,7 @@ import com.genie.myapp.vo.UserVO;
 
 public interface UserService {
 
-    // 회원가입
+    //회원가입
 	public int UserWrite(UserVO vo);
     //아이디 중복검사
 	public int idCheck(String user__id);

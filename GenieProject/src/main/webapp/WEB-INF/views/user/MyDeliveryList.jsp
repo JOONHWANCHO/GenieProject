@@ -84,19 +84,7 @@
 </style>
 <!-- -----------------------------------------스크립트부분---------------------------------- -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-	window.onload = function(){
-		document.getElementById("address_kakao").addEventListener("click", function(){ 
-			//카카오 지도 발생
-			new daum.Postcode({
-				oncomplete: function(data) { //선택시 입력값 세팅
-					document.getElementById("user_zipcode").value = data.zonecode; 
-					document.getElementById("user_addr").value = data.address; 
-				}
-			}).open();
-		});
-	}
-</script>
+<script src="../js_css/KakaoAddress.js"></script>
 <!-- ------------------------------------스크립트부분 끝---------------------------------------- -->
 <div class="responsive-wrapper">
   <div class="content">
@@ -141,7 +129,7 @@
           <h3>배송지2</h3>
 
           <li>우편번호</li>
-          <input type ="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
+          <input type ="text" name = "user_zipcode" id ="user_zipcode" readonly/>
            <li>주소</li>
           <li><input type = "text" name = "user_addr" id ="user_addr" readonly/></li>
           <li>상세주소</li>
