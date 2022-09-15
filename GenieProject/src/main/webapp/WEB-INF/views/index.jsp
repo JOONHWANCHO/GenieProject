@@ -29,18 +29,19 @@
 	color: #6e6e73;
 	font-size: 1em;
 	font-weight: bold;
-	margin-top: -1em;
+	margin: .5vh;
 }
 /* -------------------선물상자 버튼설정----------------- */
 .index-btn {
-	display: relative;
+	position: relative;
 	font-size: 1.3em;
 	padding: .5em;
 	background: #96aee0;
 	color: #fff;
 	border-radius: 10px;
 	transition: ease .40s;
-	margin-left: 24vw;
+	top: -5vh;
+	left: 25vw;
 }
 .index-btn:hover {
 	background: #fff;
@@ -48,6 +49,7 @@
 	box-shadow: 0 0 7px #b4b4b4;
 	color: #96aee0;
 }
+
 /* --------------------------------------------------------------------------- */
 /* --------------------카테고리 설정--------------------- */
 .category h2{
@@ -73,16 +75,70 @@
 	border-radius: 20px;
 	box-shadow: 0 0 10px #b4b4b4;
 }
+
+/* --------------------------------------------------------------------------- */
+/* --------------------메인페이지 2--------------------- */
+.Mainpage2{
+	margin:10em;
+}
+
+.Mainpage2 h2{	
+	text-align:center;
+	margin:2em;
+
+}
+.Mainpage2-category-list{
+
+	display: grid;
+	grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw;
+	gap: 2em;
+	text-align:center;
+	
+}
+
+.Mainpage2-category-list div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 1em;
+	height: 20vh;
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 0 10px #b4b4b4;
+}
+
+.Mainpage2-choice{
+	padding:10em;
+	display:flex;
+}
+
+.Mainpage2-choice div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 1em;
+	height: 10vh;
+	width:20em;
+	
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 0 10px #b4b4b4;
+}
+
 </style>
 
 <!--Genie 메인화면--->
 <section class="index">
 	<div class="index-list">
 		<h1>NOW IS THE PRESENT 2022</h1>
-		<div class="index-text">
-			
-			<p>어떤 선물을 찾고 있나요?<a href="/genie/genie_01" class="index-btn"><i class="fa-solid fa-robot"></i></a></p>
+		<div class="index-text">			
+			<p>어떤 선물을 찾고 있나요?</p>
 			<p>고민이 되신다면 AI추천서비스를 이용해보세요</p>
+			<a href="/genie/genie_01" class="index-btn"><i class="fa-solid fa-robot"></i></a>
 		</div>
 	</div>
 	<div class="category">
@@ -102,4 +158,22 @@
 			<a href="#"><div>홈파티</div></a>
 		</div>
 	</div>
+	<%-- <div class="Mainpage2">
+		<h2>Category</h2>
+		<div class="Mainpage2-category-list">
+			<a href="#"><div>All</div></a>
+			<a href="#"><div>여성</div></a>
+			<a href="#"><div>남성</div></a>
+			<a href="#"><div>청소년</div></a>
+		</div>
+		<div class="Mainpage2-choice">
+			<a href="#"><div>많이 선물한</div></a>
+			<a href="#"><div>받고 싶어한</div></a>
+			<a href="#"><div>위시로 받은</div></a>
+		</div>
+		<div class="Mainpage2-pic">
+			<a href="#"><div>반려동물</div></a>
+			<a href="#"><div>운동</div></a>
+		</div>
+	</div> --%>
 </section>

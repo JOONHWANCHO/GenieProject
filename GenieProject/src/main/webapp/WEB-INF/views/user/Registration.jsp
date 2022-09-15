@@ -30,7 +30,7 @@
 	margin: .5em;
 }
 /* 아이디를 입력하세요 */
-#user_id {
+#genie_id {
 	width: 63%;
 }
 /* 아이디중복검사 */
@@ -107,18 +107,13 @@ label {
 }
 </style>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js_css/KakaoAddress.js"></script>
-<script src="../js_css/Registration.js"></script>
 <script>
 $(function(){
-
-
 	$("#idCheck").click(function(){
-		window.open("/user/idCheck?user_id="+$("#user_id").val(),"idCheck","width=400,height=300");
+		window.open("/user/idCheck?genie_id="+$("#genie_id").val(),"idCheck","width=400,height=300");
 	});
 
-	$("#user_id").change(function(){
+	$("#genie_id").change(function(){
 		$("#idCheckState").val("N");
 	});
 });
@@ -126,20 +121,21 @@ $(function(){
 <section class="registration">
 	<div class="wrapper">
 		<h1>일반회원 회원가입</h1>
-		<form method="post" action="/user/UserWrite" id="logFrm" onsubmit="hashForm(this); return false;">
+		<form method="post" action="/user/UserWrite" id="logFrm">
+			<input type="hidden" value="1" name="member_type"/>
 			<ul class="idForm">
 				<li>아이디</li>
 				<li>
-					<input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요">
+					<input type="text" id="genie_id" name="genie_id" placeholder="아이디를 입력하세요">
 					<input type="button" id="idCheck" value="아이디 중복검사" >
 				</li>
 				<input type ="hidden" id = "idCheckState" value = "N"/>
 			</ul>
 			<ul id="passwordForm">
 				<li>비밀번호</li>
-				<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력하세요">
+				<input type="password" id="genie_pwd" name="genie_pwd" placeholder="비밀번호를 입력하세요">
 				<li>비밀번호 확인</li>
-				<input type="password" id="user_pwd2" name="user_pwd2" placeholder="비밀번호를 입력하세요">
+				<input type="password" id="genie_pwd2" name="genie_pwd2" placeholder="비밀번호를 입력하세요">
 			</ul>
 			<ul id="idForm">
 				<li>이름</li>
@@ -181,5 +177,10 @@ $(function(){
 			</ul>
 				<input type = "submit" id="formSubmit" value = "회원가입하기"/>
 		</form>
+		
 	</div>	
 </section>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../js_css/KakaoAddress.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<%-- <script src="../js_css/Registration.js"></script> --%>

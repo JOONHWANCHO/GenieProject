@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.UserService;
+import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.UserVO;
 
 
@@ -44,7 +45,7 @@ public class UserController {
 	
 		if(logVO != null) {//로그인 성공
 
-			session.setAttribute("logId", logVO.getUser_id());
+			session.setAttribute("logId", logVO.getGenie_id());
 			session.setAttribute("logName", logVO.getUser_name());
 			session.setAttribute("logStatus","Y");
 			mav.setViewName("redirect:/");
@@ -82,15 +83,15 @@ public class UserController {
 
 	 //아이디 중복검사
 	@GetMapping("idCheck")
-	public ModelAndView idCheck(String user_id) {
+	public ModelAndView idCheck(String genie_id) {
 
 		//DB조회  : 아이디가 존재하는지 확인
-		int cnt = service.idCheck(user_id);
+		int cnt = service.idCheck(genie_id);
 
 		mav = new ModelAndView();
 
 		mav.addObject("idCnt",cnt);
-		mav.addObject("user_id",user_id);
+		mav.addObject("genie_id",genie_id);
 		mav.setViewName("user/idCheck");
 
 		return mav;
@@ -134,8 +135,8 @@ public class UserController {
 	@GetMapping("MyPage")
 	public ModelAndView MyPage(HttpSession session) {
 
-		String user_id = (String)session.getAttribute("logId"); 
-		UserVO vo = service.getUser(user_id);
+		String genie_id = (String)session.getAttribute("logId"); 
+		UserVO vo = service.getUser(genie_id);
 
 		mav = new ModelAndView();
 		mav.addObject("vo",vo);
@@ -170,12 +171,13 @@ public class UserController {
 
 	//주문목록/배송조회
 	@GetMapping("MyOrderList")
-	public ModelAndView MyOrderList(HttpSession session) {
+	public ModelAndView MyOrderList(HttpSession session, ProductVO pVo) {
 
-		String user_id = (String)session.getAttribute("logId");
-		UserVO vo = service.getUser(user_id);
+		String genie_id = (String)session.getAttribute("logId");
+		UserVO vo = service.getUser(genie_id);
 		
 		mav = new ModelAndView();
+		mav.addObject("pVo",pVo);
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyOrderList");
 	
@@ -186,8 +188,8 @@ public class UserController {
 	@GetMapping("MyDeliveryList") 
 	public ModelAndView MyDeliveryLIst(HttpSession session) {
 		
-		String user_id = (String)session.getAttribute("logId");
-		UserVO vo = service.getUser(user_id);
+		String genie_id = (String)session.getAttribute("logId");
+		UserVO vo = service.getUser(genie_id);
 
 		new ModelAndView();
 		mav.addObject("vo",vo);
@@ -200,8 +202,8 @@ public class UserController {
 	@GetMapping("MyInquiryList") 
 	public ModelAndView MyInquiryList(HttpSession session) {
 		
-		String user_id = (String)session.getAttribute("logId");
-		UserVO vo = service.getUser(user_id);
+		String genie_id = (String)session.getAttribute("logId");
+		UserVO vo = service.getUser(genie_id);
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo",vo);
@@ -215,8 +217,8 @@ public class UserController {
 	@GetMapping("PwdEdit")
 	public ModelAndView PwdChange(HttpSession session) {
 		
-		String user_id = (String)session.getAttribute("logId"); 
-		UserVO vo = service.getUser(user_id);
+		String genie_id = (String)session.getAttribute("logId"); 
+		UserVO vo = service.getUser(genie_id);
 		
 		mav = new ModelAndView();
 		mav.addObject("vo",vo);
