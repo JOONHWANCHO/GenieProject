@@ -16,7 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.SellerService;
+
 import com.genie.myapp.vo.SellerProductVO;
+
+
+import com.genie.myapp.vo.OrderVO;
+
+
 import com.genie.myapp.vo.SellerVO;
 
 @RestController
@@ -25,7 +31,6 @@ public class SellerController {
 	
 	@Inject
 	SellerService service;
-	
 	ModelAndView mav = null;
 	
 	//업체 회원가입 폼 보기
@@ -53,8 +58,11 @@ public class SellerController {
 	
 	// Seller 주문관리 
 	@GetMapping("sellerOrder")
-	public ModelAndView sellerOrder() {
+	public ModelAndView sellerOrder(OrderVO vo) {
 		mav = new ModelAndView();
+		System.out.println(vo.toString());
+		mav.addObject("list", service.sellerOrder(vo));
+		mav.addObject("vo",vo);
 		mav.setViewName("seller/sellerOrder");
 		return mav;
 	}
