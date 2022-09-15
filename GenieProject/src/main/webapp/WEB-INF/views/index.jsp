@@ -8,7 +8,7 @@
 	height: auto;
 	margin: 0;
 	padding: 3% 10%;
-	background: #f5f5f7;
+	background: #fff;
 }
 /* --------------첫번째 배너 설정---------------- */
 .index-list {
@@ -17,7 +17,7 @@
 	justify-content: center;
 	width: 100%;
 	height: 70vh;
-	background-image : url('/image/banner.png');
+	background-image : url('/image/ai3.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 	border-radius: 40px;
@@ -26,7 +26,7 @@
 /* -------------------ai 버튼설정----------------- */
 .index-btn {
 	position: absolute;
-	left: 40vw;
+	left: 47vw;
 	top: 48vh;
 }
 .index-btn img{
@@ -41,7 +41,8 @@
 }
 /* --------------------카테고리 설정--------------------- */
 .category h2{
-	margin: 2em;
+	margin: 10vh 0;
+	font-size: 2rem;
 	text-align: center;
 }
 .category-list{
@@ -55,22 +56,27 @@
 	width: 100%;
 	height: auto;
 	border-radius: 50%;
-	box-shadow: 0 0 10px #b4b4b4;
+	box-shadow: 0 0 40px #b4b4b4;
 }
 .category-list span{
-	font-size: 1.5em;
+	font-size: 1.5rem;
+	color: #333;
 	text-align: center;
 }
-
-/* --------------------------------------------------------------------------- */
-/* --------------------메인페이지 2--------------------- */
+/* ----------------------------------랭킹페이지----------------------------------------- */
+.ranking-list h1{
+	margin: 10vh 0;
+	font-size: 2rem;
+	text-align: center;
+}
+/* --------------------------------베스트 브랜드, 금주의 브랜드----------------------------- */
 
 </style>
 
 <!--Genie 메인화면--->
 <section class="index">
 	<div class="index-list">		
-			<a href="/genie/genie_01" class="index-btn"><img src="/image/ai.png"></a>
+			<a href="/genie/genie_01" class="index-btn"><img src="/image/ai.png" ></a>
 	</div>
 
 	<div class="category">
@@ -93,5 +99,16 @@
 	
 	<div class="ranking-list">
 		<h1>고민될 땐 선물랭킹!<h1>
+		<div>
+			<a href="#"><img src="/image/all.png" style="width:30%"></a>
+			<a href="#"><img src="/image/male.png" style="width:30%"></a>
+			<a href="#"><img src="/image/female.png" style="width:30%"></a>
+		</div>
 	<div>
+
+	<div class="brand">
+		<div>
+			<h1>인기 브랜드<h1>
+
+	</div>
 </section>
