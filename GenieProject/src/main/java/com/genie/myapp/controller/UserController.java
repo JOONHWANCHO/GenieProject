@@ -190,12 +190,37 @@ public class UserController {
 		
 		String genie_id = (String)session.getAttribute("logId");
 		UserVO vo = service.getUser(genie_id);
-
-		new ModelAndView();
+		
+		mav = new ModelAndView();
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyDeliveryList");
 	
 		return mav;
+	}
+
+	//회원정보 수정 DB
+	@PostMapping("MyDeliveryEditOk")
+	public ResponseEntity<String> MyDeliveryEditOk(UserVO vo) {
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type","text/html; charset=UTF-8");
+	
+
+		String msg = "<script>";
+		int cnt = service.MyDeliveryEditOk(vo);
+
+		if(cnt>0) {//수정됨
+			msg+="alert('배송지가 등록되었습니다.');";
+		}else {//수정못함
+			msg+="alert('배송지 등록에 실패하였습니다.');";	
+		}
+		msg+="location.href='/user/MyPage';</script>";
+		
+		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
+
+		return entity;
 	}
   
 	//나의 문의사항 
