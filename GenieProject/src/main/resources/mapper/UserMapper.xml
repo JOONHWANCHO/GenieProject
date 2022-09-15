@@ -6,15 +6,15 @@
 
 
     <insert id = "UserWrite">	
-		<!-- insert into account(genie_num, genie_id, genie_pwd) 
-		values(#{genie_num},#{genie_id}, sha2(#{genie_pwd},256)); -->
+		insert into account(member_type, genie_id, genie_pwd) 
+		values(#{member_type},#{genie_id}, sha2(#{genie_pwd},256));
 
-		START TRANSACTION;
+		<!-- START TRANSACTION;
 			insert into user(genie_id, user_name, user_tel, user_email, user_zipcode, user_addr, user_detailaddr, user_gender) 
 			values(#{genie_id}, #{user_name}, #{user_tel}, #{user_email}, #{user_zipcode}, #{user_addr}, #{user_detailaddr}, #{user_gender});
 			insert into account(genie_id,genie_pwd) 
 			values(#{genie_id},sha2(#{genie_pwd},256));
-		COMMIT;
+		COMMIT; -->
 	</insert>
 
 	<select id = "loginOk" resultType = "UserVO">
@@ -23,7 +23,7 @@
 		from user u 
 		join account a 
 		on a.genie_id=u.genie_id 
-		where a.genie_id=#{genie_id} and a.genie_pwd=sha2(#{genie_pwd},256)
+		where a.member_type=#{member_type} and a.genie_id=#{genie_id} and a.genie_pwd=sha2(#{genie_pwd},256)
 
 	</select>
 
