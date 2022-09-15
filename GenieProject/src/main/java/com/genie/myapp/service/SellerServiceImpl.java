@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.genie.myapp.dao.SellerDAO;
+import com.genie.myapp.vo.SellerProductVO;
 import com.genie.myapp.vo.SellerVO;
 
 @Service
@@ -21,5 +22,10 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public int sellerWrite(SellerVO vo) {
 		return dao.sellerWrite(vo);
+	}
+
+	@Override
+	public int productWrite(SellerProductVO vo) {
+		return dao.productWrite(vo);
 	}
 }
