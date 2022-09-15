@@ -107,13 +107,8 @@ label {
 }
 </style>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js_css/KakaoAddress.js"></script>
-<script src="../js_css/Registration.js"></script>
 <script>
 $(function(){
-
-
 	$("#idCheck").click(function(){
 		window.open("/user/idCheck?genie_id="+$("#genie_id").val(),"idCheck","width=400,height=300");
 	});
@@ -127,6 +122,7 @@ $(function(){
 	<div class="wrapper">
 		<h1>일반회원 회원가입</h1>
 		<form method="post" action="/user/UserWrite" id="logFrm">
+			<input type="hidden" value="1" name="member_type"/>
 			<ul class="idForm">
 				<li>아이디</li>
 				<li>
@@ -181,5 +177,10 @@ $(function(){
 			</ul>
 				<input type = "submit" id="formSubmit" value = "회원가입하기"/>
 		</form>
+		
 	</div>	
 </section>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../js_css/KakaoAddress.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<%-- <script src="../js_css/Registration.js"></script> --%>
