@@ -7,36 +7,16 @@
 	width: 100%;
 	height: auto;
 	margin: 0;
-	padding: 3% 10%;
+	padding: 1% 0;
 	background: #fff;
 }
 /* --------------첫번째 배너 설정---------------- */
-.index-list {
+.index-list a img{
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	height: 70vh;
-	background-image : url('/image/ai2.png');
-	background-size: cover;
-	background-repeat: no-repeat;
-	border-radius: 40px;
-	box-shadow: 0 0 40px #b4b4b4;
-}
-/* -------------------ai 버튼설정----------------- */
-.index-btn {
-	position: relative;
-	top: 11vh;
-}
-.index-btn img{
-	width: 100%;
 	height: auto;
-	border-radius: 50%;
-	transition: ease .40s;
-	width: 11ch;
-}
-.index-btn img:hover {
-	transform: scale(1.1);
 }
 /* --------------------카테고리 설정--------------------- */
 .category h2{
@@ -49,7 +29,7 @@
 	grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw;
 	justify-content: space-evenly;
 	align-content: space-evenly;
-	gap: 2em;
+	gap: 2rem;
 }
 .category-list img{
 	width: 100%;
@@ -68,22 +48,28 @@
 	font-size: 2rem;
 	text-align: center;
 }
-/* 브랜드 span설정 */
+.ranking-list img{
+	width: 25%;
+	margin: 0 .3%;
+}
+/* ----------------브랜드 span설정------------------ */
+.brand-title h1{
+	margin-left: 7vw;
+}
 .brand-title span{
-	margin-left: 28vw;
+	margin-left: 34vw;
 }
 
 /* --------------------------------베스트 브랜드, 금주의 브랜드----------------------------- */
 .brand {
 	display: grid;
-	grid-template-columns: 40% 15% 30%;
-	align-content: space-evenly;
+	grid-template-columns: 50% 18% 25%;
 	justify-content: center;
 	align-items: center;
-	gap: 2em;
+	gap: 2rem;
 }
 .brand a{
-	font-size: 1rem;
+	font-size: 1.5rem;
 }
 .brand img{
 	width: 100%;
@@ -94,7 +80,7 @@
 <!--Genie 메인화면--->
 <section class="index">
 	<div class="index-list">		
-		<a href="/genie/genie_01" class="index-btn"><img src="/image/ai.png" ></a>
+		<a href="/genie/genie_01"><img src="/image/banner3.png"></a>
 	</div>
 
 	<div class="category">
@@ -118,9 +104,9 @@
 	<div class="ranking-list">
 		<h1>고민될 땐 선물랭킹!<h1>
 		<div>
-			<a href="#"><img src="/image/all.png" style="width:30%"></a>
-			<a href="#"><img src="/image/male.png" style="width:30%"></a>
-			<a href="#"><img src="/image/female.png" style="width:30%"></a>
+			<a href="#"><img src="/image/male.png"></a>
+			<a href="#"><img src="/image/all.png"></a>
+			<a href="#"><img src="/image/female.png"></a>
 		</div>
 	<div>
 	<div class="brand-title">
@@ -138,7 +124,7 @@
 		</div>
 		<div class="brand2">
 				<a href="#">제품이름{vo.product_name}</a><br><br>
-				<a href="#">제품가격{vo.product_price}</a><br><br><hr><br>
+				<a href="#">제품가격{vo.product_price}</a><br><br><br><hr><br><br>
 				<a href="#">제품이름{vo.product_name}</a><br><br>
 				<a href="#">제품가격{vo.product_price}</a>
 		</div>
