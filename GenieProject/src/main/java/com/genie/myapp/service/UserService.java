@@ -19,6 +19,8 @@ public interface UserService {
 	public int UserEditOk(UserVO vo);
 	//비밀번호 변경
   	public int PwdEditOk(UserVO vo);
+	//배송지 추가
+	public int Delivery(UserVO vo);
 	//배송지 등록
-    public int MyDeliveryEditOk(UserVO vo);
+	public int MyDeliveryEditOk(UserVO vo);
 }
