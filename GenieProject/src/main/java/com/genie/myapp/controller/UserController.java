@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.UserService;
+import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -99,7 +100,7 @@ public class UserController {
 
 	//회원 가입하기
 	@PostMapping("UserWrite") 
-	public ResponseEntity<String> UserWrite(UserVO vo) {
+	public ResponseEntity<String> UserWrite(UserVO vo, AccountVO avo) {
 
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
@@ -107,14 +108,30 @@ public class UserController {
 		headers.add("Content-Type","text/html; charset=utf-8");
 		
 		try {//회원가입 성공
+			
+			int account = service.AccountWrite(avo);
 
-			int result = service.UserWrite(vo);
+			try{
 
-			String msg = "<script>";
-			msg += "alert('회원가입을 성공하였습니다.');";
-			msg += "location.href='/user/login'";
-			msg += "</script>";
-			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+				int user = service.UserWrite(vo);
+				
+				String msg = "<script>";
+				msg += "alert('회원가입을 성공하였습니다.');";
+				msg += "location.href='/user/login';";
+				msg += "</script>";
+				entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+	
+			}catch(Exception e){
+
+				String msg = "<script>";
+				msg += "alert('회원가입이 실패하였습니다.');";
+				msg += "history.back()";
+				msg += "</script>";
+				entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
+			
+				e.printStackTrace();
+
+			}
 
 		}catch(Exception e) {//회원등록 실패
 
@@ -125,7 +142,9 @@ public class UserController {
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
 			
 			e.printStackTrace();
+
 		}
+
 		return entity;
 	}
 
