@@ -114,13 +114,13 @@ public class UserController {
 			try{
 
 				int user = service.UserWrite(vo);
-				
+
 				String msg = "<script>";
 				msg += "alert('회원가입을 성공하였습니다.');";
 				msg += "location.href='/user/login';";
 				msg += "</script>";
 				entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
-	
+
 			}catch(Exception e){
 
 				String msg = "<script>";
@@ -128,7 +128,7 @@ public class UserController {
 				msg += "history.back()";
 				msg += "</script>";
 				entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
-			
+
 				e.printStackTrace();
 
 			}
