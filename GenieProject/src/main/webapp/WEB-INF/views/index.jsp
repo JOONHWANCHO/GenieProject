@@ -17,7 +17,7 @@
 	justify-content: center;
 	width: 100%;
 	height: 70vh;
-	background-image : url('/image/ai3.png');
+	background-image : url('/image/ai2.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 	border-radius: 40px;
@@ -25,16 +25,15 @@
 }
 /* -------------------ai 버튼설정----------------- */
 .index-btn {
-	position: absolute;
-	left: 47vw;
-	top: 48vh;
+	position: relative;
+	top: 11vh;
 }
 .index-btn img{
 	width: 100%;
 	height: auto;
 	border-radius: 50%;
 	transition: ease .40s;
-	width: 9ch;
+	width: 11ch;
 }
 .index-btn img:hover {
 	transform: scale(1.1);
@@ -69,18 +68,37 @@
 	font-size: 2rem;
 	text-align: center;
 }
-/* --------------------------------베스트 브랜드, 금주의 브랜드----------------------------- */
+/* 브랜드 span설정 */
+.brand-title span{
+	margin-left: 28vw;
+}
 
+/* --------------------------------베스트 브랜드, 금주의 브랜드----------------------------- */
+.brand {
+	display: grid;
+	grid-template-columns: 40% 15% 30%;
+	align-content: space-evenly;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+}
+.brand a{
+	font-size: 1rem;
+}
+.brand img{
+	width: 100%;
+	height: auto;
+}
 </style>
 
 <!--Genie 메인화면--->
 <section class="index">
 	<div class="index-list">		
-			<a href="/genie/genie_01" class="index-btn"><img src="/image/ai.png" ></a>
+		<a href="/genie/genie_01" class="index-btn"><img src="/image/ai.png" ></a>
 	</div>
 
 	<div class="category">
-		<h2>Category</h2>
+		<h2>전체카테고리</h2>
 		<div class="category-list">
 			<span><a href="#"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220223091003_007dc2b6f60645a8bc2682e97914b829.jpg"></a><br>생일</span>
 			<span><a href="#"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20201230162217_a70c12a712654a93abff864fa4b8c4c8.jpg"></a><br>기념일</span>
@@ -105,10 +123,24 @@
 			<a href="#"><img src="/image/female.png" style="width:30%"></a>
 		</div>
 	<div>
-
+	<div class="brand-title">
+		<h1>인기 브랜드<span>금주의 브랜드(광고)</span></h1>
+	</div>
 	<div class="brand">
 		<div>
-			<h1>인기 브랜드<h1>
-
+			<a href="#"><img src="/image/starbucks.png"></a>
+		</div>
+		<div class="brand1">
+				<a href="#">
+					<img src="https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220826162903_c3b3a0343ba041ae8b0e51324b4d9406.jpg">
+					<img src="https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220818140832_b4e44c89232b4db1844caf8414c47412.jpg">
+				</a>
+		</div>
+		<div class="brand2">
+				<a href="#">제품이름{vo.product_name}</a><br><br>
+				<a href="#">제품가격{vo.product_price}</a><br><br><hr><br>
+				<a href="#">제품이름{vo.product_name}</a><br><br>
+				<a href="#">제품가격{vo.product_price}</a>
+		</div>
 	</div>
 </section>
