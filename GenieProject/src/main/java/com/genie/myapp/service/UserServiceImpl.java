@@ -49,10 +49,16 @@ public class UserServiceImpl implements UserService{
     public int MyDeliveryEditOk(UserVO vo) {
         return dao.MyDeliveryEditOk(vo);
     }
-
+    
+    @Override
+    public int Delivery(UserVO vo) {
+        return dao.Delivery(vo);
+    } 
     @Override
     public int AccountWrite(AccountVO avo) {
        return dao.AccountWrite(avo);
-    }    
+    }
+
+       
 }
  

@@ -107,31 +107,22 @@ public class UserController {
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type","text/html; charset=utf-8");
 		
+			
+
 		try {//회원가입 성공
 			
 			int account = service.AccountWrite(avo);
+			int user = service.UserWrite(vo);
+			int Delivery = service.Delivery(vo);
 
-			try{
 
-				int user = service.UserWrite(vo);
+			String msg = "<script>";
+			msg += "alert('회원가입을 성공하였습니다.');";
+			msg += "location.href='/user/login';";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
 
-				String msg = "<script>";
-				msg += "alert('회원가입을 성공하였습니다.');";
-				msg += "location.href='/user/login';";
-				msg += "</script>";
-				entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
 
-			}catch(Exception e){
-
-				String msg = "<script>";
-				msg += "alert('회원가입이 실패하였습니다.');";
-				msg += "history.back()";
-				msg += "</script>";
-				entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
-
-				e.printStackTrace();
-
-			}
 
 		}catch(Exception e) {//회원등록 실패
 
