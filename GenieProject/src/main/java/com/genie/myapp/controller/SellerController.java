@@ -93,14 +93,14 @@ public class SellerController {
 	
 	//아이디 중복검사
 	@GetMapping("sellerIdCheck")
-	public ModelAndView sellerIdCheck(String seller_id) {
+	public ModelAndView sellerIdCheck(String genie_id) {
 		
 		//DB조회 : 아이디 중복 확인
-		int cnt = service.idCheck(seller_id);
+		int cnt = service.idCheck(genie_id);
 		
 		mav = new ModelAndView();
 		mav.addObject("idCnt",cnt);
-		mav.addObject("seller_id",seller_id);
+		mav.addObject("genie_id",genie_id);
 		mav.setViewName("seller/sellerIdCheck");
 		return mav;
 	}
@@ -116,6 +116,7 @@ public class SellerController {
 		
 		try {//회원가입성공
 			int result = service.sellerWrite(vo);
+			
 			
 			String msg = "<script>";
 			msg += "alert('회원가입을 성공하였습니다.');";

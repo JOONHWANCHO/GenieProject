@@ -22,7 +22,7 @@ public interface SellerDAO {
   // 주문목록
   List<OrderVO> sellerOrder(OrderVO vo);
 	//아이디 중복검사
-	public int idCheck(String seller_id);
+	public int idCheck(String genie_id);
 	//seller 회원가입
 	public int sellerWrite(SellerVO vo);
 

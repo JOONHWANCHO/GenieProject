@@ -1,9 +1,12 @@
 package com.genie.myapp.vo;
 
 public class SellerVO {
-	private String seller_id;
-	private String seller_pwd;
-	private String seller_pwd2;
+	
+	private String genie_id;
+	private String genie_pwd;
+	private String genie_pwd2;
+	private int member_type;
+	private int withdrawal;
 	
 	private String seller_tel;
 	private String tel1;
@@ -24,24 +27,35 @@ public class SellerVO {
 	private String seller_status;
 	private String approval_date;
 
-	
-	public String getSeller_id() {
-		return seller_id;
+	public String getGenie_id() {
+		return genie_id;
 	}
-	public void setSeller_id(String seller_id) {
-		this.seller_id = seller_id;
+	public void setGenie_id(String genie_id) {
+		this.genie_id = genie_id;
 	}
-	public String getSeller_pwd() {
-		return seller_pwd;
+	public String getGenie_pwd() {
+		return genie_pwd;
 	}
-	public void setSeller_pwd(String seller_pwd) {
-		this.seller_pwd = seller_pwd;
+	public void setGenie_pwd(String genie_pwd) {
+		this.genie_pwd = genie_pwd;
 	}
-	public String getSeller_pwd2() {
-		return seller_pwd2;
+	public String getGenie_pwd2() {
+		return genie_pwd2;
 	}
-	public void setSeller_pwd2(String seller_pwd2) {
-		this.seller_pwd2 = seller_pwd2;
+	public void setGenie_pwd2(String genie_pwd2) {
+		this.genie_pwd2 = genie_pwd2;
+	}
+	public int getMember_type() {
+		return member_type;
+	}
+	public void setMember_type(int member_type) {
+		this.member_type = member_type;
+	}
+	public int getWithdrawal() {
+		return withdrawal;
+	}
+	public void setWithdrawal(int withdrawal) {
+		this.withdrawal = withdrawal;
 	}
 	public String getSeller_tel() {
 		return tel1+"-"+tel2+"-"+tel3;

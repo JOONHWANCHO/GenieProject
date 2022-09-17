@@ -30,8 +30,8 @@ public class SellerServiceImpl implements SellerService {
 	}
 
   @Override
-	public int idCheck(String seller_id) {
-		return dao.idCheck(seller_id);
+	public int idCheck(String genie_id) {
+		return dao.idCheck(genie_id);
 	}
 
 	@Override

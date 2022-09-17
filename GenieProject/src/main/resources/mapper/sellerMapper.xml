@@ -15,18 +15,18 @@
 
 
 	<select id="idCheck" resultType="int">
-		select count(seller_id) cnt from seller where seller_id=#{seller_id};
+		select count(genie_id) cnt from account where genie_id=#{genie_id}
 	</select>
 	
 	<insert id="sellerWrite">
-		insert into seller(seller_id, seller_pwd, company_name, ceo_name, seller_tel, seller_email, seller_website, seller_reg_no, seller_address, seller_status) 
-		values(#{seller_id}, #{seller_pwd}, #{company_name}, #{ceo_name}, #{seller_tel}, #{seller_email}, #{seller_website}, #{seller_reg_no}, #{seller_address}, "N")
+		insert into account(genie_id, geine_pwd, member_type) 
+		values(#{genie_id}, #{genie_pwd}, 2)
 	</insert>
 
 	
 	<insert id="productWrite">
-		insert into product(product_id, genie_id, product_category, product_tag, product_name, product_price, product_info, product_quantity, product_image1, product_image2, product_image3) 
-		values(#{product_id}, #{genie_id}, #{product_category}, #{product_tag}, #{product_name}, #{product_price}, #{product_info}, #{product_quantity}, #{product_image1}, #{product_image2}, #{product_image3})
+		insert into product(genie_id, product_category, product_tag, product_name, product_price, product_info, product_quantity, product_image1, product_image2, product_image3) 
+		values(#{genie_id}, #{product_category}, #{product_tag}, #{product_name}, #{product_price}, #{product_info}, #{product_quantity}, #{product_image1}, #{product_image2}, #{product_image3})
 	</insert>
 
 
