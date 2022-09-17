@@ -136,7 +136,7 @@
         <p>비밀번호</p>
         <input type="password" id="genie_pwd" name="genie_pwd" placeholder="비밀번호를 입력하세요">
         <input type="submit" value="로그인">
-        <h3><a href="" id="idCheck">아이디찾기</a> | <a href="" id="FindPwd">비밀번호 찾기</a></h3>
+        <h3><a href="" id="FindId">아이디찾기</a> | <a href="" id="FindPwd">비밀번호 찾기</a></h3>
       <!-- 로그인폼-->
         <a href="/user/Registration"><input type="button" id="userReg" value="일반회원 회원가입"></a>
         <a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a>

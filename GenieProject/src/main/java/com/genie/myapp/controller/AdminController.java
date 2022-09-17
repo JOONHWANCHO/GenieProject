@@ -66,4 +66,20 @@ public class AdminController {
 			mav.setViewName("admin/adminTag");
 			return mav;
 		}
+
+		//adminIndex
+		@GetMapping("adminIndex")
+		public ModelAndView adminIndex() {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("admin/adminIndex");
+			return mav;
+		}
+
+		//adminDetail
+		@GetMapping("adminDetail")
+		public ModelAndView adminDetail() {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("admin/adminDetail");
+			return mav;
+		}
 }

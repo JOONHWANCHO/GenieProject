@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.UserService;
+
+import com.genie.myapp.vo.AccountVO;
+
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -99,22 +102,29 @@ public class UserController {
 
 	//회원 가입하기
 	@PostMapping("UserWrite") 
-	public ResponseEntity<String> UserWrite(UserVO vo) {
+	public ResponseEntity<String> UserWrite(UserVO vo, AccountVO avo) {
 
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type","text/html; charset=utf-8");
 		
-		try {//회원가입 성공
+			
 
-			int result = service.UserWrite(vo);
+		try {//회원가입 성공
+			
+			int account = service.AccountWrite(avo);
+			int user = service.UserWrite(vo);
+			int Delivery = service.Delivery(vo);
+
 
 			String msg = "<script>";
 			msg += "alert('회원가입을 성공하였습니다.');";
-			msg += "location.href='/user/login'";
+			msg += "location.href='/user/login';";
 			msg += "</script>";
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+
+
 
 		}catch(Exception e) {//회원등록 실패
 
@@ -125,7 +135,9 @@ public class UserController {
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
 			
 			e.printStackTrace();
+
 		}
+
 		return entity;
 	}
 
@@ -191,11 +203,41 @@ public class UserController {
 		String genie_id = (String)session.getAttribute("logId");
 		UserVO vo = service.getUser(genie_id);
 
+
 		new ModelAndView();
+
+		
+		mav = new ModelAndView();
+
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyDeliveryList");
 	
 		return mav;
+	}
+
+	//회원정보 수정 DB
+	@PostMapping("MyDeliveryEditOk")
+	public ResponseEntity<String> MyDeliveryEditOk(UserVO vo) {
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type","text/html; charset=UTF-8");
+	
+
+		String msg = "<script>";
+		int cnt = service.MyDeliveryEditOk(vo);
+
+		if(cnt>0) {//수정됨
+			msg+="alert('배송지가 등록되었습니다.');";
+		}else {//수정못함
+			msg+="alert('배송지 등록에 실패하였습니다.');";	
+		}
+		msg+="location.href='/user/MyPage';</script>";
+		
+		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
+
+		return entity;
 	}
   
 	//나의 문의사항 
