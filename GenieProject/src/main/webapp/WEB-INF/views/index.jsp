@@ -7,7 +7,7 @@
 	width: 100%;
 	height: auto;
 	margin: 0;
-	padding: 1% 0;
+	padding: 0;
 	background: #fff;
 }
 /* --------------첫번째 배너 설정---------------- */
@@ -21,15 +21,15 @@
 /* --------------------카테고리 설정--------------------- */
 .category h2{
 	margin: 10vh 0;
-	font-size: 2rem;
+	font-size: 3rem;
 	text-align: center;
 }
 .category-list{
 	display: grid;
-	grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw;
+	grid-template-columns: 11vw 11vw 11vw 11vw 11vw 11vw;
 	justify-content: space-evenly;
-	align-content: space-evenly;
-	gap: 2rem;
+	row-gap: 3rem;
+	padding: 0 4%;
 }
 .category-list img{
 	width: 100%;
@@ -38,18 +38,18 @@
 	box-shadow: 0 0 40px #b4b4b4;
 }
 .category-list span{
-	font-size: 1.5rem;
+	font-size: 2.2rem;
 	color: #333;
 	text-align: center;
 }
 /* ----------------------------------랭킹페이지----------------------------------------- */
 .ranking-list h1{
 	margin: 10vh 0;
-	font-size: 2rem;
+	font-size: 3rem;
 	text-align: center;
 }
 .ranking-list img{
-	width: 25%;
+	width: 30%;
 	margin: 0 .3%;
 }
 /* ----------------브랜드 span설정------------------ */
@@ -63,12 +63,13 @@
 /* --------------------------------베스트 브랜드, 금주의 브랜드----------------------------- */
 .brand {
 	display: grid;
-	grid-template-columns: 50% 18% 25%;
+	grid-template-columns: 50% 18% 26%;
 	justify-content: center;
 	align-items: center;
 	gap: 2rem;
 }
 .brand a{
+	margin: 0;
 	font-size: 1.5rem;
 }
 .brand img{
@@ -80,11 +81,11 @@
 <!--Genie 메인화면--->
 <section class="index">
 	<div class="index-list">		
-		<a href="/genie/genie_01"><img src="/image/banner3.png"></a>
+		<a href="/genie/genie_01"><img src="/image/banner_eastern.png"></a>
 	</div>
 
 	<div class="category">
-		<h2>전체카테고리</h2>
+		<h2>카테고리</h2>
 		<div class="category-list">
 			<span><a href="#"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220223091003_007dc2b6f60645a8bc2682e97914b829.jpg"></a><br>생일</span>
 			<span><a href="#"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20201230162217_a70c12a712654a93abff864fa4b8c4c8.jpg"></a><br>기념일</span>
@@ -104,17 +105,17 @@
 	<div class="ranking-list">
 		<h1>고민될 땐 선물랭킹!<h1>
 		<div>
-			<a href="#"><img src="/image/male.png"></a>
-			<a href="#"><img src="/image/all.png"></a>
-			<a href="#"><img src="/image/female.png"></a>
+			<a href="#"><img src="/image/gender_female_eastern.png"></a>
+			<a href="#"><img src="/image/gender_all_eastern.png"></a>
+			<a href="#"><img src="/image/gender_male_eastern.png"></a>
 		</div>
 	<div>
 	<div class="brand-title">
 		<h1>인기 브랜드<span>금주의 브랜드(광고)</span></h1>
 	</div>
 	<div class="brand">
-		<div>
-			<a href="#"><img src="/image/starbucks.png"></a>
+		<div class="starbucks">
+			<a href="#"><img src="/image/starbucks_eastern.png"></a>
 		</div>
 		<div class="brand1">
 				<a href="#">
@@ -124,7 +125,7 @@
 		</div>
 		<div class="brand2">
 				<a href="#">제품이름{vo.product_name}</a><br><br>
-				<a href="#">제품가격{vo.product_price}</a><br><br><br><hr><br><br>
+				<a href="#">제품가격{vo.product_price}</a><br><br><hr><br>
 				<a href="#">제품이름{vo.product_name}</a><br><br>
 				<a href="#">제품가격{vo.product_price}</a>
 		</div>
