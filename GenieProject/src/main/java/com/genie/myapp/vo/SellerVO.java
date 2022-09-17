@@ -27,6 +27,19 @@ public class SellerVO {
 	private String seller_status;
 	private String approval_date;
 
+
+	
+	@Override
+	public String toString() {
+		return "SellerVO [approval_date=" + approval_date + ", ceo_name=" + ceo_name + ", company_name=" + company_name
+				+ ", genie_id=" + genie_id + ", genie_pwd=" + genie_pwd + ", genie_pwd2=" + genie_pwd2
+				+ ", member_type=" + member_type + ", sel_addr=" + sel_addr + ", sel_detailaddr=" + sel_detailaddr
+				+ ", seller_address=" + seller_address + ", seller_email=" + seller_email + ", seller_reg_no="
+				+ seller_reg_no + ", seller_status=" + seller_status + ", seller_tel=" + seller_tel
+				+ ", seller_website=" + seller_website + ", tel1=" + tel1 + ", tel2=" + tel2 + ", tel3=" + tel3
+				+ ", withdrawal=" + withdrawal + ", writedate=" + writedate + "]";
+	}
+	
 	public String getGenie_id() {
 		return genie_id;
 	}

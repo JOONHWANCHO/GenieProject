@@ -43,5 +43,13 @@
 
 	</select>
 
+    <select id = "getSeller" resultType = "SellerVO">
+
+		select genie_id, seller_tel, seller_email, seller_reg_no, company_name, ceo_name, seller_website
+		from seller 
+		where genie_id=#{genie_id}
+
+	</select>
+
 
 </mapper>

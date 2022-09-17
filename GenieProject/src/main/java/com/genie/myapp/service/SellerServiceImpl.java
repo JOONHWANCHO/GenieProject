@@ -53,4 +53,9 @@ public class SellerServiceImpl implements SellerService {
 	public SellerVO loginOk(SellerVO svo) {
 		return dao.loginOk(svo);
 	}
+
+	@Override
+	public SellerVO getSeller(String genie_id) {
+		return dao.getSeller(genie_id);
+	}
 }

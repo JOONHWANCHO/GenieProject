@@ -25,6 +25,8 @@ public interface SellerService {
   public List<OrderVO> sellerOrder(OrderVO vo);
   //판매자 로그인
 	public SellerVO loginOk(SellerVO svo);
+	//회원 선택: 로그인 한 회원
+	public SellerVO getSeller(String genie_id);	
 
 
 }
