@@ -18,8 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.genie.myapp.service.SellerService;
 
 import com.genie.myapp.vo.SellerProductVO;
-
-
+import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.OrderVO;
 
 
@@ -107,7 +106,7 @@ public class SellerController {
 	
 	//seller 회원가입하기
 	@PostMapping("sellerWrite")
-	public ResponseEntity<String> sellerWrite(SellerVO vo){
+	public ResponseEntity<String> sellerWrite(SellerVO vo, AccountVO avo){
 		
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
@@ -115,7 +114,8 @@ public class SellerController {
 		headers.add("Content-Type", "text/html; charset=utf-8");
 		
 		try {//회원가입성공
-			int result = service.sellerWrite(vo);
+			int account = service.AccountWrite(avo);
+			int seller = service.sellerWrite(vo);
 			
 			
 			String msg = "<script>";

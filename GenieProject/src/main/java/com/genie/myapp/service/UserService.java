@@ -12,7 +12,7 @@ public interface UserService {
     //회원가입
 	public int UserWrite(UserVO vo);
     //아이디 중복검사
-	public int idCheck(String genie_id);
+	//public int idCheck(String genie_id);
 	// 로그인
 	public UserVO loginOk(UserVO vo);
 	//회원 선택: 로그인 한 회원

@@ -115,7 +115,7 @@ public class UserController {
 			
 			int account = service.AccountWrite(avo);
 			int user = service.UserWrite(vo);
-			int Delivery = service.Delivery(vo);
+			//int Delivery = service.Delivery(vo);
 
 
 			String msg = "<script>";
