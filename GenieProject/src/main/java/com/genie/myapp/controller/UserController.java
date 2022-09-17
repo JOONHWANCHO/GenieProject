@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.UserService;
+
 import com.genie.myapp.vo.AccountVO;
+
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -113,7 +115,7 @@ public class UserController {
 			
 			int account = service.AccountWrite(avo);
 			int user = service.UserWrite(vo);
-			int Delivery = service.Delivery(vo);
+			//int Delivery = service.Delivery(vo);
 
 
 			String msg = "<script>";
@@ -200,8 +202,13 @@ public class UserController {
 		
 		String genie_id = (String)session.getAttribute("logId");
 		UserVO vo = service.getUser(genie_id);
+
+
+		new ModelAndView();
+
 		
 		mav = new ModelAndView();
+
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyDeliveryList");
 	
