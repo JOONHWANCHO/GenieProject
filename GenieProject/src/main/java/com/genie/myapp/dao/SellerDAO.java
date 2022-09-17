@@ -29,6 +29,8 @@ public interface SellerDAO {
 	public int AccountWrite(AccountVO avo);
 	//seller 상품등록
 	public int productWrite(SellerProductVO vo);
+	//판매자 로그인
+	public SellerVO loginOk(SellerVO svo);
 
 
 

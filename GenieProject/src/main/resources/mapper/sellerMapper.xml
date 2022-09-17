@@ -32,6 +32,16 @@
 		values(#{genie_id}, #{product_category}, #{product_tag}, #{product_name}, #{product_price}, #{product_info}, #{product_quantity}, #{product_image1}, #{product_image2}, #{product_image3})
 	</insert>
 
+	
+	<select id="loginOk" resultType = "SellerVO">
+
+		select s.genie_id, s.company_name 
+		from account a 
+		join seller s 
+		on a.genie_id=s.genie_id 
+		where a.genie_id=#{genie_id} and a.genie_pwd=sha2(#{genie_pwd},256) and a.withdrawal=1;
+
+	</select>
 
 
 </mapper>

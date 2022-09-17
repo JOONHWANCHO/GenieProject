@@ -117,8 +117,8 @@
                 <option value="018">018</option>
                 <option value="019">019</option>
               </select>
-              <input type ="text" name = "user_phone_num2" id ="user_phone_num2" value="1234" maxlength = "4"/>
-              <input type ="text" name = "user_phone_num3" id ="user_phone_num3" value="1234" maxlength = "4"/>
+              <input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4"/>
+              <input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4"/>
             </ul>
 
             <li>우편번호</li>
