@@ -1,145 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/top.jspf"%>
-<style>
-/* ---------------------뒤에 회색배경설정----------------------- */
-.index {
-	position: absolute;
-	width: 100%;
-	height: auto;
-	margin: 0;
-	padding: 0;
-	background: #fff;
-}
-/* --------------첫번째 배너 설정---------------- */
-.index-list a img{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: auto;
-}
-/* --------------------카테고리 설정--------------------- */
-.category h2{
-	margin: 10vh 0;
-	font-size: 3rem;
-	text-align: center;
-}
-.category-list{
-	display: grid;
-	grid-template-columns: 11vw 11vw 11vw 11vw 11vw 11vw;
-	justify-content: space-evenly;
-	row-gap: 3rem;
-	padding: 0 4%;
-}
-.category-list img{
-	width: 100%;
-	height: auto;
-	border-radius: 50%;
-	box-shadow: 0 0 40px #b4b4b4;
-}
-.category-list span{
-	font-size: 2.2rem;
-	color: #333;
-	text-align: center;
-}
-/* ----------------------------------랭킹페이지----------------------------------------- */
-.ranking-list h1{
-	margin: 10vh 0;
-	font-size: 3rem;
-	text-align: center;
-}
-.ranking-list img{
-	width: 30%;
-	margin: 0 .3%;
-}
-/* ----------------브랜드 span설정------------------ */
-.brand-title h1{
-	margin-left: 7vw;
-}
-.brand-title span{
-	margin-left: 34vw;
-}
-
-/* --------------------------------베스트 브랜드, 금주의 브랜드----------------------------- */
-.brand {
-	display: grid;
-	grid-template-columns: 50% 18% 26%;
-	justify-content: center;
-	align-items: center;
-	gap: 2rem;
-}
-.brand a{
-	margin: 0;
-	font-size: 1.5rem;
-}
-.brand img{
-	width: 100%;
-	height: auto;
-}
-
-/* --------------------------------------------------------------------------- */
-/* --------------------메인페이지 2--------------------- */
-.Mainpage2{
-	margin:10em;
-}
-
-.Mainpage2 h2{	
-	text-align:center;
-	margin:2em;
-
-}
-.Mainpage2-category-list{
-
-	display: grid;
-	grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw;
-	gap: 2em;
-	text-align:center;
-	
-}
-
-.Mainpage2-category-list div{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 1em;
-	font-weight: bold;
-	padding: 1em;
-	height: 20vh;
-	background: #fff;
-	border-radius: 20px;
-	box-shadow: 0 0 10px #b4b4b4;
-}
-
-.Mainpage2-choice{
-	padding:10em;
-	display:flex;
-}
-
-.Mainpage2-choice div{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 1em;
-	font-weight: bold;
-	padding: 1em;
-	height: 10vh;
-	width:20em;
-	
-	background: #fff;
-	border-radius: 20px;
-	box-shadow: 0 0 10px #b4b4b4;
-}
-
-</style>
+<link rel="stylesheet" href="/js_css/index_style.css" type="text/css"/>
 
 <!--Genie 메인화면--->
 <section class="index">
 	<div class="index-list">		
-		<a href="/genie/genie_01"><img src="/image/banner_eastern.png"></a>
+		<a href="/genie/genie_01"><img src="/image/banner_western_simple.png"></a>
 	</div>
 
 	<div class="category">
-		<h2>카테고리</h2>
+		<h1>카테고리</h1>
 		<div class="category-list">
 			<span><a href="#"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220223091003_007dc2b6f60645a8bc2682e97914b829.jpg"></a><br>생일</span>
 			<span><a href="#"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20201230162217_a70c12a712654a93abff864fa4b8c4c8.jpg"></a><br>기념일</span>
@@ -159,9 +29,9 @@
 	<div class="ranking-list">
 		<h1>고민될 땐 선물랭킹!<h1>
 		<div>
-			<a href="#"><img src="/image/gender_female_eastern.png"></a>
-			<a href="#"><img src="/image/gender_all_eastern.png"></a>
-			<a href="#"><img src="/image/gender_male_eastern.png"></a>
+			<a href="#"><img src="/image/gender_female_long.png"></a>
+			<a href="#"><img src="/image/gender_all_long.png"></a>
+			<a href="#"><img src="/image/gender_male_long.png"></a>
 		</div>
 	<div>
 	<div class="brand-title">
@@ -169,7 +39,7 @@
 	</div>
 	<div class="brand">
 		<div class="starbucks">
-			<a href="#"><img src="/image/starbucks_eastern.png"></a>
+			<a href="#"><img src="/image/starbucks_western_simple.png"></a>
 		</div>
 		<div class="brand1">
 				<a href="#">
@@ -184,22 +54,4 @@
 				<a href="#">제품가격{vo.product_price}</a>
 		</div>
 	</div>
-	<%-- <div class="Mainpage2">
-		<h2>Category</h2>
-		<div class="Mainpage2-category-list">
-			<a href="#"><div>All</div></a>
-			<a href="#"><div>여성</div></a>
-			<a href="#"><div>남성</div></a>
-			<a href="#"><div>청소년</div></a>
-		</div>
-		<div class="Mainpage2-choice">
-			<a href="#"><div>많이 선물한</div></a>
-			<a href="#"><div>받고 싶어한</div></a>
-			<a href="#"><div>위시로 받은</div></a>
-		</div>
-		<div class="Mainpage2-pic">
-			<a href="#"><div>반려동물</div></a>
-			<a href="#"><div>운동</div></a>
-		</div>
-	</div> --%>
 </section>
