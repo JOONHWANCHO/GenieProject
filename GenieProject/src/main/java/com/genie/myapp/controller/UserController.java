@@ -67,7 +67,7 @@ public class UserController {
 			session.setAttribute("logId", slogVO.getGenie_id());
 			session.setAttribute("logName", slogVO.getCeo_name());
 			session.setAttribute("logStatus","Y");
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:/seller/sellerMain");
 
 			return mav;
 
