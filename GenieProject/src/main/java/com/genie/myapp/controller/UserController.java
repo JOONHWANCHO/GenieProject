@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.genie.myapp.service.AdministerService;
 import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
 
 import com.genie.myapp.vo.AccountVO;
-
+import com.genie.myapp.vo.AdministerVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
 import com.genie.myapp.vo.UserVO;
@@ -36,6 +37,9 @@ public class UserController {
 	@Inject
 	SellerService service_s;
 
+	@Inject
+	AdministerService service_a;
+
 	ModelAndView mav;
 
 	@GetMapping("login")
@@ -46,12 +50,13 @@ public class UserController {
 	}
 
 	@PostMapping("loginOK")
-	public ModelAndView loginOk(UserVO vo, SellerVO svo, HttpSession session ) {
+	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session ) {
 		
 		mav = new ModelAndView();
 
 		UserVO logVO = service.loginOk(vo);
 		SellerVO slogVO =service_s.loginOk(svo);
+		AdministerVO alogVO = service_a.loginOk(avo);
 	
 		if(logVO != null) {//로그인 성공
 
@@ -65,9 +70,18 @@ public class UserController {
 		}else if(slogVO !=null){
 
 			session.setAttribute("logId", slogVO.getGenie_id());
-			session.setAttribute("logName", slogVO.getCeo_name());
+			session.setAttribute("logName", slogVO.getCompany_name());
 			session.setAttribute("logStatus","Y");
 			mav.setViewName("redirect:/seller/sellerMain");
+
+			return mav;
+
+		}else if(alogVO != null){
+
+			//session.setAttribute("logId", );
+			//session.setAttribute("logName", );
+			session.setAttribute("logStatus","Y");
+			mav.setViewName("redirect:/admin/adminTag");
 
 			return mav;
 
@@ -76,7 +90,7 @@ public class UserController {
 			session.setAttribute("msg","아이디 또는 비밀번호 오류입니다.");
 			mav.setViewName("redirect:/user/login");
 
-		return mav;
+			return mav;
 			
 		}
 	}
@@ -133,14 +147,11 @@ public class UserController {
 			int user = service.UserWrite(vo);
 			//int Delivery = service.Delivery(vo);
 
-
 			String msg = "<script>";
 			msg += "alert('회원가입을 성공하였습니다.');";
 			msg += "location.href='/user/login';";
 			msg += "</script>";
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
-
-
 
 		}catch(Exception e) {//회원등록 실패
 
@@ -151,7 +162,6 @@ public class UserController {
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
 			
 			e.printStackTrace();
-
 		}
 
 		return entity;
@@ -166,7 +176,12 @@ public class UserController {
 		String genie_id = (String)session.getAttribute("logId"); 
 		UserVO vo = service.getUser(genie_id);
 
+		String seller_id = (String)session.getAttribute("logId"); 
+		SellerVO svo = service_s.getSeller(seller_id);
+
 		mav = new ModelAndView();
+
+		mav.addObject("svo",svo);
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyPage");
 	
@@ -308,6 +323,4 @@ public class UserController {
 		return entity;
 	}
 ////////////////////////////////////////////////////////////////
-
-
 }
