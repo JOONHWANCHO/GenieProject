@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
 
 import com.genie.myapp.vo.AccountVO;
 
 import com.genie.myapp.vo.ProductVO;
+import com.genie.myapp.vo.SellerVO;
 import com.genie.myapp.vo.UserVO;
 
 
@@ -30,6 +32,9 @@ public class UserController {
 
 	@Inject
 	UserService service;
+
+	@Inject
+	SellerService service_s;
 
 	ModelAndView mav;
 
@@ -41,10 +46,12 @@ public class UserController {
 	}
 
 	@PostMapping("loginOK")
-	public ModelAndView loginOk(UserVO vo, HttpSession session) {
+	public ModelAndView loginOk(UserVO vo, SellerVO svo, HttpSession session ) {
 		
 		mav = new ModelAndView();
+
 		UserVO logVO = service.loginOk(vo);
+		SellerVO slogVO =service_s.loginOk(svo);
 	
 		if(logVO != null) {//로그인 성공
 
@@ -54,13 +61,22 @@ public class UserController {
 			mav.setViewName("redirect:/");
 			
 			return mav;
-			
+
+		}else if(slogVO !=null){
+
+			session.setAttribute("logId", slogVO.getGenie_id());
+			session.setAttribute("logName", slogVO.getCeo_name());
+			session.setAttribute("logStatus","Y");
+			mav.setViewName("redirect:/");
+
+			return mav;
+
 		}else{//로그인 실패
 
 			session.setAttribute("msg","아이디 또는 비밀번호 오류입니다.");
 			mav.setViewName("redirect:/user/login");
 
-			return mav;
+		return mav;
 			
 		}
 	}

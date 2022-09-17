@@ -48,4 +48,9 @@ public class SellerServiceImpl implements SellerService {
 	public int AccountWrite(AccountVO avo) {
 		return dao.AccountWrite(avo);
 	}
+
+	@Override
+	public SellerVO loginOk(SellerVO svo) {
+		return dao.loginOk(svo);
+	}
 }

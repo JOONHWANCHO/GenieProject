@@ -40,7 +40,7 @@
 		from user u 
 		join account a 
 		on a.genie_id=u.genie_id 
-		where a.member_type=#{member_type} and a.genie_id=#{genie_id} and genie_pwd=sha2(#{genie_pwd},256) and a.withdrawal=1;
+		where a.genie_id=#{genie_id} and genie_pwd=sha2(#{genie_pwd},256) and a.withdrawal=1;
 
 	</select>
 

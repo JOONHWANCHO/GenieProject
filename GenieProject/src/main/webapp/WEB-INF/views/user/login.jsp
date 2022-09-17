@@ -129,7 +129,6 @@
     <div id="formContent">
       <!-- 로그인폼-->
       <form method="post" action="/user/loginOK" id="logFrm">
-        <input type="hidden" value="1" name="member_type"/>
         <p>아이디</p>
         <input type="text" id="genie_id" name="genie_id" placeholder="아이디를 입력하세요">
       <!-- 비밀번호 -->

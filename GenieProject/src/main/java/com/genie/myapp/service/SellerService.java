@@ -23,6 +23,8 @@ public interface SellerService {
 
   // 주문목록 
   public List<OrderVO> sellerOrder(OrderVO vo);
+  //판매자 로그인
+	public SellerVO loginOk(SellerVO svo);
 
 
 }
