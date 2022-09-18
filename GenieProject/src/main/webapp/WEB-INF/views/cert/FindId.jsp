@@ -31,7 +31,7 @@
 			$.ajax({
 				url: "/cert/sendUserId",
 				type: "POST",
-				data: { user_email: user_email }
+				data: { user_email : user_email }
 			}).done(function() {
 			const html =`<div class="send_email">
 							<div>
