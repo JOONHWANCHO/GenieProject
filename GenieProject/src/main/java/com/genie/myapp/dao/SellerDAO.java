@@ -33,6 +33,9 @@ public interface SellerDAO {
 	public SellerVO loginOk(SellerVO svo);
 	//상품관리 - 상품목록
 	public List<SellerProductVO> productList(SellerProductVO pvo);
+	//회원 선택: 로그인 한 회원
+	public SellerVO getSeller(String genie_id);	
+
 
 
 }
