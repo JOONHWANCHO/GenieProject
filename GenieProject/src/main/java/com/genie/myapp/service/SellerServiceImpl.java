@@ -53,4 +53,9 @@ public class SellerServiceImpl implements SellerService {
 	public SellerVO loginOk(SellerVO svo) {
 		return dao.loginOk(svo);
 	}
+
+	@Override
+	public List<SellerProductVO> productList(SellerProductVO pvo) {
+		return dao.productList(pvo);
+	}
 }

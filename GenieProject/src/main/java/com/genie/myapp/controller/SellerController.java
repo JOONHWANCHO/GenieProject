@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -84,8 +85,14 @@ public class SellerController {
 	
 	//seller 상품관리 페이지
 	@GetMapping("sellerProduct")
-	public ModelAndView sellerProduct() {
+	public ModelAndView sellerProduct(SellerProductVO pvo, HttpServletRequest request) {
+		
+		pvo.setGenie_id((String)request.getSession().getAttribute("logId"));
+		
 		mav = new ModelAndView();
+		mav.addObject("plist", service.productList(pvo));
+		mav.addObject("pvo", pvo);
+		
 		mav.setViewName("seller/sellerProduct");
 		return mav;
 	}
