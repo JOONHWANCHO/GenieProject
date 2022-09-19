@@ -1,5 +1,6 @@
 package com.genie.myapp.vo;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SellerProductVO {
@@ -54,7 +55,8 @@ public class SellerProductVO {
 
 	public void setProduct_category(String product_category) {
 		this.product_category = product_category;
-		
+		//String categorySplit[] = product_category.split(",");
+		//categoryList = Arrays.asList(categorySplit);
 	}
 
 	public String getProduct_tag() {
