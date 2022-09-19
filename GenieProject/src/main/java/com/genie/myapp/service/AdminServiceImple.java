@@ -33,4 +33,9 @@ public class AdminServiceImple implements AdminService {
 	public UserVO getadmember(String user_id) {
 		return dao.getadmember(user_id);
 	}
+
+	@Override
+	public int admemberPopEdit(UserVO vo) {
+		return dao.admemberPopEdit(vo);
+	}
 }

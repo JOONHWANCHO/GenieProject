@@ -179,12 +179,15 @@ body {
   font-size: 0.875rem;
 }
 .card-body ul>li{
-	float:left; width:10.5%; line-height:43px; border-bottom:1px solid #ddd;
+	float:left; width:23%; line-height:43px; border-bottom:1px solid #ddd;
 	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
-.card-body ul>li:nth-child(11n+1){width:3%;}
-.card-body ul>li:nth-child(11n+2){width:6%;}
-.card-body ul>li:nth-child(11n+5){width:5%;}
+.card-body ul>li:nth-child(7n+1){width:5%;}
+.card-body ul>li:nth-child(7n+2){width:10%;}
+.card-body ul>li:nth-child(7n+3){width:13%;}
+.card-body ul>li:nth-child(7n+4){width:17%;}
+.card-body ul>li:nth-child(7n+5){width:15%;}
+.card-body ul>li:nth-child(7n+6){width:13%;}
 
 </style>
 
@@ -226,27 +229,19 @@ body {
 							<div class="card-body">
 								<ul id="member">
 									<li><input type="checkbox" id="allCheck"/></li>
-									<li>번호</li>
 									<li>아이디</li>
 									<li>이름</li>
 									<li>연락처</li>
 									<li>이메일</li>
-									<li>주소</li>
-									<li>성별</li>
 									<li>가입일</li>
-									<li>결제방식</li>
-									<li>관리</li>		
+									<li>관리</li>	
 									<c:forEach var="vo" items="${admember}">
-										<li><input type="checkbox"/></li>		
-										<li>${vo.user_num}</li>
+										<li><input type="checkbox"/></li>
 										<li>${vo.genie_id}</li>
 										<li>${vo.user_name}</li>
 										<li>${vo.user_tel}</li>
 										<li>${vo.user_email}</li>
-										<li>${vo.user_addr}</li>
-										<li>${vo.user_gender}</li>
 										<li>${vo.sign_in_date}</li>
-										<li>${vo.payment_method}</li>
 										<li><a href="/admin/admemberPop?genie_id=${vo.genie_id}"><input type="button" value="수정"></a></li>
 									</c:forEach>
 								</ul>
