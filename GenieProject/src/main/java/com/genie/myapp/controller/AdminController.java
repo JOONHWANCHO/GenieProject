@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.AdminService;
@@ -82,4 +83,30 @@ public class AdminController {
 			mav.setViewName("admin/adminDetail");
 			return mav;
 		}
+		
+		
+		
+		
+		
+		// =======================================
+		
+		// admember 페이지 이동
+		@GetMapping("admember")
+		public ModelAndView admember() {
+			mav = new ModelAndView();
+			mav.addObject("admember", service.userAllSelect());
+			mav.setViewName("admin/admember");
+			return mav;
+		}	
+		
+		// admember 내 유저정보 리스트
+		@GetMapping("admemberPop")
+		public ModelAndView admemberPop(@RequestParam("genie_id") String genie_id) {
+			ModelAndView mav = new ModelAndView();
+			
+			mav.addObject("vo", service.getadmember(genie_id));
+			mav.setViewName("admin/admemberPop");
+			return mav;
+		}
+		
 }
