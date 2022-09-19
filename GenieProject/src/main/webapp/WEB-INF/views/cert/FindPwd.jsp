@@ -44,7 +44,6 @@ $(document).ready(function(){
 		return submit;
 	}
 	
-	
 	$(".find_btn").click(function(){
 		if(!usernameCheck()) {
 			alert("아이디를 정확히 입력해주세요");
