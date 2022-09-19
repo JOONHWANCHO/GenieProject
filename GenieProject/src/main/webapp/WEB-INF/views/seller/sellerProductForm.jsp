@@ -308,7 +308,7 @@ body {
 			<div class="content-main">
 				<div class="container">
 					<p>상품등록</p>
-					<form method="post" action="/seller/productWrite" id="productFrm">
+					<form method="post" action="/seller/productWrite" id="productFrm" enctype="multipart/form-data">
 						<ul class="proFrm">
 							<div id="nameDiv">
 								<p>상품명</p>

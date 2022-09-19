@@ -63,4 +63,14 @@ public class SellerServiceImpl implements SellerService {
 	public SellerVO getSeller(String genie_id) {
 		return dao.getSeller(genie_id);
 	}
+
+	@Override
+	public SellerProductVO getProduct(int pid) {
+		return dao.getProduct(pid);
+	}
+
+	@Override
+	public int productDel(int pid, String genie_id) {
+		return dao.productDel(pid, genie_id);
+	}
 }
