@@ -5,7 +5,7 @@
 <!--Genie 메인화면--->
 <section class="index">
 	<div class="index-list">		
-		<a href="/genie/genie_01"><img src="/image/banner_western_simple.png"></a>
+		<a href="/genie"><img src="/image/banner_western_simple.png"></a>
 	</div>
 
 	<div class="category">

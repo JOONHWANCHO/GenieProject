@@ -40,7 +40,7 @@ img{
 .grid-container{
     /* grid style */
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(18%, 4fr));
+	grid-template-columns: repeat(4, 1fr);
     grid-gap: 2em;
     justify-content: center;
     align-items: center;
