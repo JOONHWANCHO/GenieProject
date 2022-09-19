@@ -37,6 +37,14 @@
 			<label for="7">스승/멘토</label>
 		</div>
 	</form>
+	
+	<ul class="page_order">
+		<li><input type="button" onclick="next1()"></li>
+		<li><input type="button" onclick="next2()"></li>
+		<li><input type="button" onclick="next3()"></li>
+		<li><input type="button" onclick="next4()"></li>
+		<li><input type="button" onclick="next5()"></li>
+	</ul>
 </section>
 
 <section class="genie_02">
@@ -93,6 +101,14 @@
 			<label for="19">위로</label>
 		</div>
 	</form>
+
+	<ul class="page_order">
+		<li><input type="button" onclick="next1()"></li>
+		<li><input type="button" onclick="next2()"></li>
+		<li><input type="button" onclick="next3()"></li>
+		<li><input type="button" onclick="next4()"></li>
+		<li><input type="button" onclick="next5()"></li>
+	</ul>
 </section>
 
 <section class="genie_03">
@@ -125,6 +141,14 @@
 			<label for="25">200,000원 이상</label>
 		</div>
 	</form>
+
+	<ul class="page_order">
+		<li><input type="button" onclick="next1()"></li>
+		<li><input type="button" onclick="next2()"></li>
+		<li><input type="button" onclick="next3()"></li>
+		<li><input type="button" onclick="next4()"></li>
+		<li><input type="button" onclick="next5()"></li>
+	</ul>
 </section>
 
 
@@ -159,6 +183,14 @@
 			<label for="31">50세 이상</label>
 		</div>
 	</form>
+
+	<ul class="page_order">
+		<li><input type="button" onclick="next1()"></li>
+		<li><input type="button" onclick="next2()"></li>
+		<li><input type="button" onclick="next3()"></li>
+		<li><input type="button" onclick="next4()"></li>
+		<li><input type="button" onclick="next5()"></li>
+	</ul>
 </section>
 
 <section class="genie_05">
@@ -179,6 +211,16 @@
 			<label for="34">남여공용</label>
 		</div>
 	</form>
+
+	<ul class="page_order">
+		<li><input type="button" onclick="next1()"></li>
+		<li><input type="button" onclick="next2()"></li>
+		<li><input type="button" onclick="next3()"></li>
+		<li><input type="button" onclick="next4()"></li>
+		<li><input type="button" onclick="next5()"></li>
+	</ul>
 </section>
+
+
 
 
