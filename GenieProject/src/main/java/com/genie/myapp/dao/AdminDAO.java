@@ -20,4 +20,7 @@ public interface AdminDAO {
 	
 	// admemberPop 내 유저정보 뷰
 	public UserVO getadmember(String user_id);
+	
+	// admemberPop 내 유저정보 수정
+	public int admemberPopEdit(UserVO vo);
 }
