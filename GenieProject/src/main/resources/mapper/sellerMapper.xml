@@ -56,6 +56,14 @@
 		where genie_id=#{genie_id}
 
 	</select>
-
-
+	
+	<select id="getProduct" resultType="SellerProductVO">
+		select product_name, product_price, product_info, product_quantity, product_image1, product_image2, product_image3, product_category, product_tag 
+		from product
+		where product_id=${param1}
+	</select>
+	
+	<delete id="productDel">
+		delete from product where product_id=${param1} and genie_id=#{param2}
+	</delete>
 </mapper>
