@@ -9,4 +9,15 @@
 	<select id="adminTag" resultType="AdminVO">
 		select product_tag_id, product_tag from tag
 	</select>
+	
+	<select resultType="UserVO" id="userAllSelect">
+		select genie_id, user_name, user_tel, user_email, user_zipcode, user_addr, user_detailaddr, user_gender, 
+		date_format(sign_in_date, '%y-%m-%d') sign_in_date, payment_method from user order by genie_id desc 
+	</select>
+
+	<select resultType="UserVO" id="getadmember" parameterType="String">
+		select genie_id, user_name, user_tel, user_email, user_zipcode, user_addr, user_detailaddr, date_format(sign_in_date, '%y-%m-%d') sign_in_date, 
+		payment_method from user where genie_id='${param1}'
+	</select>
+	
 </mapper>
