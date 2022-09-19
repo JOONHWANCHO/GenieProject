@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.genie.myapp.dao.AdminDAO;
 import com.genie.myapp.vo.AdminVO;
+import com.genie.myapp.vo.UserVO;
 
 @Service
 public class AdminServiceImple implements AdminService {
@@ -21,5 +22,20 @@ public class AdminServiceImple implements AdminService {
 	@Override
 	public List<AdminVO> adminTag(AdminVO VO) {
 		return dao.adminTag(VO);
+	}
+
+	@Override
+	public List<UserVO> userAllSelect() {
+		return dao.userAllSelect();
+	}
+
+	@Override
+	public UserVO getadmember(String user_id) {
+		return dao.getadmember(user_id);
+	}
+
+	@Override
+	public int admemberPopEdit(UserVO vo) {
+		return dao.admemberPopEdit(vo);
 	}
 }
