@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -175,4 +176,17 @@ public class SellerController {
 		}
 		return entity;
 	}
+	
+	//seller 상품수정 페이지로 이동
+	@GetMapping("/sellerProductEdit/{product_id}")
+	public ModelAndView sellerProductEdit(@PathVariable("product_id") int pid, SellerProductVO pvo) {
+		mav = new ModelAndView();
+		
+		mav.addObject("pvo", pvo);
+		mav.setViewName("seller/sellerProductEdit");
+		
+		return mav;
+	}
+	
+	//seller 상품수정 : DB 업데이트 
 }

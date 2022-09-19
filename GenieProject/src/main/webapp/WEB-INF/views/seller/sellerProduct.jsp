@@ -157,7 +157,6 @@ td, th {
 							<th>카테고리</th>
 							<th>태그</th>
 							<th>수정</th>
-							<th>삭제</th>
 						</tr>
 						<c:forEach var="pvo" items="${plist }">
 						<tr>
@@ -167,8 +166,7 @@ td, th {
 							<td>${pvo.product_stock}</td>
 							<td>{pvo.product_category}</td>
 							<td>{pvo.product_tag}</td>
-							<td><input type="button" value="수정"></td>
-							<td><input type="button" value="삭제"></td>
+							<td><a href="/seller/sellerProductEdit/${pvo.product_id }">수정하기</a></td>
 						</tr>
 						</c:forEach>
 					</table>
