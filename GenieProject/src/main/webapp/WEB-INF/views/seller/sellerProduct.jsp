@@ -136,7 +136,7 @@ td, th {
 				<div class="vertical-tabs">
 					<div>
 						<span><img src="../images/seller/profile-1.png" /></span>
-						<h3>업체이름</h3>
+						<h3>${logName }님</h3>
 					</div>
 					<a href="/seller/productForm"><ul class="fa-ul"><li><i class="fa fa-plus-circle" aria-hidden="true"></i> 상품등록</li></ul></a>
 					<a href="/seller/sellerProduct"><ul class="fa-ul"><li><i class="fa fa-gift" aria-hidden="true"></i> 상품관리</li></ul></a>
