@@ -12,7 +12,6 @@ body {
   background: #f2f2f2;
 }
 
-
 .responsive-wrapper {
   width: 90%;
   max-width: 1280px;
@@ -163,12 +162,7 @@ body {
   padding: 1rem 1.25rem;
   font-size: 0.875rem;
 }
-#cart tbody td img.thumb {
-  vertical-align: bottom;
-  margin-bottom: 4px;
-  border-radius: 10px;
-  width: 130px;
-}
+
 .card-footer {
   margin-top: auto;
   padding: 1rem 1.25rem;
@@ -183,6 +177,17 @@ body {
   font-weight: 500;
   font-size: 0.875rem;
 }
+.card-body ul>li{
+	float:left; width:23%; line-height:43px; border-bottom:1px solid #ddd;
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.card-body ul>li:nth-child(7n+1){width:5%;}
+.card-body ul>li:nth-child(7n+2){width:10%;}
+.card-body ul>li:nth-child(7n+3){width:13%;}
+.card-body ul>li:nth-child(7n+4){width:17%;}
+.card-body ul>li:nth-child(7n+5){width:15%;}
+.card-body ul>li:nth-child(7n+6){width:13%;}
+
 </style>
 
 <script>
@@ -190,6 +195,7 @@ body {
 </script>
 
 <main class="main">
+
 	<div class="responsive-wrapper">
 		<div class="content">
 			<div class="content-panel">
@@ -204,8 +210,7 @@ body {
           <a href="/admin/adminCategory"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>카테고리관리</li></ul></a>
 					<a href="/admin/admember"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>고객관리</li></ul></a>
 					<a href="/admin/adcompany"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>업체관리</li></ul></a>
-					<a href="/admin/adminMain"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>More</li></ul></a>							
-				</div>
+					<a href="/admin/adminMain"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>More</li></ul></a>											</div>
 			</div>
 			<div class="content-main">
 				<div class="content-main-top">
@@ -216,37 +221,30 @@ body {
 						<div class="card-header">
 							<div>
 								<span><img src="https://pngimg.com/uploads/circle/circle_PNG23.png" /></span>
-								<h3>상품관리</h3>
+								<h3>카테고리</h3>
 							</div>
 						</div>
-
             <div class="card-body">
 						    <div id="page">
 						      <table id="cart">
-						        <thead>
-						          <tr class="productitm">
-						            <th class="first">이미지</th>
-						            <th class="third">상품명</th>
-						            <th class="fourth">기업명</th>
-						            <th class="fifth">&nbsp;</th>
-						          </tr>
-						        </thead>
 						        <tbody>
 						          <!-- 제품 반복 -->
-						          <c:forEach var="vo" items="${list }">
+						          <c:forEach var="vo" items="${adcategory }">
 						          <tr class="productitm">
-						            <td><img src="${vo.product_image1}" class="thumb"></td>
-						            <td>${vo.product_id}</td>
-						            <td>${vo.product_name}</td>
+						            <td><img src="" class="thumb"></td>
+						            <td>${vo.category_id}</td>
+						            <td>${vo.product_category}</td>
+                        <td><a href="/admin/adminCategoryPop?category_id=${vo.category_id}"><input type="button" value="관리"></a></td>
 						            <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
 						          </tr>
 						           </c:forEach>
-						           
 						        </tbody>
 						      </table>
 						    </div>
-						  </div>
-
+   
+						<div class="card-footer">
+							<a href="#">더 보기</a>
+						</div>
 					</article>
 				</div>
 			</div>
@@ -256,7 +254,26 @@ body {
 
 
 
-     
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

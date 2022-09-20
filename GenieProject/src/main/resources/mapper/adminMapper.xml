@@ -12,6 +12,37 @@
 		select product_tag_id, product_tag from tag
 	</select>
 
+	<!-- 태그 셀렉트 All -->
+	<select resultType="AdminVO" id="tagAllSelect">
+		select product_tag_id, product_tag from tag
+	</select>
+	<select resultType="AdminVO" id="getadminTag" parameterType="String">
+		select product_tag_id, product_tag from tag where product_tag_id='${param1}'
+	</select>
+	<update id="adminTagPopEdit" parameterType="AdminVO">
+		update tag set product_tag_id=#{product_tag_id}, product_tag=#{product_tag}
+		where product_tag_id=#{product_tag_id}
+	</update>
+	<delete id="adminTagDel">
+		delete from tag where product_tag_id='${param1}'
+	</delete>
+	<!-- 태그 셀렉트 All 끝 -->
+
+	<!-- 카테고리 셀렉트 All 시작 -->
+	<select resultType="AdminVO" id="categoryAllSelect">
+		select category_id, product_category from category
+	</select>
+	<select resultType="AdminVO" id="getadcategory" parameterType="String">
+		select category_id, product_category from category where category_id='${param1}'
+	</select>
+	<update id="adcategoryPopEdit" parameterType="AdminVO">
+		update category set category_id=#{category_id}, product_category=#{product_category}
+		where category_id=#{category_id}
+	</update>
+	<delete id="adcategoryDel">
+		delete from category where category_id='${param1}'
+	</delete>
+	<!-- 카테고리 셀렉트 All 끝 -->
 
 	<!-- ============================================ -->
 

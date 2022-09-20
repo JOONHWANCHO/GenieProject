@@ -178,17 +178,6 @@ body {
   font-weight: 500;
   font-size: 0.875rem;
 }
-.card-body ul>li{
-	float:left; width:23%; line-height:43px; border-bottom:1px solid #ddd;
-	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-}
-.card-body ul>li:nth-child(7n+1){width:5%;}
-.card-body ul>li:nth-child(7n+2){width:10%;}
-.card-body ul>li:nth-child(7n+3){width:13%;}
-.card-body ul>li:nth-child(7n+4){width:17%;}
-.card-body ul>li:nth-child(7n+5){width:15%;}
-.card-body ul>li:nth-child(7n+6){width:13%;}
-
 </style>
 
 <script>
@@ -206,11 +195,13 @@ body {
 						<span><img src="https://pngimg.com/uploads/circle/circle_PNG23.png" /></span>
 						<h3>회원정보</h3>
 					</div>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-envelope"></i>Inbox</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>상품관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>주문관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>고객관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>More</li></ul></a>				
+					<a href="/admin/adminMain"><ul class="fa-ul"><li><i class="fa-li fa fa-envelope"></i>Inbox</li></ul></a>
+          <a href="/admin/adminProduct"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>상품관리</li></ul></a>
+					<a href="/admin/adminTag"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>태그관리</li></ul></a>
+          <a href="/admin/adminCategory"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>카테고리관리</li></ul></a>
+					<a href="/admin/admember"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>고객관리</li></ul></a>
+					<a href="/admin/adcompany"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>업체관리</li></ul></a>
+					<a href="/admin/adminMain"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>More</li></ul></a>					
 				</div>
 			</div>
 			<div class="content-main">
@@ -225,27 +216,26 @@ body {
 								<h3>태그</h3>
 							</div>
 						</div>
+
             <div class="card-body">
-              <ul id="member">
-                <li><input type="checkbox" id="allCheck"/></li>
-                <li>태그아이디</li>
-                <li>태그</li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li>관리</li>
-                <c:forEach var="vo" items="${list }">
-                  <li><input type="checkbox"/></li>
-                  <li>${vo.product_tag_id}</li>
-                  <li>${vo.product_tag}</li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li><a href="/admin/adminTagPop?product_tag_id=${vo.product_tag_id}"><input type="button" value="관리"></a></li>
-                </c:forEach>
-              </ul>
+              <div id="page">
+                <table id="cart">
+                  <tbody>
+                    <!-- 제품 반복 -->
+                    <c:forEach var="vo" items="${adminTag }">
+                    <tr class="productitm">
+                      <td><img src="" class="thumb"></td>
+                      <td>${vo.product_tag_id}</td>
+                      <td>${vo.product_tag}</td>
+                      <td><a href="/admin/adminTagPop?product_tag_id=${vo.product_tag_id}"><input type="button" value="관리"></a></td>
+                      <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+                    </tr>
+                     </c:forEach>      
+                  </tbody>
+                </table>
+              </div>
             </div>
-            
+
 						<div class="card-footer">
 							<a href="#">더 보기</a>
 						</div>
