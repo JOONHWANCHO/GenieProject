@@ -190,6 +190,18 @@ body {
 		margin:10px;
 		margin-right:15px;
 	}
+	#imageDiv{
+		overflow:auto;
+	}
+	#imageDiv input{
+		width:98%;
+		padding:10px;
+		display:inline-block;
+		transition: ease .40s;
+		float:right;
+		margin:10px;
+		margin-right:15px;
+	}
 	#infoDiv{
 		overflow:auto;
 	}
@@ -247,17 +259,17 @@ body {
 			}
 			//이미지1
 			if($("#product_image1").val()==""){
-				alert("상품이미지(1)를 첨부하세요.");
+				alert("상품이미지(1)의 링크를 입력하세요.");
 				return false;
 			}
 			//이미지2
 			if($("#product_image2").val()==""){
-				alert("상품이미지(2)를 첨부하세요.");
+				alert("상품이미지(2)의 링크를 입력하세요.");
 				return false;
 			}
 			//이미지3
 			if($("#product_image3").val()==""){
-				alert("상품이미지(3)를 첨부하세요.");
+				alert("상품이미지(3)의 링크를 입력하세요.");
 				return false;
 			}
 			//카테고리
@@ -308,7 +320,7 @@ body {
 			<div class="content-main">
 				<div class="container">
 					<p>상품등록</p>
-					<form method="post" action="/seller/productWrite" id="productFrm" enctype="multipart/form-data">
+					<form method="post" action="/seller/productWrite" id="productFrm">
 						<ul class="proFrm">
 							<div id="nameDiv">
 								<p>상품명</p>
@@ -326,11 +338,11 @@ body {
 								<p>상품수량</p>
 								<input type="text" id="product_quantity" name="product_quantity" placeholder="상품수량을 입력하세요"/>
 							</div>
-							<div>
+							<div id="imageDiv">
 								<p>상품이미지</p>
-								<input type="file" name="product_image1" id="product_image1"/>
-								<input type="file" name="product_image2" id="product_image2"/>
-								<input type="file" name="product_image3" id="product_image3"/>
+								<input type="text" name="product_image1" id="product_image1" placeholder="이미지링크를 입력하세요"/>
+								<input type="text" name="product_image2" id="product_image2" placeholder="이미지링크를 입력하세요"/>
+								<input type="text" name="product_image3" id="product_image3" placeholder="이미지링크를 입력하세요"/>
 							</div>
 							<div>
 								<p>카테고리</p>

@@ -129,7 +129,7 @@ td, th {
 <script>
 	function productDel(){
 		if(confirm("상품을 삭제하시겠습니까?")){
-			location.href="/seller/productDel?product_id=${pvo.product_id}";
+			location.href="/seller/productDel/${pvo.product_id}";
 		}
 	}
 </script>
@@ -165,7 +165,6 @@ td, th {
 							<th>태그</th>
 							<th>수정</th>
 							<th>삭제</th>
-							
 						</tr>
 						<c:forEach var="pvo" items="${plist }">
 						<tr>
