@@ -59,8 +59,13 @@ public class CertServiceImpl implements CertService {
 //////////////////////////////////////////////////////////////////////
 
 	@Override
-	public List<String> FindEmail(String genie_id) {	
-		return cdao.FindEmail(genie_id);
+	public int overlapCheck(String value, String valueType) {
+
+		Map<String, String> map = new HashMap<>();
+		map.put("value", value);
+		map.put("valueType", valueType);
+		
+		return cdao.overlapCheck(value, valueType);
 	}
 
 
@@ -89,8 +94,15 @@ public class CertServiceImpl implements CertService {
 			public void run() {
 				mailSender.send(simpleMailMessage);
 			}
-		}).start();
-		
+		}).start();	
 	}
+
+	@Override
+	public int PwdEditOk(String genie_id, String user_pwd) {
+		return cdao.PwdEditOk(genie_id, user_pwd);
+	}
+
+
+
 
 }
