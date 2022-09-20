@@ -220,3 +220,50 @@ body {
 		</div>
 	</div>
 </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+</script>
+
+<!-- ------------------------------------스크립트부분 끝------------------------------------------->
+<div class="responsive-wrapper">
+ 	<div class="content">
+			<div class="content-main">
+				<h1>회원정보</h1>
+				<div class="userForm">
+					<form method="post" action="/user/UserEditOk" id="logFrm">
+						<ul id="name">
+							<li>이름</li>
+							<input type="text" id="user_name" name="user_name" value= "${vo.product_tag_id}" readonly>
+						</ul>
+						<input type = "submit" id="formSubmit" value = "회원정보 수정"/>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

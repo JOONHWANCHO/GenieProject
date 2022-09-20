@@ -22,4 +22,9 @@ public class AdminServiceImple implements AdminService {
 	public List<AdminVO> adminTag(AdminVO VO) {
 		return dao.adminTag(VO);
 	}
+
+	@Override
+	public int modify(AdminVO adminVO) {
+		return dao.modify(adminVO);
+	}
 }

@@ -3,10 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.genie.myapp.dao.AdminDAO">
+	<!-- 카테고리 -->
 	<select id="adminCategoryTag" resultType="AdminVO">
 		select category_id, product_category from category
 	</select>
+	<!-- 태그 -->
 	<select id="adminTag" resultType="AdminVO">
 		select product_tag_id, product_tag from tag
 	</select>
+ 	<!-- 태그 수정 -->
+    <update id="modify" resultType="AdminVO">
+        update tag set product_tag = #{product_tag}, product_tag_eng = #{product_tag_eng} where product_tag_id = #{product_tag_id}
+    </update>
 </mapper>

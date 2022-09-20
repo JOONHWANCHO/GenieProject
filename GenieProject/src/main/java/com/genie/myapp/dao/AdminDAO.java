@@ -9,9 +9,10 @@ import com.genie.myapp.vo.AdminVO;
 @Mapper
 @Repository
 public interface AdminDAO {
-	//글목록
+	//카테고리리스트
 	public List<AdminVO> adminCategoryTag(AdminVO VO);
-
+	//태그리스트
 	public List<AdminVO> adminTag(AdminVO VO);
-	
+	//태그수정
+	public int modify(AdminVO adminVO);
 }
