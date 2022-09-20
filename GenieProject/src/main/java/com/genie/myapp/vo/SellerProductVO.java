@@ -55,8 +55,8 @@ public class SellerProductVO {
 
 	public void setProduct_category(String product_category) {
 		this.product_category = product_category;
-		//String categorySplit[] = product_category.split(",");
-		//categoryList = Arrays.asList(categorySplit);
+		String categorySplit[] = product_category.split(",");
+		categoryList = Arrays.asList(categorySplit);
 	}
 
 	public String getProduct_tag() {
@@ -66,6 +66,8 @@ public class SellerProductVO {
 
 	public void setProduct_tag(String product_tag) {
 		this.product_tag = product_tag;
+		String tagSplit[] = product_tag.split(",");
+		tagList = Arrays.asList(tagSplit);
 	}
 
 	public String getProduct_name() {

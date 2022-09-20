@@ -44,7 +44,6 @@ $(document).ready(function(){
 		return submit;
 	}
 	
-	
 	$(".find_btn").click(function(){
 		if(!usernameCheck()) {
 			alert("아이디를 정확히 입력해주세요");
@@ -57,7 +56,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: "/cert/FindPwd_auth",
 			type: "POST",
-			data: data
+			data: data,
 		})
 		.then(function(result){
 			location.href= "/cert/FindPwd_auth?genie_id="+result;

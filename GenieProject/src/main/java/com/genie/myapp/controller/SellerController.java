@@ -178,15 +178,36 @@ public class SellerController {
 	}
 	
 	//seller 상품수정 페이지로 이동
-	@GetMapping("/sellerProductEdit/{product_id}")
-	public ModelAndView sellerProductEdit(@PathVariable("product_id") int pid, SellerProductVO pvo) {
+	@GetMapping("sellerProductEdit/{product_id}")
+	public ModelAndView sellerProductEdit(@PathVariable("product_id") int pid) {
 		mav = new ModelAndView();
 		
-		mav.addObject("pvo", pvo);
+		mav.addObject("pvo", service.getProduct(pid));
 		mav.setViewName("seller/sellerProductEdit");
 		
 		return mav;
 	}
 	
-	//seller 상품수정 : DB 업데이트 
+	//seller 상품수정 : DB 업데이트
+	
+	
+	//seller 상품삭제 : DB
+	@GetMapping("productDel/{product_id}")
+	public ModelAndView productDel(@PathVariable("product_id") int pid, HttpSession session) {
+		String genie_id = (String)session.getAttribute("logId");
+		
+		//업로드 파일명을 DB조회!!!!!!!!!!!!!!
+		
+		
+		int result = service.productDel(pid, genie_id);
+		
+		mav = new ModelAndView();
+		if(result>0) {//삭제
+			mav.setViewName("redirect:/seller/sellerProduct");
+		}else {//삭제실패
+			mav.setViewName("redirect:/seller/sellerProduct");
+		}
+		return mav;
+	}
+	
 }

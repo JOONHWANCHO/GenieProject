@@ -29,6 +29,8 @@ public interface SellerService {
 	public List<SellerProductVO> productList(SellerProductVO pvo);
 	//회원 선택: 로그인 한 회원
 	public SellerVO getSeller(String genie_id);	
-
-
+	//상품선택 : 수정, 상품내용보기
+	public SellerProductVO getProduct(int pid);
+	//상품삭제
+	public int productDel(int pid, String genie_id);
 }

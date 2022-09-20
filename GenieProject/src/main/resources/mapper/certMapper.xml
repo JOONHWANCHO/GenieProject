@@ -18,12 +18,12 @@
 
 
 	<select id="emailCheck" resultType="String">
-		select 1 result
-		from dual 
-		where exists(
-				select user_email
-				from user 
-				where genie_id=#{genie_id} and user_email=#{user_email}
-			) 
+		select 1 result 
+    	from dual 
+    	where exists(
+        select 1 
+        from user u
+        where u.genie_id=#{genie_id} and u.user_email=#{user_email} 
+    )
 	</select>
 </mapper>
