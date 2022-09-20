@@ -26,4 +26,8 @@
 		sign_in_date=#{sign_in_date}, payment_method=#{payment_method} 
 		where genie_id=#{genie_id}
 	</update>
+	
+	<delete id="admemberDel">
+		delete from user where genie_id='${param1}'
+	</delete>
 </mapper>

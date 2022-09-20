@@ -135,7 +135,11 @@ input[type=text]:placeholder {
 </style>
 
 <script>
-
+function admemberDel(){
+	if(confirm("${vo.genie_id} 회원을 삭제하시겠습니까?")){
+		location.href="/admin/admemberDel?genie_id=${vo.genie_id}";
+	}
+}
 </script>
 
 <div class="wrapper">
@@ -166,7 +170,8 @@ input[type=text]:placeholder {
    	<p>결제방식</p>
    		<input type="text" id="payment_method" class="second" name="payment_method" value=${vo.payment_method}>   	
       <input type="submit" class="fourth" value="수정">
-      <a href="javascript:window.history.back()"><input type="button" class="fourth" value="취소"></a>
+      <a href="javascript:admemberDel()"><input type="button" class="fourth" value="삭제"></a>
+      <a href="javascript:window.history.back()"><input type="button" class="fourth" value="뒤로가기"></a>
     </form>
   </div>
 </div>
