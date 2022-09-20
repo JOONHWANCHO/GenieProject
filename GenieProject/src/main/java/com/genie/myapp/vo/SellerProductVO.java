@@ -6,10 +6,10 @@ import java.util.List;
 public class SellerProductVO {
 	private int product_id;
     private String genie_id;
-    private String product_category;
+    private String product_category; // a,b,c
 	private String product_tag; 
 	private String product_name; 
-	private String product_price;
+	private int product_price;
 	private String product_info; 
 	private int product_stock; 
 	private int product_quantity; 
@@ -22,22 +22,28 @@ public class SellerProductVO {
 	
 	//여러개의 카테고리를 저장할 컬렉션
 	private List<String> categoryList;
+	private String[] categoryArray; //체크된 카테고리를 저장할 배열
+	
 	//여러개의 태그를 저장할 컬렉션
 	private List<String> tagList;
+	private String[] tagArray; //체크된 태그를 저장할 배열
 	
 	@Override
-	public String toString() {
-		return "SellerProductVO [product_id=" + product_id + ", genie_id=" + genie_id + ", product_category="
-				+ product_category + ", product_tag=" + product_tag + ", product_name=" + product_name
-				+ ", product_price=" + product_price + ", product_info=" + product_info + ", product_stock="
-				+ product_stock + ", product_quantity=" + product_quantity + ", product_hit=" + product_hit
-				+ ", product_like=" + product_like + ", product_writedate=" + product_writedate + ", product_image1="
-				+ product_image1 + ", product_image2=" + product_image2 + ", product_image3=" + product_image3 + "]";
-	}
+		public String toString() {
+			return "SellerProductVO [product_id=" + product_id + ", genie_id=" + genie_id + ", product_category="
+					+ product_category + ", product_tag=" + product_tag + ", product_name=" + product_name
+					+ ", product_price=" + product_price + ", product_info=" + product_info + ", product_stock="
+					+ product_stock + ", product_quantity=" + product_quantity + ", product_hit=" + product_hit
+					+ ", product_like=" + product_like + ", product_writedate=" + product_writedate + ", product_image1="
+					+ product_image1 + ", product_image2=" + product_image2 + ", product_image3=" + product_image3
+					+ ", categoryList=" + categoryList.toString() + ", categoryArray=" + Arrays.toString(categoryArray) + ", tagList="
+					+ tagList.toString() + ", tagArray=" + Arrays.toString(tagArray) + "]";
+		}
 	
 	public int getProduct_id() {
 		return product_id;
 	}
+	
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
@@ -76,10 +82,10 @@ public class SellerProductVO {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
-	public String getProduct_price() {
+	public int getProduct_price() {
 		return product_price;
 	}
-	public void setProduct_price(String product_price) {
+	public void setProduct_price(int product_price) {
 		this.product_price = product_price;
 	}
 	public String getProduct_info() {
@@ -144,6 +150,14 @@ public class SellerProductVO {
 	public void setCategoryList(List<String> categoryList) {
 		this.categoryList = categoryList;
 	}
+	
+	public String[] getCategoryArray() {
+		return product_category.split(",");
+	}
+
+	public void setCategoryArray(String[] categoryArray) {
+		this.categoryArray = categoryArray;
+	}
 
 	public List<String> getTagList() {
 		return tagList;
@@ -151,6 +165,14 @@ public class SellerProductVO {
 
 	public void setTagList(List<String> tagList) {
 		this.tagList = tagList;
+	}
+
+	public String[] getTagArray() {
+		return product_tag.split(",");
+	}
+
+	public void setTagArray(String[] tagArray) {
+		this.tagArray = tagArray;
 	}
 	
 	

@@ -70,7 +70,12 @@ public class SellerServiceImpl implements SellerService {
 	}
 
 	@Override
-	public int productDel(int pid, String genie_id) {
-		return dao.productDel(pid, genie_id);
+	public int productEditOk(SellerProductVO pvo) {
+		return dao.productEditOk(pvo);
+	}
+
+	@Override
+	public int productDel(int pid) {
+		return dao.productDel(pid);
 	}
 }
