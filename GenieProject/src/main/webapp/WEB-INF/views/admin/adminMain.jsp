@@ -11,7 +11,6 @@ body {
   background: #f2f2f2;
 }
 
-
 .responsive-wrapper {
   width: 90%;
   max-width: 1280px;
@@ -196,7 +195,10 @@ body {
 						<h3>회원정보</h3>
 					</div>
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-envelope"></i>Inbox</li></ul></a>
+					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>기업회원관리</li></ul></a>
+					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>일반회원관리</li></ul></a>
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>상품관리</li></ul></a>
+
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>주문관리</li></ul></a>
 					<a href="/admin/admember"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>고객관리</li></ul></a>
 					<a href="/admin/adcompany"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>업체관리</li></ul></a>

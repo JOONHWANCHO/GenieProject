@@ -135,9 +135,9 @@ input[type=text]:placeholder {
 </style>
 
 <script>
-function admemberDel(){
-	if(confirm("${vo.genie_id} 회원을 삭제하시겠습니까?")){
-		location.href="/admin/admemberDel?genie_id=${vo.genie_id}";
+function adminTagDel(){
+	if(confirm("${vo.product_tag_id} 태그를 삭제하시겠습니까?")){
+		location.href="/admin/adminTagDel?product_tag_id=${vo.product_tag_id}";
 	}
 }
 </script>
@@ -145,32 +145,16 @@ function admemberDel(){
 <div class="wrapper">
   <div id="formContent">
     <!-- 타이틀 -->
-    <h1>고객정보관리</h1>
+    <h1>태그정보관리</h1>
 
     <!-- 로그인폼-->
-    <form method="post" action="/admin/admemberPopEdit" id="admemberPopFrm">
-    <p>아이디</p>
-     	<input type="text" id="genie_id" class="second" name="genie_id" value=${vo.genie_id}>
-   	<p>이름</p>
-   		<input type="text" id="user_name" class="second" name="user_name" value=${vo.user_name}>
-   	<p>연락처</p>
-   		<input type="text" id="user_tel" class="second" name="user_tel" value=${vo.user_tel}>
-   	<p>이메일</p>
-   		<input type="text" id="user_email" class="second" name="user_email" value=${vo.user_email}>
-   	<p>우편번호</p>
-   		<input type="text" id="user_zipcode" class="second" name="user_zipcode" value=${vo.user_zipcode}>
-   	<p>주소</p>
-   		<input type="text" id="user_addr" class="second" name="user_addr" value=${vo.user_addr}>
-   	<p>상세주소</p>
-   		<input type="text" id="user_detailaddr" class="second" name="user_detailaddr" value=${vo.user_detailaddr}>
-   	<p>성별</p>
-   		<input type="text" id="user_gender" class="second" name="user_gender" value=${vo.user_gender}>
-   	<p>가입일</p>
-   		<input type="text" id="sign_in_date" class="second" name="sign_in_date" value=${vo.sign_in_date}>
-   	<p>결제방식</p>
-   		<input type="text" id="payment_method" class="second" name="payment_method" value=${vo.payment_method}>   	
+    <form method="post" action="/admin/adminTagPopEdit" id="adminTagPopFrm">
+    <p>태그아이디</p>
+     	<input type="text" id="product_tag_id" class="second" name="product_tag_id" value=${vo.product_tag_id}>
+   	<p>태그</p>
+   		<input type="text" id="user_name" class="second" name="product_tag" value=${vo.product_tag}>  	
       <input type="submit" class="fourth" value="수정">
-      <a href="javascript:admemberDel()"><input type="button" class="fourth" value="삭제"></a>
+      <a href="javascript:adminTagDel()"><input type="button" class="fourth" value="삭제"></a>
       <a href="javascript:window.history.back()"><input type="button" class="fourth" value="뒤로가기"></a>
     </form>
   </div>
