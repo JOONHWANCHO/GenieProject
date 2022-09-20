@@ -196,6 +196,18 @@ body {
 	input[type=checkbox] {
 		zoom: 1.5;
 	}
+	#imageDiv{
+		overflow:auto;
+	}
+	#imageDiv input{
+		width:98%;
+		padding:10px;
+		display:inline-block;
+		transition: ease .40s;
+		float:right;
+		margin:10px;
+		margin-right:15px;
+	}
 	label{
 		display: inline-block;
     	width: 140px;
@@ -337,35 +349,11 @@ body {
 								<p>상품수량</p>
 								<input type="text" id="product_quantity" name="product_quantity" value="${pvo.product_quantity}"/>
 							</div>
-							<div>
+							<div id="imageDiv">
 								<p>상품이미지</p>
-								<!-- 첫번째 이미지 -->
-								<div>
-									<!-- 현재 파일명 -->
-									<div>${pvo.product_image1}&nbsp;<b class="del">X</b></div>
-									<!-- 파일을 삭제시 새로운 파일을 첨부할 수 있도록 -->
-									<input type="hidden" name="product_image1" id="product_image1"/>
-									<!-- 삭제한 경우 삭제 파일명을 보관할 컴퍼넌트 -->
-									<input type="hidden" name="" value="${pvo.product_image1 }"/>
-								</div>
-								<!-- 두번째 이미지 -->
-								<div>
-									<!-- 현재 파일명 -->
-									<div>${pvo.product_image2}&nbsp;<b class="del">X</b></div>
-									<!-- 파일을 삭제시 새로운 파일을 첨부할 수 있도록 -->
-									<input type="hidden" name="product_image2" id="product_image2"/>
-									<!-- 삭제한 경우 삭제 파일명을 보관할 컴퍼넌트 -->
-									<input type="hidden" name="" value="${pvo.product_image2 }"/>
-								</div>
-								<!-- 세번째 이미지 -->
-								<div>
-									<!-- 현재 파일명 -->
-									<div>${pvo.product_image3}&nbsp;<b class="del">X</b></div>
-									<!-- 파일을 삭제시 새로운 파일을 첨부할 수 있도록 -->
-									<input type="hidden" name="product_image3" id="product_image3"/>
-									<!-- 삭제한 경우 삭제 파일명을 보관할 컴퍼넌트 -->
-									<input type="hidden" name="" value="${pvo.product_image3 }"/>
-								</div>
+								<input type="text" name="product_image1" id="product_image1" value="${pvo.product_image1 }"/>
+								<input type="text" name="product_image2" id="product_image2" value="${pvo.product_image2 }"/>
+								<input type="text" name="product_image3" id="product_image3" value="${pvo.product_image3 }"/>
 							</div>
 							<div>
 								<p>카테고리</p>

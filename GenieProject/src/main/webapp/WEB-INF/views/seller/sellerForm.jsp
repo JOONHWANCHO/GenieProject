@@ -209,7 +209,7 @@
 <section class="home">
 	<div class="container">
 		<h1>기업회원 회원가입</h1>
-		<form method="post" action="/seller/sellerWrite" id="sellerFrm" enctype="multipart/form-data">
+		<form method="post" action="/seller/sellerWrite" id="sellerFrm">
 			<input type="hidden" value="2" name="member_type"/>
 			<input type="hidden" value="N" name="seller_status"/>
 			<ul class="selForm">
