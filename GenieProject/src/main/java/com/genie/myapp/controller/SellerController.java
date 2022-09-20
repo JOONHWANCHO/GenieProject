@@ -196,9 +196,6 @@ public class SellerController {
 	public ModelAndView productDel(@PathVariable("product_id") int pid, HttpSession session) {
 		String genie_id = (String)session.getAttribute("logId");
 		
-		//업로드 파일명을 DB조회!!!!!!!!!!!!!!
-		
-		
 		int result = service.productDel(pid, genie_id);
 		
 		mav = new ModelAndView();
