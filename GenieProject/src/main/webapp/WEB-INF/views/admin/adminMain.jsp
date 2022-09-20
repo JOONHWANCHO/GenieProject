@@ -194,15 +194,13 @@ body {
 						<span><img src="https://pngimg.com/uploads/circle/circle_PNG23.png" /></span>
 						<h3>회원정보</h3>
 					</div>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-envelope"></i>Inbox</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>기업회원관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>일반회원관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>상품관리</li></ul></a>
-
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>주문관리</li></ul></a>
+					<a href="/admin/adminMain"><ul class="fa-ul"><li><i class="fa-li fa fa-envelope"></i>Inbox</li></ul></a>
+          <a href="/admin/adminProduct"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>상품관리</li></ul></a>
+					<a href="/admin/adminTag"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>태그관리</li></ul></a>
+          <a href="/admin/adminCategory"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>카테고리관리</li></ul></a>
 					<a href="/admin/admember"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>고객관리</li></ul></a>
 					<a href="/admin/adcompany"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>업체관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>More</li></ul></a>				
+					<a href="/admin/adminMain"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>More</li></ul></a>							
 				</div>
 			</div>
 			<div class="content-main">
