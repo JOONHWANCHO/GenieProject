@@ -34,24 +34,16 @@
 			<a href="/product"><img src="/image/gender_male_long.png"></a>
 		</div>
 	<div>
-	<div class="brand-title">
-		<h1>인기 브랜드<span>금주의 브랜드(광고)</span></h1>
-	</div>
+
 	<div class="brand">
-		<div class="starbucks">
-			<a href="/product"><img src="/image/starbucks_western_simple.png"></a>
-		</div>
-		<div class="brand1">
-				<a href="/product">
-					<img src="https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220826162903_c3b3a0343ba041ae8b0e51324b4d9406.jpg">
-					<img src="https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220818140832_b4e44c89232b4db1844caf8414c47412.jpg">
-				</a>
-		</div>
-		<div class="brand2">
-				<a href="/product">제품이름{vo.product_name}</a><br><br>
-				<a href="/product">제품가격{vo.product_price}</a><br><br><hr><br>
-				<a href="/product">제품이름{vo.product_name}</a><br><br>
-				<a href="/product">제품가격{vo.product_price}</a>
-		</div>
+		<div class="box1">인기브랜드</div>
+		<div class="box2">금주의 브랜드</div>
+		<a href="https://www.starbucks.co.kr/index.do" class="box3"><img src="/image/starbucks_western_simple.png" style="height: 75vh; width: auto"></a>
+		<a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE" class="box4"><img src="https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220826162903_c3b3a0343ba041ae8b0e51324b4d9406.jpg" style="height:35vh; width:auto;"></a>
+		<a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE" class="box5"><img src="https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220818140832_b4e44c89232b4db1844caf8414c47412.jpg" style="height:35vh; width:auto;"></a>
+		<div class="box6" style="font-size: 2rem;"><a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE">브랜드1 상품명</a></div>
+		<div class="box7" style="font-size: 1.5rem;"><a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE">브랜드1 가격</a></div>
+		<div class="box8" style="font-size: 2rem;"><a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE">브랜드2 상품명</a></div>
+		<div class="box9" style="font-size: 1.5rem;"><a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE">브랜드2 가격</a></div>
 	</div>
 </section>
