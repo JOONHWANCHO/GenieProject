@@ -12,6 +12,7 @@ import com.genie.myapp.vo.UserVO;
 public interface AdminDAO {
 	//카테고리리스트
 	public List<AdminVO> adminCategoryTag(AdminVO VO);
+	
 	//태그리스트
 	public List<AdminVO> adminTag(AdminVO VO);
 	
