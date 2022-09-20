@@ -198,12 +198,10 @@ body {
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>기업회원관리</li></ul></a>
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>일반회원관리</li></ul></a>
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>상품관리</li></ul></a>
-<<<<<<< HEAD
-=======
+
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>주문관리</li></ul></a>
 					<a href="/admin/admember"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>고객관리</li></ul></a>
 					<a href="/admin/adcompany"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>업체관리</li></ul></a>
->>>>>>> c9b9d79405b8e6785eecc1c44e1ed0e52618e6f1
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>More</li></ul></a>				
 				</div>
 			</div>

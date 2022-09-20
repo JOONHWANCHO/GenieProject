@@ -109,11 +109,20 @@ body {
 }
 
 .card-grid {
-  display: grid;
   grid-template-columns: repeat(1, 1fr);
   -moz-column-gap: 1.5rem;
        column-gap: 1.5rem;
   row-gap: 1.5rem;
+}
+@media (min-width: 600px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .card {
@@ -169,6 +178,17 @@ body {
   font-weight: 500;
   font-size: 0.875rem;
 }
+.card-body ul>li{
+	float:left; width:23%; line-height:43px; border-bottom:1px solid #ddd;
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.card-body ul>li:nth-child(7n+1){width:5%;}
+.card-body ul>li:nth-child(7n+2){width:10%;}
+.card-body ul>li:nth-child(7n+3){width:13%;}
+.card-body ul>li:nth-child(7n+4){width:17%;}
+.card-body ul>li:nth-child(7n+5){width:15%;}
+.card-body ul>li:nth-child(7n+6){width:13%;}
+
 </style>
 
 <script>
@@ -205,12 +225,27 @@ body {
 								<h3>태그</h3>
 							</div>
 						</div>
-						<div class="card-body">
-							<c:forEach var="vo" items="${list }">
-								<h3>${vo.product_tag_id}</h3>
-								<p>${vo.product_tag}</p>
-							</c:forEach>
-						</div>
+            <div class="card-body">
+              <ul id="member">
+                <li><input type="checkbox" id="allCheck"/></li>
+                <li>태그아이디</li>
+                <li>태그</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li>관리</li>
+                <c:forEach var="vo" items="${list }">
+                  <li><input type="checkbox"/></li>
+                  <li>${vo.product_tag_id}</li>
+                  <li>${vo.product_tag}</li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li><a href="/admin/adminTagPop?product_tag_id=${vo.product_tag_id}"><input type="button" value="관리"></a></li>
+                </c:forEach>
+              </ul>
+            </div>
+            
 						<div class="card-footer">
 							<a href="#">더 보기</a>
 						</div>
@@ -246,24 +281,3 @@ body {
 
 
 
-<script>
-</script>
-
-<!-- ------------------------------------스크립트부분 끝------------------------------------------->
-<div class="responsive-wrapper">
- 	<div class="content">
-			<div class="content-main">
-				<h1>회원정보</h1>
-				<div class="userForm">
-					<form method="post" action="/user/UserEditOk" id="logFrm">
-						<ul id="name">
-							<li>이름</li>
-							<input type="text" id="user_name" name="user_name" value= "${vo.product_tag_id}" readonly>
-						</ul>
-						<input type = "submit" id="formSubmit" value = "회원정보 수정"/>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
