@@ -389,8 +389,7 @@ body {
 								<label><input type="checkbox" name="tagList" value="30대"/>30대</label>
 								<label><input type="checkbox" name="tagList" value="40대"/>40대</label>
 								<label><input type="checkbox" name="tagList" value="50대"/>50대</label>
-								<label><input type="checkbox" name="tagList" value="60대"/>60대</label>
-								<label><input type="checkbox" name="tagList" value="70대이상"/>70대이상</label>
+								<label><input type="checkbox" name="tagList" value="60대"/>60대이상</label>
 								<p class="subTag">성별</p>
 								<label><input type="checkbox" name="tagList" value="남성"/>남성</label>
 								<label><input type="checkbox" name="tagList" value="여성"/>여성</label>

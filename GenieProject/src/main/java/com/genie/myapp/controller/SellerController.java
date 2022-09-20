@@ -189,14 +189,40 @@ public class SellerController {
 	}
 	
 	//seller 상품수정 : DB 업데이트
-	
+	@PostMapping("productEditOk")
+	public ResponseEntity<String> productEditOk(SellerProductVO pvo, HttpSession session){
+		System.out.println(pvo.toString());
+		pvo.setGenie_id((String)session.getAttribute("logId"));
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html", Charset.forName("UTF-8")));
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		String msg = "<script>";
+		
+		try {//수정성공 - 상품관리로 이동
+			int cnt = service.productEditOk(pvo);
+			
+			msg += "alert('상품이 수정되었습니다. 상품관리 페이지로 이동합니다. ');";
+			msg += "location.href='/seller/sellerProduct';";
+			
+		}catch(Exception e){//수정실패 - 수정폼으로 이동
+			e.printStackTrace();
+			
+			msg += "alert('상품수정이 실패하였습니다.');";
+			msg += "history.go(-1);";
+		}
+		msg += "</script>";
+		
+		ResponseEntity<String> entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+		
+		return entity;
+	}
 	
 	//seller 상품삭제 : DB
 	@GetMapping("productDel/{product_id}")
-	public ModelAndView productDel(@PathVariable("product_id") int pid, HttpSession session) {
-		String genie_id = (String)session.getAttribute("logId");
-		
-		int result = service.productDel(pid, genie_id);
+	public ModelAndView productDel(@PathVariable("product_id") int pid) {
+		//System.out.println(pid);
+		int result = service.productDel(pid);
 		
 		mav = new ModelAndView();
 		if(result>0) {//삭제

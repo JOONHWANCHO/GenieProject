@@ -32,5 +32,7 @@ public interface SellerService {
 	//상품선택 : 수정, 상품내용보기
 	public SellerProductVO getProduct(int pid);
 	//상품삭제
-	public int productDel(int pid, String genie_id);
+	public int productDel(int pid);
+	//상품수정
+	public int productEditOk(SellerProductVO pvo);
 }

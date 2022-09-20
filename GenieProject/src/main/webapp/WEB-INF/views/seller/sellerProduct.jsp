@@ -111,6 +111,11 @@ body {
 	text-decoration: none;
 	color: #3e3e3e;
 }
+#product_title{
+	font-size:20px;
+	font-family: arial, sans-serif;
+	font-weight:bold;
+}
 table {
   font-family: arial, sans-serif;
   font-size: 15px;
@@ -127,9 +132,9 @@ td, th {
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-	function productDel(){
+	function productDel(product_id ){
 		if(confirm("상품을 삭제하시겠습니까?")){
-			location.href="/seller/productDel/${pvo.product_id}";
+			location.href="/seller/productDel/"+product_id;
 		}
 	}
 </script>
@@ -154,7 +159,7 @@ td, th {
 			</div>
 			<div class="content-main">
 				<div class="content-main-top">
-					<p>상품관리</p>
+					<p id="product_title">상품관리</p>
 					<table id="table">
 						<tr>
 							<th>상품번호</th>
@@ -171,11 +176,11 @@ td, th {
 							<td>${pvo.product_id }</td>
 							<td>${pvo.product_name}</td>
 							<td>${pvo.product_price}</td>
-							<td>${pvo.product_stock}</td>
+							<td>${pvo.product_quantity}</td>
 							<td>${pvo.product_category}</td>
 							<td>${pvo.product_tag}</td>
 							<td><a href="/seller/sellerProductEdit/${pvo.product_id }">edit</a></td>
-							<td><a href="javascript:productDel();">del</a></td>
+							<td><a href="javascript:productDel(${pvo.product_id });">del</a></td>
 						</tr>
 						</c:forEach>
 					</table>
