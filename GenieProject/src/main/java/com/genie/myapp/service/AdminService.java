@@ -1,6 +1,7 @@
 package com.genie.myapp.service;
 
 import java.util.List;
+
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -17,4 +18,8 @@ public interface AdminService {
 
 	// admemberPop 내 유저정보 수정
 	public int admemberPopEdit(UserVO vo);
+	
+	// admember 내 유저정보 삭제
+	public int admemberDel(String genie_id);
+
 }

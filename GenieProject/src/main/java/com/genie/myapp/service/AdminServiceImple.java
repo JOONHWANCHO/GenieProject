@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.genie.myapp.dao.AdminDAO;
+import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -38,4 +39,10 @@ public class AdminServiceImple implements AdminService {
 	public int admemberPopEdit(UserVO vo) {
 		return dao.admemberPopEdit(vo);
 	}
+
+	@Override
+	public int admemberDel(String genie_id) {
+		return dao.admemberDel(genie_id);
+	}
+	
 }

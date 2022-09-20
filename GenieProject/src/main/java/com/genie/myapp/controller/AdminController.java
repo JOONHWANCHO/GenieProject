@@ -2,6 +2,8 @@ package com.genie.myapp.controller;
 
 import java.nio.charset.Charset;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.AdminService;
+import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -137,6 +140,19 @@ public class AdminController {
 			msg += "</script>";
 			
 			return new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+		}
+		
+		// 유저 정보 삭제
+		@GetMapping("admemberDel")
+		public ModelAndView admemberDel(String genie_id) {
+			int cnt = service.admemberDel(genie_id);
+			mav = new ModelAndView();
+			if(cnt>0) {
+				mav.setViewName("redirect:admember");
+			}else {
+				mav.setViewName("redirect:adcompany");
+			}
+			return mav;
 		}
 		
 }

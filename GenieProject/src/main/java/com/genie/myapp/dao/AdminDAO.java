@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.UserVO;
 //추상클래스 
@@ -23,4 +25,10 @@ public interface AdminDAO {
 	
 	// admemberPop 내 유저정보 수정
 	public int admemberPopEdit(UserVO vo);
+	
+	// admember 내 유저정보 삭제
+	public int admemberDel(String genie_id);
+		
+	
+
 }

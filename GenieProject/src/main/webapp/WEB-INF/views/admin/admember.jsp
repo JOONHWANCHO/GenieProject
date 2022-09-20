@@ -234,7 +234,7 @@ body {
 									<li>연락처</li>
 									<li>이메일</li>
 									<li>가입일</li>
-									<li>관리</li>	
+									<li>관리</li>
 									<c:forEach var="vo" items="${admember}">
 										<li><input type="checkbox"/></li>
 										<li>${vo.genie_id}</li>
@@ -242,7 +242,7 @@ body {
 										<li>${vo.user_tel}</li>
 										<li>${vo.user_email}</li>
 										<li>${vo.sign_in_date}</li>
-										<li><a href="/admin/admemberPop?genie_id=${vo.genie_id}"><input type="button" value="수정"></a></li>
+										<li><a href="/admin/admemberPop?genie_id=${vo.genie_id}"><input type="button" value="관리"></a></li>
 									</c:forEach>
 								</ul>
 							</div>
