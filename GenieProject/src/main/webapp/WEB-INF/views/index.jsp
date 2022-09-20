@@ -35,15 +35,27 @@
 		</div>
 	<div>
 
-	<div class="brand">
-		<div class="box1">인기브랜드</div>
-		<div class="box2">금주의 브랜드</div>
-		<a href="https://www.starbucks.co.kr/index.do" class="box3"><img src="/image/starbucks_western_simple.png" style="height: 75vh; width: auto"></a>
-		<a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE" class="box4"><img src="https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220826162903_c3b3a0343ba041ae8b0e51324b4d9406.jpg" style="height:35vh; width:auto;"></a>
-		<a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE" class="box5"><img src="https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220818140832_b4e44c89232b4db1844caf8414c47412.jpg" style="height:35vh; width:auto;"></a>
-		<div class="box6" style="font-size: 2rem;"><a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE">브랜드1 상품명</a></div>
-		<div class="box7" style="font-size: 1.5rem;"><a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE">브랜드1 가격</a></div>
-		<div class="box8" style="font-size: 2rem;"><a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE">브랜드2 상품명</a></div>
-		<div class="box9" style="font-size: 1.5rem;"><a href="https://kr.loccitane.com/?&utm_source=GoogleMO&utm_medium=paidSearch&utm_campaign=KRKR_sales_performance_branding_multi_SearchAD&utm_term=%EB%A1%9D%EC%8B%9C%EB%95%85&gclid=CjwKCAjwyaWZBhBGEiwACslQo0MikdH0qZkB_lRd_iM9CJY-nuLI87crj3caVUKWOgQO4FsZRYcRdBoC--AQAvD_BwE">브랜드2 가격</a></div>
+	<div class="best-tag">
+		<h1># 모두의 인기 태그</h1>
+		<div class="tag-button">
+			<button>#연인</button>
+			<button>#생일</button>
+			<button>#20대</button>
+			<button>#남여공용</button>
+			<button>#부모님</button>
+			<button>#회사동료</button>
+			<button>#결혼</button>
+		</div>
+	</div>
+
+	<div class="recommend">
+		<div class="box1">금주의 추천상품</div>
+		<a href="/product" class="box2"></a>
+		<a href="/product" class="box3"></a>
+		<a href="/product" class="box4"></a>
+		<div class="box5" style="font-size: 2rem;"><a href="/">브랜드1 상품명</a></div>
+		<div class="box6" style="font-size: 1.5rem;"><a href="/">브랜드1 가격</a></div>
+		<div class="box7" style="font-size: 2rem;"><a href="/">브랜드2 상품명</a></div>
+		<div class="box8" style="font-size: 1.5rem;"><a href="/">브랜드2 가격</a></div>
 	</div>
 </section>
