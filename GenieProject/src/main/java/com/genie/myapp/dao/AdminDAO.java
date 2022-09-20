@@ -4,17 +4,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
-import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.UserVO;
 //추상클래스 
 @Mapper
 @Repository
 public interface AdminDAO {
-	//글목록
+	//카테고리리스트
 	public List<AdminVO> adminCategoryTag(AdminVO VO);
-
+	
+	//태그리스트
 	public List<AdminVO> adminTag(AdminVO VO);
 	
 	// admember 내 유저정보 리스트
@@ -29,6 +28,4 @@ public interface AdminDAO {
 	// admember 내 유저정보 삭제
 	public int admemberDel(String genie_id);
 		
-	
-
 }

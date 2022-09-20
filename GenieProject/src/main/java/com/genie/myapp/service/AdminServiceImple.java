@@ -25,7 +25,6 @@ public class AdminServiceImple implements AdminService {
 		return dao.adminTag(VO);
 	}
 
-	@Override
 	public List<UserVO> userAllSelect() {
 		return dao.userAllSelect();
 	}
@@ -44,5 +43,5 @@ public class AdminServiceImple implements AdminService {
 	public int admemberDel(String genie_id) {
 		return dao.admemberDel(genie_id);
 	}
-	
+
 }

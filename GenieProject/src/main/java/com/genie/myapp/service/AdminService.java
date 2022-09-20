@@ -6,8 +6,10 @@ import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.UserVO;
 
 public interface AdminService {
-	//글목록
+	//카테고리리스트
 	public List<AdminVO> adminCategoryTag(AdminVO VO);
+	
+	//태그리스트
 	public Object adminTag(AdminVO VO);
 	
 	// admember 내 유저정보 리스트
