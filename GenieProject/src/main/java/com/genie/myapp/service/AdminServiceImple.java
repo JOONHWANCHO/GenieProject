@@ -44,4 +44,19 @@ public class AdminServiceImple implements AdminService {
 		return dao.admemberDel(genie_id);
 	}
 
+	@Override
+	public UserVO getadminTag(String product_tag_id) {
+		return dao.getadmember(product_tag_id);
+	}
+
+	@Override
+	public int adminTagPopEdit(AdminVO vo) {
+		return dao.adminTagPopEdit(vo);
+	}
+
+	@Override
+	public int adminTagDel(String product_tag_id) {
+		return dao.admemberDel(product_tag_id);
+	}
+
 }

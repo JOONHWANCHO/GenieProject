@@ -12,6 +12,15 @@ public interface AdminService {
 	//태그리스트
 	public Object adminTag(AdminVO VO);
 	
+	// adminTagPop 태그정보 뷰
+	public UserVO getadminTag(String product_tag_id);
+	
+	// adminTagPop 태그정보 수정
+	public int adminTagPopEdit(AdminVO vo);
+	
+	// adminTagPop 태그정보 뷰 삭제
+	public int adminTagDel(String product_tag_id);
+
 	// admember 내 유저정보 리스트
 	public List<UserVO> userAllSelect();
 		
