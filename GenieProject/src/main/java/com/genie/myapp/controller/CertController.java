@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +13,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.CertService;
+import com.genie.myapp.service.UserService;
 
 
 @Controller
 @RequestMapping("/cert/*")
 public class CertController {
 
+	@Inject
+	UserService service;
+	
 	@Autowired
 	CertService CertService;
 
@@ -57,16 +64,18 @@ public class CertController {
 		return mav;
 	}
 	
-	//비밀번호와 연결될 아이디 구분  (보류)
-	@GetMapping("FindEmail")
-	public ResponseEntity<Object> FindEmail(String genie_id){
-		List<String> user_email =CertService.FindEmail(genie_id);
+	@ResponseBody
+	@GetMapping("overlapCheck")
+	public int overlapCheck(String value, String valueType) {
+//		value = 중복체크할 값
+//		valeuType = username, nickname
+		System.out.println(valueType);
+		System.out.println(value);
+		int count = CertService.overlapCheck(value, valueType);
 		
-		if(user_email.size() != 0) {
-			CertService.emailCheck(genie_id, user_email);
-		}
-		return new ResponseEntity<Object>(HttpStatus.OK);
-	}	
+		System.out.println(count);
+		return count;
+	}
 	
 	@GetMapping("emailCheck")
 	public ResponseEntity<Boolean> emailCheck(String genie_id, List<String> user_email){
@@ -80,13 +89,22 @@ public class CertController {
 
     	Map<String, Object> authStatus = new HashMap<>();
 		authStatus.put("genie_id", genie_id);
-
 		authStatus.put("status", false);
 		
 		session.setMaxInactiveInterval(300);
 		session.setAttribute("authStatus", authStatus);
 
 		return new ResponseEntity<Object>(genie_id, HttpStatus.OK);
+	}
+
+	// 인증번호 보내기 페이지
+	@GetMapping("FindPwd_auth")
+	public String auth(String genie_id, HttpSession session) {
+    	Map<String, Object> authStatus = (Map<String, Object>) session.getAttribute("authStatus");
+    	if(authStatus == null || !genie_id.equals(authStatus.get("genie_id"))) {
+        	return "redirect:/cert/FindPwd";
+   		}
+    	return "/cert/FindPwd_auth";
 	}
 
 
@@ -124,19 +142,6 @@ public class CertController {
 	}
 
 
-	//인증번호 보내기 페이지
-	@GetMapping("FindPwd_authOk")
-
-	public String auth(String user_name, HttpSession session) {
-		Map<String, Object> authStatus = (Map<String, Object>) session.getAttribute("authStatus");
-		if(authStatus == null || !user_name.equals(authStatus.get("user_name"))) {
-			return "redirect:/cert/FindPwd";
-		}
-		
-		return "cert/FindPwd_auth";
-	}
-
-
 	// 인증 완료 후
 
 	@PostMapping("authCOM")
@@ -148,4 +153,33 @@ public class CertController {
 		authStatus.put("status", true);
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
+
+	// 비밀번호 변경 페이지
+	@GetMapping("modify_pwd")
+	public String moldifyPassword(String genie_id, HttpSession session) {
+		Map<String, Object> authStatus = (Map<String, Object>) session.getAttribute("authStatus");
+		
+		if(authStatus == null || !genie_id.equals(authStatus.get("genie_id"))) {
+			return "redirect:/find/password";
+		}
+		
+		// 페이지에 왔을때 인증이 안되있다면
+		if(!(boolean) authStatus.get("status")) {
+			return "redirect:/cert/FindPwd_auth";
+		}
+		return "cert/modify_pwd";
+	}
+
+
+	// 비밀번호 변경
+	@PatchMapping("modify_pwd")
+	public ResponseEntity<String> modifyPassword(String user_pwd, String genie_id, HttpSession session) {
+		CertService.PwdEditOk(genie_id, user_pwd);
+		session.setMaxInactiveInterval(0);
+		session.setAttribute("authStatus", null);
+
+		return new ResponseEntity<String>("비밀번호를 변경했습니다",HttpStatus.OK);
+	}
+
+
 }

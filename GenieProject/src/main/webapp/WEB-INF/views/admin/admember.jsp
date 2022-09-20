@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
@@ -10,6 +11,7 @@ body {
   font-family: "Be Vietnam Pro", sans-serif;
   background: #f2f2f2;
 }
+
 
 .responsive-wrapper {
   width: 90%;
@@ -107,7 +109,6 @@ body {
 }
 
 .card-grid {
-  display: grid;
   grid-template-columns: repeat(1, 1fr);
   -moz-column-gap: 1.5rem;
        column-gap: 1.5rem;
@@ -177,6 +178,17 @@ body {
   font-weight: 500;
   font-size: 0.875rem;
 }
+.card-body ul>li{
+	float:left; width:23%; line-height:43px; border-bottom:1px solid #ddd;
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.card-body ul>li:nth-child(7n+1){width:5%;}
+.card-body ul>li:nth-child(7n+2){width:10%;}
+.card-body ul>li:nth-child(7n+3){width:13%;}
+.card-body ul>li:nth-child(7n+4){width:17%;}
+.card-body ul>li:nth-child(7n+5){width:15%;}
+.card-body ul>li:nth-child(7n+6){width:13%;}
+
 </style>
 
 <script>
@@ -195,15 +207,10 @@ body {
 						<h3>회원정보</h3>
 					</div>
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-envelope"></i>Inbox</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>기업회원관리</li></ul></a>
-					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>일반회원관리</li></ul></a>
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>상품관리</li></ul></a>
-<<<<<<< HEAD
-=======
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>주문관리</li></ul></a>
 					<a href="/admin/admember"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>고객관리</li></ul></a>
 					<a href="/admin/adcompany"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>업체관리</li></ul></a>
->>>>>>> c9b9d79405b8e6785eecc1c44e1ed0e52618e6f1
 					<a href="#"><ul class="fa-ul"><li><i class="fa-li fa fa-square"></i>More</li></ul></a>				
 				</div>
 			</div>
@@ -216,48 +223,32 @@ body {
 						<div class="card-header">
 							<div>
 								<span><img src="https://pngimg.com/uploads/circle/circle_PNG23.png" /></span>
-								<h3>입점요청</h3>
-							</div>
-
-						</div>
-						<div class="card-body">
-							<h3>알라딘</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-body">
-							<h3>자스민</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-body">
-							<h3>자파</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-footer">
-							<a href="#">더 보기</a>
-						</div>
-					</article>
-					<article class="card">
-						<div class="card-header">
-							<div>
-								<span><img src="https://pngimg.com/uploads/circle/circle_PNG23.png" /></span>
-								<h3>주요사항</h3>
+								<h3>회원목록</h3>
 							</div>
 						</div>
-						<div class="card-body">
-							<h3>입점요청 100건</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-body">
-							<h3>상품배송지연</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-body">
-							<h3>입점문의</h3>
-							<p>G2208001</p>
-						</div>
-						<div class="card-footer">
-							<a href="#">더 보기</a>
-						</div>
+							<div class="card-body">
+								<ul id="member">
+									<li><input type="checkbox" id="allCheck"/></li>
+									<li>아이디</li>
+									<li>이름</li>
+									<li>연락처</li>
+									<li>이메일</li>
+									<li>가입일</li>
+									<li>관리</li>
+									<c:forEach var="vo" items="${admember}">
+										<li><input type="checkbox"/></li>
+										<li>${vo.genie_id}</li>
+										<li>${vo.user_name}</li>
+										<li>${vo.user_tel}</li>
+										<li>${vo.user_email}</li>
+										<li>${vo.sign_in_date}</li>
+										<li><a href="/admin/admemberPop?genie_id=${vo.genie_id}"><input type="button" value="관리"></a></li>
+									</c:forEach>
+								</ul>
+							</div>
+							<div class="card-footer">
+								<a href="#">더 보기</a>
+							</div>						
 					</article>
 				</div>
 			</div>

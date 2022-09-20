@@ -196,6 +196,18 @@ body {
 	input[type=checkbox] {
 		zoom: 1.5;
 	}
+	#imageDiv{
+		overflow:auto;
+	}
+	#imageDiv input{
+		width:98%;
+		padding:10px;
+		display:inline-block;
+		transition: ease .40s;
+		float:right;
+		margin:10px;
+		margin-right:15px;
+	}
 	label{
 		display: inline-block;
     	width: 140px;
@@ -221,8 +233,21 @@ body {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 	$(function(){
+		//DB의 카테고리 값 뿌려주기
+		var categoryList = $("#cateList");
+		console.log(categoryList);
+		var chkbox = $(".cList");
+		categoryList = categoryList.split(",");
 		
+		for(i=0; i<categoryList.length; i++){
+			for(j=0;j<chkbox.length;j++){
+				if(categoryList[i]==chkbox[j].value){
+					chkbox[j].checked=true;
+				}
+			}
+		}
 		
+		//----------------------------------
 		$("#productFrm").submit(function(){
 			//유효성검사
 			//상품명
@@ -283,8 +308,6 @@ body {
 		});
 		
 	});
-	
-	
 </script>
 
 <main class="main">
@@ -320,33 +343,34 @@ body {
 							</div>
 							<div id="infoDiv">
 								<p>상품설명</p>
-								<textarea rows="4" id="product_info" name="product_info" value="${pvo.product_info}"></textarea>
+								<textarea rows="4" id="product_info" name="product_info" >${pvo.product_info}</textarea>
 							</div>
 							<div id="countDiv">
 								<p>상품수량</p>
 								<input type="text" id="product_quantity" name="product_quantity" value="${pvo.product_quantity}"/>
 							</div>
-							<div>
+							<div id="imageDiv">
 								<p>상품이미지</p>
-								<input type="file" name="product_image1" id="product_image1" value="${pvo.product_image1}"/>
-								<input type="file" name="product_image2" id="product_image2" value="${pvo.product_image2}"/>
-								<input type="file" name="product_image3" id="product_image3" value="${pvo.product_image3}"/>
+								<input type="text" name="product_image1" id="product_image1" value="${pvo.product_image1 }"/>
+								<input type="text" name="product_image2" id="product_image2" value="${pvo.product_image2 }"/>
+								<input type="text" name="product_image3" id="product_image3" value="${pvo.product_image3 }"/>
 							</div>
 							<div>
 								<p>카테고리</p>
-								<label><input type="checkbox" name="categoryList" value="생일"/>생일</label>
-								<label><input type="checkbox" name="categoryList" value="기념일"/>기념일</label>
-								<label><input type="checkbox" name="categoryList" value="명절"/>명절</label>
-								<label><input type="checkbox" name="categoryList" value="집들이"/>집들이</label>
-								<label><input type="checkbox" name="categoryList" value="서프라이즈"/>서프라이즈</label>
-								<label><input type="checkbox" name="categoryList" value="응원"/>응원</label>
-								<label><input type="checkbox" name="categoryList" value="캠핑"/>캠핑</label>
-								<label><input type="checkbox" name="categoryList" value="반려동물"/>반려동물</label>
-								<label><input type="checkbox" name="categoryList" value="운동"/>운동</label>
-								<label><input type="checkbox" name="categoryList" value="키덜트"/>키덜트</label>
-								<label><input type="checkbox" name="categoryList" value="요리"/>요리</label>
-								<label><input type="checkbox" name="categoryList" value="홈파티"/>홈파티</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="생일"/>생일</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="기념일"/>기념일</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="명절"/>명절</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="집들이"/>집들이</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="서프라이즈"/>서프라이즈</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="응원"/>응원</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="캠핑"/>캠핑</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="반려동물"/>반려동물</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="운동"/>운동</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="키덜트"/>키덜트</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="요리"/>요리</label>
+								<label><input type="checkbox" name="categoryList" class="cList" value="홈파티"/>홈파티</label>
 								
+								<input type="hidden" id="cateList" name="cateList" value="${pvo.product_category }"/>
 							</div>
 							<div>
 								<p>태그</p>

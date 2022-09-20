@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
 	
         const URLSearch = new URLSearchParams(location.search);
-        const user_name = URLSearch.get("user_name"); 
+        const genie_id = URLSearch.get("genie_id"); 
         
         // 인증번호 발송했는지 여부
         const authNum = (function(){
@@ -24,7 +24,7 @@
         // 인증번호 보내기
         function sendAuthNum(data, func){
             $.ajax({
-                url: "/send/authNum",
+                url: "/cert/authNum",
                 type: "POST",
                 data: data 
             })
@@ -54,18 +54,15 @@
         // 이메일로 인증번호 보내기
         $(".send_email").click(function(){
             const data = {
-                user_email : $(".email").val(),
-                user_name : user_name
+                user_email : $(".user_email").val(),
+                genie_id :genie_id
             }
-            if(!emailCheck(data.user_email)) {
+
+            if($("#user_email").val()=="") {
                 alert("이메일을 정확히 입력해주세요");
                 return;
             }
-            
-            if(!timer.status().isStart) {
-                swal('잠시 후 다시 시도해주세요');
-                return;
-            }
+
             
             const inputBox = $(this).siblings(".auth_num");
             
@@ -73,7 +70,7 @@
             $.ajax({
                 url: "/cert/emailCheck",
                 type: "GET",
-                data : data
+                data : data,
             })
             .then(function(result){
                 if(result) {
@@ -99,10 +96,10 @@
                 type: "POST",
             })
             .then(function(){
-                location.href = "/cert/FindPwd?user_name=" + user_name;
+                location.href = "/cert/FindPwd?genie_id="+genie_id;
             })
             .fail(function(result){
-                swal(result.responseText);
+                alert(result.responseText);
             })
         }
     
@@ -147,8 +144,8 @@
 				<label for="email">가입한 이메일로 찾기</label>
 				
 				<div class="auth">
-					<input type="email" class="email" placeholder="이메일을 입력해주세요" maxlength="50">
-					<button type="button" class="end_email">인증번호받기</button>
+					<input type="email" class="user_email" placeholder="이메일을 입력해주세요" maxlength="50">
+					<button type="button" class="send_email">인증번호받기</button>
 					<input type="text" class="auth_num" name="authNum" readonly maxlength="6"  placeholder="인증번호 6자리입력">
 					<span class="timer"></span>
 				</div>
