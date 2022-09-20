@@ -5,7 +5,7 @@
     $(document).ready(function(){
 	
         const URLSearch = new URLSearchParams(location.search);
-        const user_name = URLSearch.get("user_name"); 
+        const user_name = URLSearch.get("genie_id"); 
         
         // 인증번호 발송했는지 여부
         const authNum = (function(){
@@ -55,7 +55,7 @@
         $(".send_email").click(function(){
             const data = {
                 user_email : $(".email").val(),
-                user_name : user_name
+                genie_id :genie_id
             }
             if(!emailCheck(data.user_email)) {
                 alert("이메일을 정확히 입력해주세요");
@@ -73,7 +73,7 @@
             $.ajax({
                 url: "/cert/emailCheck",
                 type: "GET",
-                data : data
+                data : data,
             })
             .then(function(result){
                 if(result) {
@@ -99,7 +99,7 @@
                 type: "POST",
             })
             .then(function(){
-                location.href = "/cert/FindPwd?user_name=" + user_name;
+                location.href = "/cert/FindPwd?user_name=" + genie_id;
             })
             .fail(function(result){
                 swal(result.responseText);

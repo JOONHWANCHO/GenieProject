@@ -56,7 +56,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: "/cert/FindPwd_auth",
 			type: "POST",
-			data: data
+			data: data,
 		})
 		.then(function(result){
 			location.href= "/cert/FindPwd_auth?genie_id="+result;
