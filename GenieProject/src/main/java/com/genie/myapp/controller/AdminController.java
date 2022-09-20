@@ -2,6 +2,8 @@ package com.genie.myapp.controller;
 
 import java.nio.charset.Charset;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.AdminService;
+import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -66,17 +69,6 @@ public class AdminController {
 			return mav;
 		}
 
-		//태그
-		@GetMapping("adminTag")
-		public ModelAndView adminTag(AdminVO VO) {
-			mav = new ModelAndView();
-			System.out.println(VO.toString());
-			mav.addObject("list", service.adminTag(VO));
-			mav.addObject("VO", VO);
-			mav.setViewName("admin/adminTag");
-			return mav;
-		}
-
 		//adminIndex
 		@GetMapping("adminIndex")
 		public ModelAndView adminIndex() {
@@ -92,8 +84,63 @@ public class AdminController {
 			mav.setViewName("admin/adminDetail");
 			return mav;
 		}
+
+		//태그
+		@GetMapping("adminTag")
+		public ModelAndView adminTag(AdminVO VO) {
+			mav = new ModelAndView();
+			System.out.println(VO.toString());
+			mav.addObject("list", service.adminTag(VO));
+			mav.addObject("VO", VO);
+			mav.setViewName("admin/adminTag");
+			return mav;
+			
+		}		
+
+		// 선택된 태그 수정 폼
+		@GetMapping("adminTagPop")
+		public ModelAndView adminTagPop(@RequestParam("product_tag_id") String product_tag_id) {
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("vo", service.getadminTag(product_tag_id));
+			mav.setViewName("admin/adminTagPop");
+			return mav;
+		}
 		
+		// 태그 DB 업데이트
+		@PostMapping("adminTagPopEdit")
+		public ResponseEntity<String> adminTagPopEdit(AdminVO vo){
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+			headers.add("Content-Type", "text/html; charset-UTF-8");
+			String msg = "<script>";
+			try {
+				service.adminTagPopEdit(vo);
+				msg += "alert('수정완료되었습니다. 정보관리 페이지로 이동합니다.');";
+				msg += "location.href='/admin/adminTagPop?product_tag_id="+vo.getproduct_tag_id()+"';";
+						
+			}catch(Exception e){
+				e.printStackTrace();
+				msg += "alert('수정 실패하였습니다.');";
+				msg += "history.go(-1);";
+			}
+			msg += "</script>";
+			
+			return new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+		}
 		
+		// 태그 정보 삭제
+		@GetMapping("adminTagDel")
+		public ModelAndView adminTagDel(String product_tag_id) {
+			int cnt = service.adminTagDel(product_tag_id);
+			mav = new ModelAndView();
+			if(cnt>0) {
+				mav.setViewName("redirect:adminTag");
+			}else {
+				mav.setViewName("redirect:adminTag");
+			}
+			return mav;
+		}
+
 		
 		
 		
@@ -139,4 +186,19 @@ public class AdminController {
 			return new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 		}
 		
+		// 유저 정보 삭제
+		@GetMapping("admemberDel")
+		public ModelAndView admemberDel(String genie_id) {
+			int cnt = service.admemberDel(genie_id);
+			mav = new ModelAndView();
+			if(cnt>0) {
+				mav.setViewName("redirect:admember");
+			}else {
+				mav.setViewName("redirect:adcompany");
+			}
+			return mav;
+		}
+		
 }
+
+//Update 0920.17:14
