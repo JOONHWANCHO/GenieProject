@@ -11,13 +11,11 @@
 	<select id="adminTag" resultType="AdminVO">
 		select product_tag_id, product_tag from tag
 	</select>
-<<<<<<< HEAD
- 	<!-- 태그 수정 -->
-    <update id="modify" resultType="AdminVO">
-        update tag set product_tag = #{product_tag}, product_tag_eng = #{product_tag_eng} where product_tag_id = #{product_tag_id}
-    </update>
-=======
-	
+
+
+	<!-- ============================================ -->
+
+
 	<select resultType="UserVO" id="userAllSelect">
 		select genie_id, user_name, user_tel, user_email, user_zipcode, user_addr, user_detailaddr, user_gender, 
 		date_format(sign_in_date, '%y-%m-%d') sign_in_date, payment_method from user order by genie_id desc 
@@ -38,5 +36,4 @@
 	<delete id="admemberDel">
 		delete from user where genie_id='${param1}'
 	</delete>
->>>>>>> c9b9d79405b8e6785eecc1c44e1ed0e52618e6f1
 </mapper>
