@@ -1,17 +1,17 @@
 @charset "UTF-8";
 /* ---------------------뒤에 흰색배경 초기설정----------------------- */
-.index {
+.index  {
 	margin: 0;
 	padding: 0;
 }
-h1 {
+h1  {
 	margin: 12vh 0;
 	font-size: 3.5rem;
 	color: #080E31;
 	text-align: center;
 }
 /* --------------첫번째 배너 설정---------------- */
-.index-list a img{
+.index-list a img  {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -20,50 +20,77 @@ h1 {
 }
 /* --------------------카테고리 설정--------------------- */
 
-.category-list{
+.category-list  {
 	display: grid;
 	grid-template-columns: 12vw 12vw 12vw 12vw 12vw 12vw;
 	justify-content: space-evenly;
 	row-gap: 3rem;
 }
-.category-list img{
+.category-list img  {
 	width: 100%;
 	height: auto;
 	border-radius: 50%;
 	box-shadow: 0 0 50px #b4b4b4;
 }
-.category-list span{
+.category-list span  {
 	font-size: 1.6rem;
 	text-align: center;
 }
 /* ----------------------------------랭킹페이지----------------------------------------- */
 
-.ranking-list img{
+.ranking-list img  {
 	width: 30%;
 	margin: 0 .3%;
 }
 /* ----------------브랜드 span설정------------------ */
-.brand-title h1{
+.brand-title h1  {
 	margin-left: 7vw;
 }
-.brand-title span{
+.brand-title span {
 	margin-left: 30vw;
 }
 
 /* --------------------------------베스트 브랜드, 금주의 브랜드----------------------------- */
+.box1 {
+	grid-area: box1;
+}
+.box2 {
+	grid-area: box2;
+}
+.box3 {
+	grid-area: box3;
+}
+.box4 {
+	grid-area: box4;
+}
+.box5 {
+	grid-area: box5;
+}
+.box6 {
+	grid-area: box6;
+}
+.box7 {
+	grid-area: box7;
+}
+.box8 {
+	grid-area: box8;
+}
+.box9 {
+	grid-area: box9;
+}
+
 .brand {
 	display: grid;
-	grid-template-columns: 50% 18% 26%;
-	justify-content: center;
-	align-items: center;
-	gap: 2rem;
-}
-.brand a{
-	margin: 0;
-	font-size: 1.5rem;
-}
-.brand img{
 	width: 100%;
 	height: auto;
+	grid-template-columns: 50% 20% 30%;
+	grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
+	grid-template-areas: 
+	"box1 box2 box2"
+	"box3 box4 box6"
+	"box3 box4 box7"
+	"box3 box5 box8"
+	"box3 box5 box9";
+	align-items: center;
+	align-content: stretch;
 }
-/* --------------------------------------------------------------------------- */

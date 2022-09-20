@@ -9,7 +9,6 @@ import com.genie.myapp.vo.ProductVO;
 @Controller
 @RequestMapping("/")
 public class ProductController{
-	
 
 	ModelAndView mav;
 
