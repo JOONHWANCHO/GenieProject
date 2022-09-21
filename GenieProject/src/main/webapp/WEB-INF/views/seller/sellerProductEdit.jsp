@@ -211,13 +211,16 @@ body {
 	}
 	label{
 		display: inline-block;
-    	width: 140px;
+    	width: 190px;
     	line-height: 50px;
     	font-size:20px;
 	}
 	.subTag{
 		font-size:20px;
 		margin:0
+	}
+	#cateDiv, #tagDiv, #mbtiDiv{
+		margin-bottom:6vh;
 	}
 	#formSubmit{
 		padding:10px 100px 10px 100px;
@@ -304,8 +307,17 @@ body {
 				alert("태그를 2개 이하로 선택하세요.")
 				return false;
 			}
+			//mbti
+			if($("input:checkbox[name=mbtiList]:checked").length<1){
+				alert("MBTI를 선택하세요.")
+				return false;
+			}
+			if($("input:checkbox[name=mbtiList]:checked").length>4){
+				alert("MBTI를 4개 이하로 선택하세요.")
+				return false;
+			}
 			//---유효성검사 끝------------------------
-			console.log(111)
+			//console.log(111)
 			return true;
 		});
 		
@@ -358,7 +370,7 @@ body {
 								<input type="text" name="product_image2" id="product_image2" value="${pvo.product_image2 }"/>
 								<input type="text" name="product_image3" id="product_image3" value="${pvo.product_image3 }"/>
 							</div>
-							<div>
+							<div id="cateDiv">
 								<p>카테고리</p>
 								<label><input type="checkbox" name="categoryList" value="생일" <c:if test="${fn:indexOf(pvo.product_category,'생일' )>=0}">checked</c:if>>생일</label>
 								<label><input type="checkbox" name="categoryList" value="기념일" <c:if test="${fn:indexOf(pvo.product_category,'기념일' )>=0}">checked</c:if>/>기념일</label>
@@ -374,7 +386,7 @@ body {
 								<label><input type="checkbox" name="categoryList" value="홈파티" <c:if test="${fn:indexOf(pvo.product_category,'홈파티' )>=0}">checked</c:if>/>홈파티</label>
 								
 							</div>
-							<div>
+							<div id="tagDiv">
 								<p>태그</p>
 								<p class="subTag">대상</p>
 								<label><input type="checkbox" name="tagList" value="부모님" <c:if test="${fn:indexOf(pvo.product_tag,'부모님' )>=0}">checked</c:if>/>부모님</label>
@@ -408,6 +420,21 @@ body {
 								<label><input type="checkbox" name="tagList" value="남성" <c:if test="${fn:indexOf(pvo.product_tag,'남성' )>=0}">checked</c:if>/>남성</label>
 								<label><input type="checkbox" name="tagList" value="여성" <c:if test="${fn:indexOf(pvo.product_tag,'여성' )>=0}">checked</c:if>/>여성</label>
 								<label><input type="checkbox" name="tagList" value="남여공용" <c:if test="${fn:indexOf(pvo.product_tag,'남여공용' )>=0}">checked</c:if>/>남여공용</label>
+							</div>
+							<div id="mbtiDiv">
+								<p>MBTI</p>
+								<p class="subTag">E : 외향형 (사교적,활동적) / I : 내향형 (정적,신중함)</p>
+								<label><input type="checkbox" name="mbtiList" value="E" <c:if test="${fn:indexOf(pvo.product_mbti,'E' )>=0}">checked</c:if>/>E</label>
+								<label><input type="checkbox" name="mbtiList" value="I" <c:if test="${fn:indexOf(pvo.product_mbti,'I' )>=0}">checked</c:if>/>I</label>
+								<p class="subTag">S : 감각형 (실용적,현실적) / N : 직관형 (이상적,비약적)</p>
+								<label><input type="checkbox" name="mbtiList" value="S" <c:if test="${fn:indexOf(pvo.product_mbti,'S' )>=0}">checked</c:if>/>S</label>
+								<label><input type="checkbox" name="mbtiList" value="N" <c:if test="${fn:indexOf(pvo.product_mbti,'N' )>=0}">checked</c:if>/>N</label>
+								<p class="subTag">T : 사고형 (객관적,합리적) / F : 감정형 (상황적,공감성)</p>
+								<label><input type="checkbox" name="mbtiList" value="T" <c:if test="${fn:indexOf(pvo.product_mbti,'T' )>=0}">checked</c:if>/>T</label>
+								<label><input type="checkbox" name="mbtiList" value="F" <c:if test="${fn:indexOf(pvo.product_mbti,'F' )>=0}">checked</c:if>/>F</label>
+								<p class="subTag">J : 판단형 (계획적,체계적) / P : 인식형 (즉흥적,융통성)</p>
+								<label><input type="checkbox" name="mbtiList" value="J" <c:if test="${fn:indexOf(pvo.product_mbti,'J' )>=0}">checked</c:if>/>J</label>
+								<label><input type="checkbox" name="mbtiList" value="P" <c:if test="${fn:indexOf(pvo.product_mbti,'P' )>=0}">checked</c:if>/>P</label>
 							</div>
 							<li><input type="submit" id="formSubmit" value="상품수정"/></li>
 						</ul>

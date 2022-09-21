@@ -19,6 +19,7 @@ public class SellerProductVO {
 	private String product_image1; 
 	private String product_image2;
 	private String product_image3;
+	private String product_mbti;
 	
 	//여러개의 카테고리를 저장할 컬렉션
 	private List<String> categoryList;
@@ -28,18 +29,23 @@ public class SellerProductVO {
 	private List<String> tagList;
 	private String[] tagArray; //체크된 태그를 저장할 배열
 	
-	@Override
-		public String toString() {
-			return "SellerProductVO [product_id=" + product_id + ", genie_id=" + genie_id + ", product_category="
-					+ product_category + ", product_tag=" + product_tag + ", product_name=" + product_name
-					+ ", product_price=" + product_price + ", product_info=" + product_info + ", product_stock="
-					+ product_stock + ", product_quantity=" + product_quantity + ", product_hit=" + product_hit
-					+ ", product_like=" + product_like + ", product_writedate=" + product_writedate + ", product_image1="
-					+ product_image1 + ", product_image2=" + product_image2 + ", product_image3=" + product_image3
-					+ ", categoryList=" + categoryList.toString() + ", categoryArray=" + Arrays.toString(categoryArray) + ", tagList="
-					+ tagList.toString() + ", tagArray=" + Arrays.toString(tagArray) + "]";
-		}
+	//여러개의 mbti를 저장할 컬렉션
+	private List<String> mbtiList;
 	
+	
+	@Override
+	public String toString() {
+		return "SellerProductVO [product_id=" + product_id + ", genie_id=" + genie_id + ", product_category="
+				+ product_category + ", product_tag=" + product_tag + ", product_name=" + product_name
+				+ ", product_price=" + product_price + ", product_info=" + product_info + ", product_stock="
+				+ product_stock + ", product_quantity=" + product_quantity + ", product_hit=" + product_hit
+				+ ", product_like=" + product_like + ", product_writedate=" + product_writedate + ", product_image1="
+				+ product_image1 + ", product_image2=" + product_image2 + ", product_image3=" + product_image3
+				+ ", product_mbti=" + product_mbti + ", categoryList=" + categoryList + ", categoryArray="
+				+ Arrays.toString(categoryArray) + ", tagList=" + tagList + ", tagArray=" + Arrays.toString(tagArray)
+				+ ", mbtiList=" + mbtiList + "]";
+	}
+
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -173,6 +179,25 @@ public class SellerProductVO {
 
 	public void setTagArray(String[] tagArray) {
 		this.tagArray = tagArray;
+	}
+
+	public String getProduct_mbti() {
+		String strMbti = String.join(",", mbtiList);
+		return strMbti;
+	}
+
+	public void setProduct_mbti(String product_mbti) {
+		this.product_mbti = product_mbti;
+		String mbtiSplit[] = product_mbti.split(",");
+		mbtiList = Arrays.asList(mbtiSplit);
+	}
+
+	public List<String> getMbtiList() {
+		return mbtiList;
+	}
+
+	public void setMbtiList(List<String> mbtiList) {
+		this.mbtiList = mbtiList;
 	}
 	
 	
