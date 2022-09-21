@@ -13,7 +13,7 @@ public interface CertDAO {
     //아이디 찾기
 	public List<String> FindId(String user_email);
 
-    /// 비밀번호 찾기 ///
+    /// 비밀번호 찾기 ////
 
     // 중복확인
 	public int overlapCheck(String value, String valueType);

@@ -70,7 +70,7 @@ public class CertServiceImpl implements CertService {
 
 
 	@Override
-    public boolean emailCheck(String genie_id, List<String> user_email) {
+    public boolean emailCheck(String genie_id, String user_email) {
         Map<String, Object> map = new HashMap<>();
         map.put("genie_id", genie_id);
         map.put("user_email", user_email);
