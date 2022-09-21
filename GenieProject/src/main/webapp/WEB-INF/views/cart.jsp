@@ -22,23 +22,7 @@
                     <li>${cvo.product_price}</li>
                 </ul>
             </div>
-    </c:forEach>
-        <div class="cart-list">
-            <ul>
-                <li>{vo.product_image1}</li>
-                <li>{vo.product_name}</li>
-                <li>{vo.product_quantity}</li>
-                <li>{vo.product_price}</li>
-            </ul>
-        </div>
-        <div class="cart-list">
-            <ul>
-                <li>{vo.product_image1}</li>
-                <li>{vo.product_name}</li>
-                <li>{vo.product_quantity}</li>
-                <li>{vo.product_price}</li>
-            </ul>
-        </div>
+        </c:forEach>
         <input type = "submit" id="buy" value = "구매하기"/>
     </div>
 </div>
