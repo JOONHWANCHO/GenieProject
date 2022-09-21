@@ -45,8 +45,13 @@ public class AdminServiceImple implements AdminService {
 	}
 
 	@Override
-	public UserVO getadminTag(String product_tag_id) {
-		return dao.getadmember(product_tag_id);
+	public List<AdminVO> tagAllSelect() {
+		return dao.tagAllSelect();
+	}
+
+	@Override
+	public AdminVO getadminTag(String product_tag_id) {
+		return dao.getadminTag(product_tag_id);
 	}
 
 	@Override
@@ -59,4 +64,25 @@ public class AdminServiceImple implements AdminService {
 		return dao.admemberDel(product_tag_id);
 	}
 
+	///////////////카테고리//////////////////
+	@Override
+	public List<AdminVO> categoryAllSelect() {
+		return dao.categoryAllSelect();
+	}
+
+	@Override
+	public AdminVO getadcategory(String category_id) {
+		return dao.getadcategory(category_id);
+	}
+
+	@Override
+	public int adcategoryPopEdit(AdminVO vo) {
+		return dao.adcategoryPopEdit(vo);
+	}
+
+	@Override
+	public int adcategoryDel(String category_id) {
+		return dao.adcategoryDel(category_id);
+	}
+	///////////////카테고리//////////////////
 }

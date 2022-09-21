@@ -6,29 +6,28 @@
 	position: relative;
 	width: 100%;
     margin: 0;
-    padding:3em 13em;
+    padding: 10vh 10vw;
 	background: #f5f5f7;
 }
 /* ----------------------------버블과 시작문구 설정------------------------------------ */
 .bubbles {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 6em;
+    margin: 0 30vw 10vh 30vw;
 }
 .bubbles h1 {
     position: relative;
-    margin: 1em 0 0;
-    font-family: 'Josefin Sans', sans-serif;
-    color: #6e6e73;
+    font-size: 5ch;
+    color: #232324;
     z-index: 2;
 }
 .individual-bubble {
     position: absolute;
     border-radius: 100%;
     bottom: 10px;
-    background-color: #6e6e73;
+    background-color: #b5b5b9;
     z-index: 1;
 }
 /* -------------------------------컨테이너 안 이미지 설정------------------------------------------ */
@@ -60,7 +59,7 @@ img{
     transform: scale(1.1);
 }
 .product-title{
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
     z-index: 1;
@@ -71,7 +70,7 @@ img{
     left: 0;
     opacity: 0;
     transition: opacity .5s;
-    background: rgba(180,180,180,0.4);
+    background: #b4b4b466;
     color: #6e6e73;
 
     /* position the text in t’ middle*/
@@ -92,16 +91,16 @@ img{
 /* --------------------------상품정보설정(글자)------------------------- */
 .wrapper>ul>li:nth-child(1){
     color: #c8c8c8;
-    padding-top: .6em;
+    padding-top: .6rem;
 }
 .wrapper>ul>li:nth-child(2){
     color: #6e6e73;
-    font-size: 1.1em;
-    padding-bottom: .6em;
+    font-size: 1.1rem;
+    padding-bottom: .6rem;
 }
 .wrapper>ul>li:nth-child(3){
     color: #1d1d1f;
-    font-size: 1.3em;
+    font-size: 1.3rem;
     font-weight: bold;
 }
 </style>
@@ -132,7 +131,7 @@ setInterval(function(){
 
 <section class="product ">
     <div class="bubbles">
-        <h1>찾으시는 선물이 없으셨나요? 그럼 전체 상품을 둘러보세요!</h1>
+        <h1>상품리스트</h1>
     </div>
 
     <div class="grid-container">
