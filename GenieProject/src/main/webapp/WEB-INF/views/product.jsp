@@ -136,19 +136,21 @@ setInterval(function(){
 
     <div class="grid-container">
         <div class="wrapper">
+            <c:forEach var="pvo" items="${plist}">
             <article class="product-list">
                 <a class="product-title" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div class="item">
                     <a href="#">
-                        ${jp.product_image1}
+                        ${pvo.product_image1}
                     </a>
                 </div>
             </article>
             <ul>
-                <li>${jp.genie_id}</li>
-                <li>${jp.product_name}</li>
-                <li>${jp.product_price}</li>
-            </ul>
+                    <li>${pvo.genie_id}</li>
+                    <li>${pvo.product_name}</li>
+                    <li>${pvo.product_price}</li>
+                </ul>
+            </c:forEach>
         </div>
         <div class="wrapper">
             <article class="product-list">
