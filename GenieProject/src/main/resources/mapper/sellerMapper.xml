@@ -28,8 +28,8 @@
 	</insert>
 
 	<insert id="productWrite">
-		insert into product(genie_id, product_category, product_tag, product_name, product_price, product_info, product_quantity, product_image1, product_image2, product_image3) 
-		values(#{genie_id}, #{product_category}, #{product_tag}, #{product_name}, ${product_price}, #{product_info}, ${product_quantity}, #{product_image1}, #{product_image2}, #{product_image3})
+		insert into product(genie_id, product_category, product_tag, product_name, product_price, product_info, product_quantity, product_image1, product_image2, product_image3, product_mbti) 
+		values(#{genie_id}, #{product_category}, #{product_tag}, #{product_name}, ${product_price}, #{product_info}, ${product_quantity}, #{product_image1}, #{product_image2}, #{product_image3}, #{product_mbti})
 	</insert>
 
 	
@@ -58,7 +58,7 @@
 	</select>
 	
 	<select id="getProduct" resultType="SellerProductVO">
-		select product_id, product_name, product_price, product_info, product_quantity, product_image1, product_image2, product_image3, product_category, product_tag 
+		select product_id, product_name, product_price, product_info, product_quantity, product_image1, product_image2, product_image3, product_category, product_tag, product_mbti 
 		from product
 		where product_id=${param1}
 	</select>
@@ -69,7 +69,7 @@
 	
 	<update id="productEditOk">
 		update product set product_name=#{product_name}, product_price=${product_price}, product_info=#{product_info}, product_quantity=${product_quantity}, 
-		product_image1=#{product_image1}, product_image2=#{product_image2}, product_image3=#{product_image3}, product_category=#{product_category}, product_tag=#{product_tag} 
+		product_image1=#{product_image1}, product_image2=#{product_image2}, product_image3=#{product_image3}, product_category=#{product_category}, product_tag=#{product_tag}, product_mbti=#{product_mbti} 
 		where product_id=${product_id}
 	</update>
 </mapper>
