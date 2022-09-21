@@ -13,14 +13,16 @@
             <div>상품가격</div>
         </div>
         <div class="line"></div>
-        <div class="cart-list">
-            <ul>
-                <li>{vo.product_image1}</li>
-                <li>{vo.product_name}</li>
-                <li>{vo.product_quantity}</li>
-                <li>{vo.product_price}</li>
-            </ul>
-        </div>
+        <c:forEach var="cvo" items="${clist}">
+            <div class="cart-list">
+                <ul>
+                    <li>${cvo.product_image1}</li>
+                    <li>${cvo.product_name}</li>
+                    <li>${cvo.product_quantity}</li>
+                    <li>${cvo.product_price}</li>
+                </ul>
+            </div>
+    </c:forEach>
         <div class="cart-list">
             <ul>
                 <li>{vo.product_image1}</li>
