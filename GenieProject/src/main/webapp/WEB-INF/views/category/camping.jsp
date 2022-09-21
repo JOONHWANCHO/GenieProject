@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./inc/top.jspf"%>
+<%@ include file="../inc/top.jspf"%>
 <link rel="stylesheet" href="/js_css/product_style.css" type="text/css"/>
 <script src="/js_css/product_js.js"></script>
 
 <section class="product ">
     <div class="bubbles">
-        <h1>상품리스트</h1>
+        <h1>캠핑</h1>
     </div>
 
     <div class="grid-container">
         <div class="wrapper">
             <c:forEach var="pvo" items="${plist}">
             <article class="product-list">
-                <a class="product-title" href="/product_detail"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a class="product-title" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div class="item">
-                    <a href="/product_detail">
+                    <a href="#">
                         <img src="${pvo.product_image1}">
                     </a>
                 </div>

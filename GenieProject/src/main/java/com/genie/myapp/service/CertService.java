@@ -9,7 +9,7 @@ public interface CertService {
 
 
     public int overlapCheck(String value, String valueType);
-    public boolean emailCheck(String genid_id, List<String> user_email);
+    public boolean emailCheck(String genid_id, String user_email);
 
     public int PwdEditOk(String genie_id, String user_pwd);
     void sendAuthNum(String user_email, String authNum);
