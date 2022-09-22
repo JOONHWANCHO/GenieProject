@@ -303,8 +303,8 @@ body {
 				alert("태그를 선택하세요.")
 				return false;
 			}
-			if($("input:checkbox[name=tagList]:checked").length>7){
-				alert("태그를 2개 이하로 선택하세요.")
+			if($("input:checkbox[name=tagList]:checked").length>8){
+				alert("태그를 각각 2개 이하로 선택하세요.")
 				return false;
 			}
 			//mbti
@@ -394,7 +394,7 @@ body {
 								<label><input type="checkbox" name="tagList" value="연인" <c:if test="${fn:indexOf(pvo.product_tag,'연인' )>=0}">checked</c:if>/>연인</label>
 								<label><input type="checkbox" name="tagList" value="가족/친척" <c:if test="${fn:indexOf(pvo.product_tag,'가족/친척' )>=0}">checked</c:if>/>가족/친척</label>
 								<label><input type="checkbox" name="tagList" value="친구/지인" <c:if test="${fn:indexOf(pvo.product_tag,'친구/지인' )>=0}">checked</c:if>/>친구/지인</label>
-								<label><input type="checkbox" name="tagList" value="회사" <c:if test="${fn:indexOf(pvo.product_tag,'회사' )>=0}">checked</c:if>/>회사</label>
+								<label><input type="checkbox" name="tagList" value="회사동료" <c:if test="${fn:indexOf(pvo.product_tag,'회사동료' )>=0}">checked</c:if>/>회사동료</label>
 								<label><input type="checkbox" name="tagList" value="스승/멘토" <c:if test="${fn:indexOf(pvo.product_tag,'스승/멘토' )>=0}">checked</c:if>/>스승/멘토</label>
 								<p class="subTag">특정기념일</p>
 								<label><input type="checkbox" name="tagList" value="생일" <c:if test="${fn:indexOf(pvo.product_tag,'생일' )>=0}">checked</c:if>/>생일</label>
@@ -419,7 +419,6 @@ body {
 								<p class="subTag">성별</p>
 								<label><input type="checkbox" name="tagList" value="남성" <c:if test="${fn:indexOf(pvo.product_tag,'남성' )>=0}">checked</c:if>/>남성</label>
 								<label><input type="checkbox" name="tagList" value="여성" <c:if test="${fn:indexOf(pvo.product_tag,'여성' )>=0}">checked</c:if>/>여성</label>
-								<label><input type="checkbox" name="tagList" value="남여공용" <c:if test="${fn:indexOf(pvo.product_tag,'남여공용' )>=0}">checked</c:if>/>남여공용</label>
 							</div>
 							<div id="mbtiDiv">
 								<p>MBTI</p>

@@ -132,11 +132,7 @@ td, th {
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-	function productDel(product_id ){
-		if(confirm("상품을 삭제하시겠습니까?")){
-			location.href="/seller/productDel/"+product_id;
-		}
-	}
+	
 </script>
 
 <main class="main">
@@ -160,18 +156,16 @@ td, th {
 			</div>
 			<div class="content-main">
 				<div class="content-main-top">
-					<p id="product_title">상품관리</p>
+					<p id="product_title">문의관리</p>
 					<table id="table">
 						<tr>
 							<th>상품번호</th>
-							<th>상품명</th>
-							<th>가격</th>
-							<th>재고</th>
-							<th>카테고리</th>
-							<th>태그</th>
-							<th>수정</th>
-							<th>삭제</th>
+							<th>문의날짜</th>
+							<th>회원ID</th>
+							<th>문의제목</th>
+							<th>답변상태</th>
 						</tr>
+						<!--  
 						<c:forEach var="pvo" items="${plist }">
 						<tr>
 							<td>${pvo.product_id }</td>
@@ -184,6 +178,7 @@ td, th {
 							<td><a href="javascript:productDel(${pvo.product_id });">del</a></td>
 						</tr>
 						</c:forEach>
+						-->
 					</table>
 				</div>
 			</div>
