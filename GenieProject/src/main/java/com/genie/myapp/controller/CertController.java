@@ -72,8 +72,8 @@ public class CertController {
 	
 	@GetMapping("emailCheck")
 	public ResponseEntity<Boolean> emailCheck(String genie_id, String user_email){
-	boolean emailCheck = CertService.emailCheck(genie_id, user_email);
-
+		boolean emailCheck = CertService.emailCheck(genie_id, user_email);
+        System.out.println("emailCheck "+ emailCheck );
 		return new ResponseEntity<Boolean>(emailCheck, HttpStatus.OK);
 	}
 	
@@ -125,7 +125,6 @@ public class CertController {
 			CertService.sendAuthNum(user_email, authNum);
 		}
 		
-		
 		Map<String, Object> authNumMap = new HashMap<>();
     
 		long createTime = System.currentTimeMillis();
@@ -167,7 +166,8 @@ public class CertController {
 		
 		// 인증번호
 		String sessionAuthNum = (String) sessionAuthNumMap.get("authNum");
-		
+		// System.out.println("chekc.authNum-"+authNum);
+		// System.out.println("chekc.sessionAuthNum-"+sessionAuthNum);
 		if(!authNum.equals(sessionAuthNum)) {
 			msg = "인증번호가 일치하지 않습니다";
 			return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
@@ -176,9 +176,6 @@ public class CertController {
 			return new ResponseEntity<String>(HttpStatus.OK);
 		}
 	}
-
-
-
 
 	// 인증 완료 후
 
@@ -194,18 +191,19 @@ public class CertController {
 
 	// 비밀번호 변경 페이지
 	@GetMapping("modify_pwd")
-	public String modifyPassword(String genie_id, HttpSession session) {
+	public ModelAndView modifyPassword(String genie_id, HttpSession session) {
 		Map<String, Object> authStatus = (Map<String, Object>) session.getAttribute("authStatus");
-		
+
+		mav = new ModelAndView();
+
 		if(authStatus == null || !genie_id.equals(authStatus.get("genie_id"))) {
-			return "redirect:cert/modify_pwd";
+
+			mav.setViewName("/cert/FindPwd");
+			return mav;
 		}
 		
-		// 페이지에 왔을때 인증이 안되있다면
-		if(!(boolean) authStatus.get("status")) {
-			return "redirect:/cert/FindPwd_auth";
-		}
-		return "/cert/password";
+			mav.setViewName("/cert/modify_pwd");
+			return mav;
 	}
 
 
