@@ -16,4 +16,6 @@ public class GenieController{
 		mav.setViewName("/genie");
 		return mav;
 	}
+
+	
 }

@@ -5,19 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.genie.myapp.vo.ProductVO;
-
 @Controller
 @RequestMapping("/")
-public class CartController{
-
+public class MbtiController {
 	ModelAndView mav;
 	
-	@GetMapping("cart")
-	public ModelAndView cart(ProductVO cart) {
+	@GetMapping("genieMbti")
+	public ModelAndView genieMbti() {
 		mav = new ModelAndView();
-		mav.addObject("c", cart);
-		mav.setViewName("/cart");
+		mav.setViewName("mbti/mbtiMain");
 		return mav;
 	}
 }

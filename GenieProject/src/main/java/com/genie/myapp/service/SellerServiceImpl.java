@@ -1,6 +1,7 @@
 package com.genie.myapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -77,5 +78,10 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public int productDel(int pid) {
 		return dao.productDel(pid);
+	}
+
+	@Override
+	public void updateDeliveryStatus(Map deliveryMap) {
+		dao.updateDeliveryStatus(deliveryMap);
 	}
 }
