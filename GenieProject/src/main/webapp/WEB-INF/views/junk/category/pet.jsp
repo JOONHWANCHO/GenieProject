@@ -5,12 +5,12 @@
 
 <section class="product ">
     <div class="bubbles">
-        <h1>기념일</h1>
+        <h1>반려동물</h1>
     </div>
 
     <div class="grid-container">
+        <c:forEach var="pvo" items="${plist}">
         <div class="wrapper">
-            <c:forEach var="pvo" items="${plist}">
             <article class="product-list">
                 <a class="product-title" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div class="item">
@@ -24,8 +24,8 @@
                     <li>${pvo.product_name}</li>
                     <li>${pvo.product_price}원</li>
                 </ul>
-            </c:forEach>
-        </div>
+            </div>
+        </c:forEach>
     </div>
 </section>
 

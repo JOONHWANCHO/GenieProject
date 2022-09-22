@@ -11,14 +11,13 @@ import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.CertService;
+import com.genie.myapp.vo.UserVO;
 
 @RestController
 @RequestMapping("/cert/*")
@@ -72,8 +71,8 @@ public class CertController {
 	
 	@GetMapping("emailCheck")
 	public ResponseEntity<Boolean> emailCheck(String genie_id, String user_email){
-	boolean emailCheck = CertService.emailCheck(genie_id, user_email);
-
+		boolean emailCheck = CertService.emailCheck(genie_id, user_email);
+        System.out.println("emailCheck "+ emailCheck );
 		return new ResponseEntity<Boolean>(emailCheck, HttpStatus.OK);
 	}
 	
@@ -110,7 +109,6 @@ public class CertController {
 
 	// 인증번호 보내기
 	@PostMapping("authNum")
-	@ResponseBody
 	private ResponseEntity<String> authNum(String user_email, HttpSession session){
 		String authNum = "";
 		for(int i=0;i<6;i++) {
@@ -124,7 +122,6 @@ public class CertController {
 			//System.out.println("이메일로 인증번호 보내기");
 			CertService.sendAuthNum(user_email, authNum);
 		}
-		
 		
 		Map<String, Object> authNumMap = new HashMap<>();
     
@@ -167,7 +164,8 @@ public class CertController {
 		
 		// 인증번호
 		String sessionAuthNum = (String) sessionAuthNumMap.get("authNum");
-		
+		// System.out.println("chekc.authNum-"+authNum);
+		// System.out.println("chekc.sessionAuthNum-"+sessionAuthNum);
 		if(!authNum.equals(sessionAuthNum)) {
 			msg = "인증번호가 일치하지 않습니다";
 			return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
@@ -176,9 +174,6 @@ public class CertController {
 			return new ResponseEntity<String>(HttpStatus.OK);
 		}
 	}
-
-
-
 
 	// 인증 완료 후
 
@@ -194,25 +189,29 @@ public class CertController {
 
 	// 비밀번호 변경 페이지
 	@GetMapping("modify_pwd")
-	public String modifyPassword(String genie_id, HttpSession session) {
+	public ModelAndView modifyPassword(String genie_id, HttpSession session) {
 		Map<String, Object> authStatus = (Map<String, Object>) session.getAttribute("authStatus");
-		
+
+		mav = new ModelAndView();
+
 		if(authStatus == null || !genie_id.equals(authStatus.get("genie_id"))) {
-			return "redirect:cert/modify_pwd";
+
+			mav.setViewName("/cert/FindPwd");
+			return mav;
 		}
 		
-		// 페이지에 왔을때 인증이 안되있다면
-		if(!(boolean) authStatus.get("status")) {
-			return "redirect:/cert/FindPwd_auth";
-		}
-		return "/cert/password";
+			mav.setViewName("/cert/modify_pwd");
+			mav.addObject("genie_id",genie_id);
+			
+			return mav;
 	}
 
 
 	// 비밀번호 변경
-	@PatchMapping("modify_pwd")
-	public ResponseEntity<String> modifyPassword(String user_pwd, String genie_id, HttpSession session) {
-		CertService.PwdEditOk(genie_id, user_pwd);
+	@PostMapping("modify_pwd")
+	public ResponseEntity<String> modifyPassword(UserVO vo, HttpSession session) {
+		int cnt = CertService.PwdEditOk(vo);
+		System.out.print(cnt);
 		session.setMaxInactiveInterval(0);
 		session.setAttribute("authStatus", null);
 
