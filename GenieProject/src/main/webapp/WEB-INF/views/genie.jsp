@@ -2,21 +2,22 @@
 <%@ include file="./inc/top.jspf"%>
 <link rel="stylesheet" href="/js_css/genie_style.css" type="text/css"/>
 <script src="/js_css/genie_js.js"></script>
-
-<section class="genie_01">
-	<ul class="page_gradient">
+<ul class="page_gradient">
 		<li><input type="button" onclick="next1()" style="background-color: #21D4FD"></li>
 		<li><input type="button" onclick="next2()"></li>
 		<li><input type="button" onclick="next3()"></li>
 		<li><input type="button" onclick="next4()"></li>
 		<li><input type="button" onclick="next5()"></li>
 	</ul>
+	<form class="grid-container4">
+<section class="genie_01">
+	
 
 	<div>
 		<h2>어느 분에게 선물할 계획이신가요?</h2>
 	</div>
 	
-	<form class="grid-container4">
+	
 		<div class="tag_name">
 			<input type="radio" onclick="next2()" name="who" id="1" value="1">
 			<label for="1">부모님</label>
@@ -45,15 +46,8 @@
 			<input type="radio" onclick="next2()" name="who" id="7" value="7">
 			<label for="7">스승/멘토</label>
 		</div>
-	</form>
+
 	
-	<ul class="page_order">
-		<li><input type="button" onclick="next1()"></li>
-		<li><input type="button" onclick="next2()"></li>
-		<li><input type="button" onclick="next3()"></li>
-		<li><input type="button" onclick="next4()"></li>
-		<li><input type="button" onclick="next5()"></li>
-	</ul>
 </section>
 
 <section class="genie_02">
@@ -257,14 +251,15 @@
 		</div>
 	</form>
 
-	<ul class="page_order">
+	
+</section>
+<ul class="page_order">
 		<li><input type="button" onclick="next1()"></li>
 		<li><input type="button" onclick="next2()"></li>
 		<li><input type="button" onclick="next3()"></li>
 		<li><input type="button" onclick="next4()"></li>
 		<li><input type="button" onclick="next5()"></li>
 	</ul>
-</section>
 
 
 
