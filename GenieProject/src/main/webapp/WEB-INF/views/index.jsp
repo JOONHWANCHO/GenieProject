@@ -11,8 +11,8 @@
    <div class="category">
       <h1>카테고리</h1>
       <div class="category-list">
-         <span><a href="/category/birthday"><img src="https://url.kr/se94dy"></a><br>생일</span>
-         <span><a href="/category/anniversary"><img src="https://url.kr/2hgow3"></a><br>기념일</span>
+         <span><a href="/product?product_category=생일"><img src="https://url.kr/se94dy"><br>생일</a></span>
+         <span><a href="/category/ /기념일"><img src="https://url.kr/2hgow3"></a><br>기념일</span>
          <span><a href="/category/holiday"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20210914165131_70edddb11adf42b9990c00dbc256e159.jpg"></a><br>명절</span>
          <span><a href="/category/houses"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220719152430_cebe5a5c6ffe441d915d86fb9252cd3c.jpg"></a><br>집들이</span>
          <span><a href="/category/surprise"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220824221511_46cfa4fe71924de994089f8e72fa3f0b.jpeg"></a><br>서프라이즈</span>

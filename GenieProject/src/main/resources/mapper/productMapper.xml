@@ -22,6 +22,9 @@
             product_image3,
             product_mbti
         from product 
+        
+        where product_category like '%${product_category}%'  <!--     where procuct_category like '%생일%'  -->
+        
         order by product_id desc
     </select>
     <select id="Cart" resultType="CartVO">
