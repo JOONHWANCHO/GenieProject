@@ -12,7 +12,9 @@
             <div>수량</div>
             <div>상품가격</div>
         </div>
+
         <div class="line"></div>
+
         <c:forEach var="cvo" items="${clist}">
             <div class="cart-list">
                 <ul>
