@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.genie.myapp.service.ProductService;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
+import com.genie.myapp.vo.SellerVO;
 
 @RestController
 @RequestMapping("/")
@@ -31,11 +32,12 @@ public class ProductController{
 	}
 	//제폼 상세페이지
 	@GetMapping("product_detail")
-	public ModelAndView product_detail(ProductVO PVO) {
+	public ModelAndView product_detail(ProductVO PVO, SellerVO svo) {
 
 		mav = new ModelAndView();
 		mav.addObject("plist", service.Product(PVO));
 		mav.addObject("pvo", PVO);
+		mav.addObject("svo", svo);
 		mav.setViewName("/product_detail");
 
 		return mav;

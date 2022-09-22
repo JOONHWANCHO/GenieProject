@@ -9,19 +9,20 @@
 					
 					<div class="auth">
 						<input type="email" class="email" placeholder="이메일을 입력해주세요" maxlength="50">
-						<button type="button" class="send_email">인증번호받기</button>
+						<button type="button" id="send_email">인증번호받기</button>
 						<input type="text" class="auth_num" name="authNum" maxlength="6"  placeholder="인증번호6자리입력">
 						<span class="timer"></span>
 					</div>
 				</div>			
 			</div>
 				
-			<button class="move_modify">다음</button>
+			<button id="next">다음</button>
 		</div>
 	</main>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   
 <script>
+
   $(document).ready(function(){
 	
     const URLSearch = new URLSearchParams(location.search);
@@ -41,7 +42,7 @@
     })();
 
     // 이메일로 인증번호 보내기
-    $(".send_email").click(function(){
+    $("#send_email").click(function(){
         const data = {
             user_email : $(".email").val(),
             genie_id : genie_id
@@ -69,7 +70,7 @@
             }
         })
             .fail(function(){
-                alert("에러");
+                alert("이메일 에러");
             })
         })	
 
@@ -80,16 +81,16 @@
                 type: "POST",
                 data: data 
             })
-            .then(function(result){
+            .then(function(authNum){
                 alert({
-                    text: result
+                    text: authNum
                 })
                 .then(function(){
                     func();
                 })
             })
             .fail(function(){
-                alert("에러");
+                alert("인증번호 보내기 에러");
             })
         }
    
@@ -106,7 +107,7 @@
   
  
     // 인증번호 입력 후 다음 버튼
-    $(".move_modify").click(function(){
+    $("#next").click(function(){
         if(!authNum.isSend()) {
             alert("인증번호를 발송해주세요");
             return;
