@@ -11,14 +11,13 @@ import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.CertService;
+import com.genie.myapp.vo.UserVO;
 
 @RestController
 @RequestMapping("/cert/*")
@@ -110,7 +109,6 @@ public class CertController {
 
 	// 인증번호 보내기
 	@PostMapping("authNum")
-	@ResponseBody
 	private ResponseEntity<String> authNum(String user_email, HttpSession session){
 		String authNum = "";
 		for(int i=0;i<6;i++) {
@@ -203,14 +201,17 @@ public class CertController {
 		}
 		
 			mav.setViewName("/cert/modify_pwd");
+			mav.addObject("genie_id",genie_id);
+			
 			return mav;
 	}
 
 
 	// 비밀번호 변경
-	@PatchMapping("modify_pwd")
-	public ResponseEntity<String> modifyPassword(String user_pwd, String genie_id, HttpSession session) {
-		CertService.PwdEditOk(genie_id, user_pwd);
+	@PostMapping("modify_pwd")
+	public ResponseEntity<String> modifyPassword(UserVO vo, HttpSession session) {
+		int cnt = CertService.PwdEditOk(vo);
+		System.out.print(cnt);
 		session.setMaxInactiveInterval(0);
 		session.setAttribute("authStatus", null);
 
