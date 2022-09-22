@@ -197,6 +197,3 @@
 		<li><input type="button" onclick="next5()"></li>
     </ul>
 </form>
-
-
-
