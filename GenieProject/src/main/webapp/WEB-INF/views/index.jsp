@@ -11,18 +11,18 @@
    <div class="category">
       <h1>카테고리</h1>
       <div class="category-list">
-         <span><a href="/product?product_category=생일"><img src="https://url.kr/se94dy"><br>생일</a></span>
-         <span><a href="/product?product_category=기념일"><img src="https://url.kr/2hgow3"><br>기념일</a></span>
-         <span><a href="/product?product_category=기념일"><img src="https://url.kr/6g4pda">명절</a></span>
-         <span><a href="/category/houses"><img src="https://url.kr/2g7qkc"></a><br>집들이</span>
-         <span><a href="/category/surprise"><img src="https://url.kr/a6ec3n"></a><br>서프라이즈</span>
-         <span><a href="/category/cheer"><img src="https://url.kr/yc92uk"></a><br>응원</span>
-         <span><a href="/category/camping"><img src="https://url.kr/54t3sv"></a><br>캠핑</span>
-         <span><a href="/category/pet"><img src="https://url.kr/gvwdne"></a><br>반려동물</span>
-         <span><a href="/category/exercise"><img src="https://url.kr/mnhsv1"></a><br>운동</span>
-         <span><a href="/category/kidult"><img src="https://url.kr/j2te9d"></a><br>키덜트</span>
-         <span><a href="/category/cooking"><img src="https://url.kr/6p5217"></a><br>요리</span>
-         <span><a href="/category/homeparty"><img src="https://url.kr/a4851u"></a><br>홈파티</span>
+         <span><a href="/product?product_category=생일"><img src="https://url.kr/se94dy"><br>생일</span></a>
+         <span><a href="/product?product_category=기념일"><img src="https://url.kr/2hgow3"><br>기념일</span></a>
+         <span><a href="/product?product_category=명절"><img src="https://url.kr/6g4pda">명절</span></a>
+         <span><a href="/product?product_category=집들이"><img src="https://url.kr/2g7qkc"><br>집들이</span></a>
+         <span><a href="/product?product_category=서프라이즈"><img src="https://url.kr/a6ec3n"><br>서프라이즈</span></a>
+         <span><a href="/product?product_category=응원"><img src="https://url.kr/yc92uk"><br>응원</span></a>
+         <span><a href="/product?product_category=캠핑"><img src="https://url.kr/54t3sv"><br>캠핑</span></a>
+         <span><a href="/product?product_category=반려동물"><img src="https://url.kr/gvwdne"><br>반려동물</span></a>
+         <span><a href="/product?product_category=운동"><img src="https://url.kr/mnhsv1"><br>운동</span></a>
+         <span><a href="/product?product_category=키덜트"><img src="https://url.kr/j2te9d"><br>키덜트</span></a>
+         <span><a href="/product?product_category=요리"><img src="https://url.kr/6p5217"><br>요리</span></a>
+         <span><a href="/product?product_category=홈파티"><img src="https://url.kr/a4851u"><br>홈파티</span></a>
       </div>
    </div>
    
