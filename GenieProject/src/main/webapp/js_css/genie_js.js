@@ -47,3 +47,10 @@
 // function next6(){
 //     location.href = '/product';
 // }
+
+$(function(){
+	$("section input[type=radio]").click(function(){
+		$("section").css("display",'none'); // 모든 
+		$(this).parent().parent().parent().next().css("display","block");
+	});
+});
