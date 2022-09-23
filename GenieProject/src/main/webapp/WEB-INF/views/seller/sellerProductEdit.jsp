@@ -246,7 +246,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="/" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/seller/sellerMain" class="nav-link">Main</a>
+        <a href="/seller/sellerMain" class="nav-link">SellerMain</a>
       </li>
     </ul>
 
@@ -475,7 +475,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/seller/sellerMain">Home</a></li>
               <li class="breadcrumb-item active">Main</li>
             </ol>
           </div><!-- /.col -->
