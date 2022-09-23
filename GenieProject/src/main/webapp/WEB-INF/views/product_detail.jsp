@@ -21,24 +21,24 @@
             상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
         </div>
         <div class="box7">
-            상품카테고리${pvo.product_category}
+            상품카테고리 : ${pvo.product_category}
         </div>
         <div class="box8">
-            상품설명${pvo.product_info}
+            상품설명 : {pvo.product_info}
         </div>
         <div class="box9">
-            셀러명{pvo.ceo_name}
+            셀러명 : {pvo.ceo_name}
         </div>
         <div class="box10">
-            회사이름{pvo.company_name}
+            회사이름 : {pvo.company_name}
         </div>
         <div class="box11">
-            셀러주소{pvo.seller_address}
+            셀러주소 : {pvo.seller_address}
         </div>
-        <button class="box12">
+        <button class="box12" id="addCart">
             장바구니
         </button>
-        <button class="box13">
+        <button class="box13" id="buynow">
             구매하기
         </button>
     </div>
@@ -56,7 +56,7 @@
             상품제목{pvo.product_title}
         </div>
         <div class="box6">
-            상품가격{pvo.product_price}
+            상품가격<fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
         </div>
         <div class="box7">
             상품카테고리{pvo.product_category}
@@ -73,10 +73,10 @@
         <div class="box11">
             셀러주소{pvo.seller_address}
         </div>
-        <button class="box12">
+        <button class="box12" id="addCart">
             장바구니
         </button>
-        <button class="box13">
+        <button class="box13" id="buynow">
             구매하기
         </button>
     </div>
@@ -94,7 +94,7 @@
             상품제목{pvo.product_title}
         </div>
         <div class="box6">
-            상품가격{pvo.product_price}
+            상품가격<fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
         </div>
         <div class="box7">
             상품카테고리{pvo.product_category}
@@ -111,10 +111,10 @@
         <div class="box11">
             셀러주소{pvo.seller_address}
         </div>
-        <button class="box12">
+       <button class="box12" id="addCart">
             장바구니
         </button>
-        <button class="box13">
+        <button class="box13" id="buynow">
             구매하기
         </button>
     </div>
@@ -242,3 +242,21 @@
         </div>
     </div>
 </section>
+<script>
+function add_cart(goods_id) {
+		$.ajax({
+			type : "post",
+			async : false,
+			url : "",
+			data : {
+				product_id:product_id
+				
+			},
+			success : function(data, textStatus) {
+
+					alert("장바구니에 추가되었습니다.");	
+				}
+
+		});	
+	}
+</script>

@@ -7,6 +7,8 @@ import com.genie.myapp.vo.ProductVO;
 
 public interface ProductService{
     public List<ProductVO> Product(ProductVO pVO);
+    public ProductVO getProduct(int no);
+
     public List<CartVO> getCart(CartVO cVO);
     public CartVO addCart(CartVO cVo);
     public boolean overlapProduct(CartVO cVo);

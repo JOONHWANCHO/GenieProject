@@ -35,4 +35,9 @@ public class ProductServiceImpl implements ProductService{
 		return dao.overlapProduct(cVo);
 	}
 
+	@Override
+	public ProductVO getProduct(int no) {
+		return dao.getProduct(no);
+	}
+
 }

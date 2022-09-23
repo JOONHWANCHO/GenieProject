@@ -50,7 +50,10 @@
 
 $(function(){
 	$("section input[type=radio]").click(function(){
-		$("section").css("display",'none'); // 모든 
+		// 섹션에 있는 모든 화면 숨김
+		$("section").css("display",'none');
+		// 섹션에 있는 다음 화면을 보여줌
 		$(this).parent().parent().parent().next().css("display","block");
+		//
 	});
 });
