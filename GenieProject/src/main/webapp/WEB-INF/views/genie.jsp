@@ -111,28 +111,28 @@
 			</div>
 			<div class="grid-container3">
 				<div class="tag_name">
-					<input type="radio" onclick="next4()" name="how" id="20" value="만이하">
-					<label for="20">10,000원 이하</label>
+					<input type="radio" onclick="next4()" name="how" id="20" value="만원 이하">
+					<label for="20">만원 이하</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next4()" name="how" id="21" value="삼만이하">
-					<label for="21">10,000원~30,000원</label>
+					<input type="radio" onclick="next4()" name="how" id="21" value="1만원대-2만원대">
+					<label for="21">1만 원대-2만 원대</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next4()" name="how" id="22" value="오만이하">
-					<label for="22">30,000원~50,000원</label>
+					<input type="radio" onclick="next4()" name="how" id="22" value="3만원대-4만원대">
+					<label for="22">3만 원대-4만 원대</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next4()" name="how" id="23" value="십만이하">
-					<label for="23">50,000원~100,000원</label>
+					<input type="radio" onclick="next4()" name="how" id="23" value="5만원대-9만원대">
+					<label for="23">5만 원대-9만 원대</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next4()" name="how" id="24" value="이십만이하">
-					<label for="24">100,000원~200,000원</label>
+					<input type="radio" onclick="next4()" name="how" id="24" value="10만원대">
+					<label for="24">10만 원대</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next4()" name="how" id="25" value="이십만이상">
-					<label for="25">200,000원 이상</label>
+					<input type="radio" onclick="next4()" name="how" id="25" value="20만원이상">
+					<label for="25">20만 원 이상</label>
 				</div>
 			</div>
 		</section>
@@ -143,28 +143,28 @@
 			</div>
 			<div class="grid-container3">
 				<div class="tag_name">
-					<input type="radio" onclick="next5()" name="old" id="26" value="10세">
-					<label for="26">0~10살</label>
+					<input type="radio" onclick="next5()" name="old" id="26" value="10대 이하">
+					<label for="26">10대 이하</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next5()" name="old" id="27" value="20세">
-					<label for="27">10~20살</label>
+					<input type="radio" onclick="next5()" name="old" id="27" value="20대">
+					<label for="27">20대</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next5()" name="old" id="28" value="30세">
-					<label for="28">20~30살</label>
+					<input type="radio" onclick="next5()" name="old" id="28" value="30대">
+					<label for="28">30대</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next5()" name="old" id="29" value="40세">
-					<label for="29">30~40살</label>
+					<input type="radio" onclick="next5()" name="old" id="29" value="40대">
+					<label for="29">40대</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next5()" name="old" id="30" value="50세">
-					<label for="30">40~50살</label>
+					<input type="radio" onclick="next5()" name="old" id="30" value="50대">
+					<label for="30">50대</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" onclick="next5()" name="old" id="31" value="50세이상">
-					<label for="31">50세 이상</label>
+					<input type="radio" onclick="next5()" name="old" id="31" value="60대이상">
+					<label for="31">60대이상</label>
 				</div>
 			</div>
 		</section>
@@ -181,10 +181,6 @@
 				<div class="tag_name">
 					<input type="radio" onclick="next6()" name="gender" id="33" value="여자">
 					<label for="33">여자</label>
-				</div>
-				<div class="tag_name">
-					<input type="radio" onclick="next6()" name="gender" id="34" value="남여공용">
-					<label for="34">남여공용</label>
 				</div>
 			</div>
 		</section>

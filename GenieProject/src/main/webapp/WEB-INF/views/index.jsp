@@ -41,7 +41,7 @@
          <button onclick="location.href='/product?product_tag=연인'">#연인</button>
          <button onclick="location.href='/product?product_tag=생일'">#생일</button>
          <button onclick="location.href='/product?product_tag=20대'">#20대</button>
-         <button onclick="location.href='/product?product_tag=남여공용'">#남여공용</button>
+         <button onclick="location.href='/product?product_tag=여성'">#여성</button>
          <button onclick="location.href='/product?product_tag=부모님'">#부모님</button>
          <button onclick="location.href='/product?product_tag=회사동료'">#회사동료</button>
          <button onclick="location.href='/product?product_tag=결혼'">#결혼</button>

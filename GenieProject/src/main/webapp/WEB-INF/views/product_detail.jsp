@@ -6,13 +6,12 @@
 <section class="product_detail">
     <h1>상세페이지</h1>
     <div class="box-wrapper1"> 
-        <div class="box1" style="background-image:url(https://img1.kakaocdn.net/thumb/C1260x640.fwebp.q82/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fgift%2Fweekly-brand%2Fimage%2Fpc%2F20220914_ZHIZH.jpg)">
-        </div>
-        <button class="box2" onclick="detail1()" style="background-image:url(https://img1.kakaocdn.net/thumb/C1260x640.fwebp.q82/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fgift%2Fweekly-brand%2Fimage%2Fpc%2F20220914_ZHIZH.jpg)">
+        <div class="box1" style="background-image:url(${pvo.product_image1})"></div>
+        <button class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
         </button>
-        <button class="box3" onclick="detail2()" style="background-image:url(https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220324103154_bd226b26cc95425c9b2357b21a2dafa1.jpg)">
+        <button class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
         </button>
-        <button class="box4" onclick="detail3()" style="background-image:url(https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220512185550_c96d9e78080148239414fbe65fa66195.jpg)">
+        <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
         </button>
         <div class="box5">
             상품제목${pvo.product_name}
@@ -24,16 +23,16 @@
             상품카테고리 : ${pvo.product_category}
         </div>
         <div class="box8">
-            상품설명 : {pvo.product_info}
+            상품설명 : ${pvo.product_info}
         </div>
         <div class="box9">
-            셀러명 : {pvo.ceo_name}
+            셀러명 : ${svo.ceo_name}
         </div>
         <div class="box10">
-            회사이름 : {pvo.company_name}
+            회사이름 : ${svo.company_name}
         </div>
         <div class="box11">
-            셀러주소 : {pvo.seller_address}
+            셀러주소 : ${svo.seller_address}
         </div>
         <button class="box12" id="addCart">
             장바구니
@@ -44,34 +43,33 @@
     </div>
 
     <div class="box-wrapper2"> 
-        <div class="box1" style="background-image:url(https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220324103154_bd226b26cc95425c9b2357b21a2dafa1.jpg)">
-        </div>
-        <div class="box2" onclick="detail1()" style="background-image:url(https://img1.kakaocdn.net/thumb/C1260x640.fwebp.q82/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fgift%2Fweekly-brand%2Fimage%2Fpc%2F20220914_ZHIZH.jpg)">
-        </div>
-        <div class="box3" onclick="detail2()" style="background-image:url(https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220324103154_bd226b26cc95425c9b2357b21a2dafa1.jpg)">
-        </div>
-        <div class="box4" onclick="detail3()" style="background-image:url(https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220512185550_c96d9e78080148239414fbe65fa66195.jpg)">
-        </div>
+        <div class="box1" style="background-image:url(${pvo.product_image2})"></div>
+        <button class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
+        </button>
+        <button class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
+        </button>
+        <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
+        </button>
         <div class="box5">
-            상품제목{pvo.product_title}
+            상품제목 : {pvo.product_title}
         </div>
         <div class="box6">
-            상품가격<fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
+            상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
         </div>
         <div class="box7">
-            상품카테고리{pvo.product_category}
+            상품카테고리 : ${pvo.product_category}
         </div>
         <div class="box8">
-            상품설명{pvo.product_info}
+            상품설명 : ${pvo.product_info}
         </div>
         <div class="box9">
-            셀러명{pvo.ceo_name}??
+            셀러명 : ${svo.ceo_name}
         </div>
         <div class="box10">
-            회사이름{pvo.company_name}
+            회사이름 : ${svo.company_name}
         </div>
         <div class="box11">
-            셀러주소{pvo.seller_address}
+            셀러주소 : ${svo.seller_address}
         </div>
         <button class="box12" id="addCart">
             장바구니
@@ -82,34 +80,33 @@
     </div>
 
     <div class="box-wrapper3"> 
-        <div class="box1" style="background-image:url(https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220512185550_c96d9e78080148239414fbe65fa66195.jpg)">
-        </div>
-        <div class="box2" onclick="detail1()" style="background-image:url(https://img1.kakaocdn.net/thumb/C1260x640.fwebp.q82/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fgift%2Fweekly-brand%2Fimage%2Fpc%2F20220914_ZHIZH.jpg)">
-        </div>
-        <div class="box3" onclick="detail2()" style="background-image:url(https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220324103154_bd226b26cc95425c9b2357b21a2dafa1.jpg)">
-        </div>
-        <div class="box4" onclick="detail3()" style="background-image:url(https://img1.kakaocdn.net/thumb/C300x300.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220512185550_c96d9e78080148239414fbe65fa66195.jpg)">
-        </div>
+         <div class="box1" style="background-image:url(${pvo.product_image3})"></div>
+        <button class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
+        </button>
+        <button class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
+        </button>
+        <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
+        </button>
         <div class="box5">
-            상품제목{pvo.product_title}
+            상품제목 : {pvo.product_title}
         </div>
         <div class="box6">
-            상품가격<fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
+            상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
         </div>
         <div class="box7">
-            상품카테고리{pvo.product_category}
+            상품카테고리 : ${pvo.product_category}
         </div>
         <div class="box8">
-            상품설명{pvo.product_info}
+            상품설명 : ${pvo.product_info}
         </div>
         <div class="box9">
-            셀러명{pvo.ceo_name}??
+            셀러명 : ${svo.ceo_name}
         </div>
         <div class="box10">
-            회사이름{pvo.company_name}
+            회사이름 : ${svo.company_name}
         </div>
         <div class="box11">
-            셀러주소{pvo.seller_address}
+            셀러주소 : ${svo.seller_address}
         </div>
        <button class="box12" id="addCart">
             장바구니
