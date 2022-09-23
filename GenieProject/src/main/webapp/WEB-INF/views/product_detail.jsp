@@ -19,6 +19,7 @@
         <button class="box3" onclick="detail2()" style="background-image:url('${pvo.product_image3}')">
         </button>
         <button class="box4" onclick="detail3()" style="background-image:url('${pvo.product_image1}')">
+        </button>
     <!-- 0923-image 수정 끝 -->
         <div class="box5">
             상품제목${pvo.product_name}
@@ -110,13 +111,6 @@
                       });    
               });
           </script>
-
-
-
-
-
-
-
 
     </div>
 
