@@ -316,7 +316,7 @@ img{
           <button type = "button" class = "btn" id="genie">결제하기</button>
         </div>
 
-        <script>    
+        <script>
             $("#genie").click(function () {        
             var IMP = window.IMP; // 생략가능        
             IMP.init('imp49851084');         

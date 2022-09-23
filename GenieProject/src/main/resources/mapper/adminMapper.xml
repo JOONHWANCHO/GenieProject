@@ -9,12 +9,12 @@
 	</select>
 	<!-- 태그 -->
 	<select id="adminTag" resultType="AdminVO">
-		select product_tag_id, product_tag from tag
+		select product_tag_id, product_tag from tag 
 	</select>
 
 	<!-- 태그 셀렉트 All -->
 	<select resultType="AdminVO" id="tagAllSelect">
-		select product_tag_id, product_tag from tag
+		select product_tag_id, product_tag from tag order by product_tag_id asc
 	</select>
 	<select resultType="AdminVO" id="getadminTag" parameterType="String">
 		select product_tag_id, product_tag from tag where product_tag_id='${param1}'
