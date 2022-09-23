@@ -14,7 +14,7 @@ import com.genie.myapp.vo.SellerVO;
 @RestController
 @RequestMapping("/")
 public class ProductController{
-
+	
 	@Autowired
 	ProductService service;
 	ModelAndView mav = null;
@@ -47,7 +47,7 @@ public class ProductController{
 	public ModelAndView cart(CartVO cVO) {
 		
 		mav = new ModelAndView();
-		mav.addObject("clist", service.Cart(cVO));
+		mav.addObject("clist", service.getCart(cVO));
 		mav.addObject("cvo", cVO);
 		mav.setViewName("/cart");
 
