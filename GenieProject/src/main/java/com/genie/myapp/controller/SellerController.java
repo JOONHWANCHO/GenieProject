@@ -56,7 +56,7 @@ public class SellerController {
 	@GetMapping("sellerMain")
 	public ModelAndView sellerMain() {
 		mav = new ModelAndView();
-		mav.setViewName("seller/sellerMain");
+		mav.setViewName("seller/SellerMain2");
 		return mav;
 	}
 	
