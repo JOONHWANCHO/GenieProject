@@ -1,6 +1,6 @@
 package com.genie.myapp.vo;
 
-public class Tag_nameVO{
+public class TagVO{
     private String genie_who;
     private String genie_day;
     private String genie_old;

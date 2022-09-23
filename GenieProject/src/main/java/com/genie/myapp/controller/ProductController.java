@@ -15,7 +15,7 @@ import com.genie.myapp.service.ProductService;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
-import com.genie.myapp.vo.Tag_nameVO;
+import com.genie.myapp.vo.TagVO;
 
 @RestController
 @RequestMapping("/")
@@ -27,7 +27,7 @@ public class ProductController{
 
 	//제품 리스트보기
 	@GetMapping("product")
-	public ModelAndView product(ProductVO pvo, Tag_nameVO tvo) {
+	public ModelAndView product(ProductVO pvo, TagVO tvo) {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("p", pvo);
@@ -44,8 +44,7 @@ public class ProductController{
 
 	//제폼 상세페이지
 	@GetMapping("product_detail")
-	public ModelAndView product_detail(@RequestParam("product_id") int product_id,ProductVO pvo, SellerVO svo) {
-
+	public ModelAndView product_detail(@RequestParam("product_id") int product_id, ProductVO pvo, SellerVO svo) {
 
 		mav = new ModelAndView();
 		mav.addObject("pvo", service.getProduct(product_id));
