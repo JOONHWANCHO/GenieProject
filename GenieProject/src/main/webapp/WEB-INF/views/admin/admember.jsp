@@ -5,6 +5,14 @@
 .thumb {
   width: 100px;
 }
+
+#page{
+	width:20%; margin-left:auto; margin-right:auto; list-style-type:none; 
+}
+
+#page li{
+	float:left; padding:10px;
+}
 </style>
 
 <!--
@@ -283,6 +291,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-body">
                 <h5 class="card-title">고객관리</h5>
                 <p class="card-text">
+                <div>
+					<form method="get" action="/admin/admember" id="searchFrm">
+						<select name="searchKey">
+							<option value="genie_id">아이디</option>
+							<option value="user_name">이름</option>
+							<option value="user_tel">연락처</option>
+							<option value="user_email">이메일</option>
+						</select>
+						
+						<input type="text" name="searchWord" id="searchWord"/>
+						<input type="submit" value="Search"/>
+						
+						</form>
+					</div>
                   <table class="table">
                     <thead>
                       <tr>
@@ -298,9 +320,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <!-- 태그 반복 -->
                       <c:forEach var="vo" items="${admember }">
                       <tr>
-						            <td>${vo.genie_id}</td>
-						            <td>${vo.user_name}</td>
-						            <td>${vo.user_tel}</td>
+					  	<td>${vo.genie_id}</td>
+						<td>${vo.user_name}</td>
+						<td>${vo.user_tel}</td>
                         <td>${vo.user_email}</td>
                         <td>${vo.sign_in_date}</td>
                         <td><a href="/admin/admemberPop?genie_id=${vo.genie_id}"><input type="button" value="관리"></a></td>
@@ -308,7 +330,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </c:forEach> 
                     </tbody>
                   </table>
-                </p>
+                  <div>
+                 	 <ul id="page">
+						<c:if test="${pVO.nowPage<=1}">
+							<li>prev</li>
+						</c:if>
+						<c:if test="${pVO.nowPage>1}">
+							<li><a href="/admin/admember?nowPage=${pVO.nowPage-1}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">prev</a></li>
+						</c:if>
+						<c:forEach var="p" begin="${pVO.startPage}" end="${pVO.startPage+pVO.onePageCount-1}">
+							<c:if test="${p<=pVO.totalPage}">
+								<li
+									<c:if test="${p==pVO.nowPage}">
+										style="background-color:#ddd; color:#fff;"
+									</c:if>
+								>
+								<a href="/admin/admember?nowPage=${p}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">${p}</a></li>
+							</c:if>
+						</c:forEach>
+								
+						<c:if test="${pVO.nowPage==pVO.totalPage}">
+							<li>next</li>
+						</c:if>
+						<c:if test="${pVO.nowPage<pVO.totalPage}">
+							<li><a href="/admin/admember?nowPage=${pVO.nowPage+1}<c:if test='${pVO.searchWord!=null}'>&searchKey=${pVO.searchKey}&searchWord=${pVO.searchWord}</c:if>">next</a></li>
+						</c:if>
+					</ul>
+                  </div>
+                <!-- </p>-->
               </div>
             </div><!-- /.card -->
           </div>
