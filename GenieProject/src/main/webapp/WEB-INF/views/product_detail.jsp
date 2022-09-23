@@ -18,7 +18,7 @@
             상품제목${pvo.product_name}
         </div>
         <div class="box6">
-            상품가격${pvo.product_price}
+            상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
         </div>
         <div class="box7">
             상품카테고리${pvo.product_category}

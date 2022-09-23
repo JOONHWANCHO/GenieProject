@@ -20,7 +20,7 @@
             <ul>
                 <li>${pvo.genie_id}</li>
                 <li>${pvo.product_name}</li>
-                <li>${pvo.product_price}원</li>
+                <li><fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" /></li>
             </ul>
         </div>
         </c:forEach>

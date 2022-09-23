@@ -47,8 +47,8 @@
 				</div>
 			</div>
 		</section>
-	
-		
+
+
 		<section class="genie_02">
 			<div>
 				<h2>어떤 특별한 날에 드릴 선물인가요?</h2>
@@ -104,7 +104,7 @@
 				</div>
 			</div>
 		</section>
-	
+
 		<section class="genie_03">
 			<div>
 				<h2>선물 예산은 어느정도로 생각하고 계신가요?</h2>
@@ -136,7 +136,7 @@
 				</div>
 			</div>
 		</section>
-	
+
 		<section class="genie_04">
 			<div>
 				<h2>선물 받는 분의 나이대가 어떻게 되시나요?</h2>
@@ -168,7 +168,7 @@
 				</div>
 			</div>
 		</section>
-	
+
 		<section class="genie_05">
 			<div>
 				<h2>선물 받는 분의 성별이 어떻게 되시나요?</h2>
