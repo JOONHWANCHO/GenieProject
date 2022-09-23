@@ -42,7 +42,7 @@
 	</select>
 	
 	<select id="productList" resultType="SellerProductVO">
-		select product_id, genie_id, product_category, product_tag, product_name, product_price, product_quantity 
+		select product_id, genie_id, product_category, product_tag, product_name, product_price, product_quantity, product_mbti 
 		from product 
 		where genie_id=#{genie_id}
 	</select>
