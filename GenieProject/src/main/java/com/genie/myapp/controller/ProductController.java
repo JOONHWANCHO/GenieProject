@@ -2,7 +2,9 @@ package com.genie.myapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,11 +34,11 @@ public class ProductController{
 	}
 	//제폼 상세페이지
 	@GetMapping("product_detail")
-	public ModelAndView product_detail(ProductVO PVO, SellerVO svo) {
+	public ModelAndView product_detail(@RequestParam("product_id") int product_id,ProductVO PVO, SellerVO svo) {
+
 
 		mav = new ModelAndView();
-		mav.addObject("plist", service.Product(PVO));
-		mav.addObject("pvo", PVO);
+		mav.addObject("pvo", service.getProduct(product_id));
 		mav.addObject("svo", svo);
 		mav.setViewName("/product_detail");
 
@@ -50,6 +52,14 @@ public class ProductController{
 		mav.addObject("clist", service.getCart(cVO));
 		mav.addObject("cvo", cVO);
 		mav.setViewName("/cart");
+
+		return mav;
+	}
+
+	@PostMapping("addCart")
+	public ModelAndView addCart(CartVO cVO){
+		mav=new ModelAndView();
+
 
 		return mav;
 	}

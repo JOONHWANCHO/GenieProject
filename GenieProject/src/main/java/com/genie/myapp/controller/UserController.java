@@ -257,7 +257,7 @@ public class UserController {
 		if(cnt>0) {//수정됨
 			msg+="alert('배송지가 등록되었습니다.');";
 		}else {//수정못함
-			msg+="alert('배송지 등록에 실패하였습니다.');";	
+			msg+="alert('배송지 등록에 실패하였습니다.');";
 		}
 		msg+="location.href='/user/MyPage';</script>";
 		
