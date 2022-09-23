@@ -250,4 +250,12 @@ public class SellerController {
 		return mav;
 	}
 	
+	//seller 문의관리 페이지
+	@GetMapping("sellerQna")
+	public ModelAndView sellerQna() {
+			
+		mav = new ModelAndView();
+		mav.setViewName("seller/sellerQna");
+		return mav;
+	}
 }

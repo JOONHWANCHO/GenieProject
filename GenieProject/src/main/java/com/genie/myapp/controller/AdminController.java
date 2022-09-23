@@ -85,6 +85,14 @@ public class AdminController {
 			return mav;
 		}
 
+		//adminDetail
+		@GetMapping("test")
+		public ModelAndView test() {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("admin/test");
+			return mav;
+		}
+
 		//태그		
 		@GetMapping("adminTag")
 		public ModelAndView adminTag() {
