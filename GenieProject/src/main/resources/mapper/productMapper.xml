@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.genie.myapp.dao.ProductDAO">
-    <select id="Product" resultType="ProductVO">
+    <select id="product" resultType="ProductVO">
         select 
             product_id, 
             genie_id,
@@ -22,9 +22,20 @@
             product_image3,
             product_mbti
         from product 
-        
-        where product_category like '%${product_category}%'  <!--     where procuct_category like '%생일%'  -->
-        
+        <where>
+        <if test = "p.product_category != null">
+            product_category like '%${p.product_category}%'  <!--where procuct_category like '%생일%'-->
+        </if>
+        <!-- <if test = "p.produc_category != null and t.genie_who != null">
+        and
+        </if> -->
+        <if test = "t.genie_who != null">
+            product_tag like '%${t.genie_who}%' and  
+            product_tag like '%${t.genie_day}%' and  
+            product_tag like "%${t.genie_old}%" and  
+            product_tag like "%${t.gender}%"
+        </if>
+        </where>
         order by product_id desc
     </select>
     <select id="getCart" resultType="CartVO">
