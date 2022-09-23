@@ -20,7 +20,7 @@ public class MbtiController {
 	ModelAndView mav;
 	
 	//mbti 메인페이지
-	@GetMapping("genieMbti")
+	@GetMapping("mbti/mbtiMain")
 	public ModelAndView genieMbti() {
 		mav = new ModelAndView();
 		mav.setViewName("mbti/mbtiMain");
