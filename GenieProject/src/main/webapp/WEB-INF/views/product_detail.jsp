@@ -14,7 +14,7 @@
         <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
         </button>
         <div class="box5">
-            상품제목${pvo.product_name}
+            상품명 : ${pvo.product_name}
         </div>
         <div class="box6">
             상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
@@ -51,7 +51,7 @@
         <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
         </button>
         <div class="box5">
-            상품제목 : {pvo.product_title}
+            상품명 : ${pvo.product_name}
         </div>
         <div class="box6">
             상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />
@@ -88,7 +88,7 @@
         <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
         </button>
         <div class="box5">
-            상품제목 : {pvo.product_title}
+            상품명 : ${pvo.product_name}
         </div>
         <div class="box6">
             상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원" />

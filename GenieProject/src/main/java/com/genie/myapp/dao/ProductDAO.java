@@ -1,6 +1,7 @@
 package com.genie.myapp.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import com.genie.myapp.vo.ProductVO;
 @Repository
 public interface ProductDAO{
     //상품정보리스트에서 상품정보 가져오기
-    public List<ProductVO> Product(ProductVO pVO);
+    public List<ProductVO> product(Map<String, Object> map);
     //제품 상세정보(구매페이지)
     public ProductVO getProduct(int no);
 

@@ -1,5 +1,8 @@
 package com.genie.myapp.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +15,7 @@ import com.genie.myapp.service.ProductService;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
+import com.genie.myapp.vo.Tag_nameVO;
 
 @RestController
 @RequestMapping("/")
@@ -23,18 +27,24 @@ public class ProductController{
 
 	//제품 리스트보기
 	@GetMapping("product")
-	public ModelAndView product(ProductVO PVO) {
+	public ModelAndView product(ProductVO pvo, Tag_nameVO tvo) {
 
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("p", pvo);
+		map.put("t", tvo);
+		
 		mav = new ModelAndView();
-		mav.addObject("plist", service.Product(PVO));
-		mav.addObject("pvo", PVO);
+
+		mav.addObject("plist", service.product(map));
+		mav.addObject("pvo", pvo);
 		mav.setViewName("/product");
 		
 		return mav;
 	}
+
 	//제폼 상세페이지
 	@GetMapping("product_detail")
-	public ModelAndView product_detail(@RequestParam("product_id") int product_id,ProductVO PVO, SellerVO svo) {
+	public ModelAndView product_detail(@RequestParam("product_id") int product_id,ProductVO pvo, SellerVO svo) {
 
 
 		mav = new ModelAndView();
