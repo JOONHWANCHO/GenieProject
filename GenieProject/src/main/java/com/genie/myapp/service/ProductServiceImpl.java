@@ -9,7 +9,7 @@ import java.util.Map;
 import com.genie.myapp.dao.ProductDAO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
-
+import com.genie.myapp.vo.SellerVO;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -18,8 +18,8 @@ public class ProductServiceImpl implements ProductService{
     ProductDAO dao;
 
 	@Override
-	public List<ProductVO> product(Map<String, Object> map) {
-		return dao.product(map);
+	public List<ProductVO> product(ProductVO pVO) {
+		return dao.product(pVO);
 	}
 
 	@Override
@@ -40,6 +40,16 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public ProductVO getProduct(int no) {
 		return dao.getProduct(no);
+	}
+
+	@Override
+	public List<ProductVO> selectProduct(Map<String, Object> map) {
+		return dao.selectProduct(map);
+	}
+
+	@Override
+	public SellerVO getSeller(int no) {
+		return dao.getSeller(no);
 	}
 
 }
