@@ -11,11 +11,11 @@
 	<li><input type="button" onclick="next5()"></li>
 </ul> -->
 
-<form class="grid-container" id="genieFrm" action="/product">
+<form method='post' class="grid-container" id="genieFrm" action="/selectProduct">
 	<div class="genie">
-		<section class="genie_01">
+		<section class="genie_00">
 			<div>
-				<h2>어느 분에게 선물할 계획이신가요?</h2>
+				<h2>선물을 주고 싶은 사람이 있나요? 어떤 사람인가요?</h2>
 			</div>
 			<div class="grid-container4">
 				<div class="tag_name">
@@ -29,7 +29,7 @@
 				<div class="tag_name">
 					<input type="radio" name="genie_who" id="3" value="연인">
 					<label for="3">연인</label>
-				</div>			
+				</div>
 				<div class="tag_name">
 					<input type="radio" name="genie_who" id="4" value="친척/가족">
 					<label for="4">친척/가족</label>
@@ -49,7 +49,7 @@
 			</div>
 		</section>
 
-		<section class="genie_02">
+		<section class="genie_01">
 			<div>
 				<h2>어떤 특별한 날에 드릴 선물인가요?</h2>
 			</div>
@@ -104,40 +104,8 @@
 				</div>
 			</div>
 		</section>
-<!-- 
-		<section class="genie_03">
-			<div>
-				<h2>선물 예산은 어느정도로 생각하고 계신가요?</h2>
-			</div>
-			<div class="grid-container3">
-				<div class="tag_name">
-					<input type="radio" name="genie_how" id="20" value="만원 이하">
-					<label for="20">만원 이하</label>
-				</div>
-				<div class="tag_name">
-					<input type="radio" name="genie_how" id="21" value="1만원대-2만원대">
-					<label for="21">1만 원대-2만 원대</label>
-				</div>
-				<div class="tag_name">
-					<input type="radio" name="genie_how" id="22" value="3만원대-4만원대">
-					<label for="22">3만 원대-4만 원대</label>
-				</div>
-				<div class="tag_name">
-					<input type="radio" name="genie_how" id="23" value="5만원대-9만원대">
-					<label for="23">5만 원대-9만 원대</label>
-				</div>
-				<div class="tag_name">
-					<input type="radio" name="genie_how" id="24" value="10만원대">
-					<label for="24">10만 원대</label>
-				</div>
-				<div class="tag_name">
-					<input type="radio" name="genie_how" id="25" value="20만원이상">
-					<label for="25">20만 원 이상</label>
-				</div>
-			</div>
-		</section> -->
 
-		<section class="genie_04">
+		<section class="genie_02">
 			<div>
 				<h2>선물 받는 분의 나이대가 어떻게 되시나요?</h2>
 			</div>
@@ -169,21 +137,85 @@
 			</div>
 		</section>
 
-		<section class="genie_05">
+		<section class="genie_03">
 			<div>
-				<h2>선물 받는 분의 성별이 어떻게 되시나요?</h2>
+				<h2>선물 받는 분의 성별은 어떻게 되시나요?</h2>
 			</div>
 			<div class="grid-container3">
 				<div class="tag_name">
-					<input type="radio" name="gender" id="32" value="남자">
+					<input type="radio" name="gender" id="32" value="남성">
 					<label for="32">남자</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" name="gender" id="33" value="여자">
+					<input type="radio" name="gender" id="33" value="여성">
 					<label for="33">여자</label>
 				</div>
 			</div>
 		</section>
+
+		<section class="genie_04">
+			<div>
+				<h2>최소 예산은 어느 정도로 생각하고 계신가요?</h2>
+			</div>
+			<div class="grid-container3">
+				<div class="tag_name">
+					<input type="radio" name="money_low" id="20" value="0">
+					<label for="20">일단 보고 선택할게요</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_low" id="21" value="10000">
+					<label for="21">10,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_low" id="22" value="30000">
+					<label for="22">30,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_low" id="23" value="50000">
+					<label for="23">50,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_low" id="24" value="100000">
+					<label for="24">100,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_low" id="25" value="200000">
+					<label for="25">200,000원</label>
+				</div>
+			</div>
+		</section>
+
+		<section class="genie_05">
+			<div>
+				<h2>최대 예산은 어느 정도로 생각하고 계신가요?</h2>
+			</div>
+			<div class="grid-container3">
+				<div class="tag_name">
+					<input type="radio" name="money_max" id="40" value="10000">
+					<label for="40">10,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_max" id="41" value="29999">
+					<label for="41">30,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_max" id="42" value="49999">
+					<label for="42">50,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_max" id="43" value="99999">
+					<label for="43">100,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_max" id="44" value="199999">
+					<label for="44">200,000원</label>
+				</div>
+				<div class="tag_name">
+					<input type="radio" name="money_max" id="45" value="9999999">
+					<label for="45">그런거 없다.</label>
+				</div>
+			</div>
+		</section> 
 	</div>
 
 	<ul class="page_order">
@@ -191,6 +223,9 @@
 		<li><input type="button"></li>
 		<li><input type="button"></li>
 		<li><input type="button"></li>
+		<li><input type="button"></li>
+		<li><input type="button"></li>
+		
 		<!-- <li><input type="button"></li> -->
     </ul>
 
