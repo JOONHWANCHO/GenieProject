@@ -19,7 +19,7 @@
         <c:forEach var="pvo" items="${plist}">
         <div class="wrapper">
             <div class="product-list">
-                <a class="product-title" href="/product_detail"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a class="product-title" href="/product_detail?product_id=${pvo.product_id}"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <div class="item">
                     <img src="${pvo.product_image1}">
                 </div>

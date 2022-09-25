@@ -289,6 +289,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <h5 class="card-title"> </h5>
 
                 <p class="card-text">
+                
+                <div>
+                	<form method="get" action="" id="searchFrm">
+                		<select name="searchKey">
+                			<option value="product_name">상품명</option>
+                			<option value="product_category">카테고리</option>
+                			<option value="product_tag">태그</option>
+                			<option value="product_mbti">MBTI</option>
+                		</select>
+                		
+                		<input type="text" name="searchWord" id="searchWord"/>
+                		<input type="submit" value="Search"/>
+                		
+                	</form>
+                </div>
+                
                   <table class="table">
                     <thead>
                       <tr>
