@@ -146,6 +146,8 @@ public class UserController {
 			int account = service.AccountWrite(avo);
 			int user = service.UserWrite(vo);
 			//int Delivery = service.Delivery(vo);
+			System.out.println(account);
+			System.out.println(user);
 
 			String msg = "<script>";
 			msg += "alert('회원가입을 성공하였습니다.');";

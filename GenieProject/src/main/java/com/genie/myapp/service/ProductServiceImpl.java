@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.genie.myapp.dao.ProductDAO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
+import com.genie.myapp.vo.SellerVO;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -16,8 +18,8 @@ public class ProductServiceImpl implements ProductService{
     ProductDAO dao;
 
 	@Override
-	public List<ProductVO> Product(ProductVO pVO) {
-		return dao.Product(pVO);
+	public List<ProductVO> product(ProductVO pVO) {
+		return dao.product(pVO);
 	}
 
 	@Override
@@ -38,6 +40,16 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public ProductVO getProduct(int no) {
 		return dao.getProduct(no);
+	}
+
+	@Override
+	public List<ProductVO> selectProduct(Map<String, Object> map) {
+		return dao.selectProduct(map);
+	}
+
+	@Override
+	public SellerVO getSeller(int no) {
+		return dao.getSeller(no);
 	}
 
 }
