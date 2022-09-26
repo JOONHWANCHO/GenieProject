@@ -50,7 +50,7 @@ public class UserController {
 	}
 
 	@PostMapping("loginOK")
-	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session ) {
+	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session) {
 		
 		mav = new ModelAndView();
 
