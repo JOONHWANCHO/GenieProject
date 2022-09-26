@@ -18,10 +18,16 @@ public interface ProductDAO{
     //제품 상세정보(구매페이지)
     public ProductVO getProduct(int no);
 
+
+
     //장바구니 가져오기(상품포함)
-    public List<CartVO> getCart(CartVO cVO);
+    public CartVO getCart(String genie_id);
+
+
+
     // //장바구니에 상품 넣기
     // public CartVO addCart(CartVO cVo);
+
     //지니페이지 제품 선택
     public List<ProductVO> selectProduct(Map<String, Object> map);
     //상세페이지 관리자정보 가져오기

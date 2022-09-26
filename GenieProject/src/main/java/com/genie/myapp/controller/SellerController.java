@@ -24,6 +24,7 @@ import com.genie.myapp.service.SellerService;
 
 import com.genie.myapp.vo.SellerProductVO;
 import com.genie.myapp.vo.AccountVO;
+import com.genie.myapp.vo.InquiryVO;
 import com.genie.myapp.vo.OrderVO;
 
 
@@ -252,9 +253,11 @@ public class SellerController {
 	
 	//seller 문의관리 페이지
 	@GetMapping("sellerQna")
-	public ModelAndView sellerQna() {
-			
+	public ModelAndView sellerQna(InquiryVO vo, HttpServletRequest request) {
+		String Genie_id = ((String)request.getSession().getAttribute("logId")); //세션 로그인 아이디
+		
 		mav = new ModelAndView();
+		mav.addObject("list", service.inquiryList(vo, Genie_id));
 		mav.setViewName("seller/sellerQna");
 		return mav;
 	}

@@ -1,6 +1,7 @@
 package com.genie.myapp.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -33,6 +34,7 @@ public class ProductController{
 
 	@Autowired
 	UserService userService;
+	
 
 	ModelAndView mav = null;
 	Map<String, Object> map = null;
@@ -43,7 +45,6 @@ public class ProductController{
 
 		mav = new ModelAndView();
 		mav.addObject("plist", productService.product(PVO));
-		mav.addObject("pvo", PVO);
 		mav.setViewName("/product");
 
 		return mav;
@@ -62,14 +63,16 @@ public class ProductController{
 	}
 // -----------------------------------------------------------장바구니---------------------------------------------------------------//
 	@GetMapping("cart")
-	public ModelAndView cart(CartVO cvo, HttpSession session) {
+	public ModelAndView cart(HttpSession session) {
 		
 		String genie_id = (String)session.getAttribute("logId"); 
-		UserVO vo = userService.getUser(genie_id);
+		CartVO cvo = productService.getCart(genie_id);
+
+		System.out.println(cvo);
 
 		mav = new ModelAndView();
-		mav.addObject("clist", productService.getCart(cvo));
-		mav.setViewName("/cart");
+		mav.addObject("clist", cvo);
+		mav.setViewName("/");
 
 		return mav;
 	}
