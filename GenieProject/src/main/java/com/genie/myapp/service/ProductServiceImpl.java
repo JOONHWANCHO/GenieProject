@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public CartVO getCart(String genie_id) {
+	public List<CartVO> getCart(String genie_id) {
 		return dao.getCart(genie_id);
 	}
 
