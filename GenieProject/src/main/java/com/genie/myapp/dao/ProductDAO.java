@@ -21,7 +21,7 @@ public interface ProductDAO{
 
 
     //장바구니 가져오기(상품포함)
-    public CartVO getCart(String genie_id);
+    public List<CartVO> getCart(String genie_id);
 
 
 
