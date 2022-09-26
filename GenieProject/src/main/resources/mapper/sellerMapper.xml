@@ -50,7 +50,6 @@
 		<if test="searchWord!=null">
 			where ${searchKey} like '%${searchWord}%' and genie_id=#{genie_id} 
 		</if>
-		
 	</select>
 
     <select id = "getSeller" resultType = "SellerVO">
@@ -89,9 +88,11 @@
 	</update>
 	
 	<select id="inquiryList" resultType="InquiryVO">
-		select genie_id, product_id, inquiry_title, inquiry_content, inquiry_status, inquiry_writedate 
-		from inquiry 
-		where product_id in(select product_id from product where genie_id=#{param2}) 
-		order by product_id asc
+		select i.genie_id, i.product_id, p.product_name, i.inquiry_title, i.inquiry_content, i.inquiry_status, i.inquiry_writedate 
+		from inquiry i join product p 
+		on i.product_id=p.product_id 
+		where i.product_id in(select product_id from product where genie_id=#{param2}) 
+		order by i.product_id asc
 	</select>
+
 </mapper>

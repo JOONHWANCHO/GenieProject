@@ -8,6 +8,9 @@ public class InquiryVO {
 	public String inquiry_status;
 	public String inquiry_writedate;
 	
+
+	public String product_name;
+	
 	@Override
 	public String toString() {
 		return "InquiryVO [genie_id=" + genie_id + ", product_id=" + product_id + ", inquiry_title=" + inquiry_title
@@ -50,6 +53,14 @@ public class InquiryVO {
 	}
 	public void setInquiry_writedate(String inquiry_writedate) {
 		this.inquiry_writedate = inquiry_writedate;
+	}
+
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 	
 	

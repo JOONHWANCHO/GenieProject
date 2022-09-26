@@ -226,6 +226,8 @@ public class SellerProductVO {
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
+
+	
 	
 	
 }
