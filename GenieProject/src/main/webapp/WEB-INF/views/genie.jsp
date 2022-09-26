@@ -31,7 +31,7 @@
 					<label for="3">연인</label>
 				</div>
 				<div class="tag_name">
-					<input type="radio" name="genie_who" id="4" value="친척/가족">
+					<input type="radio" name="genie_who" id="4" value="가족/친척">
 					<label for="4">친척/가족</label>
 				</div>			
 				<div class="tag_name">

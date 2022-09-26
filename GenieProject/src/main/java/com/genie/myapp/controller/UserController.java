@@ -60,7 +60,7 @@ public class UserController {
 	
 		if(logVO != null) {//로그인 성공
 
-			session.setAttribute("logId", logVO.getGenie_id());
+			session.setAttribute("logId", logVO.getGenie_id());		
 			session.setAttribute("logName", logVO.getUser_name());
 			session.setAttribute("logStatus","Y");
 			mav.setViewName("redirect:/");
@@ -220,6 +220,7 @@ public class UserController {
 
 		String genie_id = (String)session.getAttribute("logId");
 		UserVO vo = service.getUser(genie_id);
+		//System.out.print(vo);
 		
 		mav = new ModelAndView();
 		mav.addObject("pVo",pVo);
