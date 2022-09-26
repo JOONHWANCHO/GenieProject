@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.genie.myapp.dao.AdminDAO;
-import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.PagingVO;
@@ -98,6 +97,7 @@ public class AdminServiceImple implements AdminService {
 
 	public int adminpayment(CartVO vo) {
 		return dao.adminpayment(vo);
+	}
 
 	public List<SellerVO> sellerAllSelect(PagingVO pVO) {
 		return dao.sellerAllSelect(pVO);
@@ -127,4 +127,5 @@ public class AdminServiceImple implements AdminService {
 	public int sellerApproval(PagingVO pVO) {
 		return dao.sellerApproval(pVO);
 	}
+
 }

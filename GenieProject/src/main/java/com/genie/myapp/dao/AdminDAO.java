@@ -56,10 +56,7 @@ public interface AdminDAO {
 	
 	// admember 내 유저정보 삭제
 	public int admemberDel(String genie_id);
-	
-	// 총 레코드 수
-	public int totalRecord(PagingVO pVO);
-	
+
 	// 결제 관련 
     public int adminpayment(CartVO vo);
 

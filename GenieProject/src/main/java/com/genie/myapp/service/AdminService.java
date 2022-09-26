@@ -68,9 +68,6 @@ public interface AdminService {
 	// adcompany 내 승인현황
 	public int sellerApproval(PagingVO pVO);
 
-	// 총 레코드 수
-	public int totalRecord(PagingVO pVO);
-	
 	// 결제관련
     public int adminpayment(CartVO vo);
     
