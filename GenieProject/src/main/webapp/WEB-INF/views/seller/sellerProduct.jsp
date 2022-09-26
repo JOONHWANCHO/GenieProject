@@ -2,7 +2,9 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 
 <style>
-
+.table a{
+	color:black;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
@@ -324,7 +326,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <c:forEach var="pvo" items="${plist }">
                       <tr>
 						    <td>${pvo.product_id }</td>
-							<td>${pvo.product_name}</td>
+							<td><a href="/product_detail?product_id=${pvo.product_id}">${pvo.product_name}</a></td>
 							<td>${pvo.product_price}</td>
 							<td>${pvo.product_quantity}</td>
 							<td>${pvo.product_category}</td>
