@@ -33,15 +33,14 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<CartVO> getCart(CartVO cVO) {
-		return dao.getCart(cVO);
+	public CartVO getCart(String genie_id) {
+		return dao.getCart(genie_id);
 	}
 
 	@Override
 	public SellerVO getSeller(int product_id) {
 		return dao.getSeller(product_id);
 	}
-
 
 
 }
