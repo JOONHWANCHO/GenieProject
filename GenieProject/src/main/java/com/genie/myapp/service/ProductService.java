@@ -14,7 +14,7 @@ public interface ProductService{
 
     // public CartVO addCart(CartVO cVo);
     
-    public CartVO getCart(String genie_id);
+    public List<CartVO> getCart(String genie_id);
 
     public SellerVO getSeller(int product_id);
     public List<ProductVO> selectProduct(Map<String, Object> map);

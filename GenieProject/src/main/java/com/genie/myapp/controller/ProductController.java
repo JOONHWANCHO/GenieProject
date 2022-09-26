@@ -63,16 +63,17 @@ public class ProductController{
 	}
 // -----------------------------------------------------------장바구니---------------------------------------------------------------//
 	@GetMapping("cart")
-	public ModelAndView cart(HttpSession session) {
+	public ModelAndView cart(CartVO cvo, HttpSession session) {
 		
 		String genie_id = (String)session.getAttribute("logId"); 
-		CartVO cvo = productService.getCart(genie_id);
+		List<CartVO> cartList = productService.getCart(genie_id);
+		
 
-		System.out.println(cvo);
+		System.out.println(cartList.size());
 
 		mav = new ModelAndView();
-		mav.addObject("clist", cvo);
-		mav.setViewName("/");
+		mav.addObject("clist", cartList);
+		mav.setViewName("/cart");
 
 		return mav;
 	}
