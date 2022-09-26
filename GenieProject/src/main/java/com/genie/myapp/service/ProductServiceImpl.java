@@ -21,22 +21,7 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> product(ProductVO pVO) {
 		return dao.product(pVO);
 	}
-
-	@Override
-	public List<CartVO> getCart(CartVO cVO) {
-		return dao.getCart(cVO);
-	}
-
-	@Override
-	public CartVO addCart(CartVO cVo) {
-		return dao.addCart(cVo);
-	}
-
-	@Override
-	public boolean overlapProduct(CartVO cVo) {
-		return dao.overlapProduct(cVo);
-	}
-
+	
 	@Override
 	public ProductVO getProduct(int no) {
 		return dao.getProduct(no);
@@ -48,8 +33,15 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public SellerVO getSeller(int no) {
-		return dao.getSeller(no);
+	public List<CartVO> getCart(CartVO cVO) {
+		return dao.getCart(cVO);
 	}
+
+	@Override
+	public SellerVO getSeller(int product_id) {
+		return dao.getSeller(product_id);
+	}
+
+
 
 }
