@@ -11,8 +11,6 @@ import com.genie.myapp.vo.SellerProductVO;
 import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.InquiryVO;
 import com.genie.myapp.vo.OrderVO;
-
-
 import com.genie.myapp.vo.SellerVO;
 
 
