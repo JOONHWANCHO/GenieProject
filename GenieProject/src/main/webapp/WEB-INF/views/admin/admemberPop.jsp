@@ -171,7 +171,7 @@ function admemberDel(){
    		<input type="text" id="payment_method" class="second" name="payment_method" value=${vo.payment_method}>   	
       <input type="submit" class="fourth" value="수정">
       <a href="javascript:admemberDel()"><input type="button" class="fourth" value="삭제"></a>
-      <a href="javascript:window.history.back()"><input type="button" class="fourth" value="뒤로가기"></a>
+      <a href="/admin/admember"><input type="button" class="fourth" value="뒤로가기"></a>
     </form>
   </div>
 </div>
