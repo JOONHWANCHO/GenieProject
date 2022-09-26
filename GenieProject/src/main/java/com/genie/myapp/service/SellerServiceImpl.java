@@ -11,6 +11,7 @@ import com.genie.myapp.dao.SellerDAO;
 
 import com.genie.myapp.vo.SellerProductVO;
 import com.genie.myapp.vo.AccountVO;
+import com.genie.myapp.vo.InquiryVO;
 import com.genie.myapp.vo.OrderVO;
 
 
@@ -83,5 +84,10 @@ public class SellerServiceImpl implements SellerService {
 	@Override
 	public void updateDeliveryStatus(Map deliveryMap) {
 		dao.updateDeliveryStatus(deliveryMap);
+	}
+
+	@Override
+	public List<InquiryVO> inquiryList(InquiryVO vo, String Genie_id) {
+		return dao.inquiryList(vo, Genie_id);
 	}
 }

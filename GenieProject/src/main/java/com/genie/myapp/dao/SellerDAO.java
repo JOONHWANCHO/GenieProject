@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.genie.myapp.vo.SellerProductVO;
 import com.genie.myapp.vo.AccountVO;
+import com.genie.myapp.vo.InquiryVO;
 import com.genie.myapp.vo.OrderVO;
 
 
@@ -44,4 +45,6 @@ public interface SellerDAO {
 	public int productDel(int pid);
 	//상품수정
 	public int productEditOk(SellerProductVO pvo);
+	//문의목록
+	public List<InquiryVO> inquiryList(InquiryVO vo, String Genie_id);
 }
