@@ -291,7 +291,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <p class="card-text">
                 
                 <div>
-                	<form method="get" action="" id="searchFrm">
+                	<form method="get" action="/seller/sellerProduct" id="searchFrm">
                 		<select name="searchKey">
                 			<option value="product_name">상품명</option>
                 			<option value="product_category">카테고리</option>
