@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.genie.myapp.dao.AdminDAO;
 import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdminVO;
+import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -91,4 +92,9 @@ public class AdminServiceImple implements AdminService {
 		return dao.adcategoryDel(category_id);
 	}
 	///////////////카테고리//////////////////
+
+	@Override
+	public int adminpayment(CartVO vo) {
+		return dao.adminpayment(vo);
+	}
 }

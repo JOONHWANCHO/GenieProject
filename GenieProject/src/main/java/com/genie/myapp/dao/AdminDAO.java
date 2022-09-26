@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import com.genie.myapp.vo.AdminVO;
+import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.UserVO;
 //추상클래스 
@@ -57,4 +58,7 @@ public interface AdminDAO {
 	
 	// 총 레코드 수
 	public int totalRecord(PagingVO pVO);
+	
+	// 결제 관련 
+    public int adminpayment(CartVO vo);
 }

@@ -3,6 +3,7 @@ package com.genie.myapp.service;
 import java.util.List;
 
 import com.genie.myapp.vo.AdminVO;
+import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.UserVO;
 
@@ -53,4 +54,7 @@ public interface AdminService {
 
 	// 총 레코드 수
 	public int totalRecord(PagingVO pVO);
+	
+	// 결제관련
+    public int adminpayment(CartVO vo);
 }
