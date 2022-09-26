@@ -2,6 +2,7 @@ package com.genie.myapp.controller;
 
 import java.nio.charset.Charset;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.genie.myapp.service.AdminService;
 import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdminVO;
+import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.SellerVO;
 import com.genie.myapp.vo.UserVO;
@@ -264,7 +266,46 @@ public class AdminController {
 			}
 			return mav;
 		}
+	
+	//결제 뷰화면
+	@GetMapping("adminpayment")
+	public ModelAndView productForm() {
+		mav = new ModelAndView();
+		mav.setViewName("admin/adminpayment");
+		return mav;
+	}	
+
+	//결제 컨트롤러
+	@PostMapping("adminpayment")
+	public ResponseEntity<String> adminpayment(CartVO vo, HttpServletRequest request){
+		vo.setGenie_id((String)request.getSession().getAttribute("logId")); //세션 로그인 아이디
 		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type", "text/html; charset=utf-8");
+		
+		try {//결제 성공
+			int result = service.adminpayment(vo);
+			
+			String msg = "<script>";
+			msg += "alert('결제가 되었습니다. 등록되었습니다.');";
+			msg += "location.href='/admin/adminMain';";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+			
+		}catch(Exception e) {//결제 실패
+			
+			String msg = "<script>";
+			msg += "alert('결제가 실패하였습니다.');";
+			msg += "history.back();";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
+			
+			e.printStackTrace();
+		}
+		return entity;
+	}
 		// adcompany 페이지 이동
 		@GetMapping("adcompany")
 		public ModelAndView adcompany(PagingVO pVO) {
@@ -324,5 +365,3 @@ public class AdminController {
 			return mav;
 		}
 }
-
-//Update 0920.17:14
