@@ -40,4 +40,12 @@ public interface SellerService {
 	public int productEditOk(SellerProductVO pvo);
 	//문의목록
 	public List<InquiryVO> inquiryList(InquiryVO vo, String Genie_id);
+	// 매출관리 (결제금액)
+	public int orderSum();
+	// 일별 매출관리
+	public List<OrderVO> orderSumByDay();
+	// 결제건수
+	public int orderCount();
+	// 베스트셀러
+	public String bestSeller();
 }

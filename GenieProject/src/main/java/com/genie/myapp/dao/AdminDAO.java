@@ -58,7 +58,7 @@ public interface AdminDAO {
 	public int admemberDel(String genie_id);
 
 	// 결제 관련 
-    public int adminpayment(CartVO vo);
+    public int paymentWrite(CartVO vo);
 
 	// adcompany 내 유저정보 리스트
 	public List<SellerVO> sellerAllSelect(PagingVO pVO);
