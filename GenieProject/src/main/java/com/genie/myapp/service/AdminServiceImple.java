@@ -95,8 +95,8 @@ public class AdminServiceImple implements AdminService {
 
 	@Override
 
-	public int adminpayment(CartVO vo) {
-		return dao.adminpayment(vo);
+	public int paymentWrite(CartVO vo) {
+		return dao.paymentWrite(vo);
 	}
 
 	public List<SellerVO> sellerAllSelect(PagingVO pVO) {
