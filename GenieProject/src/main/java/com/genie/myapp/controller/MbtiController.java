@@ -2,16 +2,18 @@ package com.genie.myapp.controller;
 
 import javax.inject.Inject;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.MbtiService;
 import com.genie.myapp.vo.SellerProductVO;
 
-@Controller
+@RestController
 @RequestMapping("/")
 public class MbtiController {
 	
@@ -39,4 +41,8 @@ public class MbtiController {
 		
 		return mav;
 	}
+	
+	//최신순 정렬
+	//@GetMapping("mbti/recentlist")
+ 
 }

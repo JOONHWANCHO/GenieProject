@@ -3,9 +3,24 @@
 <link rel="stylesheet" href="/js_css/product_style.css" type="text/css"/>
 <script src="/js_css/product_js.js"></script>
 <style>
-
+#product_order_list{
+	text-align:right;
+	margin:3vh 1vw;
+}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+var recentlist = function(){
+	
+	$.ajax({
+		type:'get',
+		url:'/mbti/recentlist',
+		dataType:'json',
+		success:function(result){
+			console.log(result);
+		}
+	});
+};
 </script>
 
 <section class="product">
@@ -13,6 +28,14 @@
 		<div class="bubbles">
 				<h1 id="mbti"></h1>
 		</div>
+	</div>
+	
+	<div id="product_order_list">
+		<p>
+		<a href="/mbti/recentlist">가격낮은순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<a href="javascript:pricelist();">가격높은순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<a href="javascript:pricelist();">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<a href="javascript:pricelistdesc();">인기순</a> </p>
 	</div>
 	
 	<div class="grid-container">
