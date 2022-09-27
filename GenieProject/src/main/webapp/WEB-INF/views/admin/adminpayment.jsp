@@ -121,19 +121,19 @@ $(function(){
 <section class="registration">
 	<div class="wrapper">
 		<h1>결제페이지 테스트</h1>
-		<form method="post" action="/admin/adminpayment" id="logFrm">
+		<form method="post" action="/admin/adminpaymentOk" id="logFrm">
 			<input type="hidden" value="1" name="member_type"/>
 			<ul id="idForm">
 				<li>카트넘버</li>
-				<input type="text" name="cart_num" id="cart_num" value="1" placeholder="카트넘버">
+				<input type="text" name="cart_num" id="cart_num" value="2" placeholder="카트넘버">
 			</ul>
 			<ul id="idForm">
-				<li>카트수량</li>
-				<input type="text" name="genie_id" id="genie_id" value="1" placeholder="수량">
+				<li>지니아이디</li>
+				<input type="text" name="genie_id" id="genie_id" value="1234" placeholder="지니아이디">
 			</ul>
 			<ul id="idForm">
 				<li>제품아이디</li>
-				<input type="text" name="product_id" id="product_id" value="1" placeholder="제품아이디">
+				<input type="text" name="product_id" id="product_id" value="1234" placeholder="제품아이디">
 			</ul>
 			<ul id="idForm">
 				<li>가격</li>

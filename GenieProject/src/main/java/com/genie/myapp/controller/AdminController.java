@@ -276,7 +276,7 @@ public class AdminController {
 	}	
 
 	//결제 컨트롤러
-	@PostMapping("adminpayment")
+	@PostMapping("adminpaymentOk")
 	public ResponseEntity<String> adminpayment(CartVO vo, HttpServletRequest request){
 		vo.setGenie_id((String)request.getSession().getAttribute("logId")); //세션 로그인 아이디
 		
@@ -286,7 +286,7 @@ public class AdminController {
 		headers.add("Content-Type", "text/html; charset=utf-8");
 		
 		try {//결제 성공
-			int result = service.adminpayment(vo);
+			int result = service.paymentWrite(vo);
 			
 			String msg = "<script>";
 			msg += "alert('결제가 되었습니다. 등록되었습니다.');";

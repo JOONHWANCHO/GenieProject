@@ -13,18 +13,22 @@ public class OrderVO {
     private int order_price;
     private int order_qty;
     private String order_writedate;
-    private String payment_mehtod;
+    private String payment_method;
     private String product_name;
-    
+
+    private String month_day;
+    private int total_sales;
+
+
     @Override
-    public String toString() {
-        return "OrderVO [genie_id=" + genie_id + ", order_num=" + order_num + ", order_price=" + order_price
-                + ", order_qty=" + order_qty + ", order_writedate=" + order_writedate + ", payment_mehtod="
-                + payment_mehtod + ", product_id=" + product_id + ", product_name=" + product_name
-                + ", recipient_address=" + recipient_address + ", recipient_delivery_status="
-                + recipient_delivery_status + ", recipient_name=" + recipient_name + ", recipient_phone="
-                + recipient_phone + ", recipient_request=" + recipient_request + "]";
-    }
+	public String toString() {
+		return "OrderVO [order_num=" + order_num + ", genie_id=" + genie_id + ", product_id=" + product_id
+				+ ", recipient_name=" + recipient_name + ", recipient_phone=" + recipient_phone + ", recipient_address="
+				+ recipient_address + ", recipient_request=" + recipient_request + ", recipient_delivery_status="
+				+ recipient_delivery_status + ", order_price=" + order_price + ", order_qty=" + order_qty
+				+ ", order_writedate=" + order_writedate + ", payment_method=" + payment_method + ", product_name="
+				+ product_name + ", month_day=" + month_day + ", total_sales=" + total_sales + "]";
+	}
 
     public int getOrder_num() {
         return order_num;
@@ -114,12 +118,12 @@ public class OrderVO {
         this.order_writedate = order_writedate;
     }
 
-    public String getPayment_mehtod() {
-        return payment_mehtod;
+    public String getPayment_method() {
+        return payment_method;
     }
 
-    public void setPayment_mehtod(String payment_mehtod) {
-        this.payment_mehtod = payment_mehtod;
+    public void setPayment_method(String payment_method) {
+        this.payment_method = payment_method;
     }
 
     public String getProduct_name() {
@@ -129,6 +133,23 @@ public class OrderVO {
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
     }
+
+    public String getMonth_day() {
+        return month_day;
+    }
+
+    public void setMonth_day(String month_day) {
+        this.month_day = month_day;
+    }
+    
+    public int getTotal_sales() {
+        return total_sales;
+    }
+
+    public void setTotal_sales(int total_sales) {
+        this.total_sales = total_sales;
+    }
+
 
     
 }

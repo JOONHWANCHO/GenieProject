@@ -69,7 +69,7 @@ public interface AdminService {
 	public int sellerApproval(PagingVO pVO);
 
 	// 결제관련
-    public int adminpayment(CartVO vo);
+    public int paymentWrite(CartVO vo);
     
 	// 유저 총 레코드 수
 	public int userTotalRecord(PagingVO pVO);
