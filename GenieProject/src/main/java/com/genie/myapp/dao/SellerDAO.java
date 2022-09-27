@@ -23,7 +23,17 @@ public interface SellerDAO {
 	// 주문목록
 	public List<OrderVO> sellerOrder(OrderVO vo);
 	// 주문상태 변경
-	public void updateDeliveryStatus(Map deliveryMap); // 매퍼파일의 id가 updateDeliveryStatus 인 SQL문을 호출합니다 
+	public void updateDeliveryStatus(Map deliveryMap); // 매퍼파일의 id가 updateDeliveryStatus 인 SQL문을 호출
+	// 매출관리 (결제금액)
+	public int orderSum();
+	// 일별 매출관리
+	public List<OrderVO> orderSumByDay();
+	// 결제건수
+	public int orderCount();
+	// 베스트 셀러
+	public String bestSeller();
+	
+
 	//아이디 중복검사
 	public int idCheck(String genie_id);
 	//seller 회원가입

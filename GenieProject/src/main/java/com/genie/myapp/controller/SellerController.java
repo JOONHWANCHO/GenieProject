@@ -1,6 +1,9 @@
 package com.genie.myapp.controller;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -28,6 +31,9 @@ import com.genie.myapp.vo.OrderVO;
 
 
 import com.genie.myapp.vo.SellerVO;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 @RestController
 @RequestMapping("/seller/*")
@@ -62,18 +68,18 @@ public class SellerController {
 	
 	// Seller 주문관리 
 	@GetMapping("sellerOrder")
-	public ModelAndView sellerOrder(OrderVO vo) {
+	public ModelAndView sellerOrder(OrderVO vo, HttpServletRequest request) {
+		vo.setGenie_id((String)request.getSession().getAttribute("logId")); //세션 로그인 아이디
 		mav = new ModelAndView();
-		System.out.println(vo.toString());
+		
 		mav.addObject("list", service.sellerOrder(vo));
-		//mav.addObject("vo",vo);
 		mav.setViewName("seller/sellerOrder");
 		return mav;
 	}
 
 	// 주문목록 배송상태 수정
 	@PostMapping("updateDeliveryStatus") // @RequestParam 을 이용해 Map에 전송된 매개변수 이름을 key, 값을 value 로 저장
-	public ResponseEntity<String> updateDeliveryStatus(@RequestParam Map<String, String> deliveryMap, // Ajax로 전달받은 배송상태를 Map에 저장합니다.
+	public ResponseEntity<String> updateDeliveryStatus(@RequestParam Map<String, String> deliveryMap, // Ajax로 전달받은 배송상태를 Map에 저장
 												HttpServletRequest request,
 												HttpServletResponse response) throws Exception{
 		service.updateDeliveryStatus(deliveryMap); // 배송상태를 변경 
@@ -85,10 +91,43 @@ public class SellerController {
 		return resEntity;
 	}
 	
-	// Seller 매출관리
+	// Seller 매출관리 페이지
 	@GetMapping("sellerSales")
-	public ModelAndView sellerSales() {
+	public ModelAndView sellerSales(OrderVO vo, HttpServletRequest request) {
+		vo.setGenie_id((String)request.getSession().getAttribute("logId")); //세션 로그인 아이디
+		
 		mav = new ModelAndView();
+		
+		int osum = service.orderSum(); 
+		int ocnt = service.orderCount();
+		String bs = service.bestSeller();
+		
+		// 쿼리로 받은 '범주(month_day)':'값(total_sales)' 형태의 리스트 데이터 추출
+		List<OrderVO> orderlist = service.orderSumByDay();
+		
+		// 리스트를 Json 객체로 옮겨담기
+		// java 에서 json 객체를 다루기 쉽도록 gson 라이브러리 이용
+		Gson gson = new Gson(); // json 으로 가공하기 위해 빈 gson 객체생성
+		JsonArray jArray = new JsonArray(); // json 형태로 여러개의 데이터를 담기위해 JsonArray 객체 생성
+		
+		Iterator<OrderVO> it = orderlist.iterator(); // 반복자 얻기 
+		while(it.hasNext()) { // 하나하나의 VO 에서 데이터 추출, json 형태로 가공
+			OrderVO ovo = it.next();
+			JsonObject object = new JsonObject();
+			String date = ovo.getMonth_day();
+			int sales = ovo.getTotal_sales();
+			
+			object.addProperty("date", date);
+			object.addProperty("sales", sales);
+			jArray.add(object); // json 배열 객체 생성
+		}
+		
+		String json = gson.toJson(jArray); // 사용가능한 json 데이터 형태로 변환
+		mav.addObject("json", json); // 일별매출
+		
+		mav.addObject("orderSum", osum); // 총매출
+		mav.addObject("orderCount", ocnt); // 총결제건수
+		mav.addObject("bestSeller", bs); // 이달의 상품
 		mav.setViewName("seller/sellerSales");
 		return mav;
 	}
