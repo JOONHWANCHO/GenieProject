@@ -69,20 +69,35 @@ $(function(){
                     msg += '에러내용 : ' + rsp.error_msg;            
                 }           
             alert(msg);        
-            });    
+        });
     });
 });
+
+function add_cart(goods_id) {
+		$.ajax({
+			type : "post",
+			async : false,
+			url : "/addCart",
+			data : {
+				product_id:product_id
+			},
+			success : function(data, textStatus) {
+                alert("장바구니에 추가되었습니다.");	
+			}
+		});
+	}
 </script>
 <section class="product_detail">
     <h1>상세페이지</h1>
+
     <div class="box-wrapper1"> 
         <div class="box1" style="background-image:url(${pvo.product_image1})"></div>
-        <button class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
-        </button>
-        <button class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
-        </button>
-        <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
-        </button>
+        <div class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
+        </div>
+        <div class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
+        </div>
+        <div class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
+        </div>
         <div class="box5">
             상품명 : ${pvo.product_name}
         </div>
@@ -104,9 +119,11 @@ $(function(){
         <div class="box11">
             셀러주소 : ${svo.seller_address}
         </div>
+        <form method="post" action="/addCart">
         <button class="box12" id="addCart">
             장바구니
         </button>
+        </form>
         <button class="box13" id="buynow">
             구매하기
         </button>
@@ -114,12 +131,12 @@ $(function(){
 
     <div class="box-wrapper2"> 
         <div class="box1" style="background-image:url(${pvo.product_image2})"></div>
-        <button class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
-        </button>
-        <button class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
-        </button>
-        <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
-        </button>
+        <div class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
+        </div>
+        <div class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
+        </div>
+        <div class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
+        </div>
         <div class="box5">
             상품명 : ${pvo.product_name}
         </div>
@@ -141,9 +158,15 @@ $(function(){
         <div class="box11">
             셀러주소 : ${svo.seller_address}
         </div>
-        <button class="box12" id="addCart">
-            장바구니
-        </button>
+        <form method="post" action="/addCart">
+
+            <input type="hidden" id="product_id" value="${pvo.product_id}" name="product_id">
+            <input type="hidden" id="product_price" value="${pvo.product_price}" name="product_price">
+            <button class="box12" id="addCart">
+                장바구니
+            </button>
+
+        </form>
         <button class="box13" id="buynow">
             구매하기
         </button>
@@ -151,12 +174,12 @@ $(function(){
 
     <div class="box-wrapper3"> 
          <div class="box1" style="background-image:url(${pvo.product_image3})"></div>
-        <button class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
-        </button>
-        <button class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
-        </button>
-        <button class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
-        </button>
+        <div class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})">
+        </div>
+        <div class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})">
+        </div>
+        <div class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})">
+        </div>
         <div class="box5">
             상품명 : ${pvo.product_name}
         </div>
@@ -178,13 +201,16 @@ $(function(){
         <div class="box11">
             셀러주소 : ${svo.seller_address}
         </div>
-       <button class="box12" id="addCart">
+        <form method="post" action="/addCart">
+        <button class="box12" id="addCart">
             장바구니
         </button>
+        </form>
         <button class="box13" id="buynow">
             구매하기
         </button>
     </div>
+
 <!-- ------------------------------------------------------------------------------------------- -->
     <div class="review-wrapper">
         <button class="box_1" onclick="content1()">
@@ -309,21 +335,3 @@ $(function(){
         </div>
     </div>
 </section>
-<script>
-function add_cart(goods_id) {
-		$.ajax({
-			type : "post",
-			async : false,
-			url : "",
-			data : {
-				product_id:product_id
-				
-			},
-			success : function(data, textStatus) {
-
-					alert("장바구니에 추가되었습니다.");	
-				}
-
-		});	
-	}
-</script>
