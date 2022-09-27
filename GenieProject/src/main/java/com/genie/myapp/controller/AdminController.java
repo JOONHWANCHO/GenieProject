@@ -276,7 +276,7 @@ public class AdminController {
 	}	
 
 	//결제 컨트롤러
-	@PostMapping("adminpayment")
+	@PostMapping("adminpaymentOk")
 	public ResponseEntity<String> adminpayment(CartVO vo, HttpServletRequest request){
 		vo.setGenie_id((String)request.getSession().getAttribute("logId")); //세션 로그인 아이디
 		
