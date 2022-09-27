@@ -9,7 +9,7 @@ import com.genie.myapp.vo.SellerVO;
 
 
 public interface ProductService{
-    public List<ProductVO> product(ProductVO pVO);
+    public List<ProductVO> listProduct(ProductVO pVO);
     public ProductVO getProduct(int no);
 
     // public CartVO addCart(CartVO cVo);

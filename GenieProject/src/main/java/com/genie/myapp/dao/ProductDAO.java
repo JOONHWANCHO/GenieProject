@@ -14,7 +14,7 @@ import com.genie.myapp.vo.SellerVO;
 @Repository
 public interface ProductDAO{
     //상품정보리스트에서 상품정보 가져오기
-    public List<ProductVO> product(ProductVO pVO);
+    public List<ProductVO> listProduct(ProductVO pVO);
     //제품 상세정보(구매페이지)
     public ProductVO getProduct(int no);
 

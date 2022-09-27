@@ -5,7 +5,7 @@
 
 <section class="product ">
     <div class="bubbles">
-        <h1>${pvo.product_category}</h1>
+        <h1>${pvo.product_category}${pvo.product_tag}</h1>
     </div>
 
     <div class="grid-container">

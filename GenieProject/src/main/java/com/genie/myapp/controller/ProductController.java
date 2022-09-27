@@ -20,7 +20,6 @@ import com.genie.myapp.service.UserService;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.TagVO;
-import com.genie.myapp.vo.UserVO;
 
 @RestController
 @RequestMapping("/")
@@ -44,7 +43,8 @@ public class ProductController{
 	public ModelAndView product(ProductVO PVO) {
 
 		mav = new ModelAndView();
-		mav.addObject("plist", productService.product(PVO));
+		mav.addObject("plist", productService.listProduct(PVO));
+		mav.addObject("pvo", PVO);
 		mav.setViewName("/product");
 
 		return mav;
@@ -67,9 +67,7 @@ public class ProductController{
 		
 		String genie_id = (String)session.getAttribute("logId"); 
 		List<CartVO> cartList = productService.getCart(genie_id);
-		
-
-		System.out.println(cartList.size());
+		System.out.print(cartList);
 
 		mav = new ModelAndView();
 		mav.addObject("clist", cartList);
@@ -83,7 +81,7 @@ public class ProductController{
 
 		mav = new ModelAndView();
 
-
+		mav.setViewName("/cart");
 		return mav;
 	}
 
