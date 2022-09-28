@@ -76,22 +76,25 @@ $(function(){
 <script>
  $(function(){
 	//유효성 검사
-	$("#addCart").submit(function(){
+	$("#Cart").submit(function(){
 		
-
 		// 아이디, 비밀번호
 		if($("#cart_qty").val().trim()==""){
 			alert("최소 수량은 1개 이상입니다.");
 			$("#cart_qty").focus();
 			return false;
-		}	
-		return true;
+		}
+        if($("#cart_qty").val()=="0"){
+			alert("최소 수량은 1개 이상입니다.");
+			$("#cart_qty").focus();
+			return false;
 	});
+    return true;
 });
 </script>
 <section class="product_detail">
     <h1>상세페이지</h1>
-    <form method="post" action="/addCart">
+    <form method="post" action="/addCart" id="Cart">
         <div class="box-wrapper1"> 
             <input type="hidden" value="${logId}" name="genie_id">
             <input type="hidden" value="${pvo.product_id}" name="product_id">
@@ -120,7 +123,8 @@ $(function(){
                 회사이름 : ${svo.company_name}
             </div>
             <div class="box11">
-                상품 수량 : <input type="text" id="cart_qty" name="cart_qty" value="1">
+                상품 수량 : <input type="text" id="cart_qty" name="cart_qty" value="1" 
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
             </div>
             <button class="box12" id="addCart">
                 장바구니
@@ -131,7 +135,7 @@ $(function(){
         </div>
     </form>
 
-    <form method="post" action="/addCart">
+    <form method="post" action="/addCart" id="Cart">
         <div class="box-wrapper2"> 
             <input type="hidden" value="${logId}" name="genie_id">
             <input type="hidden" value="${pvo.product_id}" name="product_id">
@@ -160,7 +164,8 @@ $(function(){
                 회사이름 : ${svo.company_name}
             </div>
             <div class="box11">
-                상품 수량 : <input type="text" id="cart_qty" name="cart_qty" value="1">
+                상품 수량 : <input type="text" id="cart_qty" name="cart_qty" value="1" 
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
             </div>
             <button class="box12" id="addCart">
                 장바구니
@@ -171,7 +176,7 @@ $(function(){
         </div>
     </form>
 
-    <form method="post" action="/addCart">
+    <form method="post" action="/addCart" id="Cart">
         <div class="box-wrapper3"> 
             <input type="hidden" value="${logId}" name="genie_id">
             <input type="hidden" value="${pvo.product_id}" name="product_id">
@@ -200,7 +205,8 @@ $(function(){
                 회사이름 : ${svo.company_name}
             </div>
             <div class="box11">
-                상품 수량 : <input type="text" id="cart_qty" name="cart_qty" value="1">
+                상품 수량 : <input type="text" id="cart_qty" name="cart_qty" value="1" 
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
             </div>
             <button class="box12" id="addCart">
                 장바구니
