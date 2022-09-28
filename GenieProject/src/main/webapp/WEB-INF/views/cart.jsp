@@ -14,17 +14,43 @@
         </div>
 
         <div class="line"></div>
-
+        <form type="post" action="">
         <c:forEach var="cvo" items="${clist}">
             <div class="cart-list">
-                <ul>
-                    <li><img src='${cvo.product_image1}'></li>
-                    <li>${cvo.product_name}</li>
-                    <li><fmt:formatNumber value="${cvo.product_quantity}" pattern="#,###개" /></li>
-                    <li><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원" /></li>
-                </ul>
+                <div><img src='${cvo.product_image1}'></div>
+                <div>${cvo.product_name}</div>
+                <div><fmt:formatNumber value="${cvo.cart_qty}" pattern="#,###개" /></div>
+                <div><fmt:formatNumber value="${cvo.product_price*cvo.cart_qty}" pattern="#,###원" /></div>
+                <div><input type="button" value='Del' cart_num="${cvo.cart_num}"/></div>
+                <div><input type="hidden" value="${cvo.cart_num}"></div>
             </div>
         </c:forEach>
+
+        <c:set var = "total" value = "0" />
+            <c:forEach var="cvo" items="${clist}" varStatus="status">
+            <c:set var= "total" value="${total + cvo.product_price*cvo.cart_qty}"/>
+        </c:forEach>
+        <div><fmt:formatNumber value="${total}" pattern="#,###원" /></div>
+
         <input type = "submit" id="buy" value = "구매하기"/>
+        </form>
     </div>
 </div>
+
+<script>
+	$(document).on('click','.cart-list input[value=Del]',function(){
+
+		    var params = {cart_num: $(this).attr('cart_num')};
+		    $.ajax({
+				url:"/delProduct",
+				data:params,
+				success:function(result){
+                    alert("제품이 삭제되었습니다.");
+					location.reload();
+				},error:function(e){
+					console.log(e.responseText);
+				}
+			});
+		
+	});
+</script>

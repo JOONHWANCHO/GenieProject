@@ -42,5 +42,15 @@ public class ProductServiceImpl implements ProductService{
 		return dao.getSeller(product_id);
 	}
 
+	@Override
+	public int addCart(CartVO cvo) {
+		return dao.addCart(cvo);
+	}
+
+	@Override
+	public int delProduct(int cart_num, String genie_id) {
+		return dao.delProduct(cart_num, genie_id);
+	}
+
 
 }
