@@ -30,9 +30,13 @@
             <c:forEach var="cvo" items="${clist}" varStatus="status">
             <c:set var= "total" value="${total + cvo.product_price*cvo.cart_qty}"/>
         </c:forEach>
-        <div><fmt:formatNumber value="${total}" pattern="#,###원" /></div>
+        <div class="total-price">총 상품가격 : <fmt:formatNumber value="${total}" pattern="#,###원" /></div>
+        
+        <span class="submit-wrapper">
+            <a href="http://localhost:9070/">계속 쇼핑하기</a>
+            <input type="submit" id="buy" value="구매하기"/>
+        </span>
 
-        <input type = "submit" id="buy" value = "구매하기"/>
         </form>
     </div>
 </div>
