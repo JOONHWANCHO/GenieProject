@@ -28,7 +28,7 @@ $(function(){
 
 		if($("#genie_pwd").val()==""){
 			alert("비밀번호를 입력하세요");
-			$("genie_pwd").focus();
+			$("#genie_pwd").focus();
 			return false;
 		}
 
