@@ -13,4 +13,35 @@
 		order by product_id desc
 	</select>
 	
+	<select id="pricelist" resultType="SellerProductVO">
+		select product_id, genie_id, product_category, product_tag, product_name, product_price, product_info, product_stock, product_quantity, product_hit, product_like, 
+		product_writedate, product_image1, product_image2, product_image3, product_mbti 
+		from product 
+		where product_mbti like '%${param1}%' 
+		order by product_price asc
+	</select>
+	
+	<select id="pricelistdesc" resultType="SellerProductVO">
+		select product_id, genie_id, product_category, product_tag, product_name, product_price, product_info, product_stock, product_quantity, product_hit, product_like, 
+		product_writedate, product_image1, product_image2, product_image3, product_mbti 
+		from product 
+		where product_mbti like '%${param1}%' 
+		order by product_price desc
+	</select>
+	
+	<select id="recentlist" resultType="SellerProductVO">
+		select product_id, genie_id, product_category, product_tag, product_name, product_price, product_info, product_stock, product_quantity, product_hit, product_like, 
+		product_writedate, product_image1, product_image2, product_image3, product_mbti 
+		from product 
+		where product_mbti like '%${param1}%' 
+		order by product_writedate desc
+	</select>
+	
+	<select id="likelist" resultType="SellerProductVO">
+		select product_id, genie_id, product_category, product_tag, product_name, product_price, product_info, product_stock, product_quantity, product_hit, product_like, 
+		product_writedate, product_image1, product_image2, product_image3, product_mbti 
+		from product 
+		where product_mbti like '%${param1}%' 
+		order by product_like desc
+	</select>
 </mapper>

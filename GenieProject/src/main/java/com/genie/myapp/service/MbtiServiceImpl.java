@@ -18,4 +18,24 @@ public class MbtiServiceImpl implements MbtiService {
 	public List<SellerProductVO> getProduct(String mbti) {
 		return dao.getProduct(mbti);
 	}
+
+	@Override
+	public List<SellerProductVO> pricelist(String mbti) {
+		return dao.pricelist(mbti);
+	}
+
+	@Override
+	public List<SellerProductVO> pricelistdesc(String mbti) {
+		return dao.pricelistdesc(mbti);
+	}
+
+	@Override
+	public List<SellerProductVO> recentlist(String mbti) {
+		return dao.recentlist(mbti);
+	}
+
+	@Override
+	public List<SellerProductVO> likelist(String mbti) {
+		return dao.likelist(mbti);
+	}
 }

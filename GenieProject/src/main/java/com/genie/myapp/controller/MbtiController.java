@@ -42,7 +42,25 @@ public class MbtiController {
 		return mav;
 	}
 	
-	//최신순 정렬
-	//@GetMapping("mbti/recentlist")
- 
+	//상품 정렬
+	@GetMapping("mbti/{mbti}/{sortType}")
+	public ModelAndView mbtiList(@PathVariable("mbti") String mbti, @PathVariable("sortType") String sortType) {
+		mav = new ModelAndView();
+		System.out.println(mbti);
+		System.out.println(sortType);
+		
+		if(sortType.equals("pricelist")) {//가격낮은순
+			mav.addObject("plist", service.pricelist(mbti));
+		}else if(sortType.equals("pricelistdesc")) {//가격높은순
+			mav.addObject("plist", service.pricelistdesc(mbti));
+		}else if(sortType.equals("recentlist")) {//최신순
+			mav.addObject("plist", service.recentlist(mbti));
+		}else {//좋아요순
+			mav.addObject("plist", service.likelist(mbti));
+		}
+		
+		mav.setViewName("mbti/mbtiList");
+		
+		return mav;
+	}
 }
