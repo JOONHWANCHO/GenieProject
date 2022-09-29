@@ -10,13 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Genie 입점업체 페이지</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/seller/sellerMain">Home</a></li>
-              <li class="breadcrumb-item active">Main</li>
-            </ol>
+            <h1 class="m-0">지니 셀러 대시보드</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -24,6 +18,106 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="m-0">주문/배송</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">새 주문</h5>
+                <br>
+                <p><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalOrderCount}" /> 총 ${todayOrder} 건의 새 주문이 있습니다.</p>
+                <a href="#" class="card-link">주문관리</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="m-0">주문/배송</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">새 주문</h5>
+                <p class="card-text">3건의 주문이 있습니다.</p>
+                <a href="#" class="card-link">주문관리</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="m-0">주문/배송</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">새 주문</h5>
+                <p class="card-text">3건의 주문이 있습니다.</p>
+                <a href="#" class="card-link">주문관리</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="m-0">아이템별 매출</h5>
+              </div>
+              <div class="card-body">
+                
+                <p class="card-text">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>이미지</th>
+                        <th>상품명</th>
+                        <th>결제건수</th>
+                        <th>매출</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <c:forEach var="vo" items="${list}" varStatus="i">
+                        <tr>
+                          <th>${vo.product_image1}</th>
+                          <th>${vo.product_name}</th>
+                          <th>${vo.soldCount}</th>
+                          <th>${vo.totalSales}</th>
+                        </tr>
+                      </c:forEach>
+                      
+                    </tbody>
+                  </table>
+                </p>
+                <a href="#" class="card-link">매출관리</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="m-0">주문/배송</h5>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">새 주문</h5>
+                <p class="card-text">
+                  3건의 주문이 있습니다.
+                </p>
+                <a href="#" class="card-link">주문관리</a>
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-flud -->
+    </div>
+    <!-- /.content -->
+
     <div class="content">
       <div class="container-fluid">
         <div class="row">
