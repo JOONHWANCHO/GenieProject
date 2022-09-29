@@ -241,7 +241,7 @@ public class UserController {
 		List<DeliveryVO> dlist = service.getDeliveryList(genie_id);
 
 		//System.out.println(genie_id);
-		System.out.println("dlist:" + dlist);
+		System.out.println("dlist:" + dlist.size());
 		
 		UserVO vo = service.getUser(genie_id);
 
