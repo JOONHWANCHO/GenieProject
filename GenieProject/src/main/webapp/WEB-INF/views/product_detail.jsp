@@ -89,7 +89,8 @@ $(function(){
 			$("#cart_qty").focus();
 			return false;
         };
-    })
+    });
+
 });
 </script>
 
@@ -101,91 +102,9 @@ $(function(){
             <input type="hidden" value="${pvo.product_id}" name="product_id">
 
             <div class="box1" style="background-image:url(${pvo.product_image1})"></div>
-            <div class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})"></div>
-            <div class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})"></div>
-            <div class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})"></div>
-            <div class="box5">
-                상품명 : ${pvo.product_name}
-            </div>
-            <div class="box6">
-                상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
-                <input type="hidden" value="${pvo.product_price}" name="cart_price">
-            </div>
-            <div class="box7">
-                상품카테고리 : ${pvo.product_category}
-            </div>
-            <div class="box8">
-                상품설명 : ${pvo.product_info}
-            </div>
-            <div class="box9">
-                셀러명 : ${svo.ceo_name}
-            </div>
-            <div class="box10">
-                회사이름 : ${svo.company_name}
-            </div>
-            <div class="box11">
-                상품 수량 : <input type="text" id="cart_qty" name="cart_qty" value="1" 
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-            </div>
-            <button class="box12" id="addCart">
-                장바구니
-            </button>
-            <button class="box13" id="buynow">
-                구매하기
-            </button>
-        </div>
-    </form>
-
-    <form method="post" action="/addCart" id="Cart">
-        <div class="box-wrapper2"> 
-            <input type="hidden" value="${logId}" name="genie_id">
-            <input type="hidden" value="${pvo.product_id}" name="product_id">
-
-            <div class="box1" style="background-image:url(${pvo.product_image2})"></div>
-            <div class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})"></div>
-            <div class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})"></div>
-            <div class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})"></div>
-            <div class="box5">
-                상품명 : ${pvo.product_name}
-            </div>
-            <div class="box6">
-                상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
-                <input type="hidden" value="${pvo.product_price}" name="cart_price">
-            </div>
-            <div class="box7">
-                상품카테고리 : ${pvo.product_category}
-            </div>
-            <div class="box8">
-                상품설명 : ${pvo.product_info}
-            </div>
-            <div class="box9">
-                셀러명 : ${svo.ceo_name}
-            </div>
-            <div class="box10">
-                회사이름 : ${svo.company_name}
-            </div>
-            <div class="box11">
-                상품 수량 : <input type="text" id="cart_qty" name="cart_qty" value="1" 
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-            </div>
-            <button class="box12" id="addCart">
-                장바구니
-            </button>
-            <button class="box13" id="buynow">
-                구매하기
-            </button>
-        </div>
-    </form>
-
-    <form method="post" action="/addCart" id="Cart">
-        <div class="box-wrapper3"> 
-            <input type="hidden" value="${logId}" name="genie_id">
-            <input type="hidden" value="${pvo.product_id}" name="product_id">
-
-            <div class="box1" style="background-image:url(${pvo.product_image3})"></div>
-            <div class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})"></div>
-            <div class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})"></div>
-            <div class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})"></div>
+            <div class="box2" onclick="detail1('${pvo.product_image1}')" style="background-image:url(${pvo.product_image1})"></div>
+            <div class="box3" onclick="detail1('${pvo.product_image2}')" style="background-image:url(${pvo.product_image2})"></div>
+            <div class="box4" onclick="detail1('${pvo.product_image3}')" style="background-image:url(${pvo.product_image3})"></div>
             <div class="box5">
                 상품명 : ${pvo.product_name}
             </div>
@@ -240,7 +159,9 @@ $(function(){
             글쓴이 + (글쓴 시각)
         </div>
         <div class="box_7">
+            <form method="post" id="replyFrm">
             글내용
+            </form>
         </div>
     </div>
 

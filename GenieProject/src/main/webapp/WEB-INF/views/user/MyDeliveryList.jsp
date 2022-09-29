@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 
  <title>Genie 페이지</title>
   <!--Let browser know website is optimized for mobile-->
@@ -247,14 +248,14 @@ nav .sidenav-trigger i {
    <div class="row vertical-modern-dashboard">
       <div class="col s12 m6 l6">
          <!-- Current Balance -->
-         <div class="card animate fadeLeft">
+         <div class="card animate fadeLeft"> 
             <div class="card-content">
 
 <!-- 추가되는 부분 -->
     <div class="content-main">
       <h4>새로운 배송지</h4>
       <div class="inquiry">
-      <form method="post" action="/user/MyDeliveryEditOk">
+      <form method="post" action="/user/addDelivery">
         <input type="hidden" value="${vo.genie_id}" name="genie_id"/>
           <ul id="addrForm">
             <li>이름</li>
@@ -305,20 +306,10 @@ nav .sidenav-trigger i {
 
     <div class="my-delivery">
       <h4>배송지 목록</h4>
+
         <ul id="delivery_1">
-        <h5>배송지</h5>
-          <li>우편번호</li>
-          <input type="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
-           <li>주소</li>
-          <li><input type="text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></li>
-          <li>상세주소</li>
-          <li><input type="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}" readonly/></li><br>
-        </ul>
-
-        <ul id="delivery_2">
         <c:forEach var="dvo" items="${dlist}">
-            <h5>배송지1</h5>
-
+            <h5>배송지</h5>
             <li>수령자 이름</li>
             <input type="text" value="${dvo.receiver_name}" readonly/>
             <li>전화번호</li>
@@ -328,7 +319,9 @@ nav .sidenav-trigger i {
             <li>주소</li>
             <li><input type="text" value="${dvo.receiver_addr}" readonly/></li>
             <li>상세주소</li>
-            <li><input type="text" value="${dvo.receiver_detailaddr}" readonly/></li><br>    
+            <li><input type="text" value="${dvo.receiver_detailaddr}" readonly/></li><br>
+            <div><input type="hidden" value='${dvo.address_num}' /></div>
+            <div><input type="button" value='삭제' address_num="${dvo.address_num}" id="address_kakao"/></div>
           </c:forEach>        
     </div>
 <!-- 추가되는 2부분 끝 --> 
@@ -380,5 +373,21 @@ nav .sidenav-trigger i {
 <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-1/js/custom/custom-script.js"></script>
 <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-1/js/scripts/customizer.js"></script>
 <!-- END THEME  JS-->
+<script>
+	$(document).on('click','#delivery_1 input[value=삭제]',function(){
+
+		var params = {address_num: $(this).attr('address_num')};
+		    $.ajax({
+				url:"/user/delDelivery",
+				data:params,
+				success:function(result){
+          alert("삭제되었습니다.");
+					location.reload();
+				},error:function(e){
+					console.log(e.responseText);
+				}
+			});	
+	  });
+</script>
 
                                       

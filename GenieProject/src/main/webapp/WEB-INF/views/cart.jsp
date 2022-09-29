@@ -44,7 +44,7 @@
 <script>
 	$(document).on('click','.cart-list input[value=Del]',function(){
 
-		    var params = {cart_num: $(this).attr('cart_num')};
+		var params = {cart_num: $(this).attr('cart_num')};
 		    $.ajax({
 				url:"/delProduct",
 				data:params,
@@ -54,7 +54,6 @@
 				},error:function(e){
 					console.log(e.responseText);
 				}
-			});
-		
-	});
+			});	
+	    });
 </script>

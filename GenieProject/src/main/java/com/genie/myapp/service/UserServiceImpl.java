@@ -49,8 +49,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int MyDeliveryEditOk(UserVO vo) {
-        return dao.MyDeliveryEditOk(vo);
+    public int addDelivery(UserVO vo) {
+        return dao.addDelivery(vo);
     }
     
     @Override
@@ -66,6 +66,13 @@ public class UserServiceImpl implements UserService{
     public List<DeliveryVO> getDeliveryList(String genie_id) {
         return dao.getDeliveryList(genie_id);
     }
+
+    @Override
+    public int delDelivery(int address_num, String genie_id) {
+        return dao.delDelivery(address_num, genie_id);
+    }
+
+    
 
        
 }
