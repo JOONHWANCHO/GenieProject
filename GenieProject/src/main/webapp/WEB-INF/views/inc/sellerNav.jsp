@@ -220,12 +220,6 @@
               <p>매출관리</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/seller/sellerQna" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>문의관리</p>
-            </a>
-          </li>
         </ul>
       </nav>
  

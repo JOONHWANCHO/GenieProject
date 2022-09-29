@@ -317,14 +317,4 @@ public class SellerController {
 		return mav;
 	}
 	
-	//seller 문의관리 페이지
-	@GetMapping("sellerQna")
-	public ModelAndView sellerQna(InquiryVO vo, HttpServletRequest request) {
-		String Genie_id = ((String)request.getSession().getAttribute("logId")); //세션 로그인 아이디
-		
-		mav = new ModelAndView();
-		mav.addObject("list", service.inquiryList(vo, Genie_id));
-		mav.setViewName("seller/sellerQna");
-		return mav;
-	}
 }
