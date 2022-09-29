@@ -187,35 +187,35 @@ nav .sidenav-trigger i {
 
 
 
-    <li class="navigation-header">
+       <li class="navigation-header">
       <a class="navigation-header-text">Applications</a>
       <i class="navigation-header-icon material-icons">more_horiz</i>
     </li>
-      <li class="bold ">
+    <li class="bold ">
       <a class="waves-effect waves-cyan "
-                href="/user/MyPage "
-        >
-        <i class="material-icons">mail_outline</i>
-        <span class="menu-title" data-i18n="Mail">회원정보확인/수정</span>
-                <span class="new badge pill pink accent-2 float-right mr-2">5</span>
-              </a>
-          </li>
-      <li class="bold ">
-      <a class="waves-effect waves-cyan "
-                href="/user/MyOrderList "
-        >
-        <i class="material-icons">check</i>
-        <span class="menu-title" data-i18n="ToDo">주문목록/배송조회</span>
-              </a>
-          </li>
-      <li class="bold ">
-      <a class="waves-effect waves-cyan "
-                href="/user/MyDeliveryList "
-        >
-        <i class="material-icons">content_paste</i>
-        <span class="menu-title" data-i18n="File Manager">배송지 관리</span>
-              </a>
-          </li>
+      href="/user/MyOrderList "
+      >
+      <i class="material-icons">check</i>
+      <span class="menu-title" data-i18n="ToDo">주문목록/배송조회</span>
+    </a>
+  </li>
+  <li class="bold ">
+    <a class="waves-effect waves-cyan "
+    href="/user/MyDeliveryList "
+    >
+    <i class="material-icons">content_paste</i>
+    <span class="menu-title" data-i18n="File Manager">배송지 관리</span>
+    </a>
+  </li>
+    <li class="bold ">
+    <a class="waves-effect waves-cyan "
+              href="/user/MyPage "
+      >
+      <i class="material-icons">mail_outline</i>
+      <span class="menu-title" data-i18n="Mail">회원정보확인/수정</span>
+              <span class="new badge pill pink accent-2 float-right mr-2">5</span>
+            </a>
+        </li>
       <%-- <li class="bold ">
       <a class="waves-effect waves-cyan "
                 href="/user/MyInquiryList "

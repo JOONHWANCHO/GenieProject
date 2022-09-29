@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-1/css/custom/custom.css">
 <!-- END: Custom CSS-->
 
+
 <style>
 .icon-block {
   padding: 0 15px;
@@ -46,10 +47,10 @@ nav .sidenav-trigger i {
   color: white;
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../js_css/KakaoAddress.js"></script>
 
-<script>
- 
-</script>
 
 
 
@@ -174,31 +175,31 @@ nav .sidenav-trigger i {
       <a class="navigation-header-text">Applications</a>
       <i class="navigation-header-icon material-icons">more_horiz</i>
     </li>
-      <li class="bold ">
+    <li class="bold ">
       <a class="waves-effect waves-cyan "
-                href="/user/MyPage "
-        >
-        <i class="material-icons">mail_outline</i>
-        <span class="menu-title" data-i18n="Mail">회원정보확인/수정</span>
-                <span class="new badge pill pink accent-2 float-right mr-2">5</span>
-              </a>
-          </li>
-      <li class="bold ">
-      <a class="waves-effect waves-cyan "
-                href="/user/MyOrderList "
-        >
-        <i class="material-icons">check</i>
-        <span class="menu-title" data-i18n="ToDo">주문목록/배송조회</span>
-              </a>
-          </li>
-      <li class="bold ">
-      <a class="waves-effect waves-cyan "
-                href="/user/MyDeliveryList "
-        >
-        <i class="material-icons">content_paste</i>
-        <span class="menu-title" data-i18n="File Manager">배송지 관리</span>
-              </a>
-          </li>
+      href="/user/MyOrderList "
+      >
+      <i class="material-icons">check</i>
+      <span class="menu-title" data-i18n="ToDo">주문목록/배송조회</span>
+    </a>
+  </li>
+  <li class="bold ">
+    <a class="waves-effect waves-cyan "
+    href="/user/MyDeliveryList "
+    >
+    <i class="material-icons">content_paste</i>
+    <span class="menu-title" data-i18n="File Manager">배송지 관리</span>
+    </a>
+  </li>
+    <li class="bold ">
+    <a class="waves-effect waves-cyan "
+              href="/user/MyPage "
+      >
+      <i class="material-icons">mail_outline</i>
+      <span class="menu-title" data-i18n="Mail">회원정보확인/수정</span>
+              <span class="new badge pill pink accent-2 float-right mr-2">5</span>
+            </a>
+        </li>
       <%-- <li class="bold ">
       <a class="waves-effect waves-cyan "
                 href="/user/MyInquiryList "
@@ -252,12 +253,12 @@ nav .sidenav-trigger i {
 <!-- 추가되는 부분 -->
     <div class="content-main">
       <h4>새로운 배송지</h4>
-        <div class="inquiry">
-        <form method="post" action="/user/MyDeliveryEditOk">
+      <div class="inquiry">
+      <form method="post" action="/user/MyDeliveryEditOk">
         <input type="hidden" value="${vo.genie_id}" name="genie_id"/>
           <ul id="addrForm">
             <li>이름</li>
-            <li><input type="text" name="receiver_name" id ="user_name"/></li>
+            <li><input type="text" name="user_name" id ="user_name"/></li>
 
             <ul id="phoneForm">
               <li>휴대폰 번호</li>
@@ -276,17 +277,17 @@ nav .sidenav-trigger i {
 
             <li>우편번호</li>
             <li>
-              <input type="text" name="receiver_zipcode" id ="user_zipcode" readonly/>
+              <input type="text" name="user_zipcode" id ="user_zipcode" readonly/>
               <input type= "button" value = "우편번호찾기" id = "address_kakao"/>
             </li>
             <li>주소</li>
-            <li><input type="text" name="receiver_addr" id ="user_addr" readonly/></li>
+            <li><input type="text" name="user_addr" id ="user_addr" readonly/></li>
             <li>상세주소</li>
-            <li><input type="text" name="receiver_detailaddr" id ="user_detailaddr" /></li> 
+            <li><input type="text" name="user_detailaddr" id ="user_detailaddr" /></li> 
             <li><input type="submit" id = "address_kakao" value = "배송지 등록"/></li>
           </ul>
-        </form>   
-        </div>
+      </form>   
+      </div>
     </div>
 </div>
 </div>
@@ -303,36 +304,32 @@ nav .sidenav-trigger i {
             <div class="card-content">
 
     <div class="my-delivery">
-      <h4>${vo.user_name}님의 배송지 목록</h4>
+      <h4>배송지 목록</h4>
         <ul id="delivery_1">
-          <h5>배송지1</h5>
-
+        <h5>배송지</h5>
           <li>우편번호</li>
-          <input type = "text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
+          <input type="text" name = "user_zipcode" id ="user_zipcode" value="${vo.user_zipcode}" readonly/>
            <li>주소</li>
-          <li><input type = "text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></li>
+          <li><input type="text" name = "user_addr" id ="user_addr" value="${vo.user_addr}" readonly/></li>
           <li>상세주소</li>
-          <li><input type = "text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}" readonly/></li><br>
+          <li><input type="text" name = "user_detailaddr" id ="user_detailaddr" value="${vo.user_detailaddr}" readonly/></li><br>
         </ul>
+
         <ul id="delivery_2">
-          <h5>배송지2</h5>
+        <c:forEach var="dvo" items="${dlist}">
+            <h5>배송지1</h5>
 
-          <li>우편번호</li>
-          <input type = "text" name = "user_zipcode" id ="user_zipcode" readonly/>
-           <li>주소</li>
-          <li><input type = "text" name = "user_addr" id ="user_addr" readonly/></li>
-          <li>상세주소</li>
-          <li><input type = "text" name = "user_detailaddr" id ="user_detailaddr" readonly/></li><br>
-        <ul id="delivery_3">
-          <h5>배송지3</h5>
-
-          <li>우편번호</li>
-          <input type = "text" name = "user_zipcode" id ="user_zipcode" readonly/>
-          <li>주소</li>
-          <li><input type = "text" name = "user_addr" id ="user_addr" readonly/></li>
-          <li>상세주소</li>
-          <li><input type = "text" name = "user_detailaddr" id ="user_detailaddr" readonly/></li>
-        </ul>
+            <li>수령자 이름</li>
+            <input type="text" value="${dvo.receiver_name}" readonly/>
+            <li>전화번호</li>
+            <input type="text" value="${dvo.receiver_tel}" readonly/>
+            <li>우편번호</li>
+            <input type="text" value="${dvo.receiver_zipcode}" readonly/>
+            <li>주소</li>
+            <li><input type="text" value="${dvo.receiver_addr}" readonly/></li>
+            <li>상세주소</li>
+            <li><input type="text" value="${dvo.receiver_detailaddr}" readonly/></li><br>    
+          </c:forEach>        
     </div>
 <!-- 추가되는 2부분 끝 --> 
             </div>
@@ -384,4 +381,4 @@ nav .sidenav-trigger i {
 <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-1/js/scripts/customizer.js"></script>
 <!-- END THEME  JS-->
 
-</body>
+                                      

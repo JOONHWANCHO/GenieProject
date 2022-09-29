@@ -141,9 +141,14 @@ public class ProductController{
 
 	//--------------------------------------------상품 결제페이지-----------------------------------------------------
 	@GetMapping("payment")
-	public ModelAndView payment(CartVO vo){
+	public ModelAndView payment(HttpSession session){
 		
-		mav=new ModelAndView();
+		String genie_id = (String)session.getAttribute("logId"); 
+		List<CartVO> cartList = productService.getCart(genie_id);
+		//System.out.print(cartList);
+
+		mav = new ModelAndView();
+		mav.addObject("clist", cartList);
 
 		mav.setViewName("/payment");
 		return mav;

@@ -43,7 +43,7 @@ $(function(){
         */            
         name: '${pvo.product_name}',            
         //결제창에서 보여질 이름            
-        amount: ${pvo.product_price},             
+        amount: '${pvo.product_price}',             
         //가격             
         buyer_email: 'iamport@siot.do',            
         buyer_name: '구매자이름',           
@@ -74,9 +74,9 @@ $(function(){
 });
 </script>
 <script>
- $(function(){
+$(function(){
 	//유효성 검사
-	$("#Cart").submit(function(){
+    $("#Cart").submit(function(){
 		
 		// 아이디, 비밀번호
 		if($("#cart_qty").val().trim()==""){
@@ -84,14 +84,15 @@ $(function(){
 			$("#cart_qty").focus();
 			return false;
 		}
-        if($("#cart_qty").val()=="0"){
+        if($("#cart_qty").val().trim()=="0"){
 			alert("최소 수량은 1개 이상입니다.");
 			$("#cart_qty").focus();
 			return false;
-	});
-    return true;
+        };
+    })
 });
 </script>
+
 <section class="product_detail">
     <h1>상세페이지</h1>
     <form method="post" action="/addCart" id="Cart">
