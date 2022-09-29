@@ -68,6 +68,20 @@ public class ProductController{
 
 		return mav;
 	}
+//---------------------------------------------- 지니페이지 상품 정보 검색 ----------------------------------------------------------//
+	@PostMapping("selectProduct")
+	public ModelAndView selectProduct(ProductVO pvo, TagVO tvo) {
+		
+		map = new HashMap<String, Object>();
+		map.put("p", pvo);
+		map.put("t", tvo);
+		
+		mav = new ModelAndView();
+		mav.addObject("plist",productService.selectProduct(map));
+		mav.setViewName("/product");
+		
+		return mav;
+	}
 // -----------------------------------------------------------장바구니---------------------------------------------------------------//
 	@GetMapping("cart")
 	public ModelAndView cart(CartVO cvo, HttpSession session) {
@@ -125,19 +139,13 @@ public class ProductController{
 		return productService.delProduct(cart_num, genie_id);	
 	}
 
-	//---------------------------------------------- 지니페이지 상품 정보 검색 ----------------------------------------------------------//
-	@PostMapping("selectProduct")
-	public ModelAndView selectProduct(ProductVO pvo, TagVO tvo) {
+	//--------------------------------------------상품 결제페이지-----------------------------------------------------
+	@GetMapping("payment")
+	public ModelAndView payment(CartVO vo){
 		
-		map = new HashMap<String, Object>();
-		map.put("p", pvo);
-		map.put("t", tvo);
-		
-		mav = new ModelAndView();
-		mav.addObject("plist",productService.selectProduct(map));
-		mav.setViewName("/product");
-		
+		mav=new ModelAndView();
+
+		mav.setViewName("/payment");
 		return mav;
 	}
-	
 }
