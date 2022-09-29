@@ -3,6 +3,33 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<style>
+
+  #orderbody{
+		padding-top: 10px;
+		padding-left: 100px;
+		padding-right: 100px;
+	}
+	.info-box-text{
+		font-size: 13px;
+	}
+	.info-box{
+		width: 300px;
+		height: 200px;
+	}
+
+	#icon {
+		width: 100%;
+		height: 100%;
+    border-radius: 15px;
+
+	}
+  .table{
+    font-size: 70%;
+    text-align: center;
+  }
+</style>
+
 <script>
 	function fn_modify_order_state(order_num, select_id) { // order_num 와 select_id 를 매개변수로 받는 함수를 실행
 		// 주문상태를 나타내는 셀렉트 박스에 접근
@@ -49,7 +76,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/seller/sellerMain">Home</a></li>
-              <li class="breadcrumb-item active">Main</li>
+              <li class="breadcrumb-item active">Order</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -59,15 +86,57 @@
 
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content" id="orderbody">
       <div class="container-fluid">
+        <!-- info boxes -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box" style="background-color: transparent; box-shadow: none;">
+              <span class="info-box-icon elevation-1" id="icon" style="background-color:#6072bf; color:white;"><i class="fas fa-gift">
+                <div class="info-box-content">
+                  <span class="info-box-text">배송 대기 중</span>
+                  <span class="info-box-number">
+                    <h2><fmt:formatNumber type="number" maxFractionDigits="3" value="${todayOrder}" />${deliveryPending} 건</h2>
+                  </span>
+                </div>
+              </i></span>
+              
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box mb-3" style="background-color: transparent; box-shadow: none;">
+              <span class="info-box-icon elevation-1" id="icon" style="background-color:#7060bf; color:white;"><i class="fas fa-shopping-cart">
+                <div class="info-box-content">
+                  <span class="info-box-text">오늘 들어온 주문</span>
+                  <span class="info-box-number">
+                    <h2><fmt:formatNumber type="number" maxFractionDigits="3" value="${totalOrderCount}" /> ${todayOrder} 건</h2>
+                  </span>
+                </div>
+              </i></span> 
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box mb-3" style="background-color: transparent; box-shadow: none;">
+              <span class="info-box-icon elevation-1" id="icon" style="background-color:#60b5bf; color:white;"><i class="fas fa-check"> 
+                <div class="info-box-content">
+                  <span class="info-box-text">배송 중</span>
+                  <span class="info-box-number">
+                    <h2><fmt:formatNumber type="number" maxFractionDigits="3" value="${deliveredOrder}" /> ${deliveringOrder} 건</h2>
+                  </span>
+                </div>
+              </i></span>
+            </div>
+          </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="card card-primary card-outline">
               <div class="card-body">
-                <h5 class="card-title">주문목록</h5>
+                <h5 class="card-title"></h5> <!--주문목록-->
+                <div id="searchbox" style="font-size: 13px;">
+                  <input type="text" name="searchWord" id="searchWord" style="width:300px"/>
+                  <input type="submit" value="Search"/>
+                </div>
                 <br>
-                 <h8>필터</h8> 
                 <p class="card-text">
                   <table class="table">
                     <thead>
@@ -95,8 +164,8 @@
                           <td>${vo.product_name}</td>
                           <td>${vo.order_qty}</td>
                           <td>${vo.order_price}</td>
-                          <td>${vo.recipient_name}</td>
                           <td>${vo.genie_id}</td>
+                          <td>${vo.recipient_name}</td>
                           <td>${vo.recipient_address}</td>
                           <td>${vo.recipient_phone}</td>
                           <td>${vo.recipient_request}</td>
