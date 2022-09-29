@@ -1,6 +1,7 @@
 package com.genie.myapp.controller;
 
 import java.nio.charset.Charset;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,7 @@ import com.genie.myapp.service.UserService;
 
 import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdministerVO;
+import com.genie.myapp.vo.DeliveryVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
 import com.genie.myapp.vo.UserVO;
@@ -235,10 +237,17 @@ public class UserController {
 	public ModelAndView MyDeliveryLIst(HttpSession session) {
 		
 		String genie_id = (String)session.getAttribute("logId");
-		UserVO vo = service.getUser(genie_id);
+
+		List<DeliveryVO> dlist = service.getDeliveryList(genie_id);
+
+		//System.out.println(genie_id);
+		System.out.println("dlist:" + dlist);
 		
+		UserVO vo = service.getUser(genie_id);
+
 		mav = new ModelAndView();
-		mav.addObject("vo",vo);
+		mav.addObject("vo", vo);
+		mav.addObject("dlist", dlist);
 		mav.setViewName("/user/MyDeliveryList");
 	
 		return mav;
@@ -309,7 +318,7 @@ public class UserController {
 		String msg = "<script>";
 		int cnt = service.PwdEditOk(vo);
 		
-		if(cnt>0) {//수정됨
+		if(cnt>0) {//수정함
 			msg+="alert('비밀번호가 수정되었습니다.');";
 		}else {//수정못함
 			msg+="alert('비밀번호 수정이 실패하였습니다.');";	

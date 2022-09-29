@@ -1,6 +1,9 @@
 package com.genie.myapp.service;
 
+import java.util.List;
+
 import com.genie.myapp.vo.AccountVO;
+import com.genie.myapp.vo.DeliveryVO;
 import com.genie.myapp.vo.UserVO;
 
 public interface UserService {
@@ -23,4 +26,6 @@ public interface UserService {
 	public int Delivery(UserVO vo);
 	//배송지 등록
 	public int MyDeliveryEditOk(UserVO vo);
+	//배송지 리스트 가져오기
+    public List<DeliveryVO> getDeliveryList(String genie_id);
 }

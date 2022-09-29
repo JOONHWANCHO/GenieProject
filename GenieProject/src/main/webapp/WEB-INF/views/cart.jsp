@@ -28,7 +28,7 @@
 
         <c:set var = "total" value = "0" />
             <c:forEach var="cvo" items="${clist}" varStatus="status">
-            <c:set var= "total" value="${total + cvo.product_price*cvo.cart_qty}"/>
+            <c:set var= "total" value="${total+cvo.product_price*cvo.cart_qty}"/>
         </c:forEach>
         <div class="total-price">총 상품가격 : <fmt:formatNumber value="${total}" pattern="#,###원" /></div>
         

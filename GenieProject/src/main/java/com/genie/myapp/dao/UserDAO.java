@@ -1,9 +1,12 @@
 package com.genie.myapp.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.genie.myapp.vo.AccountVO;
+import com.genie.myapp.vo.DeliveryVO;
 import com.genie.myapp.vo.UserVO;
 
 @Mapper
@@ -28,6 +31,8 @@ public interface UserDAO {
 	public int Delivery(UserVO vo);
 	//배송지 등록
 	public int MyDeliveryEditOk(UserVO vo);
+	//배송지 리스트 가져오기
+	public List<DeliveryVO> getDeliveryList(String genie_id);
 	
 	
 }
