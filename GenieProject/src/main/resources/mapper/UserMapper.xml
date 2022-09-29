@@ -63,7 +63,7 @@
 	<!-- 회원정보 -->
     <select id = "getUser" resultType = "UserVO">
 
-		select genie_id, user_name, user_tel, user_email, user_zipcode, user_addr, user_detailaddr
+		select genie_id, user_name, user_tel, user_email 
 		from user
 		where genie_id=#{genie_id}
 
