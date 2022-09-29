@@ -62,11 +62,17 @@ public class SellerController {
 	public ModelAndView sellerMain(OrderVO vo, HttpServletRequest request) {
 		String seller_id = ((String)request.getSession().getAttribute("logId")); //세션 셀러 아이디
 
-		// 오늘 들어온 주문 
-		int torder = service.todayOrder(seller_id);
+		int torder = service.todayOrder(seller_id); // 오늘 들어온 주문 
+		String bs = service.bestSeller(seller_id); // 이달의 상품
+		List<OrderVO> rlist = service.revenueByProduct(seller_id); // 아이템별 매출
+
 
 		mav = new ModelAndView();
 		mav.addObject("todayOrder", torder); // 오늘 들어온 주문
+		mav.addObject("bestSeller", bs); // 이달의 상품
+		mav.addObject("revenueByProduct", rlist); // 아이템별 매출
+
+
 		mav.setViewName("seller/sellerMain");
 		return mav;
 	}

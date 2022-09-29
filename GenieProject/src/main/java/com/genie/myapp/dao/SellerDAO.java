@@ -63,4 +63,7 @@ public interface SellerDAO {
     public int todayOrder(String seller_id);
 	// 배송 중
     public int deliveringOrder(String seller_id);
+
+	// 아이템별 매출
+	public List<OrderVO> revenueByProduct(String seller_id);
 }
