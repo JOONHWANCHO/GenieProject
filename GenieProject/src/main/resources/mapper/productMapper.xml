@@ -162,5 +162,4 @@
         order by rand()
 
     </select>
-
 </mapper>
