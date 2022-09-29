@@ -1,5 +1,7 @@
 package com.genie.myapp.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.MbtiService;
+import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerProductVO;
 
 @RestController
@@ -42,7 +45,7 @@ public class MbtiController {
 		return mav;
 	}
 	
-	//상품 정렬
+	//상품 정렬(mbti 리스트)
 	@GetMapping("mbti/{mbti}/{sortType}")
 	public ModelAndView mbtiList(@PathVariable("mbti") String mbti, @PathVariable("sortType") String sortType) {
 		mav = new ModelAndView();
@@ -63,4 +66,53 @@ public class MbtiController {
 		
 		return mav;
 	}
+	
+	//상품 정렬하기 (카테고리 list)
+	@GetMapping("product/{product_category}/{sortType}")
+	public ModelAndView productSort(@PathVariable("product_category") String product_category, @PathVariable("sortType") String sortType) {
+		mav = new ModelAndView();
+		System.out.println(sortType);
+		
+		ProductVO PVO = new ProductVO();
+		PVO.setProduct_category(product_category);
+		
+		if(sortType.equals("pricelist")) {//가격낮은순
+			//List<ProductVO> list= service.productPriceAsc(PVO);
+			//System.out.println(list.size());
+			mav.addObject("plist", service.productPriceAsc(PVO));
+		}else if(sortType.equals("pricelistdesc")) {//가격높은순
+			mav.addObject("plist", service.productPriceDesc(PVO));
+		}else if(sortType.equals("recentlist")) {//최신순
+			mav.addObject("plist", service.productRecent(PVO));
+		}else {//좋아요순
+			mav.addObject("plist", service.productLike(PVO));
+		}
+		
+		mav.addObject("pvo", PVO);
+		mav.setViewName("/product");
+
+		return mav;
+	}
+	
+	//상품 정렬하기 (태그 list)
+	/*
+	 * @GetMapping("product/{product_tag}/{sortType}") public ModelAndView
+	 * productSort2(@PathVariable("product_tag") String
+	 * product_tag, @PathVariable("sortType") String sortType) { mav = new
+	 * ModelAndView(); System.out.println(sortType);
+	 * 
+	 * ProductVO PVO = new ProductVO(); PVO.setProduct_category(product_tag);
+	 * 
+	 * if(sortType.equals("pricelist")) {//가격낮은순 //List<ProductVO> list=
+	 * service.productPriceAsc(PVO); //System.out.println(list.size());
+	 * mav.addObject("plist", service.productPriceAsc(PVO)); }else
+	 * if(sortType.equals("pricelistdesc")) {//가격높은순 mav.addObject("plist",
+	 * service.productPriceDesc(PVO)); }else if(sortType.equals("recentlist"))
+	 * {//최신순 mav.addObject("plist", service.productRecent(PVO)); }else {//좋아요순
+	 * mav.addObject("plist", service.productLike(PVO)); }
+	 * 
+	 * mav.addObject("pvo", PVO); mav.setViewName("/product");
+	 * 
+	 * return mav; }
+	 */
 }

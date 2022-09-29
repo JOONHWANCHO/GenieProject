@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.genie.myapp.dao.MbtiDAO;
+import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerProductVO;
 
 @Service
@@ -37,5 +38,25 @@ public class MbtiServiceImpl implements MbtiService {
 	@Override
 	public List<SellerProductVO> likelist(String mbti) {
 		return dao.likelist(mbti);
+	}
+
+	@Override
+	public List<ProductVO> productPriceAsc(ProductVO PVO) {
+		return dao.productPriceAsc(PVO);
+	}
+
+	@Override
+	public List<ProductVO> productPriceDesc(ProductVO PVO) {
+		return dao.productPriceDesc(PVO);
+	}
+
+	@Override
+	public List<ProductVO> productRecent(ProductVO PVO) {
+		return dao.productRecent(PVO);
+	}
+
+	@Override
+	public List<ProductVO> productLike(ProductVO PVO) {
+		return dao.productLike(PVO);
 	}
 }
