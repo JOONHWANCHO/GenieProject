@@ -2,6 +2,12 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 
 <style>
+
+#formbody{
+	padding-top: 10px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
 .content-wrapper{
 	overflow-y:scroll;
 	-ms-overflow-style: none;
@@ -9,9 +15,7 @@
 .content-wrapper::-webkit-scrollbar{
   display:none;
 }
-.content{
-	width:60%;
-}
+
 /*---------------------------------*/
 .container{
 		padding:30px;
@@ -237,7 +241,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content" id="formbody">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
