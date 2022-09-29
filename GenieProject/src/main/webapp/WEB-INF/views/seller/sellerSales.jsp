@@ -120,7 +120,7 @@
     </div>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+<!-- /.content-wrapper -->
 
 
 <!-- REQUIRED SCRIPTS -->
