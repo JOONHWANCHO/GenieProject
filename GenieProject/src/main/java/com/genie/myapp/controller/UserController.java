@@ -147,7 +147,7 @@ public class UserController {
 			
 			int account = service.AccountWrite(avo);
 			int user = service.UserWrite(vo);
-			//int Delivery = service.Delivery(vo);
+
 			System.out.println(account);
 			System.out.println(user);
 
@@ -271,7 +271,7 @@ public class UserController {
 		}else {//수정못함
 			msg+="alert('배송지 등록에 실패하였습니다.');";
 		}
-		msg+="location.href='/user/MyPage';</script>";
+		msg+="location.href='/user/MyDeliveryList';</script>";
 		
 		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
 
