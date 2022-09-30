@@ -61,6 +61,8 @@ public class ProductController{
 	@GetMapping("product_detail")
 	public ModelAndView product_detail(@RequestParam("product_id") int product_id) {
 
+		productService.hitCount(product_id);
+		
 		mav = new ModelAndView();
 		mav.addObject("pvo", productService.getProduct(product_id));
 		mav.addObject("svo", productService.getSeller(product_id));

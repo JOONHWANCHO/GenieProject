@@ -20,5 +20,5 @@ public interface ProductService{
     
     public int delProduct(int cart_num, String genie_id);
 
-
+    public void hitCount(int product_id);
 }   

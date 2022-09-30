@@ -31,5 +31,7 @@ public interface ProductDAO{
     public List<ProductVO> selectProduct(Map<String, Object> map);
     //상세페이지 관리자정보 가져오기
     public SellerVO getSeller(int product_id);
- 
+
+    // 조회수 증가
+    public void hitCount(int product_id);
 }
