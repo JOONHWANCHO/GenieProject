@@ -29,9 +29,9 @@
    <div class="ranking-list">
       <h1>고민될 땐 선물랭킹!<h1>
       <div>
-         <a href="/product?product_tag=여자"><img src="/image/gender_female_long.png"></a>
-         <a href="/product?product_tag=남여공용"><img src="/image/gender_all_long.png"></a>
-         <a href="/product?product_tag=남자"><img src="/image/gender_male_long.png"></a>
+         <a href="/product?product_tag=여성"><img src="/image/gender_female_long.png"></a>
+         <a href="/product?product_tag=남녀공용"><img src="/image/gender_all_long.png"></a>
+         <a href="/product?product_tag=남성"><img src="/image/gender_male_long.png"></a>
       </div>
    <div>
 
@@ -46,6 +46,7 @@
          <button onclick="location.href='/product?product_tag=회사동료'">#회사동료</button>
          <button onclick="location.href='/product?product_tag=결혼'">#결혼</button>
          <button onclick="location.href='/mbti/mbtiMain'">#mbti</button>
+         <button onclick="window.open('https://kr.vonvon.me/quiz/19484', 'window_name', 'width=430, height=700, location=no, status=no, scrollbars=yes');">#내 mbti는?</button>
       </div>
    </div>
 
