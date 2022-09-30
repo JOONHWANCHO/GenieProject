@@ -162,4 +162,9 @@
         order by rand()
 
     </select>
+    
+    <update id="hitCount">
+    	update product set product_hit = product_hit+1 where product_id=${param1} 
+    </update>
+    
 </mapper>

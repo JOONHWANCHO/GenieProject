@@ -279,4 +279,5 @@ $(function(){
             <div class="box_029">${svo.company_name}</div>
         </div>
     </div>
+    조회수 : ${pvo.product_hit}
 </section>
