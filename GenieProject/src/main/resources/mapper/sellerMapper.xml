@@ -182,4 +182,20 @@
 		where recipient_delivery_status = 'delivering';
 	</select>
 
+	<!-- 아이템별 매출 -->
+	<select id="revenueByProduct" resultType="OrderVO">
+	select product_image1, product_name, sold_counts, total_sales
+	from
+		(select product_id, count(product_id) sold_counts, sum(order_price) total_sales
+		from myorder
+		group by product_id) a
+	join
+		(select distinct m.product_id, p.product_name, p.product_image1
+		from myorder m join product p
+		on m.product_id = p.product_id
+		where p.genie_id=#{param1}) b
+	on a.product_id = b.product_id
+	order by total_sales desc
+	</select>
+
 </mapper>

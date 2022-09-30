@@ -28,7 +28,9 @@
     font-size: 70%;
     text-align: center;
   }
+
 </style>
+
 
 <script>
 	function fn_modify_order_state(order_num, select_id) { // order_num 와 select_id 를 매개변수로 받는 함수를 실행
@@ -62,6 +64,7 @@
 		});	
 	}
 </script>
+
 <%@ include file="../inc/sellerNav.jsp"%>
 
   <!-- Content Wrapper. Contains page content -->
@@ -127,110 +130,112 @@
               </i></span>
             </div>
           </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title"></h5> <!--주문목록-->
-                <div id="searchbox" style="font-size: 13px;">
-                  <input type="text" name="searchWord" id="searchWord" style="width:300px"/>
-                  <input type="submit" value="Search"/>
+        <div class="container-fluid">  
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card card-primary card-outline">
+                <div class="card-body">
+                  <h5 class="card-title"></h5> <!--주문목록-->
+                  <div id="searchbox" style="font-size: 13px;">
+                    <input type="text" name="searchWord" id="searchWord" style="width:300px"/>
+                    <input type="submit" value="Search"/>
+                  </div>
+                  <br>
+                  <p class="card-text">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>주문코드</th>
+                          <th>주문날짜</th>
+                          <th>상품명</th>
+                          <th>수량</th>
+                          <th>결제금액</th>
+                          <th>주문자명</th>
+                          <th>수령자명</th>
+                          <th>주소</th>
+                          <th>전화번호</th>
+                          <th>요청사항</th>
+                          <th>주문상태</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <!-- 주문 상품 목록을 리스트로 표시 -->
+                      <c:forEach var="vo" items="${list}" varStatus="i"> 
+                        <tr>
+                            <td>${vo.order_num}</td>
+                            <td>${vo.order_writedate}</td>
+                            <td>${vo.product_name}</td>
+                            <td>${vo.order_qty}</td>
+                            <td>${vo.order_price}</td>
+                            <td>${vo.genie_id}</td>
+                            <td>${vo.recipient_name}</td>
+                            <td>${vo.recipient_address}</td>
+                            <td>${vo.recipient_phone}</td>
+                            <td>${vo.recipient_request}</td>
+                            <td>
+                                <select name="s_delivery_status${i.index }" id="s_delivery_status${i.index }">
+                                    <c:choose>
+                                        <c:when test="${vo.recipient_delivery_status=='delivery_prepared' }">
+                                            <option value="delivery_prepared" selected>배송준비중</option>
+                                            <option value="delivering">배송중</option>
+                                            <option value="delivered">배송완료</option>
+                                            <option value="cancelled">주문취소</option>
+                                            <option value="returned">반품</option>
+                                        </c:when>
+                                        <c:when test="${vo.recipient_delivery_status=='delivering' }">
+                                            <option value="delivery_prepared">배송준비중</option>
+                                            <option value="delivering" selected>배송중</option>
+                                            <option value="delivered">배송완료</option>
+                                            <option value="cancelled">주문취소</option>
+                                            <option value="returned">반품</option>
+                                        </c:when>
+                                        <c:when test="${vo.recipient_delivery_status=='delivered' }">
+                                            <option value="delivery_prepared">배송준비중</option>
+                                            <option value="delivering">배송중</option>
+                                            <option value="delivered" selected>배송완료</option>
+                                            <option value="cancelled">주문취소</option>
+                                            <option value="returned">반품</option>
+                                        </c:when>
+                                        <c:when test="${vo.recipient_delivery_status=='cancelled' }">
+                                            <option value="delivery_prepared">배송준비중</option>
+                                            <option value="delivering">배송중</option>
+                                            <option value="delivered">배송완료</option>
+                                            <option value="cancelled" selected>주문취소</option>
+                                            <option value="returned">반품</option>
+                                        </c:when>
+                                        <c:when test="${vo.recipient_delivery_status=='returned' }">
+                                            <option value="delivery_prepared">배송준비중</option>
+                                            <option value="delivering">배송중</option>
+                                            <option value="delivered">배송완료</option>
+                                            <option value="cancelled">주문취소</option>
+                                            <option value="returned" selected>반품</option>
+                                        </c:when>
+                                    </c:choose>
+                                </select>
+                            </td>
+                            <td width=10%>
+                                <!-- 수정을 클릭하면 선택한 셀렉트 박스의 id를 함수로 전달 -->
+                                <input type="button" value="수정" onClick="fn_modify_order_state('${vo.order_num}','s_delivery_status${i.index}')"/>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                      </tbody>
+                    </table>
+                  </p>
                 </div>
-                <br>
-                <p class="card-text">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>주문코드</th>
-                        <th>주문날짜</th>
-                        <th>상품명</th>
-                        <th>수량</th>
-                        <th>결제금액</th>
-                        <th>주문자명</th>
-                        <th>수령자명</th>
-                        <th>주소</th>
-                        <th>전화번호</th>
-                        <th>요청사항</th>
-                        <th>주문상태</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                     <!-- 주문 상품 목록을 리스트로 표시 -->
-                     <c:forEach var="vo" items="${list}" varStatus="i"> 
-                      <tr>
-                          <td>${vo.order_num}</td>
-                          <td>${vo.order_writedate}</td>
-                          <td>${vo.product_name}</td>
-                          <td>${vo.order_qty}</td>
-                          <td>${vo.order_price}</td>
-                          <td>${vo.genie_id}</td>
-                          <td>${vo.recipient_name}</td>
-                          <td>${vo.recipient_address}</td>
-                          <td>${vo.recipient_phone}</td>
-                          <td>${vo.recipient_request}</td>
-                          <td>
-                              <select name="s_delivery_status${i.index }" id="s_delivery_status${i.index }">
-                                  <c:choose>
-                                       <c:when test="${vo.recipient_delivery_status=='delivery_prepared' }">
-                                          <option value="delivery_prepared" selected>배송준비중</option>
-                                          <option value="delivering">배송중</option>
-                                          <option value="delivered">배송완료</option>
-                                          <option value="cancelled">주문취소</option>
-                                          <option value="returned">반품</option>
-                                      </c:when>
-                                      <c:when test="${vo.recipient_delivery_status=='delivering' }">
-                                          <option value="delivery_prepared">배송준비중</option>
-                                          <option value="delivering" selected>배송중</option>
-                                          <option value="delivered">배송완료</option>
-                                          <option value="cancelled">주문취소</option>
-                                          <option value="returned">반품</option>
-                                      </c:when>
-                                      <c:when test="${vo.recipient_delivery_status=='delivered' }">
-                                          <option value="delivery_prepared">배송준비중</option>
-                                          <option value="delivering">배송중</option>
-                                          <option value="delivered" selected>배송완료</option>
-                                          <option value="cancelled">주문취소</option>
-                                          <option value="returned">반품</option>
-                                      </c:when>
-                                      <c:when test="${vo.recipient_delivery_status=='cancelled' }">
-                                          <option value="delivery_prepared">배송준비중</option>
-                                          <option value="delivering">배송중</option>
-                                          <option value="delivered">배송완료</option>
-                                          <option value="cancelled" selected>주문취소</option>
-                                          <option value="returned">반품</option>
-                                      </c:when>
-                                      <c:when test="${vo.recipient_delivery_status=='returned' }">
-                                          <option value="delivery_prepared">배송준비중</option>
-                                          <option value="delivering">배송중</option>
-                                          <option value="delivered">배송완료</option>
-                                          <option value="cancelled">주문취소</option>
-                                          <option value="returned" selected>반품</option>
-                                      </c:when>
-                                  </c:choose>
-                              </select>
-                          </td>
-                          <td width=10%>
-                              <!-- 수정을 클릭하면 선택한 셀렉트 박스의 id를 함수로 전달 -->
-                              <input type="button" value="수정" onClick="fn_modify_order_state('${vo.order_num}','s_delivery_status${i.index}')"/>
-                          </td>
-                      </tr>
-                      </c:forEach>
-                    </tbody>
-                  </table>
-                </p>
-              </div>
-            </div><!-- /.card -->
+              </div><!-- /.card -->
+            </div>
           </div>
-        </div>
         <!-- /.row -->
+        </div>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <%@ include file="../inc/sellerFooter.jsp"%>
+
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
@@ -239,4 +244,7 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/js_css/dist/js/adminlte.min.js"></script>
+
+
+  <%@ include file="../inc/sellerFooter.jsp"%>
                   

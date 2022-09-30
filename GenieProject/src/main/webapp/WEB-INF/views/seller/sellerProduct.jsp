@@ -2,6 +2,11 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 
 <style>
+#productbody{
+	padding-top: 10px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
 .table a{
 	color:black;
 }
@@ -38,7 +43,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content" id="productbody">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
