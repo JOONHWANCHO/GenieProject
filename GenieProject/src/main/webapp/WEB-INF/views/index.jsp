@@ -46,6 +46,7 @@
          <button onclick="location.href='/product?product_tag=회사동료'">#회사동료</button>
          <button onclick="location.href='/product?product_tag=결혼'">#결혼</button>
          <button onclick="location.href='/mbti/mbtiMain'">#mbti</button>
+         <button onclick="window.open('https://kr.vonvon.me/quiz/19484', 'window_name', 'width=430, height=700, location=no, status=no, scrollbars=yes');">#내 mbti는?</button>
       </div>
    </div>
 

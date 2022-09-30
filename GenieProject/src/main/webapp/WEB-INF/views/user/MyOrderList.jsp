@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
  <title>Genie 페이지</title>
   <!--Let browser know website is optimized for mobile-->
@@ -278,19 +280,20 @@ nav .sidenav-trigger i {
                              <th></th>
                              <th>수량</th>
                              <th>가격</th>
-
                           </tr>
                        </thead>
+                    <c:forEach var="orderlist" items="${list}">
                        <tbody>
                           <tr>
-                             <td>${pVo.product_id}</td>
-                             <td>${pVo.product_name}</td>
+                             <td>${orderlist.order_num}</td>
+                             <td>${orderlist.product_name}</td>
                              <td></td>
                              <td></td>
-                             <td>${pVo.product_quantity}</td>
-                             <td>${pVo.product_price}</td>
+                             <td>${orderlist.order_qty}</td>
+                             <td><fmt:formatNumber value="${orderlist.order_price}" pattern="#,###원" /></td>
                           </tr>
                        </tbody>
+                    </c:forEach>
                     </table>
             </div>
          </div>
