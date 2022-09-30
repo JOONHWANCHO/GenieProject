@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.AdministerService;
+import com.genie.myapp.service.ProductService;
 import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
 
 import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdministerVO;
 import com.genie.myapp.vo.DeliveryVO;
+import com.genie.myapp.vo.OrderVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
 import com.genie.myapp.vo.UserVO;
@@ -232,14 +234,15 @@ public class UserController {
 
 	//주문목록/배송조회
 	@GetMapping("MyOrderList")
-	public ModelAndView MyOrderList(HttpSession session, ProductVO pVo) {
+	public ModelAndView MyOrderList(HttpSession session) {
 
 		String genie_id = (String)session.getAttribute("logId");
+		List<OrderVO> orderList =service.getOrder(genie_id);
 		UserVO vo = service.getUser(genie_id);
 		//System.out.print(vo);
 		
 		mav = new ModelAndView();
-		mav.addObject("pVo",pVo);
+		mav.addObject("list",orderList);
 		mav.addObject("vo",vo);
 		mav.setViewName("/user/MyOrderList");
 	
