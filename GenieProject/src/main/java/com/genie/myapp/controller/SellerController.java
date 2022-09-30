@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +30,7 @@ import com.genie.myapp.service.SellerService;
 
 import com.genie.myapp.vo.SellerProductVO;
 import com.genie.myapp.vo.AccountVO;
-import com.genie.myapp.vo.InquiryVO;
 import com.genie.myapp.vo.OrderVO;
-import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.SellerVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -40,6 +42,12 @@ public class SellerController {
 	
 	@Inject
 	SellerService service;
+	
+	@Autowired
+	PlatformTransactionManager transactionManager;
+
+	@Autowired
+	TransactionDefinition definition;
 	ModelAndView mav = null;
 	
 	//업체 회원가입 폼 보기
@@ -204,6 +212,7 @@ public class SellerController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type", "text/html; charset=utf-8");
+		TransactionStatus status= transactionManager.getTransaction(definition);
 		
 		try {//회원가입성공
 			int account = service.AccountWrite(avo);
@@ -215,6 +224,8 @@ public class SellerController {
 			msg += "location.href='/user/login';";
 			msg += "</script>";
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+
+			transactionManager.commit(status);
 			
 		}catch(Exception e) {//회원가입실패
 			
@@ -224,7 +235,9 @@ public class SellerController {
 			msg += "</script>";
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
 			
+			transactionManager.rollback(status);
 			e.printStackTrace();
+			
 		}
 		return entity;
 	}

@@ -6,11 +6,14 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +45,14 @@ public class UserController {
 	@Inject
 	AdministerService service_a;
 
-	ModelAndView mav;
+	ModelAndView mav=null;
+
+	@Autowired
+	PlatformTransactionManager transactionManager;
+
+	@Autowired
+	TransactionDefinition definition;
+
 
 	@GetMapping("login")
 	public ModelAndView adminLogin() {
@@ -140,9 +150,9 @@ public class UserController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type","text/html; charset=utf-8");
+		TransactionStatus status= transactionManager.getTransaction(definition);
 		
-			
-
+		
 		try {//회원가입 성공
 			
 			int account = service.AccountWrite(avo);
@@ -157,6 +167,8 @@ public class UserController {
 			msg += "</script>";
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
 
+			transactionManager.commit(status);
+
 		}catch(Exception e) {//회원등록 실패
 
 			String msg = "<script>";
@@ -165,7 +177,9 @@ public class UserController {
 			msg += "</script>";
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
 			
+			transactionManager.rollback(status);
 			e.printStackTrace();
+			
 		}
 
 		return entity;
