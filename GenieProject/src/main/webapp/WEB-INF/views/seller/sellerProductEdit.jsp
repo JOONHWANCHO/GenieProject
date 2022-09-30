@@ -4,7 +4,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-
+#formbody{
+	padding-top: 10px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
 .content-wrapper{
 	overflow:auto;
 	-ms-overflow-style: none;
@@ -12,9 +16,9 @@
 .content-wrapper::-webkit-scrollbar{
   display:none;
 }
-.content{
+/* .content{
 	width:60%;
-}
+} */
 
 /*---------------------------------*/
 .container{
@@ -241,7 +245,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content" id="formbody">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">

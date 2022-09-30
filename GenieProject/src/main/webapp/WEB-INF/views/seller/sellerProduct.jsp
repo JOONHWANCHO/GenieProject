@@ -10,6 +10,13 @@
 .table a{
 	color:black;
 }
+.content-wrapper{
+	overflow-y:scroll;
+	-ms-overflow-style: none;
+}
+.content-wrapper::-webkit-scrollbar{
+  display:none;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
