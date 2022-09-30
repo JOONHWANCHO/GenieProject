@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.genie.myapp.service.AdminService;
 import com.genie.myapp.service.ProductService;
 import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
+import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.TagVO;
@@ -40,11 +42,24 @@ public class ProductController{
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	AdminService adminService;
 	
 
 	ModelAndView mav = null;
 	Map<String, Object> map = null;
 
+	@GetMapping("/")
+	public ModelAndView index(AdminVO vo) {
+
+		mav = new ModelAndView();
+		mav.addObject("tlist", adminService.adminTag(vo));
+		mav.setViewName("/index");
+
+		return mav;
+	}
+	
 	//제품 리스트보기
 	@GetMapping("product")
 	public ModelAndView product(ProductVO PVO) {

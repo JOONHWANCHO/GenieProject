@@ -38,15 +38,17 @@
    <div class="best-tag">
       <h1># 모두의 인기 태그</h1>
       <div class="tag-button">
-         <button onclick="location.href='/product?product_tag=연인'">#연인</button>
-         <button onclick="location.href='/product?product_tag=생일'">#생일</button>
+       <c:forEach var="tvo" items="${tlist}">
+         <button onclick="location.href='/product?product_tag=${tvo.product_tag}'">#${tvo.product_tag}</button>
+         <%-- <button onclick="location.href='/product?product_tag=생일'">#생일</button>
          <button onclick="location.href='/product?product_tag=20대'">#20대</button>
          <button onclick="location.href='/product?product_tag=여성'">#여성</button>
          <button onclick="location.href='/product?product_tag=부모님'">#부모님</button>
          <button onclick="location.href='/product?product_tag=회사동료'">#회사동료</button>
-         <button onclick="location.href='/product?product_tag=결혼'">#결혼</button>
+         <button onclick="location.href='/product?product_tag=결혼'">#결혼</button> --%>
+      </c:forEach>
          <button onclick="location.href='/mbti/mbtiMain'">#mbti</button>
-         <button onclick="window.open('https://kr.vonvon.me/quiz/19484', 'window_name', 'width=430, height=700, location=no, status=no, scrollbars=yes');">#내 mbti는?</button>
+         <button onclick="window.open('https://kr.vonvon.me/quiz/19484', 'window_name', 'width=430, height=700, location=no, status=no, scrollbars=yes');">#내 mbti는?</button>   
       </div>
    </div>
 

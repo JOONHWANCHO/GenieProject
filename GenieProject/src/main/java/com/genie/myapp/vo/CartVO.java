@@ -17,7 +17,7 @@ public class CartVO{
     private int product_quantity;
     private int product_price;
     
-    
+	
 	@Override
 	public String toString() {
 		return "CartVO [cart_num=" + cart_num + ", genie_id=" + genie_id + ", product_id=" + product_id
