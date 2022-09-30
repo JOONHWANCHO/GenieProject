@@ -29,9 +29,9 @@
    <div class="ranking-list">
       <h1>고민될 땐 선물랭킹!<h1>
       <div>
-         <a href="/product?product_tag=여자"><img src="/image/gender_female_long.png"></a>
-         <a href="/product?product_tag=남여공용"><img src="/image/gender_all_long.png"></a>
-         <a href="/product?product_tag=남자"><img src="/image/gender_male_long.png"></a>
+         <a href="/product?product_tag=여성"><img src="/image/gender_female_long.png"></a>
+         <a href="/product?product_tag=남녀공용"><img src="/image/gender_all_long.png"></a>
+         <a href="/product?product_tag=남성"><img src="/image/gender_male_long.png"></a>
       </div>
    <div>
 
