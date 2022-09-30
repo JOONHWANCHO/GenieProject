@@ -10,22 +10,22 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 
 <script>
- $(function(){
-    //유효성 검사
+$(function(){
+	//유효성 검사
     $("#Cart").submit(function(){
-        
-        // 아이디, 비밀번호
-        if($("#cart_qty").val().trim()==""){
-            alert("최소 수량은 1개 이상입니다.");
-            $("#cart_qty").focus();
-            return false;
-        }
-        if($("#cart_qty").val()=="0"){
-            alert("최소 수량은 1개 이상입니다.");
-            $("#cart_qty").focus();
-            return false;
+		
+		// 아이디, 비밀번호
+		if($("#cart_qty").val().trim()==""){
+			alert("최소 수량은 1개 이상입니다.");
+			$("#cart_qty").focus();
+			return false;
+		}
+        if($("#cart_qty").val().trim()=="0"){
+			alert("최소 수량은 1개 이상입니다.");
+			$("#cart_qty").focus();
+			return false;
+        };
     });
-    return true;
 });
 </script>
 <section class="product_detail">
@@ -36,9 +36,9 @@
             <input type="hidden" value="${pvo.product_id}" name="product_id">
 
             <div class="box1" style="background-image:url(${pvo.product_image1})"></div>
-            <div class="box2" onclick="detail1()" style="background-image:url(${pvo.product_image1})"></div>
-            <div class="box3" onclick="detail2()" style="background-image:url(${pvo.product_image2})"></div>
-            <div class="box4" onclick="detail3()" style="background-image:url(${pvo.product_image3})"></div>
+            <div class="box2" onclick="detail1('${pvo.product_image1}')" style="background-image:url(${pvo.product_image1})"></div>
+            <div class="box3" onclick="detail1('${pvo.product_image2}')" style="background-image:url(${pvo.product_image2})"></div>
+            <div class="box4" onclick="detail1('${pvo.product_image3}')" style="background-image:url(${pvo.product_image3})"></div>
             <div class="box5">
                 상품명 : ${pvo.product_name}
             </div>
