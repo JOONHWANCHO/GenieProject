@@ -128,7 +128,7 @@ margin-top: 30px;
             <div class="logo"></div>
             <div class="info">
                 <h2>Genie</h2>
-                <p> admin@genie.com </br>
+                <p> admin@genie.com <br/>
                     02-564-5843
                 </p>
             </div><!--End Info-->
@@ -144,8 +144,8 @@ margin-top: 30px;
             <div class="clientlogo"></div>
             <div class="info">
                 <h2>조준환</h2>
-                <p>joonhwancho@gmail.com</br>
-                010-3611-1326</br>
+                <p>joonhwancho@gmail.com<br/>
+                010-3611-1326<br/>
             </div>
 
             <div id="project">
