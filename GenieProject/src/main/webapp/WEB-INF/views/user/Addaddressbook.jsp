@@ -48,6 +48,7 @@ nav .sidenav-trigger i {
   color: white;
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <body>
 
 <body
@@ -139,12 +140,9 @@ nav .sidenav-trigger i {
 </div>
 
 </header>
+  <!-- END: Header-->
 
-  <div class="navigation-background"></div>
-  <a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only"
-    href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
-</aside>  <!-- END: SideNav-->
-
+  
   <!-- BEGIN: Page Main-->
   <div id="main">
     <div class="row">
@@ -169,7 +167,7 @@ nav .sidenav-trigger i {
     <div class="content-main">
       <h4>새로운 배송지</h4>
       <div class="inquiry">
-      <form method="post" action="/user/addDelivery">
+      <form method="post" action="/user/addAddressbook">
         <input type="hidden" value="${vo.genie_id}" name="genie_id"/>
           <ul id="addrForm">
             <li>이름</li>
@@ -207,6 +205,14 @@ nav .sidenav-trigger i {
 </div>
 </div>
 </div>
+<!-- 추가되는 부분 끝 -->  
+
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--/ Current balance & total transactions cards-->
+         
 
 <!-- END RIGHT SIDEBAR NAV -->                  
 </div>
@@ -249,9 +255,6 @@ nav .sidenav-trigger i {
 <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-1/js/custom/custom-script.js"></script>
 <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-1/js/scripts/customizer.js"></script>
 <!-- END THEME  JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js_css/KakaoAddress.js"></script>
-
-
-                                      
