@@ -160,9 +160,8 @@ public class ProductController{
 	public ModelAndView payment(HttpSession session){
 		
 		String genie_id = (String)session.getAttribute("logId"); 
-		
+
 		List<CartVO> cartList = productService.getCart(genie_id);
-		List<DeliveryVO> deliveryList = userService.getDeliveryList(genie_id) ;
 
 		mav = new ModelAndView();
 		mav.addObject("clist", cartList);

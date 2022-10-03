@@ -235,9 +235,8 @@ public class UserController {
 	public ModelAndView MyOrderList(HttpSession session) {
 
 		String genie_id = (String)session.getAttribute("logId");
-		List<OrderVO> orderList =service.getOrder(genie_id);
 		UserVO vo = service.getUser(genie_id);
-		//System.out.print(vo);
+		List<OrderVO> orderList =service.getOrder(genie_id);
 		
 		mav = new ModelAndView();
 		mav.addObject("list",orderList);
@@ -252,13 +251,8 @@ public class UserController {
 	public ModelAndView MyDeliveryLIst(HttpSession session) {
 		
 		String genie_id = (String)session.getAttribute("logId");
-
-		List<DeliveryVO> dlist = service.getDeliveryList(genie_id);
-
-		//System.out.println(genie_id);
-		//System.out.println("dlist:" + dlist.size());
-		
 		UserVO vo = service.getUser(genie_id);
+		List<DeliveryVO> dlist = service.getDeliveryList(genie_id);	
 
 		mav = new ModelAndView();
 		mav.addObject("vo", vo);
@@ -277,7 +271,6 @@ public class UserController {
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type","text/html; charset=UTF-8");
 	
-
 		String msg = "<script>";
 		int cnt = service.addDelivery(vo);
 
@@ -297,6 +290,30 @@ public class UserController {
 	public int delDelivery(int address_num, HttpSession session){
 		String genie_id = (String)session.getAttribute("logId");
 		return service.delDelivery(address_num, genie_id);
+	}
+
+	@GetMapping("addressbook")
+	public ModelAndView addressbook(HttpSession session){
+
+		String genie_id=(String)session.getAttribute("logId");
+		List<DeliveryVO> dlist=service.getDeliveryList(genie_id);
+
+		mav=new ModelAndView();
+		mav.addObject("dlist", dlist);
+		mav.setViewName("/user/addressbook");
+		return mav;
+	}
+
+	@GetMapping("Addaddressbook")
+	public ModelAndView Addaddressbook(HttpSession session){
+
+		String genie_id=(String)session.getAttribute("logId");
+		List<DeliveryVO> dlist=service.getDeliveryList(genie_id);
+
+		mav=new ModelAndView();
+		mav.addObject("dlist", dlist);
+		mav.setViewName("/user/Addaddressbook");
+		return mav;
 	}
 	
   
