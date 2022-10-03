@@ -280,7 +280,31 @@ public class UserController {
 			msg+="alert('배송지 등록에 실패하였습니다.');";
 		}
 		msg+="location.href='/user/MyDeliveryList';</script>";
+
+		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
+
+		return entity;
+	}
+
+	//주문 결제 페이지의 주소 추가창
+	@PostMapping("addAddressbook")
+	public ResponseEntity<String> addAddressbook(UserVO vo) {
 		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type","text/html; charset=UTF-8");
+	
+		String msg = "<script>";
+		int cnt = service.addDelivery(vo);
+
+		if(cnt>0) {//수정됨
+			msg+="alert('배송지가 등록되었습니다.');";
+		}else {//수정못함
+			msg+="alert('배송지 등록에 실패하였습니다.');";
+		}
+		msg+="location.href='/user/addressbook';</script>";
+		//msg+="location.reload();</script>";
 		entity = new ResponseEntity<String>(msg,headers, HttpStatus.OK);
 
 		return entity;
@@ -308,9 +332,11 @@ public class UserController {
 	public ModelAndView Addaddressbook(HttpSession session){
 
 		String genie_id=(String)session.getAttribute("logId");
+		UserVO vo=service.getUser(genie_id);
 		List<DeliveryVO> dlist=service.getDeliveryList(genie_id);
 
 		mav=new ModelAndView();
+		mav.addObject("vo", vo);
 		mav.addObject("dlist", dlist);
 		mav.setViewName("/user/Addaddressbook");
 		return mav;
