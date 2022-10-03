@@ -26,9 +26,9 @@ import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.CartVO;
+import com.genie.myapp.vo.DeliveryVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.TagVO;
-
 
 @RestController
 @RequestMapping("/")
@@ -77,7 +77,7 @@ public class ProductController{
 	public ModelAndView product_detail(@RequestParam("product_id") int product_id) {
 
 		productService.hitCount(product_id);
-		
+
 		mav = new ModelAndView();
 		mav.addObject("pvo", productService.getProduct(product_id));
 		mav.addObject("svo", productService.getSeller(product_id));
@@ -127,7 +127,6 @@ public class ProductController{
 			int addCart = productService.addCart(cvo);
 			System.out.print(addCart);
 
-
 			String msg = "<script>";
 			msg += "alert('장바구니에 추가되었습니다.');";
 			msg += "location.href='/cart';";
@@ -161,11 +160,13 @@ public class ProductController{
 	public ModelAndView payment(HttpSession session){
 		
 		String genie_id = (String)session.getAttribute("logId"); 
+		
 		List<CartVO> cartList = productService.getCart(genie_id);
-		//System.out.print(cartList);
+		List<DeliveryVO> deliveryList = userService.getDeliveryList(genie_id) ;
 
 		mav = new ModelAndView();
 		mav.addObject("clist", cartList);
+		mav.addObject("uvo",userService.getUser(genie_id));
 
 		mav.setViewName("/payment");
 		return mav;
