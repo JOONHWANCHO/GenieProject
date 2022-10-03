@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/top.jspf"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <link rel="stylesheet" href="/js_css/cart_style.css" type="text/css"/>
 
 <!-- jQuery -->
@@ -182,44 +184,55 @@ margin-top: 30px;
                 $(function(){
                     $("#buy").click(function () {        
                     var IMP = window.IMP; // 생략가능        
-                    IMP.init('imp49851084');         
+                    IMP.init('imp48507577');         
                     // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
                     // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드        
                     IMP.request_pay({
-                        pg: 'inicis', // version 1.1.0부터 지원.            
+                        pg: 'html5_inicis', // version 1.1.0부터 지원.            
                         /*                 
-                        'kakao':카카오페이,                 
-                        html5_inicis':이니시스(웹표준결제)                    
-                        'nice':나이스페이                    
-                        'jtnet':제이티넷                    
-                        'uplus':LG유플러스                    
-                        'danal':다날                    
-                        'payco':페이코                    
-                        'syrup':시럽페이                    
-                        'paypal':페이팔                
+                        'kakao':카카오페이,
+                        html5_inicis':이니시스(웹표준결제)
+                        'nice':나이스페이
+                        'jtnet':제이티넷
+                        'uplus':LG유플러스
+                        'danal':다날
+                        'payco':페이코
+                        'syrup':시럽페이
+                        'paypal':페이팔
                         */            
-                        pay_method: 'card',            
+                        pay_method: 'card', 
                         /*                 
-                        'samsung':삼성페이,                 
-                        'card':신용카드,                 
-                        'trans':실시간계좌이체,                
-                        'vbank':가상계좌,                
-                        'phone':휴대폰소액결제             
+                        'samsung':삼성페이,
+                        'card':신용카드,
+                        'trans':실시간계좌이체,
+                        'vbank':가상계좌,
+                        'phone':휴대폰소액결제
                         */            
                         merchant_uid: 'merchant_' + new Date().getTime(),            
                         /*                 
-                        merchant_uid에 경우                            
+                        merchant_uid에 경우
                         */            
-                        name: '록시땅 샤워젤',//name: '${pvo.product_name}',             
-                        //결제창에서 보여질 이름            
-                        amount: '29000',//amount: ${pvo.product_price},             
-                        //가격             
-                        buyer_email: 'iamport@siot.do',            
-                        buyer_name: '구매자이름',           
-                        buyer_tel: '010-1234-5678',            
-                        buyer_addr: '서울특별시 강남구 삼성동',            
-                        buyer_postcode: '123-456',           
-                        m_redirect_url: 'https://www.yourdomain.com/payments/complete'           
+                        <c:forEach var="cvo" items="${clist}">
+
+                          name: "${cvo.product_name}",//name: '${pvo.product_name}',
+                          //결제창에서 보여질 이름
+
+                        </c:forEach>
+
+                        <c:set var="total" value="0"/>
+                            <c:forEach var="cvo" items="${clist}">
+                            <c:set var="total" value="${total+cvo.product_price*cvo.cart_qty}"/>
+                        </c:forEach>
+
+                          amount: '${total}',//amount: ${pvo.product_price},
+
+                          //가격             
+                          buyer_email: '${uvo.user_email}',
+                          buyer_name: '${uvo.user_name}',
+                          buyer_tel: '${uvo.user_tel}',      
+                          buyer_addr: '${uvo.user_addr}',
+                          buyer_postcode: '${uvo.user_zipcode}',
+                          m_redirect_url: 'https://www.yourdomain.com/payments/complete'
                         /*                  
                         모바일 결제시,                
                         결제가 끝나고 랜딩되는 URL을 지정                 
@@ -241,8 +254,16 @@ margin-top: 30px;
                         });
                     });
                 });
-                </script>     
+        </script>
+        <script>
+            $(function(){
+                $("#FindId").click(function(){
+                  window.open("/cert/FindId","addressbook","width=400, height=800");
+                });
 
+
+            });
+        </script>
             <div id="legalcopy">
                 <p class="legal"><strong>구매해 주셔서 감사합니다.</strong>교환 또는 환불을 원하시는 분들은 7일 이내에 가능합니다.
                 </p>
