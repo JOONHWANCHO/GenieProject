@@ -34,4 +34,5 @@ public interface ProductDAO{
 
     // 조회수 증가
     public void hitCount(int product_id);
+    
 }

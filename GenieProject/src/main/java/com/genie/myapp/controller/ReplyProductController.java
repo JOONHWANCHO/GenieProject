@@ -17,8 +17,8 @@ public class ReplyProductController{
     @Autowired
     ReplyProductService service;
 
-    @GetMapping("replyList")
-    public List<ReplyProductVO> ReplyProductList(int no){
-        return service.ReplyProductList(no);
+    @GetMapping("replyProductList")
+    public List<ReplyProductVO> replyProductList(int no){
+        return service.replyProductList(no);
     }
 }
