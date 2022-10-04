@@ -35,11 +35,11 @@
             'trans':실시간계좌이체,                
             'vbank':가상계좌,                
             'phone':휴대폰소액결제             
-            */            
+            */
             merchant_uid: 'merchant_' + new Date().getTime(),            
-            /*                 
+            /*
             merchant_uid에 경우                            
-            */            
+            */
             name: '${pvo.product_name}',            
             //결제창에서 보여질 이름            
             amount: '${pvo.product_price}',            
