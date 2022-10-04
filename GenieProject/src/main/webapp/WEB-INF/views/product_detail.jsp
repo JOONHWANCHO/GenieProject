@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/js_css/product_detail_style.css" type="text/css"/>
 <script src="/js_css/product_detail_js.js"></script>
 
-<%-- <!-- jQuery -->
+<!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
 <!-- iamport.payment.js -->
@@ -71,26 +71,72 @@
             });
         });
     });
- </script>--%>
-
+</script>
 <script>
-$(function(){
-	//유효성 검사
-    $("#Cart").submit(function(){
-		
-		// 아이디, 비밀번호
-		if($("#cart_qty").val().trim()==""){
-			alert("최소 수량은 1개 이상입니다.");
-			$("#cart_qty").focus();
-			return false;
+    $(function(){
+		function replyAllList(){
+			// 기존목록 지우기
+			$("#replyList>ul").empty();
+			// 비동기식으로 서버에 접속하여 댓글 목록 가져온다
+			var url = "/reply/replyProductList";
+			var params = {no:${pvo.product_id}};
+			console.log(params);
+			
+			$.ajax({
+				url:url,
+				data:params,
+				success:function(result){
+					var $reply = $(result);
+					
+					$reply.each(function(i, vo){ // index, vo
+						tag = "<li>";
+						tag += "<div><b>"+vo.genie_id+"</b>";
+						// 수정, 삭제버튼(자신이 쓴 글일때만) 표시
+						if(vo.genie_id=='${logId}'){
+							tag += "<input type='button' value='Edit'/>";
+							tag += "<input type='button' value='Del' title='"+vo.reply_no+"'/>";
+						}
+						tag += "<br/>"+vo.comment+"</div>";
+						// 로그인아이디와 댓글쓴이가 같으면 폼을 만들어준다.
+						if(vo.genie_id=='${logId}'){
+							tag += "<div style='display:none'><form method='post'>";
+							tag += "<input type='hidden' name='reply_no' value='"+vo.reply_no+"'/>";
+							tag += "<textarea name='comment' rows='4' cols='50'>"+vo.comment+"</textarea>";
+							tag += "<input type='submit' value='댓글수정하기'/>";
+							tag += "</form></div>";
+						}
+						
+						tag += "</li>"
+						
+						$("#replyList>ul").append(tag);
+					});
+				}, error:function(e){
+					console.log(e.responseText);
+				}
+			});
 		}
-        if($("#cart_qty").val().trim()=="0"){
-			alert("최소 수량은 1개 이상입니다.");
-			$("#cart_qty").focus();
-			return false;
-        };
+		
+		replyAllList(); // 댓글 목록을 가져오는 함수 호출
     });
-});
+</script>
+<script>
+	$(function(){
+		//유효성 검사
+	    $("#Cart").submit(function(){
+			
+			// 아이디, 비밀번호
+			if($("#cart_qty").val().trim()==""){
+				alert("최소 수량은 1개 이상입니다.");
+				$("#cart_qty").focus();
+				return false;
+			}
+	        if($("#cart_qty").val().trim()=="0"){
+				alert("최소 수량은 1개 이상입니다.");
+				$("#cart_qty").focus();
+				return false;
+	        };
+	    });
+	});
 </script>
 <section class="product_detail">
     <h1>상세페이지</h1>
@@ -149,13 +195,37 @@ $(function(){
             <h3>동일한 상품에 대해 작성한 상품평이며 상품을 구매하신 분들이 직접 작성하신 리뷰입니다.</h3>
         </div>
         <div class="box_5">
-            평점(구현못하면 글제목)
+            
         </div>
         <div class="box_6">
             글쓴이 + (글쓴 시각)
         </div>
         <div class="box_7">
-            글내용
+            <form class="mb-3" name="replyFrm" id="replyFrm" method="post">
+				<fieldset>
+					<span class="text-bold">만족도</span>
+					<input type="radio" name="reviewStar" value="5" id="rate1"><label
+						for="rate1">★</label>
+					<input type="radio" name="reviewStar" value="4" id="rate2"><label
+						for="rate2">★</label>
+					<input type="radio" name="reviewStar" value="3" id="rate3"><label
+						for="rate3">★</label>
+					<input type="radio" name="reviewStar" value="2" id="rate4"><label
+						for="rate4">★</label>
+					<input type="radio" name="reviewStar" value="1" id="rate5"><label
+						for="rate5">★</label>
+				</fieldset>
+				<div>
+					<textarea class="col-auto form-control" type="text" id="comment" name="comment"
+							  placeholder="다른 고객님에게 도움이 되도록 상품에 대한 솔직한 평가를 남겨주세요."></textarea>
+				</div>
+				<input type="submit" value="리뷰 등록하기"/>
+			</form>
+			<div id="replyList">
+				<ul>
+					
+				</ul>
+			</div>
         </div>
     </div>
 
