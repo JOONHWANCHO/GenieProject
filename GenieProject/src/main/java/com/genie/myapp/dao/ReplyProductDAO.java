@@ -11,5 +11,5 @@ import com.genie.myapp.vo.ReplyProductVO;
 @Repository
 public interface ReplyProductDAO{
     
-    public List<ReplyProductVO> ReplyProductList(int no);
+    public List<ReplyProductVO> replyProductList(int no);
 }

@@ -15,7 +15,7 @@ public class ReplyProductServiceImpl implements ReplyProductService{
     @Inject
     ReplyProductDAO DAO;
     
-    public List<ReplyProductVO> ReplyProductList(int no){
-        return DAO.ReplyProductList(no);
+    public List<ReplyProductVO> replyProductList(int no){
+        return DAO.replyProductList(no);
     }
 }
