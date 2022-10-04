@@ -16,7 +16,7 @@
 	</insert>
 	
 	<update id="replyProductEdit">
-		update reply_product set comment = #{comment} 
+		update reply_product set comment = #{comment}, rating = ${rating} 
 		where reply_no=${reply_no} and genie_id=#{genie_id}
 	</update>
 	

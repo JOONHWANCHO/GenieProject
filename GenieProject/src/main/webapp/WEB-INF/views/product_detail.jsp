@@ -99,7 +99,8 @@
 						// 로그인 아이디와 댓글 아이디 동일시 수정폼
 						if(vo.genie_id=='${logId}'){
 							tag += "<div style='display:none'><form method='post'>";
-							tag += "<input type='hidden' name='product_id' value='"+vo.product_id+"'/>";
+							tag += "<input type='hidden' name='reply_no' value='"+vo.reply_no+"'/>";
+							tag += "<textarea name='rating'>"+vo.rating+"</textarea>";
 							tag += "<textarea name='comment' rows='4' cols='50'>"+vo.comment+"</textarea>";
 							tag += "<input type='submit' value='리뷰수정하기'/>";
 							tag += "</form></div>";
@@ -160,7 +161,6 @@
 					console.log(e.responseText);
 				}
 			});
-		
 		});
 		
 		// 리뷰 삭제
