@@ -95,7 +95,7 @@
 							tag += "<input type='button' value='리뷰수정'/>";
 							tag += "<input type='button' value='리뷰삭제' title='"+vo.reply_no+"'/>";
 						}
-						tag += "<br/>"+vo.rating+vo.comment+"</div>";
+						tag += "<br/>"+vo.rating+"점 "+vo.comment+"</div>";
 						// 로그인 아이디와 댓글 아이디 동일시 수정폼
 						if(vo.genie_id=='${logId}'){
 							tag += "<div style='display:none'><form method='post'>";
@@ -240,9 +240,9 @@
                 장바구니
             </button>
             <input class="box13" type="button" id="buynow" value="구매하기"/>
- 
         </div>
     </form>
+    
 <!-- ------------------------------------------------------------------------------------------- -->
     <div class="review-wrapper">
         <button class="box_1" onclick="content1()">
