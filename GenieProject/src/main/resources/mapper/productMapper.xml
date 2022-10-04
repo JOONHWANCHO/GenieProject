@@ -120,6 +120,14 @@
         values(#{cart_num}, #{genie_id}, #{product_id}, #{cart_price}, #{cart_qty})
 
     </insert>
+     <delete id = "delCart">
+	  		delete from cart 
+	  		<where>
+	  			<foreach item = "item" index = "index" collection="noList" open="no in (" separator ="," close=")">
+	  				${item}	  			
+	  			</foreach>	  		
+	  		</where>
+	  </delete>
 
 
 <!-- 메인페이지 지니 추천 -->

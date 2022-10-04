@@ -160,7 +160,6 @@ public class ProductController{
 	public ModelAndView payment(HttpSession session){
 		
 		String genie_id = (String)session.getAttribute("logId"); 
-
 		List<CartVO> cartList = productService.getCart(genie_id);
 
 		mav = new ModelAndView();
@@ -170,4 +169,28 @@ public class ProductController{
 		mav.setViewName("/payment");
 		return mav;
 	}
+
+	@PostMapping("completion")
+	public ModelAndView completion(CartVO vo){
+		
+		int cnt= productService.delCart(vo);
+		System.out.println("삭제된 레코드 수:"+cnt);
+		
+		mav=new ModelAndView();
+
+		return mav;
+	}
+
+	//----------------------------- 제품 리스트 보이기 index -----------------------------------//
+	@GetMapping("index")
+	public ModelAndView productList(ProductVO PVO) {
+
+		mav = new ModelAndView();
+		mav.addObject("plist", productService.listProduct(PVO));
+		mav.addObject("pvo", PVO);
+		mav.setViewName("/index");
+
+		return mav;
+	}
+
 }

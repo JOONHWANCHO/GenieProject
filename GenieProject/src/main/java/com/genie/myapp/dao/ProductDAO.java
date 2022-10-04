@@ -34,5 +34,10 @@ public interface ProductDAO{
 
     // 조회수 증가
     public void hitCount(int product_id);
-    
+
+    //구매완료 후, 장바구니에서 삭제
+    public int delCart(CartVO vo);
+
+
+    //구매 완료 후, myorder로 넘기기
 }
