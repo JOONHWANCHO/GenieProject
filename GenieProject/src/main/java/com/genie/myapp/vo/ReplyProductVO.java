@@ -13,13 +13,15 @@ public class ReplyProductVO {
     private int product_id;
     private String comment;
     private String writedate;
+    private int rating;
     
     
     
+	
 	@Override
 	public String toString() {
 		return "ReplyProductVO [genie_id=" + genie_id + ", reply_no=" + reply_no + ", product_id=" + product_id
-				+ ", comment=" + comment + ", writedate=" + writedate + "]";
+				+ ", comment=" + comment + ", writedate=" + writedate + ", rating=" + rating + "]";
 	}
 	public String getGenie_id() {
 		return genie_id;
@@ -50,6 +52,12 @@ public class ReplyProductVO {
 	}
 	public void setWritedate(String writedate) {
 		this.writedate = writedate;
+	}
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
     
     

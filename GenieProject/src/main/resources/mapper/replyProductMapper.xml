@@ -9,4 +9,18 @@
 		where product_id=${param1}
 		order by reply_no asc
 	</select>
+	
+	<insert id="replyProductWrite">
+		insert into reply_product(genie_id, product_id, comment, rating) 
+		values(#{genie_id}, #{product_id}, #{comment}, #{rating})
+	</insert>
+	
+	<update id="replyProductEdit">
+		update reply_product set comment = #{comment} 
+		where reply_no=${reply_no} and genie_id=#{genie_id}
+	</update>
+	
+	<delete id="replyProductDelete">
+		delete from reply_product where reply_no=${param1} and genie_id=#{param2}
+	</delete>
 </mapper>
