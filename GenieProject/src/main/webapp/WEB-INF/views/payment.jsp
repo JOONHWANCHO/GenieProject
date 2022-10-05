@@ -179,7 +179,7 @@
                 </tr>
                 <tr class="service">
                     <td class="tableitem"><p class="itemtext">
-                    요청사항 : <input type="text" id="request" name="request" placeholder="요청사항을 적어주세요"></p></td>
+                    요청사항 : <input type="text" id="receipent_request" name="receipent_request" placeholder="요청사항을 적어주세요"></p></td>
                 </tr>
                 
                 </table>
@@ -203,31 +203,29 @@
 </div>
 <script>
       $(function(){
-          $("#buy").click(function () {        
+          $("#buy").click(function (){        
           var IMP = window.IMP; // 생략가능        
           IMP.init('imp48507577');   
-          var receiver_name=document.getElementById("receiver_name").value;
-          console.log(receiver_name);
           // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
           // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드        
           IMP.request_pay({
               pg: 'html5_inicis',                  
               pay_method: 'card',         
               merchant_uid: 'merchant_' + new Date().getTime(),            
-              name:'<c:forEach var="cvo" items="${clist}">${cvo.product_name}, </c:forEach>'
+              name:'<c:forEach var="cvo" items="${clist}">${cvo.product_name}, </c:forEach>',
                 
-              ,<c:set var="total" value="0"/>
-                  <c:forEach var="cvo" items="${clist}">
-                  <c:set var="total" value="${total+cvo.product_price*cvo.cart_qty}"/>
-              </c:forEach>
+              <c:set var="total" value="0"/>
+                <c:forEach var="cvo" items="${clist}">
+              <c:set var="total" value="${total+cvo.product_price*cvo.cart_qty}"/>
+                </c:forEach>
 
-                amount: '${total}',//가격  
+              amount: '${total}',//가격  
          
-                buyer_email: '${uvo.user_email}',
-                buyer_name: $("#receiver_name").val(),
-                buyer_tel: $("#receiver_tel").val(),      
-                buyer_postcode: $("#receiver_zipcode").val(),
-                buyer_addr: $("#receiver_addr").val()
+              buyer_email: '${uvo.user_email}',
+              buyer_name: $("#receiver_name").val(),
+              buyer_tel: $("#receiver_tel").val(),      
+              buyer_postcode: $("#receiver_zipcode").val(),
+              buyer_addr: $("#receiver_addr").val()
 
               /*                  
               모바일 결제시,                
@@ -242,28 +240,28 @@
                     $.ajax({
                       url: "/completion", // 예: https://www.myservice.com/payments/complete
                       method: "POST",
-                      headers: { "Content-Type": "application/json" },
+                      headers: { "Content-Type" : "application/json" },
                       data: {
                           imp_uid: rsp.imp_uid,
-                          merchant_uid: rsp.merchant_uid
+                          merchant_uid: rsp.merchant_uid,
+                          pay_method:rsp.pay_method
                       }
-                        }).done(function (data) {
-                          console.log(data);
+                        }).done(function (data){
+                          console.log(data.imp_uid);
                         })
-
                     } else {                
                           var msg = '결제에 실패하였습니다.';                
                           msg += '에러내용 : ' + rsp.error_msg;            
-                      }           
+                      }          
                      alert(msg);
-                });
-          });
-      });
+                });      
+            });
+        });
 
   $(function(){
-      $("#selectAddress").click(function(){
+    $("#selectAddress").click(function(){
            window.open("/user/addressbook","addressbook","width=500, height=800");
         });
-  });
+    });
 </script>
         

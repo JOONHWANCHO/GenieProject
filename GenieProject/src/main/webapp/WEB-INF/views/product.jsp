@@ -9,7 +9,7 @@
 }
 #product_order_list button{
 	border:none;
-	background-color:none;
+	background-color:#fafafa;
 	font-size:1.1em;
 }
 </style>

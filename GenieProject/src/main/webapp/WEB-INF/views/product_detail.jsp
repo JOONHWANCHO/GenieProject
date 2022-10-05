@@ -119,7 +119,7 @@
 </script>
 
 <section class="product_detail">
-    <h1>상세페이지</h1>
+    <!--<h1>상세페이지</h1>-->
     <form method="post" action="/addCart" id="Cart">
         <div class="box-wrapper1"> 
             <input type="hidden" value="${logId}" name="genie_id">
@@ -130,10 +130,10 @@
             <div class="box3" onclick="detail1('${pvo.product_image2}')" style="background-image:url(${pvo.product_image2})"></div>
             <div class="box4" onclick="detail1('${pvo.product_image3}')" style="background-image:url(${pvo.product_image3})"></div>
             <div class="box5">
-                상품명 : ${pvo.product_name}
+                ${pvo.product_name}
             </div>
             <div class="box6">
-                상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
+                <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
                 <input type="hidden" value="${pvo.product_price}" name="cart_price">
             </div>
             <div class="box7">
@@ -174,40 +174,48 @@
             <h2>상품리뷰</h2>
             <h3>동일한 상품에 대해 작성한 상품평이며 상품을 구매하신 분들이 직접 작성하신 리뷰입니다.</h3>
         </div>
-        <div class="box_5">
-            
+
+        <form class="replyFrm" name="replyFrm" id="replyFrm" method="post">
+
+            <div class="box_5">
+                <fieldset>
+                    <span class="text-bold">만족도</span>
+                    <input type="radio" name="rating" value="5" id="rate1">
+                    <label for="rate1">★</label>
+                    <input type="radio" name="rating" value="4" id="rate2">
+                    <label for="rate2">★</label>
+                    <input type="radio" name="rating" value="3" id="rate3">
+                    <label for="rate3">★</label>
+                    <input type="radio" name="rating" value="2" id="rate4">
+                    <label for="rate4">★</label>
+                    <input type="radio" name="rating" value="1" id="rate5">
+                    <label for="rate5">★</label>
+                </fieldset>
+            </div>
+
+            <div class="box_6">
+                <input type="hidden" name="product_id" value="${pvo.product_id}"/>
+                <textarea class="col-auto form-control" type="text" id="comment" name="comment" placeholder="다른 고객님에게 도움이 되도록 상품에 대한 솔직한 평가를 남겨주세요."></textarea>
+            </div>
+
+            <div class="box_7">
+                <c:if test='${vo.genie_id==logId}'>
+                    <a href="/reply/replyProductEdit/${vo.no}">수정</a>
+                    <a href="javascript:replyProductDel();">삭제</a>
+                </c:if>
+            </div>
+            <div class="box_8">
+                <input type="submit" value="리뷰 등록하기"/>
+            </div>
+        </form>
+
+
+        <div id="replyList">
+            <ul>
+                
+            </ul>
         </div>
-        <div class="box_6">
-            글쓴이 + (글쓴 시각)
-        </div>
-        <div class="box_7">
-            <form class="mb-3" name="replyFrm" id="replyFrm" method="post">
-				<fieldset>
-					<span class="text-bold">만족도</span>
-					<input type="radio" name="rating" value="5" id="rate1"><label
-						for="rate1">★</label>
-					<input type="radio" name="rating" value="4" id="rate2"><label
-						for="rate2">★</label>
-					<input type="radio" name="rating" value="3" id="rate3"><label
-						for="rate3">★</label>
-					<input type="radio" name="rating" value="2" id="rate4"><label
-						for="rate4">★</label>
-					<input type="radio" name="rating" value="1" id="rate5"><label
-						for="rate5">★</label>
-				</fieldset>
-				<div>
-					<input type="hidden" name="product_id" value="${pvo.product_id}"/>
-					<textarea class="col-auto form-control" type="text" id="comment" name="comment"
-							  placeholder="다른 고객님에게 도움이 되도록 상품에 대한 솔직한 평가를 남겨주세요."></textarea>
-				</div>
-				<input type="submit" value="리뷰 등록하기"/>
-			</form>
-			<div id="replyList">
-				<ul>
-					
-				</ul>
-			</div>
-        </div>
+
     </div>
 
     <div class="qna-wrapper">

@@ -61,4 +61,9 @@ public class ProductServiceImpl implements ProductService{
 	public int delCart(String genie_id) {
 		return dao.delCart(genie_id);
 	}
+
+	@Override
+	public int myorder(String genie_id, String imp_uid) {
+		return dao.myorder(genie_id, imp_uid);
+	}
 }
