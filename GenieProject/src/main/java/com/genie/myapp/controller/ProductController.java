@@ -26,7 +26,6 @@ import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.CartVO;
-import com.genie.myapp.vo.DeliveryVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.TagVO;
 
@@ -150,8 +149,8 @@ public class ProductController{
 
 	//댓글삭제
 	@GetMapping("delProduct")
-	public int delProduct(int cart_num, HttpSession s) {
-		String genie_id = (String)s.getAttribute("logId");
+	public int delProduct(int cart_num, HttpSession session) {
+		String genie_id = (String)session.getAttribute("logId");
 		return productService.delProduct(cart_num, genie_id);	
 	}
 
@@ -171,13 +170,19 @@ public class ProductController{
 	}
 
 	@PostMapping("completion")
-	public ModelAndView completion(CartVO vo){
+	public ModelAndView completion(HttpSession session){
 		
-		int cnt= productService.delCart(vo);
+		//장바구니 삭제
+		String genie_id = (String)session.getAttribute("logId"); 
+		int cnt= productService.delCart(genie_id);
 		System.out.println("삭제된 레코드 수:"+cnt);
+
+		//주문완료 페이지 
+		
+		
 		
 		mav=new ModelAndView();
-
+		mav.setViewName("/");
 		return mav;
 	}
 
