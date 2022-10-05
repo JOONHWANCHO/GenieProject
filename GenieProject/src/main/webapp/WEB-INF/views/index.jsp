@@ -5,7 +5,7 @@
 <!--Genie 메인화면--->
 <section class="index">
    <div class="index-list">      
-      <a href="/genie"><img src="/image/banner_western_simple.png"></a>
+      <a href="/genie"><img src="/image/main_bg.png"></a>
    </div>
 
    <div class="category">
@@ -26,6 +26,7 @@
       </div>
    </div>
    
+   <!--
    <div class="ranking-list">
       <h1>고민될 땐 선물랭킹!<h1>
       <div>
@@ -34,9 +35,10 @@
          <a href="/product?product_tag=남성"><img src="/image/gender_male_long.png"></a>
       </div>
    <div>
+   -->
 
    <div class="best-tag">
-      <h1># 모두의 인기 태그</h1>
+      <h1>모두의 인기 태그</h1>
       <div class="tag-button">
        <c:forEach var="tvo" items="${tlist}">
          <button onclick="location.href='/product?product_tag=${tvo.product_tag}'">#${tvo.product_tag}</button>
@@ -52,14 +54,138 @@
       </div>
    </div>
 
-   <div class="recommend">
-      <div class="box1">금주의 추천상품</div>
-      <a href="/product" class="box2"></a>
-      <a href="/product" class="box3"></a>
-      <a href="/product" class="box4"></a>
-      <div class="box5" style="font-size: 2rem;"><a href="/">브랜드1 상품명</a></div>
-      <div class="box6" style="font-size: 1.5rem;"><a href="/">브랜드1 가격</a></div>
-      <div class="box7" style="font-size: 2rem;"><a href="/">브랜드2 상품명</a></div>
-      <div class="box8" style="font-size: 1.5rem;"><a href="/">브랜드2 가격</a></div>
+   <div class="recommand_listing">      
+      <div id="product_order_list">
+         <p>
+         <button type="button" onclick="location.href='/mbti/${mbti}/pricelist'">가격낮은순</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         <button type="button" onclick="location.href='/mbti/${mbti}/pricelistdesc'">가격높은순</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         <button type="button" onclick="location.href='/mbti/${mbti}/recentlist'">최신순</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+         <button type="button" onclick="location.href='/mbti/${mbti}/likelist'">인기순</button> </p>
+      </div>
+   </div>
+ 
+      <!--
+      <div class="recommend">
+         <div class="box1">금주의 추천상품</div>
+         <a href="/product" class="box2"></a>
+         <a href="/product" class="box3"></a>
+         <a href="/product" class="box4"></a>
+         <div class="box5" style="font-size: 2rem;"><a href="/">브랜드1 상품명</a></div>
+         <div class="box6" style="font-size: 1.5rem;"><a href="/">브랜드1 가격</a></div>
+         <div class="box7" style="font-size: 2rem;"><a href="/">브랜드2 상품명</a></div>
+         <div class="box8" style="font-size: 1.5rem;"><a href="/">브랜드2 가격</a></div>
+      </div>
+      -->
+   <div class="genieContainer">
+      <h1>금주의 추천상품</h1>
+      <h4>소중한 분들을 위한 추천 상품입니다.<br>
+          공간과 마음을 채우는 특별한 선물로 소중한 사람들에게 감사의 마음을 전해보세요.</h4>
+      <div class="genieRow">
+      <!-- 
+         <c:forEach var="pvo" items="${plist }">
+            <div class="card-col">
+               <a class="product-title" href="/product_detail?product_id=${pvo.product_id}"><i class="fa-solid fa-magnifying-glass"></i></a>
+               <div class="card_header">
+                  <img id="img-caption"  src="${pvo.product_image1}" alt="Img_1">
+               </div>
+               <div class="card_bottom">
+                  <h3>${pvo.genie_id}</h3>
+                  <p>${pvo.product_name}</p>	
+                  <p><fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/></p>	
+               </div>
+            </div>
+         </c:forEach>
+      -->
+      
+         <div class="card-col">
+            <div class="card_header">
+               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
+            </div>
+            <div class="card_bottom">
+               <h3>제품이름</h3>
+               <p>제품 정보</p>
+            </div>
+         </div>
+         <div class="card-col">
+            <div class="card_header">
+               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
+            </div>
+            <div class="card_bottom">
+               <h3>제품이름</h3>
+               <p>제품 정보</p>
+            </div>
+         </div>
+         <div class="card-col">
+            <div class="card_header">
+               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
+            </div>
+            <div class="card_bottom">
+               <h3>제품이름</h3>
+               <p>제품 정보</p>
+            </div>
+         </div>
+         <div class="card-col">
+            <div class="card_header">
+               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
+            </div>
+            <div class="card_bottom">
+               <h3>제품이름</h3>
+               <p>제품 정보</p>
+            </div>
+         </div>
+         <div class="card-col">
+            <div class="card_header">
+               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
+            </div>
+            <div class="card_bottom">
+               <h3>제품이름</h3>
+               <p>제품 정보</p>
+            </div>
+         </div>
+         <div class="card-col">
+            <div class="card_header">
+               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
+            </div>
+            <div class="card_bottom">
+               <h3>제품이름</h3>
+               <p>제품 정보</p>
+            </div>
+         </div>
+         <div class="card-col">
+            <div class="card_header">
+               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
+            </div>
+            <div class="card_bottom">
+               <h3>제품이름</h3>
+               <p>제품 정보</p>
+            </div>
+         </div>
+         <div class="card-col">
+            <div class="card_header">
+               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
+            </div>
+            <div class="card_bottom">
+               <h3>제품이름</h3>
+               <p>제품 정보</p>
+            </div>
+         </div>
+
+
+         <c:forEach var="pvo" items="${plist }">
+            <div class="card-col">
+               <a class="product-title" href="/product_detail?product_id=${pvo.product_id}"><i class="fa-solid fa-magnifying-glass"></i></a>
+               <div class="card_header">
+                  <img id="img-caption"  src="${pvo.product_image1}" alt="Img_1">
+               </div>
+               <div class="card_bottom">
+                  <h3>${pvo.genie_id}</h3>
+                  <p>${pvo.product_name}</p>	
+                  <p><fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/></p>	
+               </div>
+            </div>
+         </c:forEach>
+
+
+      </div>
    </div>
 </section>

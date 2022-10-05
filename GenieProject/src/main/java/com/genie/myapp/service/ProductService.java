@@ -21,4 +21,7 @@ public interface ProductService{
     public int delProduct(int cart_num, String genie_id);
 
     public void hitCount(int product_id);
+
+    //구매완료 후, 장바구니에서 삭제
+    public int delCart(String genie_id);
 }   

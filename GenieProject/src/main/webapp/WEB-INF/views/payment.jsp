@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./inc/top.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="./inc/top.jspf"%>
 
 <link rel="stylesheet" href="/js_css/cart_style.css" type="text/css"/>
 
@@ -172,8 +172,10 @@
                     <td class="tableitem">
                 <input type="button" id="selectAddress" value="배송지 선택">       
                       <p class="itemtext"><input type="text" id="receiver_name" name="receiver_name" placeholder="받는사람 이름" readonly></p>
-                      <p class="itemtext"><input type="text" id="receiver_address" name="receiver_address" placeholder="받는사람 주소" readonly></p>
-                      <p class="itemtext"><input type="text" id="receiver_tel" name="receiver_tel" placeholder="받는 사람 전화번호" readonly></p></td>
+                      <p class="itemtext"><input type="text" id="receiver_zipcode" name="receiver_zipcode" placeholder="우편번호" readonly></p>
+                      <p class="itemtext"><input type="text" id="receiver_addr" name="receiver_addr" placeholder="받는사람 주소" readonly></p>
+                      <p class="itemtext"><input type="text" id="receiver_tel" name="receiver_tel" placeholder="받는 사람 전화번호" readonly></p>
+                      </td>
                 </tr>
                 <tr class="service">
                     <td class="tableitem"><p class="itemtext">
@@ -203,7 +205,9 @@
       $(function(){
           $("#buy").click(function () {        
           var IMP = window.IMP; // 생략가능        
-          IMP.init('imp48507577');         
+          IMP.init('imp48507577');   
+          var receiver_name=document.getElementById("receiver_name").value;
+          console.log(receiver_name);
           // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
           // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드        
           IMP.request_pay({
@@ -220,11 +224,11 @@
                 amount: '${total}',//가격  
          
                 buyer_email: '${uvo.user_email}',
-                buyer_name: '<input type="text" value="receiver_name">',
-                buyer_tel: '<input type="text" value="receiver_tel">',      
-                buyer_addr: '<input type="text" value="receiver_address">',
-                buyer_postcode: '<input type="text" value="user_zipcode">',
-                m_redirect_url: 'https://localhost:9070/complete'
+                buyer_name: $("#receiver_name").val(),
+                buyer_tel: $("#receiver_tel").val(),      
+                buyer_postcode: $("#receiver_zipcode").val(),
+                buyer_addr: $("#receiver_addr").val()
+
               /*                  
               모바일 결제시,                
               결제가 끝나고 랜딩되는 URL을 지정                 
@@ -232,20 +236,30 @@
               */        
               }, function (rsp) {            
                   console.log(rsp);            
-                  if (rsp.success) {                
-                      var msg = '결제가 완료되었습니다.';                
-                      msg += '고유ID : ' + rsp.imp_uid;                
-                      msg += '상점 거래ID : ' + rsp.merchant_uid;                
-                      msg += '결제 금액 : ' + rsp.paid_amount;                
-                      msg += '카드 승인번호 : ' + rsp.apply_num;            
-                      } else {                
+                  if (rsp.success) {                 
+                    var msg = '결제가 완료되었습니다.';
+
+                    $.ajax({
+                      url: "/completion", // 예: https://www.myservice.com/payments/complete
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      data: {
+                          imp_uid: rsp.imp_uid,
+                          merchant_uid: rsp.merchant_uid
+                      }
+                        }).done(function (data) {
+                          console.log(data);
+                        })
+
+                    } else {                
                           var msg = '결제에 실패하였습니다.';                
                           msg += '에러내용 : ' + rsp.error_msg;            
                       }           
-                  alert(msg);
-              });
+                     alert(msg);
+                });
           });
       });
+
   $(function(){
       $("#selectAddress").click(function(){
            window.open("/user/addressbook","addressbook","width=500, height=800");

@@ -57,5 +57,8 @@ public class ProductServiceImpl implements ProductService{
 		dao.hitCount(product_id);
 	}
 
-
+	@Override
+	public int delCart(String genie_id) {
+		return dao.delCart(genie_id);
+	}
 }
