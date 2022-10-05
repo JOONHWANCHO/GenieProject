@@ -40,15 +40,24 @@
    <div class="best-tag">
       <h1>모두의 인기 태그</h1>
       <div class="tag-button">
-       <c:forEach var="tvo" items="${tlist}">
+      <!-- 
+      <c:forEach var="tvo" items="${tlist}">
          <button onclick="location.href='/product?product_tag=${tvo.product_tag}'">#${tvo.product_tag}</button>
-         <%-- <button onclick="location.href='/product?product_tag=생일'">#생일</button>
+      </c:forEach>
+      -->
+         <button onclick="location.href='/product?product_tag=생일'">#생일</button>
          <button onclick="location.href='/product?product_tag=20대'">#20대</button>
          <button onclick="location.href='/product?product_tag=여성'">#여성</button>
          <button onclick="location.href='/product?product_tag=부모님'">#부모님</button>
          <button onclick="location.href='/product?product_tag=회사동료'">#회사동료</button>
-         <button onclick="location.href='/product?product_tag=결혼'">#결혼</button> --%>
-      </c:forEach>
+         <button onclick="location.href='/product?product_tag=결혼'">#결혼</button> 
+         <button onclick="location.href='/product?product_tag=백일'">#백일</button> 
+         <button onclick="location.href='/product?product_tag=연인'">#연인</button> 
+         <button onclick="location.href='/product?product_tag=가족/친척'">#가족/친척</button> 
+         <button onclick="location.href='/product?product_tag=스승/멘토'">#스승/멘토</button> 
+         <button onclick="location.href='/product?product_tag=결혼'">#30대</button> 
+         <button onclick="location.href='/product?product_tag=친구'">#친구</button> 
+         <button onclick="location.href='/product?product_tag=출산'">#출산</button> 
          <button onclick="location.href='/mbti/mbtiMain'">#mbti</button>
          <button onclick="window.open('https://kr.vonvon.me/quiz/19484', 'window_name', 'width=430, height=700, location=no, status=no, scrollbars=yes');">#내 mbti는?</button>   
       </div>
@@ -81,22 +90,8 @@
       <h4>소중한 분들을 위한 추천 상품입니다.<br>
           공간과 마음을 채우는 특별한 선물로 소중한 사람들에게 감사의 마음을 전해보세요.</h4>
       <div class="genieRow">
-      <!-- 
-         <c:forEach var="pvo" items="${plist }">
-            <div class="card-col">
-               <a class="product-title" href="/product_detail?product_id=${pvo.product_id}"><i class="fa-solid fa-magnifying-glass"></i></a>
-               <div class="card_header">
-                  <img id="img-caption"  src="${pvo.product_image1}" alt="Img_1">
-               </div>
-               <div class="card_bottom">
-                  <h3>${pvo.genie_id}</h3>
-                  <p>${pvo.product_name}</p>	
-                  <p><fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/></p>	
-               </div>
-            </div>
-         </c:forEach>
-      -->
       
+      <!-- 
          <div class="card-col">
             <div class="card_header">
                <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
@@ -106,74 +101,11 @@
                <p>제품 정보</p>
             </div>
          </div>
-         <div class="card-col">
-            <div class="card_header">
-               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
-            </div>
-            <div class="card_bottom">
-               <h3>제품이름</h3>
-               <p>제품 정보</p>
-            </div>
-         </div>
-         <div class="card-col">
-            <div class="card_header">
-               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
-            </div>
-            <div class="card_bottom">
-               <h3>제품이름</h3>
-               <p>제품 정보</p>
-            </div>
-         </div>
-         <div class="card-col">
-            <div class="card_header">
-               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
-            </div>
-            <div class="card_bottom">
-               <h3>제품이름</h3>
-               <p>제품 정보</p>
-            </div>
-         </div>
-         <div class="card-col">
-            <div class="card_header">
-               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
-            </div>
-            <div class="card_bottom">
-               <h3>제품이름</h3>
-               <p>제품 정보</p>
-            </div>
-         </div>
-         <div class="card-col">
-            <div class="card_header">
-               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
-            </div>
-            <div class="card_bottom">
-               <h3>제품이름</h3>
-               <p>제품 정보</p>
-            </div>
-         </div>
-         <div class="card-col">
-            <div class="card_header">
-               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
-            </div>
-            <div class="card_bottom">
-               <h3>제품이름</h3>
-               <p>제품 정보</p>
-            </div>
-         </div>
-         <div class="card-col">
-            <div class="card_header">
-               <img id="img-caption"  src="https://image.idus.com/image/files/de982f5b2908436a90e816c0369da844_720.jpg" alt="Img_1">
-            </div>
-            <div class="card_bottom">
-               <h3>제품이름</h3>
-               <p>제품 정보</p>
-            </div>
-         </div>
-
+      -->
 
          <c:forEach var="pvo" items="${plist }">
             <div class="card-col">
-               <a class="product-title" href="/product_detail?product_id=${pvo.product_id}"><i class="fa-solid fa-magnifying-glass"></i></a>
+               <a class="product-title" href="/product_detail?product_id=${pvo.product_id}"></a>
                <div class="card_header">
                   <img id="img-caption"  src="${pvo.product_image1}" alt="Img_1">
                </div>
@@ -188,4 +120,41 @@
 
       </div>
    </div>
+
+  
+ 
 </section>
+
+	 <!-- Footer -->
+
+   <div class="blank"></div>
+
+	<section class="contact" id="contact">
+		<div class="main-contact">
+			<div class="contact-content">
+				<img src="/image/logo_western.png">
+			</div>
+
+			<div class="contact-content">
+			   <li><a href="#home">Home</a></li>
+            <li><a href="#categories">MBTI</a></li>
+            <li><a href="#courses">카테고리</a></li>
+            <li><a href="#about">인기태그</a></li>
+			</div>
+
+			<div class="contact-content">
+				<li><a href="#">Login</a></li>
+				<li><a href="#">Cart</a></li>
+				<li><a href="#">마이페이지</a></li>
+				<li><a href="#">문의하기</a></li>
+			</div>
+
+			<div class="contact-content">
+				<li><a href="#">GENIE<br></a></li>
+            <li><a href="#">강남구 역삼동 멀티캠퍼스</a></li>
+				<li><a href="#">genie@genie.com</a></li>
+				<li><a href="#">02-475-3421</a></li>
+			</div>
+
+		</div>
+	</section>
