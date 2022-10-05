@@ -7,7 +7,7 @@
 		select genie_id, reply_no, product_id, comment, rating, writedate 
 		from reply_product
 		where product_id=${param1}
-		order by reply_no asc
+		order by reply_no desc
 	</select>
 	
 	<insert id="replyProductWrite">
@@ -23,4 +23,9 @@
 	<delete id="replyProductDelete">
 		delete from reply_product where reply_no=${param1} and genie_id=#{param2}
 	</delete>
+
+	<insert id="likeInsert">
+		insert into product_like (genie_id, product_id, like_num)
+		values(#{genie_id}, #{product_id}, '1')
+	</insert>
 </mapper>

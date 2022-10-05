@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.genie.myapp.dao.ReplyProductDAO;
+import com.genie.myapp.vo.LikeVO;
 import com.genie.myapp.vo.ReplyProductVO;
 
 @Service
@@ -33,4 +34,13 @@ public class ReplyProductServiceImpl implements ReplyProductService{
 	public int replyProductDelete(int reply_no, String genie_id) {
 		return DAO.replyProductDelete(reply_no, genie_id);
 	}
+
+	@Override
+	public int likeInsert(LikeVO vo) {
+		return DAO.likeInsert(vo);
+	}
+
+	
+
+
 }

@@ -37,7 +37,7 @@
    <div>
    -->
 
-   <div class="best-tag">
+   <div class="best-tag" id="tag">
       <h1>모두의 인기 태그</h1>
       <div class="tag-button">
       <!-- 
@@ -63,6 +63,13 @@
       </div>
    </div>
 
+   <div class="mbti" id="mbti">
+      <h1>MBTI 추천 선물</h1>
+      <div class="mbti-list">      
+         <a href="/mbti/mbtiMain"><img src="/image/mbti_bg.jpg"></a>
+      </div>
+   </div>
+
    <div class="recommand_listing">      
       <div id="product_order_list">
          <p>
@@ -85,7 +92,8 @@
          <div class="box8" style="font-size: 1.5rem;"><a href="/">브랜드2 가격</a></div>
       </div>
       -->
-   <div class="genieContainer">
+
+   <div class="genieContainer" id="product_list">
       <h1>금주의 추천상품</h1>
       <h4>소중한 분들을 위한 추천 상품입니다.<br>
           공간과 마음을 채우는 특별한 선물로 소중한 사람들에게 감사의 마음을 전해보세요.</h4>
@@ -117,18 +125,15 @@
             </div>
          </c:forEach>
 
-
       </div>
    </div>
 
-  
- 
 </section>
 
 	 <!-- Footer -->
 
    <div class="blank"></div>
-
+  
 	<section class="contact" id="contact">
 		<div class="main-contact">
 			<div class="contact-content">
@@ -136,16 +141,16 @@
 			</div>
 
 			<div class="contact-content">
-			   <li><a href="#home">Home</a></li>
-            <li><a href="#categories">MBTI</a></li>
-            <li><a href="#courses">카테고리</a></li>
-            <li><a href="#about">인기태그</a></li>
+			   <li><a href="/">Home</a></li>
+            <li><a href="#mbti">MBTI</a></li>
+            <li><a href="#category">카테고리</a></li>
+            <li><a href="#tag">인기태그</a></li>
 			</div>
 
 			<div class="contact-content">
-				<li><a href="#">Login</a></li>
-				<li><a href="#">Cart</a></li>
-				<li><a href="#">마이페이지</a></li>
+				<li><a href="/user/login">Login</a></li>
+				<li><a href="/cart">Cart</a></li>
+				<li><a href="/user/MyPage">마이페이지</a></li>
 				<li><a href="#">문의하기</a></li>
 			</div>
 

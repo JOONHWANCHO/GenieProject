@@ -198,4 +198,9 @@
 	order by total_sales desc
 	</select>
 
+	<!-- seller status -->
+	<select id="sellerStatus" resultType="String">
+		select seller_status from seller where genie_id = #{param4}
+	</select>
+
 </mapper>

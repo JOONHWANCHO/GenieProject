@@ -6,7 +6,11 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
-
+<style>
+    .likeChange{
+        font-size:2em; color:#ddd;        
+    }
+</style>
 <script>
     $(function(){
 		function replyAllList(){
@@ -23,23 +27,47 @@
 					
 					$reply.each(function(i, vo){ // index, vo
 						tag = "<li>";
-						tag += "<div><b>"+vo.genie_id+"</b>";
+						tag += "<div><b>"+"작성자 : "+vo.genie_id+"</b>";
 						// 수정, 삭제버튼(자신이 쓴 글일때만) 표시
 						if(vo.genie_id=='${logId}'){
 							tag += "<input type='button' value='리뷰수정'/>";
 							tag += "<input type='button' value='리뷰삭제' title='"+vo.reply_no+"'/>";
 						}
-						tag += "<br/>"+vo.rating+"점 "+vo.comment+"</div>";
+						tag += "<br/>"
+                            if(vo.rating==5){ 
+                                tag +='만족도 : ★★★★★'
+                            }else if(vo.rating==4){
+                                tag +='만족도 : ★★★★☆'
+                            }else if(vo.rating==3){
+                                tag +='만족도 : ★★★☆☆'
+                            }else if(vo.rating==2){
+                                tag +='만족도 : ★★☆☆☆'
+                            }else if(vo.rating==1){
+                                tag +='만족도 : ★☆☆☆☆'
+                            }
+                        tag += "<br>"
+                                +"리뷰내용 : "
+                                +vo.comment+"<br></div>";
 						// 로그인 아이디와 댓글 아이디 동일시 수정폼
 						if(vo.genie_id=='${logId}'){
 							tag += "<div style='display:none'><form method='post'>";
 							tag += "<input type='hidden' name='reply_no' value='"+vo.reply_no+"'/>";
-							tag += "<textarea name='rating'>"+vo.rating+"</textarea>";
-							tag += "<textarea name='comment' rows='4' cols='50'>"+vo.comment+"</textarea>";
-							tag += "<input type='submit' value='리뷰수정하기'/>";
+                            tag += "<fieldset>"
+                                    +"<input type='radio' name='rating' value='5' id='rate6'>"
+                                    +"<label for='rate6'>★</label>"
+                                    +"<input type='radio' name='rating' value='4' id='rate7'>"
+                                    +"<label for='rate7'>★</label>"
+                                    +"<input type='radio' name='rating' value='3' id='rate8'>"
+                                    +"<label for='rate8'>★</label>"
+                                    +"<input type='radio' name='rating' value='2' id='rate9'>"
+                                    +"<label for='rate9'>★</label>"
+                                    +"<input type='radio' name='rating' value='1' id='rate10'>"
+                                    +"<label for='rate10'>★</label>"
+                                    +"</fieldset>"
+							tag += "<textarea name='comment' style='width:100%; height:30vh;'/>"+vo.comment+"</textarea>";
+							tag += "<input type='submit' value='리뷰 수정하기' style='display:flex; align-items:center; padding:1ch;'/>";
 							tag += "</form></div>";
-						}
-						
+						}						
 						tag += "</li>"
 						
 						$("#replyList>ul").append(tag);
@@ -84,7 +112,6 @@
 			event.preventDefault();
 			var url = "/reply/replyProductEdit";
 			var params = $(this).serialize();
-			
 			$.ajax({
 				url:url,
 				data:params,
@@ -113,8 +140,37 @@
 				});
 			}
 		});
-		
 		replyAllList(); // 리뷰 목록 가져오기
+    });
+</script>
+<script>
+    $(function(){
+        $('#likeBtn').click(function(){
+            $.ajax({
+                url:"reply/likeInsert",
+                type:"POST",
+                data:{product_id:${pvo.product_id}},
+                success:function(result){
+                    console.log(result+"성공");
+                },error:function(e){
+                    console.log(e.responseText);
+                }
+            });
+        });
+
+        // function likeCnt(){
+        //     $.ajax({
+        //         url:"reply/likeCount",
+        //         type:"POST",
+        //         data:{no:${pvo.product_id}},
+        //         success:function(result){
+        //             likeCnt();
+        //         },error:function(e){
+        //             console.log(e.responseText);
+        //         }
+        //     });
+        // }
+        // likeCnt();
     });
 </script>
 
@@ -133,14 +189,14 @@
                 ${pvo.product_name}
             </div>
             <div class="box6">
-                <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
+                상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
                 <input type="hidden" value="${pvo.product_price}" name="cart_price">
             </div>
             <div class="box7">
-                상품카테고리 : ${pvo.product_category}
+                상품설명 : ${pvo.product_info}
             </div>
             <div class="box8">
-                상품설명 : ${pvo.product_info}
+                상품카테고리 : ${pvo.product_category}
             </div>
             <div class="box9">
                 셀러명 : ${svo.ceo_name}
@@ -159,6 +215,9 @@
         </div>
     </form>
     
+        <div class="w3-button w3-black w3-round" id="likeBtn" style="text-align:center">
+            <i class="fa fa-heart likeChange"></i>&nbsp;<span class="likeCnt"></span>
+        </div>
 <!-- ------------------------------------------------------------------------------------------- -->
     <div class="review-wrapper">
         <button class="box_1" onclick="content1()">
@@ -199,25 +258,20 @@
             </div>
 
             <div class="box_7">
-                <c:if test='${vo.genie_id==logId}'>
-                    <a href="/reply/replyProductEdit/${vo.no}">수정</a>
-                    <a href="javascript:replyProductDel();">삭제</a>
-                </c:if>
-            </div>
-            <div class="box_8">
                 <input type="submit" value="리뷰 등록하기"/>
             </div>
         </form>
 
-
-        <div id="replyList">
-            <ul>
-                
-            </ul>
+        <div class="box_8">
+            <div id="replyList">
+                <ul>
+                    
+                </ul>
+            </div>
         </div>
 
     </div>
-
+    
     <div class="qna-wrapper">
         <div class="qna">
             <button class="box_01" onclick="content1()">
@@ -257,7 +311,7 @@
                 브랜드가 달라도 상품 주문 시 한 번에 결제할 수 있습니다.
             </div>
             <div class="box_13">
-                Q. 일반 배송 상품은 언제 배송 되나요?
+                Q. 일반 배송 상품은 언제 배송 되나요??
             </div>
             <div class="box_14">
                 A. 일반배송은 브랜드마다 일정이 다르고 평일 기준으로 출고 됩니다.<br>

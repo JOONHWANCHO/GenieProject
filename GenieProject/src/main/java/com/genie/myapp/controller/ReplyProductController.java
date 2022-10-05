@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.genie.myapp.service.ReplyProductService;
+import com.genie.myapp.vo.LikeVO;
 import com.genie.myapp.vo.ReplyProductVO;
 
 @RestController
@@ -43,4 +44,12 @@ public class ReplyProductController{
  		String genie_id = (String)session.getAttribute("logId");
  		return service.replyProductDelete(reply_no, genie_id);
  	}
+
+	@PostMapping("likeInsert")
+	public int likeInsert(LikeVO vo, HttpSession session){
+		vo.setGenie_id((String)session.getAttribute("logId"));
+        System.out.println(vo.toString());
+
+		return service.likeInsert(vo);
+	}
 }
