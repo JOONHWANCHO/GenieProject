@@ -102,22 +102,37 @@
     </insert>
 
     <delete id="delProduct">
+
         delete from cart where cart_num=#{param1} and genie_id=#{param2}
+
     </delete>
 
 <!-- 구매정보 이동 -->
 
-    <insert id="myOrder">
+    <insert id="myorder">
 
         insert into myorder 
         (order_num, 
         genie_id, 
+        product_id,
         receipent_name, 
         receipent_phone,
         receipent_address, 
         receipent_request,
-        cart_qty) 
-        values(#{cart_num}, #{genie_id}, #{prod uct_id}, #{cart_price}, #{cart_qty})
+        receipent_delivery_status,
+        order_price,
+        order_qty) 
+
+        values
+        (#{imp_uid}, 
+        #{genie_id}, 
+        #{product_id}, 
+        #{receiver_name},
+        #{receiver_tel},
+        #{receiver_addr}, 
+        #{receipent_request}, 
+        #{order_price}, 
+        #{order_qty})
 
     </insert>
      <delete id = "delCart">

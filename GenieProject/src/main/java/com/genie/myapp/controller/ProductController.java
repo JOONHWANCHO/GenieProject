@@ -11,7 +11,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,10 +49,12 @@ public class ProductController{
 	Map<String, Object> map = null;
 
 	@GetMapping("/")
-	public ModelAndView index(AdminVO vo) {
+	public ModelAndView index(AdminVO vo, ProductVO PVO) {
 
 		mav = new ModelAndView();
 		mav.addObject("tlist", adminService.adminTag(vo));
+		mav.addObject("plist", productService.listProduct(PVO));
+		mav.addObject("pvo", PVO);
 		mav.setViewName("/index");
 
 		return mav;
@@ -170,19 +171,22 @@ public class ProductController{
 	}
 
 	@PostMapping("completion")
-	public ModelAndView completion(HttpSession session){
-		
-		//장바구니 삭제
+	public ModelAndView completion(HttpSession session, @RequestParam("imp_uid") String imp_uid){
+
 		String genie_id = (String)session.getAttribute("logId"); 
-		int cnt= productService.delCart(genie_id);
-		System.out.println("삭제된 레코드 수:"+cnt);
+		System.out.print(imp_uid);
 
 		//주문완료 페이지 
+		int ocnt=productService.myorder(genie_id, imp_uid);
+		System.out.print(ocnt);
 		
-		
+		//장바구니 삭제
+		int cnt= productService.delCart(genie_id);
+		System.out.println("삭제된 레코드 수:"+cnt);
 		
 		mav=new ModelAndView();
 		mav.setViewName("/");
+
 		return mav;
 	}
 

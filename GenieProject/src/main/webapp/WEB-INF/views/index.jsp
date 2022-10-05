@@ -8,7 +8,7 @@
       <a href="/genie"><img src="/image/main_bg.png"></a>
    </div>
 
-   <div class="category">
+   <div class="category" id="category">
       <h1>카테고리</h1>
       <div class="category-list">
          <span><a href="/product?product_category=생일"><img src="https://img1.kakaocdn.net/thumb/C600x600.fwebp.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fproduct%2Fgift%2Fproduct%2F20220223091003_007dc2b6f60645a8bc2682e97914b829.jpg"></a><br>생일</span>

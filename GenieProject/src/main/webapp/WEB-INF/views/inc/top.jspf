@@ -26,7 +26,7 @@
 			<%-- 제품리스트 --%>
 			<li><a href="/">제품리스트</a></li>
 			<%-- 카테고리 --%>
-			<li><a href="/">카테고리</a></li>
+			<li><a href="index.jsp#category">카테고리</a></li>
 			<%-- 인기태그 --%>
 			<li><a href="/">인기태그</a></li>
 		</ul>

@@ -6,73 +6,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
-<<<<<<< HEAD
-=======
-<script>
-    $(function(){
-        $("#buynow").click(function () {        
-        var IMP = window.IMP; // 생략가능        
-        IMP.init('imp49851084');         
-        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
-        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드        
-        IMP.request_pay({
-            pg: 'inicis', // version 1.1.0부터 지원.            
-            /*                 
-            'kakao':카카오페이,                 
-            html5_inicis':이니시스(웹표준결제)                    
-            'nice':나이스페이                    
-            'jtnet':제이티넷                    
-            'uplus':LG유플러스                    
-            'danal':다날                    
-            'payco':페이코                    
-            'syrup':시럽페이                    
-            'paypal':페이팔                
-            */            
-            pay_method: 'card',            
-            /*                 
-            'samsung':삼성페이,                 
-            'card':신용카드,                 
-            'trans':실시간계좌이체,                
-            'vbank':가상계좌,                
-            'phone':휴대폰소액결제             
-            */
-            merchant_uid: 'merchant_' + new Date().getTime(),            
-            /*
-            merchant_uid에 경우                            
-            */
-            name: '${pvo.product_name}',            
-            //결제창에서 보여질 이름            
-            amount: '${pvo.product_price}',            
-            //가격             
-            buyer_email: '${uvo.user_email}',            
-            buyer_name: '${uvo.user_name}',           
-            buyer_tel: '${uvo.user_tel}',            
-            buyer_addr: '${uvo.user_addr}',            
-            buyer_postcode: '${uvo.user_zipcode}',          
-            m_redirect_url: 'https://www.yourdomain.com/payments/complete'           
-            /*                  
-            모바일 결제시,                
-            결제가 끝나고 랜딩되는 URL을 지정                 
-            (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-            */        
-            }, function (rsp) {            
-                console.log(rsp);            
-                if (rsp.success) {                
-                    var msg = '결제가 완료되었습니다.';                
-                    msg += '고유ID : ' + rsp.imp_uid;                
-                    msg += '상점 거래ID : ' + rsp.merchant_uid;                
-                    msg += '결제 금액 : ' + rsp.paid_amount;                
-                    msg += '카드 승인번호 : ' + rsp.apply_num;            
-                    } else {                
-                        var msg = '결제에 실패하였습니다.';                
-                        msg += '에러내용 : ' + rsp.error_msg;            
-                    }           
-                alert(msg);        
-            });
-        });
-    });
-</script>
->>>>>>> df00d3fbf8496dd1841d3c9bf0d631f239428ca8
 
 <script>
     $(function(){
@@ -186,7 +119,7 @@
 </script>
 
 <section class="product_detail">
-    <h1>상세페이지</h1>
+    <!--<h1>상세페이지</h1>-->
     <form method="post" action="/addCart" id="Cart">
         <div class="box-wrapper1"> 
             <input type="hidden" value="${logId}" name="genie_id">
@@ -197,10 +130,10 @@
             <div class="box3" onclick="detail1('${pvo.product_image2}')" style="background-image:url(${pvo.product_image2})"></div>
             <div class="box4" onclick="detail1('${pvo.product_image3}')" style="background-image:url(${pvo.product_image3})"></div>
             <div class="box5">
-                상품명 : ${pvo.product_name}
+                ${pvo.product_name}
             </div>
             <div class="box6">
-                상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
+                <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
                 <input type="hidden" value="${pvo.product_price}" name="cart_price">
             </div>
             <div class="box7">
@@ -241,40 +174,48 @@
             <h2>상품리뷰</h2>
             <h3>동일한 상품에 대해 작성한 상품평이며 상품을 구매하신 분들이 직접 작성하신 리뷰입니다.</h3>
         </div>
-        <div class="box_5">
-            
+
+        <form class="replyFrm" name="replyFrm" id="replyFrm" method="post">
+
+            <div class="box_5">
+                <fieldset>
+                    <span class="text-bold">만족도</span>
+                    <input type="radio" name="rating" value="5" id="rate1">
+                    <label for="rate1">★</label>
+                    <input type="radio" name="rating" value="4" id="rate2">
+                    <label for="rate2">★</label>
+                    <input type="radio" name="rating" value="3" id="rate3">
+                    <label for="rate3">★</label>
+                    <input type="radio" name="rating" value="2" id="rate4">
+                    <label for="rate4">★</label>
+                    <input type="radio" name="rating" value="1" id="rate5">
+                    <label for="rate5">★</label>
+                </fieldset>
+            </div>
+
+            <div class="box_6">
+                <input type="hidden" name="product_id" value="${pvo.product_id}"/>
+                <textarea class="col-auto form-control" type="text" id="comment" name="comment" placeholder="다른 고객님에게 도움이 되도록 상품에 대한 솔직한 평가를 남겨주세요."></textarea>
+            </div>
+
+            <div class="box_7">
+                <c:if test='${vo.genie_id==logId}'>
+                    <a href="/reply/replyProductEdit/${vo.no}">수정</a>
+                    <a href="javascript:replyProductDel();">삭제</a>
+                </c:if>
+            </div>
+            <div class="box_8">
+                <input type="submit" value="리뷰 등록하기"/>
+            </div>
+        </form>
+
+
+        <div id="replyList">
+            <ul>
+                
+            </ul>
         </div>
-        <div class="box_6">
-            글쓴이 + (글쓴 시각)
-        </div>
-        <div class="box_7">
-            <form class="mb-3" name="replyFrm" id="replyFrm" method="post">
-				<fieldset>
-					<span class="text-bold">만족도</span>
-					<input type="radio" name="rating" value="5" id="rate1"><label
-						for="rate1">★</label>
-					<input type="radio" name="rating" value="4" id="rate2"><label
-						for="rate2">★</label>
-					<input type="radio" name="rating" value="3" id="rate3"><label
-						for="rate3">★</label>
-					<input type="radio" name="rating" value="2" id="rate4"><label
-						for="rate4">★</label>
-					<input type="radio" name="rating" value="1" id="rate5"><label
-						for="rate5">★</label>
-				</fieldset>
-				<div>
-					<input type="hidden" name="product_id" value="${pvo.product_id}"/>
-					<textarea class="col-auto form-control" type="text" id="comment" name="comment"
-							  placeholder="다른 고객님에게 도움이 되도록 상품에 대한 솔직한 평가를 남겨주세요."></textarea>
-				</div>
-				<input type="submit" value="리뷰 등록하기"/>
-			</form>
-			<div id="replyList">
-				<ul>
-					
-				</ul>
-			</div>
-        </div>
+
     </div>
 
     <div class="qna-wrapper">

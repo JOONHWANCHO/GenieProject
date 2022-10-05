@@ -3,6 +3,7 @@
 .index  {
    margin: 0;
    padding: 0;
+   background-color: #fff;
 }
 h1  {
    margin: 12vh 0;
@@ -27,6 +28,7 @@ h1  {
    justify-content: space-evenly;
    row-gap: 3rem;
    background-color: #fff;
+   box-shadow: 0 0 15px #fbfbfb;
    width: 95%;
    border-radius: 15px;
    margin: 0 auto;
@@ -40,10 +42,8 @@ h1  {
 .category-list span  {
    font-size: 1.6rem;
    text-align: center;
-   background-color: #fff;
 }
 .category-list a  {
-   background-color: #fff;
 }
 /* ----------------------------------랭킹페이지----------------------------------------- */
 
@@ -191,7 +191,7 @@ h1  {
    width: 95%;
    height: auto;
    margin: 0 auto;
-
+   background-color: #f7f7f7;
 }
 .card-col{
    width: 25%;
@@ -212,15 +212,15 @@ h1  {
    object-fit: cover;
 }
 .card_bottom{
-   background: #fff;
+   background-color: #fff;
+   box-shadow: 0 0 15px #fbfbfb;
    padding: 25px;
    border-radius: 0 0 20px 20px;
 }
 .card_bottom h3{
-   background-color: #fff;
+
 }
 .card_bottom p{
-   background-color: #fff;
    /*     말줄임 속성    */
    white-space: nowrap;
    text-overflow: ellipsis;
@@ -242,16 +242,14 @@ h1  {
 /* Footer */
 .contact{
 	padding: 60px 13%;
-	background: #fff;
+   background-color: #fff;
+   box-shadow: 0 0 15px #fbfbfb;
+   border-top: 2px #000;
 }
 .main-contact{
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, auto));
 	gap: 2rem;
-   background-color: #fff;
-}
-.contact-content {
-   background-color: #fff;
 }
 .contact-content img{
 	height: auto;
@@ -261,14 +259,12 @@ h1  {
 }
 .contact-content li{
 	margin-bottom: 18px;
-   background-color: #fff;
 }
 .contact-content li a{
 	display: block;
 	font-weight: 500;
 	font-size: 15px;
 	transition: all .40s ease;
-   background-color: #fff;
    color: gray;
 }
 .contact-content li a:hover{
