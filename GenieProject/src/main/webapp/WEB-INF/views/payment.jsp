@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./inc/top.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="./inc/top.jspf"%>
 
 <link rel="stylesheet" href="/js_css/cart_style.css" type="text/css"/>
 
@@ -238,8 +238,9 @@
                   console.log(rsp);            
                   if (rsp.success) {                 
                     var msg = '결제가 완료되었습니다.';
+
                     $.ajax({
-                      url: "https://localhost:9070/complete", // 예: https://www.myservice.com/payments/complete
+                      url: "/completion", // 예: https://www.myservice.com/payments/complete
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       data: {
@@ -249,6 +250,7 @@
                         }).done(function (data) {
                           console.log(data);
                         })
+
                     } else {                
                           var msg = '결제에 실패하였습니다.';                
                           msg += '에러내용 : ' + rsp.error_msg;            
