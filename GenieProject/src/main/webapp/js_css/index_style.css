@@ -4,6 +4,7 @@
    margin: 0;
    padding: 0;
    background-color: #fff;
+   scroll-behavior: smooth;
 }
 h1  {
    margin: 12vh 0;
@@ -21,7 +22,6 @@ h1  {
    height: auto;
 }
 /* --------------------카테고리 설정--------------------- */
-
 .category-list  {
    display: grid;
    grid-template-columns: 12vw 12vw 12vw 12vw 12vw 12vw;
@@ -50,6 +50,17 @@ h1  {
 .ranking-list img  {
    width: 30%;
    margin: 0 .3%;
+}
+/* ---------------------------------MBTI 추천----------------------------- */
+.mbti{
+   margin-bottom: 80px;
+}
+.mbti-list img {
+   display: flex;
+   margin: 0 auto;
+   width: 95%;
+   height: auto;
+   border-radius: 20px;
 }
 /* ---------------------------------모두의 인기태그-------------------------- */
 .tag-button{
@@ -101,6 +112,7 @@ h1  {
 	background-color: transparent;
    height: 50px;
    line-height: 50px;
+   color: #fff;
 }
 #product_order_list button{
 	border:none;

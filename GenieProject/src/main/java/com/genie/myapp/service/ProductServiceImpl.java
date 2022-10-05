@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.genie.myapp.dao.ProductDAO;
 import com.genie.myapp.vo.CartVO;
+import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
 
@@ -63,7 +64,12 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int myorder(String genie_id, String imp_uid) {
-		return dao.myorder(genie_id, imp_uid);
+	public int myorder(String genie_id, CartVO cvo, String imp_uid){
+		return dao.myorder(genie_id, cvo, imp_uid);
+	}
+
+	@Override
+	public List<ProductVO> mainAllSelect(PagingVO pVO) {
+		return dao.mainAllSelect(pVO);
 	}
 }

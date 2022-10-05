@@ -13,7 +13,7 @@ font-family: 'Yeon Sung', cursive; */
 	list-style-type: none;
 	text-decoration-line: none;
 	color: inherit;
-	background-color: ;
+	scroll-behavior: smooth;
 }
 .genie {
 	width: 100%;

@@ -185,9 +185,6 @@ nav .sidenav-trigger i {
   </div>
   <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out"
     data-menu="menu-navigation" data-collapsible="menu-accordion">
-    
-
-
 
        <li class="navigation-header">
       <a class="navigation-header-text">Applications</a>
@@ -197,7 +194,6 @@ nav .sidenav-trigger i {
       <a class="waves-effect waves-cyan "
       href="/user/MyOrderList "
       >
-      <i class="material-icons">check</i>
       <span class="menu-title" data-i18n="ToDo">주문목록/배송조회</span>
     </a>
   </li>

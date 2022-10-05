@@ -4,45 +4,18 @@
 
 <link rel="stylesheet" href="/js_css/cart_style.css" type="text/css"/>
 
-<!-- jQuery -->
+<!-- jQuery 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-
+-->
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 
 <Style>
-  h1{
-    font-size: 1.5em;
-    color: #222;
-  }
-  h2{font-size: .9em;}
-  h3{
-    font-size: 1.2em;
-    font-weight: 300;
-    line-height: 2em;
-  }
-  p{
-    font-size: .7em;
-    color: #666;
-    line-height: 1.2em;
-  }
-
   #invoiceholder{
     width:100%;
     padding-top: 20px;
   }
-  #headerimage{
-    z-index:-1;
-    position:relative;
-    top: -50px;
-    height: 350px;
-
-  }
   #invoice{
-    position: relative;
-    top: -290px;
-    margin: 0 auto;
-    width: 800px;
     background: #FFF;
   }
 
@@ -56,23 +29,32 @@
 
   .logo{
     float: left;
-      height: 50px;
-      width: 60px;
-      background: url(/image/logo_western.png) no-repeat;
-      background-size: 60px 60px;
+    width: 60px;
+    height: 37px;
+    background: url(/image/logo_western.png) no-repeat;
+    background-size: 60px 37px;
   }
   .clientlogo{
     float: left;
-      height: 60px;
-      width: 60px;
-      background: url(http://michaeltruong.ca/images/client.jpg) no-repeat;
-      background-size: 60px 60px;
+    height: 60px;
+    width: 60px;
+    background: url(http://michaeltruong.ca/images/client.jpg) no-repeat;
+    background-size: 60px 60px;
     border-radius: 50px;
   }
   .info{
     display: block;
     float:left;
     margin-left: 20px;
+  }
+  .info h2{
+    margin-bottom: 15px;
+  }
+  .info h3{
+    margin-bottom: 15px;
+  }
+  .info p{
+    margin-bottom: 15px;
   }
   .title{
     float: right;
@@ -81,20 +63,45 @@
   
   table{
     width: 100%;
-    border-collapse: collapse;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #fbfbfb;
   }
   td{
     padding: 5px 0 5px 15px;
-    border: 1px solid #EEE
+    border-radius: 0 0 15px 15px;
   }
   .tabletitle{
     padding: 5px;
     background: #EEE;
-  }
-  .service{border: 1px solid #EEE;}
-  .item{width: 50%;}
-  .itemtext{font-size: .9em;}
 
+  }
+  .service{
+    border: 1px solid #EEE; 
+    border-radius: 0 0 15px 15px;
+  }
+  .itemtext-top{
+    background: #2DCEF8;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+  .itemtext-inner{
+    border: 1px solid #EEE; 
+    border-radius: 8px;
+    width: 700px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .item{
+    width: 50%; 
+    background: #0071e3; 
+    border-radius: 15px 15px 0 0;
+  }
+  .itemtext{
+    font-size: .9em;
+  }
   #legalcopy{
     margin-top: 30px;
   }
@@ -144,9 +151,9 @@
             
             <div class="clientlogo"></div>
             <div class="info">
-            <h3>구매자 정보</h3>
+            <h2>구매자 정보</h2>
             <div>
-                <h2>${uvo.user_name}</h2>
+                <h3>${uvo.user_name}</h3>
                 <p>${uvo.user_email}<br/>
                    ${uvo.user_tel}<br/>
             </div><br/>
@@ -162,33 +169,34 @@
             
             <div id="invoice-bot">
             
-            <div id="table">
-                <table>
-                <tr class="tabletitle">
-                    <td class="item"><h2></h2></td>
-                </tr>
+                <div id="table">
+                    <table>
+                    <tr class="tabletitle">
+                        <td class="item"><h2></h2></td>
+                    </tr>
+                    
+                    <tr class="service">             
+                        <td class="tableitem">
+                    <input type="button" id="selectAddress" value="배송지 선택" class="itemtext-top">       
+                          <p class="itemtext"><input type="text" class="itemtext-inner" id="receiver_name" name="receiver_name" placeholder="받는사람 이름" readonly></p>
+                          <p class="itemtext"><input type="text" class="itemtext-inner" id="receiver_zipcode" name="receiver_zipcode" placeholder="우편번호" readonly></p>
+                          <p class="itemtext"><input type="text" class="itemtext-inner" id="receiver_addr" name="receiver_addr" placeholder="받는사람 주소" readonly></p>
+                          <p class="itemtext"><input type="text" class="itemtext-inner" id="receiver_tel" name="receiver_tel" placeholder="받는 사람 전화번호" readonly></p>
+                          </td>
+                    </tr>
+                    <tr class="service">
+                          <td class="tableitem"><p class="itemtext">
+                          요청사항 : <input type="text" class="itemtext-inner" id="receipent_request" name="receipent_request" placeholder="요청사항을 적어주세요"></p></td>
+                          <%-- 전체 가격 :<input type="text" value='${total}' name="receipent_request" ></p> --%>
+                    </tr>
+                    
+                    </table>
+                </div><!--End Table-->
                 
-                <tr class="service">             
-                    <td class="tableitem">
-                <input type="button" id="selectAddress" value="배송지 선택">       
-                      <p class="itemtext"><input type="text" id="receiver_name" name="receiver_name" placeholder="받는사람 이름" readonly></p>
-                      <p class="itemtext"><input type="text" id="receiver_zipcode" name="receiver_zipcode" placeholder="우편번호" readonly></p>
-                      <p class="itemtext"><input type="text" id="receiver_addr" name="receiver_addr" placeholder="받는사람 주소" readonly></p>
-                      <p class="itemtext"><input type="text" id="receiver_tel" name="receiver_tel" placeholder="받는 사람 전화번호" readonly></p>
-                      </td>
-                </tr>
-                <tr class="service">
-                    <td class="tableitem"><p class="itemtext">
-                    요청사항 : <input type="text" id="receipent_request" name="receipent_request" placeholder="요청사항을 적어주세요"></p></td>
-                </tr>
-                
-                </table>
-            </div><!--End Table-->
+                <span class="submit-wrapper">
+                    <input type="submit" id="buy" value="결제하기"/>
+                </span>
             
-            <span class="submit-wrapper">
-                <input type="submit" id="buy" value="결제하기"/>
-            </span>
-
             <div id="legalcopy">
                 <p class="legal"><strong>교환 또는 환불을 원하시는 분들은 7일 이내에 가능합니다.</strong>
                 </p>
@@ -212,7 +220,7 @@
               pg: 'html5_inicis',                  
               pay_method: 'card',         
               merchant_uid: 'merchant_' + new Date().getTime(),            
-              name:'<c:forEach var="cvo" items="${clist}">${cvo.product_name}, </c:forEach>',
+              name:'<c:forEach var="cvo" items="${clist}">${cvo.product_name} </c:forEach>',
                 
               <c:set var="total" value="0"/>
                 <c:forEach var="cvo" items="${clist}">
@@ -232,28 +240,32 @@
               결제가 끝나고 랜딩되는 URL을 지정                 
               (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
               */        
-              }, function (rsp) {            
-                  console.log(rsp);            
+              }, function (rsp) {                   
                   if (rsp.success) {                 
-                    var msg = '결제가 완료되었습니다.';
-
-                    $.ajax({
-                      url: "/completion", // 예: https://www.myservice.com/payments/complete
-                      method: "POST",
-                      headers: { "Content-Type" : "application/json" },
-                      data: {
+                      var msg = '결제가 완료되었습니다.';
+                      
+                      console.log(rsp.imp_uid);
+                      var data = {
                           imp_uid: rsp.imp_uid,
                           merchant_uid: rsp.merchant_uid,
                           pay_method:rsp.pay_method
-                      }
-                        }).done(function (data){
-                          console.log(data.imp_uid);
+                      };
+                      console.log(data);
+                      jQuery.ajax({
+                            url: "/orderCompletion", // 예: https://www.myservice.com/payments/complete
+                            method: "POST",
+                            //headers: { "Content-Type" : "application/json" },
+                            data: data
+                        }).done(function (data1){
+                          console.log("done",data1);
+                        }).fail(function(data2){
+                          console.log("fail",data2);
                         })
-                    } else {                
+                  } else {                
                           var msg = '결제에 실패하였습니다.';                
                           msg += '에러내용 : ' + rsp.error_msg;            
-                      }          
-                     alert(msg);
+                  }          
+                  alert(msg);
                 });      
             });
         });

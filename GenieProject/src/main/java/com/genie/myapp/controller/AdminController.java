@@ -283,7 +283,7 @@ public class AdminController {
 		headers.add("Content-Type", "text/html; charset=utf-8");
 		
 		try {//결제 성공
-			int result = service.paymentWrite(vo);
+			int result  = service.paymentWrite(vo);
 			
 			String msg = "<script>";
 			msg += "alert('결제가 되었습니다. 등록되었습니다.');";

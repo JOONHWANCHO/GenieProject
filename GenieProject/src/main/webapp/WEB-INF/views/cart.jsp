@@ -11,6 +11,7 @@
             <div>상품정보</div>
             <div>수량</div>
             <div>상품가격</div>
+            <div> </div>
         </div>
 
         <div class="line"></div>
@@ -21,7 +22,7 @@
                 <div>${cvo.product_name}</div>
                 <div><fmt:formatNumber value="${cvo.cart_qty}" pattern="#,###개" /></div>
                 <div><fmt:formatNumber value="${cvo.product_price*cvo.cart_qty}" pattern="#,###원" /></div>
-                <div><input type="button" value='Del' cart_num="${cvo.cart_num}"/></div>
+                <div><input type="button" style="background:#b90e0a; border:none; padding: 10px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
                 <div><input type="hidden" value="${cvo.cart_num}"></div>
             </div>
         </c:forEach>
