@@ -72,12 +72,11 @@
         });
     });
 </script>
+
 <script>
     $(function(){
 		function replyAllList(){
-			// 기존목록 지우기
 			$("#replyList>ul").empty();
-			// 비동기식으로 서버에 접속하여 댓글 목록 가져온다
 			var url = "/reply/replyProductList";
 			var params = {no:${pvo.product_id}};
 			console.log(params);
@@ -93,16 +92,17 @@
 						tag += "<div><b>"+vo.genie_id+"</b>";
 						// 수정, 삭제버튼(자신이 쓴 글일때만) 표시
 						if(vo.genie_id=='${logId}'){
-							tag += "<input type='button' value='Edit'/>";
-							tag += "<input type='button' value='Del' title='"+vo.reply_no+"'/>";
+							tag += "<input type='button' value='리뷰수정'/>";
+							tag += "<input type='button' value='리뷰삭제' title='"+vo.reply_no+"'/>";
 						}
-						tag += "<br/>"+vo.comment+"</div>";
-						// 로그인아이디와 댓글쓴이가 같으면 폼을 만들어준다.
+						tag += "<br/>"+vo.rating+"점 "+vo.comment+"</div>";
+						// 로그인 아이디와 댓글 아이디 동일시 수정폼
 						if(vo.genie_id=='${logId}'){
 							tag += "<div style='display:none'><form method='post'>";
 							tag += "<input type='hidden' name='reply_no' value='"+vo.reply_no+"'/>";
+							tag += "<textarea name='rating'>"+vo.rating+"</textarea>";
 							tag += "<textarea name='comment' rows='4' cols='50'>"+vo.comment+"</textarea>";
-							tag += "<input type='submit' value='댓글수정하기'/>";
+							tag += "<input type='submit' value='리뷰수정하기'/>";
 							tag += "</form></div>";
 						}
 						
@@ -116,7 +116,71 @@
 			});
 		}
 		
-		replyAllList(); // 댓글 목록을 가져오는 함수 호출
+		// 리뷰 작성
+		$("#replyFrm").submit(function(){
+			event.preventDefault();
+			
+			var params = $("#replyFrm").serialize();
+			
+			$.ajax({
+				url:"/reply/replyProductWrite",
+				data:params, 
+				type:"POST", 
+				success:function(result){
+					console.log("리뷰등록수 : ", result);
+					
+					$("#comment").val("");
+					
+					replyAllList();
+					
+				}, error:function(e){
+					console.log(e.responseText);
+				}
+			});
+		});
+		
+		// 리뷰 수정폼
+		$(document).on('click','#replyList input[value=리뷰수정]',function(){
+			$(this).parent().css("display","none"); // Edit버튼의 부모를 숨김
+			$(this).parent().next().css("display","block"); // Edit 폼 보여주기
+		});
+		
+		// 리뷰 수정(DB)
+		$(document).on('submit','#replyList form',function(){
+			event.preventDefault();
+			var url = "/reply/replyProductEdit";
+			var params = $(this).serialize();
+			
+			$.ajax({
+				url:url,
+				data:params,
+				type:"POST",
+				success:function(result){
+					replyAllList();
+				},error:function(e){
+					console.log(e.responseText);
+				}
+			});
+		});
+		
+		// 리뷰 삭제
+		$(document).on('click','#replyList input[value=리뷰삭제]',function(){
+			if(confirm("리뷰를 삭제하시겠습니까?")){	
+				var params = {reply_no: $(this).attr('title')};
+				
+				$.ajax({
+					url:"/reply/replyProductDel",
+					data:params,
+					success:function(result){
+						replyAllList();
+					}, error:function(e){
+						console.log(e.responseText);
+					}
+				});
+			}
+		});
+		
+		replyAllList(); // 리뷰 목록 가져오기
     });
 </script>
 <script>
@@ -176,9 +240,9 @@
                 장바구니
             </button>
             <input class="box13" type="button" id="buynow" value="구매하기"/>
- 
         </div>
     </form>
+    
 <!-- ------------------------------------------------------------------------------------------- -->
     <div class="review-wrapper">
         <button class="box_1" onclick="content1()">
@@ -204,18 +268,19 @@
             <form class="mb-3" name="replyFrm" id="replyFrm" method="post">
 				<fieldset>
 					<span class="text-bold">만족도</span>
-					<input type="radio" name="reviewStar" value="5" id="rate1"><label
+					<input type="radio" name="rating" value="5" id="rate1"><label
 						for="rate1">★</label>
-					<input type="radio" name="reviewStar" value="4" id="rate2"><label
+					<input type="radio" name="rating" value="4" id="rate2"><label
 						for="rate2">★</label>
-					<input type="radio" name="reviewStar" value="3" id="rate3"><label
+					<input type="radio" name="rating" value="3" id="rate3"><label
 						for="rate3">★</label>
-					<input type="radio" name="reviewStar" value="2" id="rate4"><label
+					<input type="radio" name="rating" value="2" id="rate4"><label
 						for="rate4">★</label>
-					<input type="radio" name="reviewStar" value="1" id="rate5"><label
+					<input type="radio" name="rating" value="1" id="rate5"><label
 						for="rate5">★</label>
 				</fieldset>
 				<div>
+					<input type="hidden" name="product_id" value="${pvo.product_id}"/>
 					<textarea class="col-auto form-control" type="text" id="comment" name="comment"
 							  placeholder="다른 고객님에게 도움이 되도록 상품에 대한 솔직한 평가를 남겨주세요."></textarea>
 				</div>

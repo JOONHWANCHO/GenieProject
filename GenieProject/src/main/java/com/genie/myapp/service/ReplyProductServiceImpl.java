@@ -18,4 +18,19 @@ public class ReplyProductServiceImpl implements ReplyProductService{
     public List<ReplyProductVO> replyProductList(int no){
         return DAO.replyProductList(no);
     }
+
+	@Override
+	public int replyProductWrite(ReplyProductVO vo) {
+		return DAO.replyProductWrite(vo);
+	}
+
+	@Override
+	public int replyProductEdit(ReplyProductVO vo) {
+		return DAO.replyProductEdit(vo);
+	}
+
+	@Override
+	public int replyProductDelete(int reply_no, String genie_id) {
+		return DAO.replyProductDelete(reply_no, genie_id);
+	}
 }
