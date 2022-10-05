@@ -143,36 +143,6 @@
 		replyAllList(); // 리뷰 목록 가져오기
     });
 </script>
-<script>
-    $(function(){
-        $('#likeBtn').click(function(){
-            $.ajax({
-                url:"reply/likeInsert",
-                type:"POST",
-                data:{product_id:${pvo.product_id}},
-                success:function(result){
-                    console.log(result+"성공");
-                },error:function(e){
-                    console.log(e.responseText);
-                }
-            });
-        });
-
-        // function likeCnt(){
-        //     $.ajax({
-        //         url:"reply/likeCount",
-        //         type:"POST",
-        //         data:{no:${pvo.product_id}},
-        //         success:function(result){
-        //             likeCnt();
-        //         },error:function(e){
-        //             console.log(e.responseText);
-        //         }
-        //     });
-        // }
-        // likeCnt();
-    });
-</script>
 
 <section class="product_detail">
     <!--<h1>상세페이지</h1>-->
@@ -214,10 +184,6 @@
             <input class="box13" type="button" id="buynow" value="구매하기"/>
         </div>
     </form>
-    
-        <div class="w3-button w3-black w3-round" id="likeBtn" style="text-align:center">
-            <i class="fa fa-heart likeChange"></i>&nbsp;<span class="likeCnt"></span>
-        </div>
 <!-- ------------------------------------------------------------------------------------------- -->
     <div class="review-wrapper">
         <button class="box_1" onclick="content1()">

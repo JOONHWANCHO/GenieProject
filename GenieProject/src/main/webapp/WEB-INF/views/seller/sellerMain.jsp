@@ -13,6 +13,12 @@
   display:none;
 }
 
+#mainbody{
+	padding-top: 10px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
 .container {
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr; 
@@ -58,7 +64,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content" id="mainbody">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
