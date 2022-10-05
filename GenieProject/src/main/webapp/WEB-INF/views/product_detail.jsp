@@ -2,12 +2,12 @@
 <%@ include file="./inc/top.jspf"%>
 <link rel="stylesheet" href="/js_css/product_detail_style.css" type="text/css"/>
 <script src="/js_css/product_detail_js.js"></script>
-
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+<<<<<<< HEAD
+=======
 <script>
     $(function(){
         $("#buynow").click(function () {        
@@ -72,6 +72,7 @@
         });
     });
 </script>
+>>>>>>> df00d3fbf8496dd1841d3c9bf0d631f239428ca8
 
 <script>
     $(function(){
@@ -183,25 +184,7 @@
 		replyAllList(); // 리뷰 목록 가져오기
     });
 </script>
-<script>
-	$(function(){
-		//유효성 검사
-	    $("#Cart").submit(function(){
-			
-			// 아이디, 비밀번호
-			if($("#cart_qty").val().trim()==""){
-				alert("최소 수량은 1개 이상입니다.");
-				$("#cart_qty").focus();
-				return false;
-			}
-	        if($("#cart_qty").val().trim()=="0"){
-				alert("최소 수량은 1개 이상입니다.");
-				$("#cart_qty").focus();
-				return false;
-	        };
-	    });
-	});
-</script>
+
 <section class="product_detail">
     <h1>상세페이지</h1>
     <form method="post" action="/addCart" id="Cart">
