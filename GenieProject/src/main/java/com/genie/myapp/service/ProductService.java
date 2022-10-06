@@ -19,7 +19,8 @@ public interface ProductService{
     public SellerVO getSeller(int product_id);
     public List<ProductVO> selectProduct(Map<String, Object> map);
     
-    public int delProduct(List<Integer> cart_num, String genie_id);
+    public int delCart(int cart_num, String genie_id);
+    public int delMultiCart(CartVO cvo);
 
     public void hitCount(int product_id);
 
@@ -34,5 +35,6 @@ public interface ProductService{
 
     // 상세페이지 좋아요 수 가져오기
     public ProductVO likeStatus(int product_id);
+   
 
 }   
