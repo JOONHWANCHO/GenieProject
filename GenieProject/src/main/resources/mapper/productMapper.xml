@@ -200,5 +200,9 @@
     <select id="likeStatus" resultType="ProductVO">
     	select product_like from product where product_id = #{product_id}
     </select>
+    
+    <select id="likeCheck" resultType="LikeVO">
+    	select genie_id from product_like where genie_id='${param2}' and product_id=#{param1}
+    </select>
 
 </mapper>
