@@ -161,6 +161,8 @@ function admemberDel(){
    		<input type="text" id="user_gender" class="second" name="user_gender" value=${vo.user_gender}>
    	<p>가입일</p>
    		<input type="text" id="sign_in_date" class="second" name="sign_in_date" value=${vo.sign_in_date}>	
+   	<p>결제방식</p>
+   		<input type="text" id="payment_method" class="second" name="payment_method" value=${vo.payment_method}>	
       <input type="submit" class="fourth" value="수정">
       <a href="javascript:admemberDel()"><input type="button" class="fourth" value="삭제"></a>
       <a href="/admin/admember"><input type="button" class="fourth" value="뒤로가기"></a>
