@@ -752,6 +752,9 @@ b{
 #likeInsert{
    position: absolute;
    right: 10vw;
+} 
+#likeBtn{
+	display:flex;
 }
 /* ------------댓글 리스트-------- */
 #replyList>ul>li>div{

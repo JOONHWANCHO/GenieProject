@@ -28,6 +28,7 @@ import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.CartVO;
+import com.genie.myapp.vo.LikeVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.PaymentVO;
 import com.genie.myapp.vo.ProductVO;
@@ -87,14 +88,15 @@ public class ProductController{
 
 	//제폼 상세페이지
 	@GetMapping("product_detail")
-	public ModelAndView product_detail(@RequestParam("product_id") int product_id) {
+	public ModelAndView product_detail(@RequestParam("product_id") int product_id, HttpSession session) {
+		mav = new ModelAndView();
+		String genie_id = (String)session.getAttribute("logId");
 
 		productService.hitCount(product_id);
-
-		mav = new ModelAndView();
 		mav.addObject("pvo", productService.getProduct(product_id));
 		mav.addObject("svo", productService.getSeller(product_id));
 		mav.addObject("lvo", productService.likeStatus(product_id));
+		mav.addObject("cvo", productService.likeCheck(product_id, genie_id));
 		mav.setViewName("/product_detail");
 
 		return mav;
