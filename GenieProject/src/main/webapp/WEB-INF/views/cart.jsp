@@ -22,10 +22,11 @@
                     <input type="checkbox" id="cartList" name="cartList" value="${cvo.cart_num}" onclick="javascript:cart.checkItem();"/>
                     <div><img src='${cvo.product_image1}'></div>
                     <div>${cvo.product_name}</div>
+                    <input type="hidden" name="Product_name" value="${cvo.product_name}"/>
                     <div><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원"/></div>
-                    <div input type="hidden" value="${cvo.product_price}" pattern="#,###원"></div>
+                    <input type="hidden" name="Product_price" value="${cvo.product_price}">
 
-                    <div><input type="text" name="p_num${cvo.cart_num}" id="p_num${cvo.cart_num}" class="p_num" size="2" maxlength="4" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});"/></div>
+                    <div><input type="text" name="p_num" id="p_num${cvo.cart_num}" class="p_num" size="2" maxlength="4" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});"/></div>
                     
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-up up"></i></div>
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-down down"></i></div>
@@ -33,8 +34,8 @@
                     <div><input type="button" style="background:#b90e0a; border:none; padding: 10px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
                 </div>
             </c:forEach>
-            <input type="button" class="abutton" value= "선택상품삭제" onclick="javascript:cart.delCheckedItem();">
-            <div input type="hidden" id="total-price" name="total-price"></div>
+            <input type="button" value= "선택상품삭제" onclick="javascript:cart.delCheckedItem();">
+            <div input type="text" id="total" name="total" value="0"></div>
         
         <span class="submit-wrapper">
             <a href="http://localhost:9070/">계속 쇼핑하기</a>
