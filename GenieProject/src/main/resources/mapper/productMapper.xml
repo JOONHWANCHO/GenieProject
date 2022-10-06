@@ -197,4 +197,8 @@
 	</if>
 	</select>
 
+    <select id="likeStatus" resultType="ProductVO">
+    	select product_like from product where product_id = #{product_id}
+    </select>
+
 </mapper>

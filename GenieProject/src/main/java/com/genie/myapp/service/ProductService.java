@@ -19,7 +19,7 @@ public interface ProductService{
     public SellerVO getSeller(int product_id);
     public List<ProductVO> selectProduct(Map<String, Object> map);
     
-    public int delProduct(int cart_num, String genie_id);
+    public int delProduct(List<Integer> cart_num, String genie_id);
 
     public void hitCount(int product_id);
 
@@ -31,5 +31,8 @@ public interface ProductService{
 
     //메인 화면 페이징 
     public List<ProductVO> mainAllSelect(PagingVO pVO);
+
+    // 상세페이지 좋아요 수 가져오기
+    public ProductVO likeStatus(int product_id);
 
 }   

@@ -26,7 +26,7 @@ public interface ProductDAO{
     //장바구니 상품 넣기
     public int addCart(CartVO cvo);
     //장바구니 제품 삭제
-    public int delProduct(int cart_num, String genie_id);
+    public int delProduct(List<Integer> cart_num, String genie_id); 
 
     //지니페이지 제품 선택
     public List<ProductVO> selectProduct(Map<String, Object> map);
@@ -44,4 +44,7 @@ public interface ProductDAO{
 
     //메인페이지 페이징
     public List<ProductVO> mainAllSelect(PagingVO pVO);
+
+    // 상세페이지 좋아요 수 가져오기
+    public ProductVO likeStatus(int product_id);
 }

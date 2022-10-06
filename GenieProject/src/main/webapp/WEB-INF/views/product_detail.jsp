@@ -35,15 +35,15 @@
 						}
 						tag += "<br/>"
                             if(vo.rating==5){ 
-                                tag +='만족도 : ★★★★★'
+                                tag +='만족도 : <span>★★★★★</span>'
                             }else if(vo.rating==4){
-                                tag +='만족도 : ★★★★☆'
+                                tag +='만족도 : <span>★★★★☆</span>'
                             }else if(vo.rating==3){
-                                tag +='만족도 : ★★★☆☆'
+                                tag +='만족도 : <span>★★★☆☆</span>'
                             }else if(vo.rating==2){
-                                tag +='만족도 : ★★☆☆☆'
+                                tag +='만족도 : <span>★★☆☆☆</span>'
                             }else if(vo.rating==1){
-                                tag +='만족도 : ★☆☆☆☆'
+                                tag +='만족도 : <span>★☆☆☆☆</span>'
                             }
                         tag += "<br>"
                                 +"리뷰내용 : "
@@ -89,12 +89,8 @@
 				data:params, 
 				type:"POST", 
 				success:function(result){
-					console.log("리뷰등록수 : ", result);
-					
 					$("#comment").val("");
-					
 					replyAllList();
-					
 				}, error:function(e){
 					console.log(e.responseText);
 				}
@@ -144,6 +140,37 @@
     });
 </script>
 
+<script>
+    $(function(){
+        $('#likeBtn').click(function(){
+            $.ajax({
+                url:"reply/likeStatus",
+                data:{product_id:${pvo.product_id}},
+                success:function(result){
+                    if (result>100){ // 좋아요
+                        likeRed();
+                    }else { // 좋아요 취소
+                        likeGray();
+                    }
+                },error:function(e){
+                    console.log(e.responseText);
+                }
+            });
+        });
+        
+        function likeRed(){ // 좋아요 클릭 시 CSS
+            $('#likeBtn').css('color','red');
+            console.log("빨강");
+        }
+        
+        function likeGray(){ // 좋아요 취소 시 CSS
+            $('#likeBtn').css('color','gray');
+            console.log("회색");
+        }        
+       
+    });
+    </script>
+
 <section class="product_detail">
     <!--<h1>상세페이지</h1>-->
     <form method="post" action="/addCart" id="Cart">
@@ -184,6 +211,10 @@
             <input class="box13" type="button" id="buynow" value="구매하기"/>
         </div>
     </form>
+
+    <div class="w3-button w3-black w3-round" id="likeBtn" style="text-align:center">
+    	<i class="fa fa-heart likeChange"></i>  ${lvo.product_like}
+    </div>
 <!-- ------------------------------------------------------------------------------------------- -->
     <div class="review-wrapper">
         <button class="box_1" onclick="content1()">
@@ -201,7 +232,6 @@
         </div>
 
         <form class="replyFrm" name="replyFrm" id="replyFrm" method="post">
-
             <div class="box_5">
                 <fieldset>
                     <span class="text-bold">만족도</span>

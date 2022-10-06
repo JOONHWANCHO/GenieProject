@@ -93,6 +93,7 @@ public class ProductController{
 		mav = new ModelAndView();
 		mav.addObject("pvo", productService.getProduct(product_id));
 		mav.addObject("svo", productService.getSeller(product_id));
+		mav.addObject("lvo", productService.likeStatus(product_id));
 		mav.setViewName("/product_detail");
 
 		return mav;
@@ -162,10 +163,10 @@ public class ProductController{
 
 	//장바구니에서 제품 삭제
 	@GetMapping("delProduct")
-	public int delProduct(HttpSession session, int cart_num) {
-		System.out.print(cart_num);
+	public int delProduct(HttpSession session, CartVO cvo) {
+		System.out.print(cvo.toString());
 		String genie_id = (String)session.getAttribute("logId");
-		return productService.delProduct(cart_num, genie_id);	
+		return 0;//productService.delProduct(cvo, genie_id);	
 	}
 
 	//--------------------------------------------상품 결제페이지-----------------------------------------------------

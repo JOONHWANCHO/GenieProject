@@ -1,5 +1,7 @@
 package com.genie.myapp.vo;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,14 +18,17 @@ public class CartVO{
     private String product_name;
     private int product_quantity;
     private int product_price;
-    
+	private List<Integer> noList;
+
+	
+	
 	
 	@Override
 	public String toString() {
 		return "CartVO [cart_num=" + cart_num + ", genie_id=" + genie_id + ", product_id=" + product_id
 				+ ", cart_price=" + cart_price + ", cart_qty=" + cart_qty + ", cart_writedate=" + cart_writedate
 				+ ", product_image1=" + product_image1 + ", product_name=" + product_name + ", product_quantity="
-				+ product_quantity + ", product_price=" + product_price + "]";
+				+ product_quantity + ", product_price=" + product_price + ", noList=" + noList + "]";
 	}
 	public int getCart_num() {
 		return cart_num;

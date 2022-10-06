@@ -2,7 +2,6 @@
 <%@ include file="./inc/top.jspf"%>
 <link rel="stylesheet" href="/js_css/cart_style.css" type="text/css"/>
 
-
 <div class="wrapper">
     <div class="cart">
         <h1><i class="fa-solid fa-cart-plus"></i><a href="#">장바구니</li></a></h1>
@@ -20,19 +19,22 @@
         <form type="post" action="/payment" id="multiChk">
             <c:forEach var="cvo" items="${clist}">
                 <div class="cart-list">
-                <input type="checkbox" id= "noList" name="noList" value="${cvo.cart_num}"/>
+                    <input type="checkbox" id="noList" name="noList" value="${cvo.cart_num}" onclick="javascript:cart.checkItem();"/>
                     <div><img src='${cvo.product_image1}'></div>
                     <div>${cvo.product_name}</div>
-                    <div class="product_price"><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원"/></div>
-                    <div class="cart_qty"><input type="text" size="2" maxlength="4" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});"/></div>
+                    <div><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원"/></div>
+                    <div input type="hidden" value="${cvo.product_price}" pattern="#,###원"></div>
+<%-- 모두들 안녕하세요! --%>
+                    <div><input type="text" name="p_num${cvo.cart_num}" id="p_num${cvo.cart_num}" class="p_num" size="2" maxlength="4" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});"/></div>
+                    
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-up up"></i></div>
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-down down"></i></div>
-                    <div><input type="text" size="4" maxlength="4" value="${cvo.product_price*cvo.cart_qty}"/></div>
+                    <div input type="hidden" size="4" maxlength="4"></div>
                     <div><input type="button" style="background:#b90e0a; border:none; padding: 10px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
                 </div>
             </c:forEach>
             <input type="button" class="abutton" value= "선택상품삭제" onclick="javascript:cart.delCheckedItem();">
-            <div id="total-price" name="total-price">총 상품가격 : 0</div>
+            <div input type="hidden" id="total-price" name="total-price"></div>
         </form>
         
         <span class="submit-wrapper">

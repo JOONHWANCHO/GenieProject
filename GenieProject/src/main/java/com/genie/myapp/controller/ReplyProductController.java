@@ -52,4 +52,21 @@ public class ReplyProductController{
 
 		return service.likeInsert(vo);
 	}
+
+	@GetMapping("likeStatus")
+ 	public int likeStatus(LikeVO vo, HttpSession session) {
+ 		vo.setGenie_id((String)session.getAttribute("logId"));
+ 		int cnt = service.likeStatus(vo);
+ 		int result = 0;
+ 		if (cnt>0) {
+ 			service.likeDelete(vo);
+ 			service.likeHitMinus(vo);
+ 			result = 100;
+ 		} else {
+ 			service.likeInsert(vo);
+ 			service.likeHitPlus(vo);
+ 			result = 200;
+ 		}
+		return result;
+ 	}
 }
