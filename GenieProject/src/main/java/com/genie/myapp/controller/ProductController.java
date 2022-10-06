@@ -160,9 +160,10 @@ public class ProductController{
 		return entity;
 	}
 
-	//댓글삭제
+	//장바구니에서 제품 삭제
 	@GetMapping("delProduct")
-	public int delProduct(int cart_num, HttpSession session) {
+	public int delProduct(HttpSession session, int cart_num) {
+		System.out.print(cart_num);
 		String genie_id = (String)session.getAttribute("logId");
 		return productService.delProduct(cart_num, genie_id);	
 	}
@@ -190,8 +191,8 @@ public class ProductController{
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
 		headers.add("Content-Type","text/html; charset=utf-8");
-		TransactionStatus status= transactionManager.getTransaction(definition);
 
+		TransactionStatus status= transactionManager.getTransaction(definition);
 
 		String genie_id = (String)session.getAttribute("logId"); 
 
