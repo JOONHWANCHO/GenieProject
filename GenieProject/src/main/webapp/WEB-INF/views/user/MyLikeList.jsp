@@ -60,6 +60,16 @@ nav .sidenav-trigger i {
   background-color: #7600bc;
   color: white;
 }
+
+.like-list img{
+    width:6vw;
+}
+#pro-name{
+    font-weight:bold;
+}
+#pro-price{
+    font-weight:normal;
+}
 </style>
 
 <script>
@@ -274,28 +284,27 @@ nav .sidenav-trigger i {
                     <div class="card-content">
 
                     <div class="card-content pb-1">
-                       <h4 class="card-title mb-0">주문목록 <i class="material-icons float-right">more_vert</i></h4>
+                       <h4 class="card-title mb-0">찜한 상품 <i class="material-icons float-right">more_vert</i></h4>
                     </div>
                     <table class="subscription-table responsive-table highlight">
                        <thead>
                           <tr>
-                             <th>주문번호</th>
-                             <th>상품명</th>
+                             <th><input type="checkbox" id="allCheck" checked="checked"/>
+                                   <!-- <button type="button" id="multiDel">선택삭제</button>-->
+                            </th>
                              <th></th>
                              <th></th>
-                             <th>수량</th>
-                             <th>가격</th>
+                             <th></th>
                           </tr>
                        </thead>
-                    <c:forEach var="orderlist" items="${list}">
-                       <tbody>
+                    <c:forEach var="likelist" items="${list}">
+                       <tbody class="like-list">
                           <tr>
-                             <td>${orderlist.order_num}</td>
-                             <td>${orderlist.product_name}</td>
-                             <td></td>
-                             <td></td>
-                             <td>${orderlist.order_qty}</td>
-                             <td><fmt:formatNumber value="${orderlist.order_price}" pattern="#,###원" /></td>
+                             <td><input type="checkbox" name="noList" value="${likelist.product_id}"></td>
+                             <td><img src='${likelist.product_image1}'/></td>
+                             <td id="pro-name">${likelist.product_name}
+                                <div><span id="pro-price"><fmt:formatNumber value="${likelist.product_price}" pattern="#,###원" /></span></div>
+                             </td>
                           </tr>
                        </tbody>
                     </c:forEach>

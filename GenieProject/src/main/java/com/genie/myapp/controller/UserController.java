@@ -359,7 +359,22 @@ public class UserController {
 	
 		return mav;
 	}
-  
+	
+	//찜한 상품 리스트
+	@GetMapping("MyLikeList")
+	public ModelAndView MyLikeList(HttpSession session){
+		String genie_id = (String)session.getAttribute("logId");
+		UserVO vo = service.getUser(genie_id);
+
+		mav = new ModelAndView();
+		mav.addObject("list",service.getLikeList(genie_id));
+		mav.addObject("vo",vo);
+		mav.setViewName("/user/MyLikeList");
+	
+		return mav;
+
+	}
+
 	////////////////////////////////////////////////////////////////////
 
 	@GetMapping("PwdEdit")

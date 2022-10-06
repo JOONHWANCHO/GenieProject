@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int delProduct(int cart_num, String genie_id) {
+	public int delProduct(List<Integer> cart_num, String genie_id) {
 		return dao.delProduct(cart_num, genie_id);
 	}
 
@@ -71,5 +71,10 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<ProductVO> mainAllSelect(PagingVO pVO) {
 		return dao.mainAllSelect(pVO);
+	}
+
+	@Override
+	public ProductVO likeStatus(int product_id) {
+		return dao.likeStatus(product_id);
 	}
 }

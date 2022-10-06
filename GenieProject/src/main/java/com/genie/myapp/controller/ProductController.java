@@ -1,255 +1,83 @@
-package com.genie.myapp.controller;
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./inc/top.jspf"%>
+<link rel="stylesheet" href="/js_css/cart_style.css" type="text/css"/>
 
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+<div class="wrapper">
+    <div class="cart">
+        <h1><i class="fa-solid fa-cart-plus"></i><a href="#">장바구니</li></a></h1>
+        <div class="line"></div>
+        <div class="cart-product">
+            <div><input type="checkbox" id="allChk"/>전체선택</div>
+            <div>상품이미지</div>
+            <div>상품정보</div>
+            <div>가격</div>
+            <div>수량</div>
+            <div>합계</div>
+        </div>
 
-import javax.servlet.http.HttpSession;
+        <div class="line"></div>
+        <form type="post" action="/payment" id="multiChk">
+            <c:forEach var="cvo" items="${clist}">
+                <div class="cart-list">
+                    <input type="checkbox" id="noList" name="noList" value="${cvo.cart_num}" onclick="javascript:cart.checkItem();"/>
+                    <div><img src='${cvo.product_image1}'></div>
+                    <div>${cvo.product_name}</div>
+                    <div><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원"/></div>
+                    <div input type="hidden" value="${cvo.product_price}" pattern="#,###원"></div>
+<%-- 모두들 안녕하세요! --%>
+                    <div><input type="text" name="p_num${cvo.cart_num}" id="p_num${cvo.cart_num}" class="p_num" size="2" maxlength="4" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});"/></div>
+                    
+                    <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-up up"></i></div>
+                    <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-down down"></i></div>
+                    <div input type="hidden" size="4" maxlength="4"></div>
+                    <div><input type="button" style="background:#b90e0a; border:none; padding: 10px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
+                </div>
+            </c:forEach>
+            <input type="button" class="abutton" value= "선택상품삭제" onclick="javascript:cart.delCheckedItem();">
+            <div input type="hidden" id="total-price" name="total-price"></div>
+        </form>
+        
+        <span class="submit-wrapper">
+            <a href="http://localhost:9070/">계속 쇼핑하기</a>
+            <input type="submit" id="buy" value="구매하기"/>
+        </span>
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+        </form>
+    </div>
+</div>
+<script>
+    $(function(){
+        //리스트 전체 선택
+        $("#allChk").click(function(){
+            $(".cart-list input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));
+           
+        });
+        
+        $("#multiChk").click(function(){
+            var countChk = 0;
+            $(".cart-list input[name=noList]").each(function(idx,obj){
+                if(obj.checked){ // input 태그가 체크 상태이면 true
+                    countChk++;
+                }
+            });
+            $("#listFrm").submit();
+        });
+    });
+</script>
+<script>
+	$(document).on('click','.cart-list input[value=Del]',function(){
 
-import com.genie.myapp.service.AdminService;
-import com.genie.myapp.service.ProductService;
-import com.genie.myapp.service.SellerService;
-import com.genie.myapp.service.UserService;
-import com.genie.myapp.vo.AdminVO;
-import com.genie.myapp.vo.CartVO;
-import com.genie.myapp.vo.PagingVO;
-import com.genie.myapp.vo.ProductVO;
-import com.genie.myapp.vo.TagVO;
-
-@RestController
-@RequestMapping("/")
-public class ProductController{
-	
-	@Autowired
-	ProductService productService;
-
-	@Autowired
-	SellerService sellerService;
-
-	@Autowired
-	UserService userService;
-
-	@Autowired
-	AdminService adminService;
-	
-
-	ModelAndView mav = null;
-	Map<String, Object> map = null;
-
-	@Autowired
-	PlatformTransactionManager transactionManager;
-
-	@Autowired
-	TransactionDefinition definition;
-
-	@GetMapping("/")
-	public ModelAndView index(AdminVO vo, ProductVO PVO, PagingVO pVO) {
-
-		mav = new ModelAndView();
-		mav.addObject("tlist", adminService.adminTag(vo));
-		mav.addObject("plist", productService.listProduct(PVO));
-		mav.addObject("pvo", PVO);
-		//pVO.setTotalRecord(productService.mainAllSelect(PVO));
-		mav.setViewName("/index");
-	
-		return mav;
-	}
-
-
-	//제품 리스트보기
-	@GetMapping("product")
-	public ModelAndView product(ProductVO PVO) {
-
-		mav = new ModelAndView();
-		mav.addObject("plist", productService.listProduct(PVO));
-		mav.addObject("pvo", PVO);
-		mav.setViewName("/product");
-
-		return mav;
-	}
-
-	//제폼 상세페이지
-	@GetMapping("product_detail")
-	public ModelAndView product_detail(@RequestParam("product_id") int product_id) {
-
-		productService.hitCount(product_id);
-
-		mav = new ModelAndView();
-		mav.addObject("pvo", productService.getProduct(product_id));
-		mav.addObject("svo", productService.getSeller(product_id));
-		mav.setViewName("/product_detail");
-
-		return mav;
-	}
-//---------------------------------------------- 지니페이지 상품 정보 검색 ----------------------------------------------------------//
-	@PostMapping("selectProduct")
-	public ModelAndView selectProduct(ProductVO pvo, TagVO tvo) {
-		
-		map = new HashMap<String, Object>();
-		map.put("p", pvo);
-		map.put("t", tvo);
-		
-		mav = new ModelAndView();
-		mav.addObject("plist",productService.selectProduct(map));
-		mav.setViewName("/product");
-		
-		return mav;
-	}
-// -----------------------------------------------------------장바구니---------------------------------------------------------------//
-	@GetMapping("cart")
-	public ModelAndView cart(CartVO cvo, HttpSession session) {
-		
-		String genie_id = (String)session.getAttribute("logId"); 
-		List<CartVO> cartList = productService.getCart(genie_id);
-		//System.out.print(cartList);
-
-		mav = new ModelAndView();
-		mav.addObject("clist", cartList);
-		mav.setViewName("/cart");
-
-		return mav;
-	}
-
-	@PostMapping("addCart")
-	public ResponseEntity<String> addCart(CartVO cvo){
-
-		ResponseEntity<String> entity = null;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
-		headers.add("Content-Type","text/html; charset=utf-8");
-
-		try {
-			
-			int addCart = productService.addCart(cvo);
-			System.out.print(addCart);
-
-			String msg = "<script>";
-			msg += "alert('장바구니에 추가되었습니다.');";
-			msg += "location.href='/cart';";
-			msg += "</script>";
-			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
-
-		}catch(Exception e) {
-
-			String msg = "<script>";
-			msg += "alert('장바구니 추가 에러');";
-			msg += "history.back()";
-			msg += "</script>";
-
-			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
-			
-			e.printStackTrace();
-		}
-
-		return entity;
-	}
-
-	//장바구니에서 제품 삭제
-	@GetMapping("delProduct")
-	public int delProduct(HttpSession session, int cart_num) {
-		System.out.print(cart_num);
-		String genie_id = (String)session.getAttribute("logId");
-		return productService.delProduct(cart_num, genie_id);	
-	}
-
-	//--------------------------------------------상품 결제페이지-----------------------------------------------------
-	@GetMapping("payment")
-	public ModelAndView payment(HttpSession session){
-		
-		String genie_id = (String)session.getAttribute("logId"); 
-		List<CartVO> cartList = productService.getCart(genie_id);
-
-		mav = new ModelAndView();
-		mav.addObject("clist", cartList);
-		mav.addObject("uvo",userService.getUser(genie_id));
-
-		mav.setViewName("/payment");
-		return mav;
-	}
-
-	@PostMapping("orderCompletion")
-	public ResponseEntity<String> completion(HttpSession session, CartVO cvo, @RequestParam("imp_uid") String imp_uid){
-		
-		System.out.println(imp_uid);
-		ResponseEntity<String> entity = null;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
-		headers.add("Content-Type","text/html; charset=utf-8");
-
-		TransactionStatus status= transactionManager.getTransaction(definition);
-
-		String genie_id = (String)session.getAttribute("logId"); 
-
-		try {
-
-			//주문완료 정보 넘기기 
-			int ocnt=productService.myorder(genie_id, cvo, imp_uid);
-			System.out.print(ocnt);
-		
-			//장바구니 삭제
-			int cnt= productService.delCart(genie_id);
-			System.out.println("삭제된 레코드 수:"+cnt);
-
-			String msg = "<script>";
-			msg += "location.href='/';";
-			msg += "</script>";
-			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
-
-			transactionManager.commit(status);
-
-		}catch(Exception e) {
-
-			String msg = "<script>";
-			msg += "history.back()";
-			msg += "</script>";
-
-			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
-			
-			transactionManager.rollback(status);
-			e.printStackTrace();
-		}
-		
-		return entity;
-	}
-
-	@GetMapping("completion")
-	public ModelAndView completion(ProductVO PVO) {
-
-
-		mav = new ModelAndView();
-		mav.setViewName("completion");
-
-		return mav;
-	}
-
-
-
-	//----------------------------- 제품 리스트 보이기 index -----------------------------------//
-	@GetMapping("index")
-	public ModelAndView productList(ProductVO PVO) {
-
-		mav = new ModelAndView();
-		mav.addObject("plist", productService.listProduct(PVO));
-		mav.addObject("pvo", PVO);
-		mav.setViewName("/index");
-
-		return mav;
-	}
-
-}
+		var params = {cart_num: $(this).attr('cart_num')};
+		    $.ajax({
+				url:"/delProduct",
+				data:params,
+				success:function(result){
+                    alert("제품이 삭제되었습니다.");
+					location.reload();
+				},error:function(e){
+					console.log(e.responseText);
+				}
+			});	
+	    });
+</script>
+<script src="/js_css/cart_js.js"></script>
