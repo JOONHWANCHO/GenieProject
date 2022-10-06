@@ -52,6 +52,7 @@
 }
 .cart-list img{
     width: 6vw;
+    border-radius: 15px;
 }
 /* --------------------------총상품가격---------------------- */
 .total-price{

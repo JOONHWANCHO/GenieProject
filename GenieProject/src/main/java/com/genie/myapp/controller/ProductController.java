@@ -163,10 +163,10 @@ public class ProductController{
 
 	//장바구니에서 제품 삭제
 	@GetMapping("delProduct")
-	public int delProduct(HttpSession session, CartVO cvo) {
-		System.out.print(cvo.toString());
-		String genie_id = (String)session.getAttribute("logId");
-		return 0;//productService.delProduct(cvo, genie_id);	
+	public void delProduct(HttpSession session, CartVO cvo) {
+		System.out.println(cvo.toString());
+		//String genie_id = (String)session.getAttribute("logId");
+		//return productService.delProduct(cart_num, genie_id);
 	}
 
 	//--------------------------------------------상품 결제페이지-----------------------------------------------------

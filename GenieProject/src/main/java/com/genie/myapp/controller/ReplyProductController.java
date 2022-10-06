@@ -28,8 +28,7 @@ public class ReplyProductController{
     
     @PostMapping("replyProductWrite")
 	public int replyWrite(ReplyProductVO vo, HttpSession session) {
-		vo.setGenie_id((String)session.getAttribute("logId")); // 작성자
-		
+		vo.setGenie_id((String)session.getAttribute("logId")); // 작성자	
 		return service.replyProductWrite(vo);
 	}
 

@@ -5,28 +5,27 @@ let cart = {
     //체크한 장바구니 상품 비우기
     delCheckedItem: function(){
 
-        document.querySelectorAll("input[name=noList]:checked").forEach(function (item) {
-
-            item.parentElement.remove();    
-            var cart_num= item.getAttribute('value');
-            console.log(cart_num);
-                $.ajax({
-                    url:"/delProduct",
-                    data: cart_num,
-                    success:function(result){
-                        alert("제품이 삭제되었습니다.");
-                        location.reload();
-                    },error:function(e){
-                        console.log(e.responseText);
-                    }
-                });
-            });
+                //document.querySelectorAll("input[name=noList]:checked").forEach(function (item) {
+                   // item.parentElement.remove();    
+                    //var cart_num= item.getAttribute('value');
+                    var cart_num = jQuery("#noList").serialize();
+                    console.log(cart_num);
+                        $.ajax({
+                            url:"/delProduct",
+                            data: cart_num,
+                            success:function(result){
+                                alert("제품이 삭제되었습니다.");
+                                location.reload();
+                            },error:function(e){
+                                console.log(e.responseText);
+                            }
+                        });
+                    
+                    //전송 처리 결과가 성공이면
+                    this.reCalc();
+                    this.updateUI();
+                },
             
-            //전송 처리 결과가 성공이면
-            this.reCalc();
-            this.updateUI();
-        },
-    
     //재계산
     reCalc: function(){
         //console.log("count : 999999");

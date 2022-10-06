@@ -67,8 +67,34 @@ nav .sidenav-trigger i {
 #pro-name{
     font-weight:bold;
 }
+#pro-name a{
+  color:black;
+  
+}
 #pro-price{
     font-weight:normal;
+}
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked{
+  opacity:1;
+}
+thead{
+  height:46px;
+  background:#fafafa;
+}
+#multiDel{
+  border:1px solid #ddd;
+	background-color:#fff;
+  color:blue;
+  font-size:15px;
+  margin-left:10px;
+}
+#check-text{
+  position: absolute;
+  top: 25%;
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 17px;
 }
 </style>
 
@@ -287,24 +313,33 @@ nav .sidenav-trigger i {
                        <h4 class="card-title mb-0">찜한 상품 <i class="material-icons float-right">more_vert</i></h4>
                     </div>
                     <table class="subscription-table responsive-table highlight">
-                       <thead>
-                          <tr>
-                             <th><input type="checkbox" id="allCheck" checked="checked"/>
-                                   <!-- <button type="button" id="multiDel">선택삭제</button>-->
+                      <colgroup>
+                        <col width="50">
+                        <col width="100">
+                        <col width="*">
+                        <col width="140">
+                      </colgroup>
+                      <thead>
+                          <tr class="head">
+                             <th scope="col"><input type="checkbox" id="allCheck" checked="checked"/>
+                                  <span id="check-text">
+                                    전체선택
+                                  <button type="button" id="multiDel">선택삭제</button></span>
                             </th>
-                             <th></th>
-                             <th></th>
-                             <th></th>
+                             <th scope="col"></th>
+                             <th scope="col"></th>
+                             <th scope="col"></th>
                           </tr>
                        </thead>
                     <c:forEach var="likelist" items="${list}">
                        <tbody class="like-list">
                           <tr>
-                             <td><input type="checkbox" name="noList" value="${likelist.product_id}"></td>
+                             <td><input type="checkbox" name="noList" value="${likelist.product_id}" checked="checked"></td>
                              <td><img src='${likelist.product_image1}'/></td>
-                             <td id="pro-name">${likelist.product_name}
+                             <td id="pro-name"><a href="/product_detail?product_id=${likelist.product_id}">${likelist.product_name}</a>
                                 <div><span id="pro-price"><fmt:formatNumber value="${likelist.product_price}" pattern="#,###원" /></span></div>
                              </td>
+                             <td></td>
                           </tr>
                        </tbody>
                     </c:forEach>

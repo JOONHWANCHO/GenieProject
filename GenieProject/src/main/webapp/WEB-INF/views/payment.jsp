@@ -55,6 +55,7 @@
   }
   .info p{
     margin-bottom: 15px;
+    color: gray;
   }
   .title{
     float: right;
@@ -142,8 +143,7 @@
             </div><!--End Info-->
             <div class="title">
                 <h2>Invoice #0001</h2>
-                <p>결제일: June 27, 2015
-                </p>
+                <p>2022년 10월 6일</p>
             </div><!--End Title-->
             </div><!--End InvoiceTop-->
             

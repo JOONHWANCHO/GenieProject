@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int delProduct(List<Integer> cart_num, String genie_id) {
+	public int delProduct(int cart_num, String genie_id) {
 		return dao.delProduct(cart_num, genie_id);
 	}
 

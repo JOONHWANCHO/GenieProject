@@ -253,7 +253,7 @@ public class SellerController {
 		TransactionStatus status= transactionManager.getTransaction(definition);
 		
 		try {//회원가입성공
-			int account = service.AccountWrite(avo);
+			int account33 = service.AccountWrite(avo);
 			int seller = service.sellerWrite(vo);
 			
 			
