@@ -112,7 +112,8 @@
 	  	<where>
 	  		<foreach collection="cartList" index="index" item = "item" open="cart_num in (" separator ="," close=")">
 	  			#{item}  			
-	  		</foreach>	  		
+	  		</foreach>	
+            
 	  	</where>
 	</delete>
 

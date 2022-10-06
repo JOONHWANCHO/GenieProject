@@ -7,7 +7,7 @@
         <h1><i class="fa-solid fa-cart-plus"></i><a href="#">장바구니</li></a></h1>
         <div class="line"></div>
         <div class="cart-product">
-            <div><input type="checkbox" id="allChk"/>전체선택</div>
+            <div><input type="checkbox" id="allChk"/></div>
             <div>상품이미지</div>
             <div>상품정보</div>
             <div>가격</div>
@@ -16,7 +16,7 @@
         </div>
 
         <div class="line"></div>
-        <form type="post" action="/payment">
+        <form type="post" action="/payment" id="multiChk">
             <c:forEach var="cvo" items="${clist}">
                 <div class="cart-list">
                     <input type="checkbox" id="cartList" name="cartList" value="${cvo.cart_num}" onclick="javascript:cart.checkItem();"/>
@@ -29,7 +29,7 @@
                     
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-up up"></i></div>
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-down down"></i></div>
-                    <div input type="hidden" size="4" maxlength="4"></div>
+                    <%-- <div input type="hidden" size="4" maxlength="4"></div>--%>
                     <div><input type="button" style="background:#b90e0a; border:none; padding: 10px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
                 </div>
             </c:forEach>
