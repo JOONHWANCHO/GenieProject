@@ -4,9 +4,11 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class CartVO{
     private int cart_num;
     private String genie_id;
@@ -18,7 +20,7 @@ public class CartVO{
     private String product_name;
     private int product_quantity;
     private int product_price;
-	private List<Integer> noList;
+	  private List<Integer> noList;
 
 	
 	@Override
@@ -138,7 +140,5 @@ public class CartVO{
 	public void setNoList(List<Integer> noList) {
 		this.noList = noList;
 	}
-	
-	
 	
 }
