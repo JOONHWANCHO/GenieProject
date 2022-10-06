@@ -16,7 +16,7 @@
         </div>
 
         <div class="line"></div>
-        <form type="post" action="/payment" id="multiChk">
+        <form type="post" action="/payment">
             <c:forEach var="cvo" items="${clist}">
                 <div class="cart-list">
                     <input type="checkbox" id="noList" name="noList" value="${cvo.cart_num}" onclick="javascript:cart.checkItem();"/>
@@ -24,7 +24,7 @@
                     <div>${cvo.product_name}</div>
                     <div><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원"/></div>
                     <div input type="hidden" value="${cvo.product_price}" pattern="#,###원"></div>
-<%-- 모두들 안녕하세요! --%>
+
                     <div><input type="text" name="p_num${cvo.cart_num}" id="p_num${cvo.cart_num}" class="p_num" size="2" maxlength="4" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});"/></div>
                     
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-up up"></i></div>
@@ -35,7 +35,6 @@
             </c:forEach>
             <input type="button" class="abutton" value= "선택상품삭제" onclick="javascript:cart.delCheckedItem();">
             <div input type="hidden" id="total-price" name="total-price"></div>
-        </form>
         
         <span class="submit-wrapper">
             <a href="http://localhost:9070/">계속 쇼핑하기</a>

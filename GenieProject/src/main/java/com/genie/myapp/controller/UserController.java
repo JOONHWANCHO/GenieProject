@@ -75,6 +75,7 @@ public class UserController {
 			session.setAttribute("logId", logVO.getGenie_id());		
 			session.setAttribute("logName", logVO.getUser_name());
 			session.setAttribute("logStatus","Y");
+			session.setAttribute("memberType", "1");
 			mav.setViewName("redirect:/");
 			
 			return mav;
@@ -84,6 +85,7 @@ public class UserController {
 			session.setAttribute("logId", slogVO.getGenie_id());
 			session.setAttribute("logName", slogVO.getCompany_name());
 			session.setAttribute("logStatus","Y");
+			session.setAttribute("memberType", "2");
 			mav.setViewName("redirect:/seller/sellerMain");
 
 			return mav;
@@ -93,6 +95,7 @@ public class UserController {
 			session.setAttribute("logId", alogVO.getGenie_id());
 			session.setAttribute("logName", alogVO.getAdminister_name());
 			session.setAttribute("logStatus","Y");
+			session.setAttribute("memberType", "3");
 			mav.setViewName("redirect:/admin/adminMain");
 
 			return mav;

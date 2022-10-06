@@ -11,9 +11,14 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 
 <Style>
-
+.main {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
 </Style>
 
+<section class="main">
 <!-- 상단 부분 -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
   <tr>
@@ -307,3 +312,4 @@
   </tr>
 </table>
 <!-- 하단 부분 -->
+</section>

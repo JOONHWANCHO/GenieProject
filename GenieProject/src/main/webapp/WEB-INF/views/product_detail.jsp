@@ -17,7 +17,6 @@
 			$("#replyList>ul").empty();
 			var url = "/reply/replyProductList";
 			var params = {no:${pvo.product_id}};
-			console.log(params);
 			
 			$.ajax({
 				url:url,
@@ -27,7 +26,7 @@
 					
 					$reply.each(function(i, vo){ // index, vo
 						tag = "<li>";
-						tag += "<div><b>"+"작성자 : "+vo.genie_id+"</b>";
+						tag += "<div><b>"+"작성자 : "+vo.genie_id+" | "+vo.writedate+"</b>";
 						// 수정, 삭제버튼(자신이 쓴 글일때만) 표시
 						if(vo.genie_id=='${logId}'){
 							tag += "<input type='button' value='리뷰수정'/>";
@@ -48,7 +47,7 @@
                         tag += "<br>"
                                 +"리뷰내용 : "
                                 +vo.comment+"<br></div>";
-						// 로그인 아이디와 댓글 아이디 동일시 수정폼
+						// 로그인 아이디와 댓글 아이디 동일시 (수정폼)을 만들어준다.
 						if(vo.genie_id=='${logId}'){
 							tag += "<div style='display:none'><form method='post'>";
 							tag += "<input type='hidden' name='reply_no' value='"+vo.reply_no+"'/>";
