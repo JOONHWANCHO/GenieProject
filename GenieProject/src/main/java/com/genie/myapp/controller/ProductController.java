@@ -162,11 +162,25 @@ public class ProductController{
 	}
 
 	//장바구니에서 제품 삭제
-	@GetMapping("delProduct")
-	public void delProduct(HttpSession session, CartVO cvo) {
+	@GetMapping("delCart")
+	public int delCart(HttpSession session, int cart_num) {
+		String genie_id = (String)session.getAttribute("logId");
+		return productService.delCart(cart_num, genie_id);
+
+	}
+
+	//장바구니에서 제품 삭제
+	@GetMapping("delMultiCart")
+	public ModelAndView delMultiCart(HttpSession session, CartVO cvo) {
+
+		mav=new ModelAndView();
 		System.out.println(cvo.toString());
-		//String genie_id = (String)session.getAttribute("logId");
-		//return productService.delProduct(cart_num, genie_id);
+		String genie_id = (String)session.getAttribute("logId");
+		int cnt = productService.delMultiCart(cvo);
+
+		System.out.print("지워진 상품 : "+cnt);
+		mav.setViewName("redirect:/cart");
+		return mav;
 	}
 
 	//--------------------------------------------상품 결제페이지-----------------------------------------------------

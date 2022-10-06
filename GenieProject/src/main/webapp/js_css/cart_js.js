@@ -5,26 +5,26 @@ let cart = {
     //체크한 장바구니 상품 비우기
     delCheckedItem: function(){
 
-                //document.querySelectorAll("input[name=noList]:checked").forEach(function (item) {
-                   // item.parentElement.remove();    
-                    //var cart_num= item.getAttribute('value');
-                    var cart_num = jQuery("#noList").serialize();
-                    console.log(cart_num);
-                        $.ajax({
-                            url:"/delProduct",
-                            data: cart_num,
-                            success:function(result){
-                                alert("제품이 삭제되었습니다.");
-                                location.reload();
-                            },error:function(e){
-                                console.log(e.responseText);
-                            }
-                        });
-                    
-                    //전송 처리 결과가 성공이면
-                    this.reCalc();
-                    this.updateUI();
-                },
+        //document.querySelectorAll("input[name=noList]:checked").forEach(function (item) {
+           // item.parentElement.remove();    
+            //var cart_num= item.getAttribute('value');
+            var cart_num = jQuery("#multiChk").serialize();
+            console.log(cart_num);
+                $.ajax({
+                    url:"/delMultiCart",
+                    data: cart_num,
+                    success:function(result){
+                        alert("제품이 삭제되었습니다.1234");
+                        location.reload();
+                    },error:function(e){
+                        console.log(e.responseText);
+                    }
+                });
+            
+            //전송 처리 결과가 성공이면
+            this.reCalc();
+            this.updateUI();
+        },
             
     //재계산
     reCalc: function(){
@@ -33,7 +33,8 @@ let cart = {
         this.totalPrice = 0;
         document.querySelectorAll(".p_num").forEach(function (item) {
 
-            if(item.parentElement.parentElement.firstElementChild.checked == true){
+            if(item.parentElement.parentElement.firstElementChild.checked==true){
+                //console.log(item.parentElement.parentElement.firstElementChild.checked==true);
                 var count = parseInt(item.getAttribute('value'));
                 this.totalCount += count;
                 var price = item.parentElement.previousElementSibling.getAttribute('value');
