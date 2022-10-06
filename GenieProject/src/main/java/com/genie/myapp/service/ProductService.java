@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.genie.myapp.vo.CartVO;
+import com.genie.myapp.vo.LikeVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
@@ -37,4 +38,6 @@ public interface ProductService{
     public ProductVO likeStatus(int product_id);
    
 
+    // 상세페이지 logid 좋아요 확인
+    public LikeVO likeCheck(int product_id, String genie_id);
 }   
