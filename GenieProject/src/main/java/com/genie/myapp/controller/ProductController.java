@@ -29,6 +29,7 @@ import com.genie.myapp.service.UserService;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.PagingVO;
+import com.genie.myapp.vo.PaymentVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.TagVO;
 
@@ -161,6 +162,8 @@ public class ProductController{
 		return entity;
 	}
 
+
+
 	//장바구니에서 제품 삭제
 	@GetMapping("delCart")
 	public int delCart(HttpSession session, int cart_num) {
@@ -175,7 +178,7 @@ public class ProductController{
 
 		mav=new ModelAndView();
 		System.out.println(cvo.toString());
-		String genie_id = (String)session.getAttribute("logId");
+		//String genie_id = (String)session.getAttribute("logId");
 		int cnt = productService.delMultiCart(cvo);
 
 		System.out.print("지워진 상품 : "+cnt);
@@ -185,13 +188,19 @@ public class ProductController{
 
 	//--------------------------------------------상품 결제페이지-----------------------------------------------------
 	@GetMapping("payment")
-	public ModelAndView payment(HttpSession session){
+	public ModelAndView payment(HttpSession session, PaymentVO pvo){
 		
 		String genie_id = (String)session.getAttribute("logId"); 
-		List<CartVO> cartList = productService.getCart(genie_id);
+
+		session.setAttribute("Product_name", pvo.getProduct_name());
+		session.setAttribute("Product_qty", pvo.getP_num());
+		session.setAttribute("Product_price", pvo.getProduct_price());
+		session.setAttribute("total", pvo.getTotal());
+		
+		
 
 		mav = new ModelAndView();
-		mav.addObject("clist", cartList);
+		mav.addObject("plist", pvo);
 		mav.addObject("uvo",userService.getUser(genie_id));
 
 		mav.setViewName("/payment");
@@ -218,7 +227,7 @@ public class ProductController{
 			System.out.print(ocnt);
 		
 			//장바구니 삭제
-			int cnt= productService.delCart(genie_id);
+			int cnt= productService.payEndCart(genie_id);
 			System.out.println("삭제된 레코드 수:"+cnt);
 
 			String msg = "<script>";

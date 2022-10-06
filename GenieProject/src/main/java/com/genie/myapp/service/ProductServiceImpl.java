@@ -9,6 +9,7 @@ import java.util.Map;
 import com.genie.myapp.dao.ProductDAO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.PagingVO;
+import com.genie.myapp.vo.PaymentVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
 
@@ -64,8 +65,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int delCart(String genie_id) {
-		return dao.delCart(genie_id);
+	public int payEndCart(String genie_id) {
+		return dao.payEndCart(genie_id);
 	}
 
 	@Override
@@ -82,6 +83,7 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO likeStatus(int product_id) {
 		return dao.likeStatus(product_id);
 	}
+
 
 }
 
