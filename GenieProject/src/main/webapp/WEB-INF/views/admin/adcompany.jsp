@@ -339,9 +339,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <!-- 태그 반복 -->
                       <c:forEach var="vo" items="${adcompany}">
                       <tr>
-					  	<td>${vo.genie_id}</td>
-						<td>${vo.company_name}</td>
-						<td>${vo.seller_tel}</td>
+                        <td>${vo.genie_id}</td>
+                        <td>${vo.company_name}</td>
+                        <td>${vo.seller_tel}</td>
                         <td>${vo.seller_email}</td>
                         <td>${vo.writedate}</td>
                         	<c:if test="${vo.seller_status=='Y'}">

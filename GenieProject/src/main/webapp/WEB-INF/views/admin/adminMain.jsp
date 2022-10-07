@@ -283,7 +283,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="info-box-content">
                 <span class="info-box-text">셀러 입점요청</span>
                 <span class="info-box-number">
-                  3
+                  ${pVO.notApproved}
                   <small>업체</small>
                 </span>
               </div>
