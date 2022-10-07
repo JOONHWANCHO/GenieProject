@@ -1,4 +1,4 @@
-  package com.genie.myapp.service;
+package com.genie.myapp.service;
 
 import java.util.List;
 import java.util.Map;
@@ -66,5 +66,7 @@ public interface SellerService {
 
 	// 이번달 매출
     public int thisMonthRevenue(String seller_id);
+	// 카테고리별 판매건수
+	public List<OrderVO> topCategory(String seller_id);
 	
 }
