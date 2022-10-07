@@ -6,12 +6,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.ReplyProductService;
 import com.genie.myapp.vo.LikeVO;
+import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.ReplyProductVO;
 
 @RestController
@@ -68,4 +71,26 @@ public class ReplyProductController{
  		}
 		return result;
  	}
+	
+	@GetMapping("likeDel/{product_id}")
+	public ModelAndView likeDel(@PathVariable("product_id") int pid, HttpSession session) {
+		
+		LikeVO vo = new LikeVO();
+		vo.setGenie_id((String)session.getAttribute("logId"));
+		vo.setProduct_id(pid);
+		
+		ProductVO pvo = new ProductVO();
+		pvo.setProduct_id(pid);
+		
+		int result = service.likeDelete(vo);
+		int result2 = service.likeHitMinus(vo);
+		
+		ModelAndView mav = new ModelAndView();
+		if(result>0 && result2>0) {
+			mav.setViewName("redirect:/user/MyLikeList");
+		}else {
+			mav.setViewName("redirect:/user/MyLikeList");
+		}
+		return mav;
+	}
 }
