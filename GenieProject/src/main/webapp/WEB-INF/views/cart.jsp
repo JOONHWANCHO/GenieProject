@@ -7,7 +7,7 @@
         <h1><i class="fa-solid fa-cart-plus"></i><a href="#">장바구니</li></a></h1>
         <div class="line"></div>
         <div class="cart-product">
-            <div><input type="checkbox" id="allChk" onclick="javascript:cart.checkItem();"/></div>
+            <div><input type="checkbox" id="allChk"/></div>
             <div>상품이미지</div>
             <div>상품정보</div>
             <div>가격</div>
@@ -49,7 +49,8 @@
     $(function(){
         //리스트 전체 선택
         $("#allChk").click(function(){
-            $(".cart-list input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));      
+            $(".cart-list input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));  
+            javascript:cart.checkItem();    
         });
     });
 
