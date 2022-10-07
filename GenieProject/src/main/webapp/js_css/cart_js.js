@@ -45,6 +45,8 @@ let cart = {
     //화면 업데이트
     updateUI: function () {
         document.querySelector('#total').textContent = '총 상품가격 : ' + this.totalPrice.formatNumber() + '원';
+        let c_style = document.getElementById('total').style
+        c_style.border = "5px solid #ddd"
     },
     //개별 수량 변경
     changePNum: function (pos) {
