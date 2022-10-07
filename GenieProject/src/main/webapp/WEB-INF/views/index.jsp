@@ -6,6 +6,7 @@
 <section class="index">
    <div class="index-list">      
       <a href="/genie"><img src="/image/main_banner1.png"></a>
+      <button class="button">Click Me!</button>
    </div>
 
    <div class="category" id="category">
@@ -45,7 +46,7 @@
          <button onclick="location.href='/product?product_tag=${tvo.product_tag}'">#${tvo.product_tag}</button>
       </c:forEach>
       -->
-         <button onclick="location.href='/product?product_tag=생일'">#생일</button>
+         <button onclick="location.href='/product?product_tag=집들이'">#집들이</button>
          <button onclick="location.href='/product?product_tag=20대'">#20대</button>
          <button onclick="location.href='/product?product_tag=여성'">#여성</button>
          <button onclick="location.href='/product?product_tag=부모님'">#부모님</button>
