@@ -53,5 +53,6 @@ public interface ProductDAO{
     public ProductVO likeStatus(int product_id);
     
     // 상세페이지 logid 좋아요 확인
+    public LikeVO likeCheck(int product_id, String genie_id);
 
 }
