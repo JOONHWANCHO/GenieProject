@@ -195,7 +195,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="/js_css/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="https://st.depositphotos.com/1105977/1271/i/950/depositphotos_12715373-stock-photo-blue-circle-splash.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block">조준환</a>
@@ -326,7 +326,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <table class="table">
                     <thead>
                       <tr>
-                      	<th><input type="checkbox"></th>
                         <th>아이디</th>
                         <th>상점명</th>
                         <th>연락처</th>
@@ -340,7 +339,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <!-- 태그 반복 -->
                       <c:forEach var="vo" items="${adcompany}">
                       <tr>
-                      	<td><input type="checkbox"></td>
 					  	<td>${vo.genie_id}</td>
 						<td>${vo.company_name}</td>
 						<td>${vo.seller_tel}</td>

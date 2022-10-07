@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.genie.myapp.dao.UserDAO;
 import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.DeliveryVO;
+import com.genie.myapp.vo.OrderVO;
+import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.UserVO;
 
 @Service
@@ -70,6 +72,16 @@ public class UserServiceImpl implements UserService{
     @Override
     public int delDelivery(int address_num, String genie_id) {
         return dao.delDelivery(address_num, genie_id);
+    }
+
+    @Override
+    public List<OrderVO> getOrder(String genie_id) {
+        return dao.getOrder(genie_id);
+    }
+
+    @Override
+    public List<ProductVO> getLikeList(String genie_id) {
+        return dao.getLikeList(genie_id);
     }
 
     

@@ -196,6 +196,33 @@
 		where p.genie_id=#{param1}) b
 	on a.product_id = b.product_id
 	order by total_sales desc
+	limit 3
+	</select>
+
+	<!-- seller status -->
+	<select id="sellerStatus" resultType="String">
+		select seller_status from seller where genie_id = #{param4}
+	</select>
+
+	<!-- 이번달 매출 -->
+	<select id="thisMonthRevenue" resultType="int">
+		select ifnull(sum(m.order_price), 0) monthly_revenue
+		from myorder m join 
+				(select product_id, genie_id as seller_id, product_name 
+				from product 
+				where genie_id=#{param1}) p
+			on m.product_id = p.product_id
+		where date_format(m.order_writedate, '%y-%m') = month(curdate())
+	</select>
+
+	<!-- 카테고리별 상품 판매건수 -->
+	<select id="topCategory" resultType="OrderVO">
+		select product_category, count(product_id) as sold_counts
+		from (select m.genie_id, m.product_id, m.order_price, m.order_writedate, p.genie_id seller_id, p.product_category, p.product_name
+			from myorder m join (select * from product where genie_id=#{param1}) p
+			on m.product_id = p.product_id) a
+		group by 1
+		order by sold_counts desc
 	</select>
 
 </mapper>

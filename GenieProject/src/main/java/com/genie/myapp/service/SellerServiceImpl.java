@@ -130,4 +130,19 @@ public class SellerServiceImpl implements SellerService {
 		return dao.revenueByProduct(seller_id);
 	}
 
+	@Override
+	public String sellerStatus(String seller_id) {
+		return dao.sellerStatus(seller_id);
+	}
+
+	@Override
+	public int thisMonthRevenue(String seller_id) {
+		return dao.thisMonthRevenue(seller_id);
+	}
+
+	@Override
+	public List<OrderVO> topCategory(String seller_id) {
+		return dao.topCategory(seller_id);
+	}
+
 }

@@ -4,6 +4,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+  .content-wrapper{
+	overflow-y:scroll;
+	-ms-overflow-style: none;
+}
+
+  .content-wrapper::-webkit-scrollbar{
+  display:none;
+}
 
   #orderbody{
 		padding-top: 10px;
@@ -103,7 +111,6 @@
                   </span>
                 </div>
               </i></span>
-              
             </div>
           </div>
           <div class="col-12 col-sm-6 col-md-4">
@@ -130,16 +137,12 @@
               </i></span>
             </div>
           </div>
-        <div class="container-fluid">  
+        </div> <!-- /.row -->
           <div class="row">
             <div class="col-lg-12">
               <div class="card card-primary card-outline">
                 <div class="card-body">
-                  <h5 class="card-title"></h5> <!--주문목록-->
-                  <div id="searchbox" style="font-size: 13px;">
-                    <input type="text" name="searchWord" id="searchWord" style="width:300px"/>
-                    <input type="submit" value="Search"/>
-                  </div>
+                  <h5 class="card-title"></h5> <!--주문목록--> 
                   <br>
                   <p class="card-text">
                     <table class="table">
@@ -161,8 +164,8 @@
                       </thead>
                       <tbody>
                       <!-- 주문 상품 목록을 리스트로 표시 -->
-                      <c:forEach var="vo" items="${list}" varStatus="i"> 
-                        <tr>
+                        <c:forEach var="vo" items="${list}" varStatus="i"> 
+                          <tr>
                             <td>${vo.order_num}</td>
                             <td>${vo.order_writedate}</td>
                             <td>${vo.product_name}</td>
@@ -218,33 +221,30 @@
                                 <!-- 수정을 클릭하면 선택한 셀렉트 박스의 id를 함수로 전달 -->
                                 <input type="button" value="수정" onClick="fn_modify_order_state('${vo.order_num}','s_delivery_status${i.index}')"/>
                             </td>
-                        </tr>
+                          </tr>
                         </c:forEach>
                       </tbody>
                     </table>
                   </p>
                 </div>
-              </div><!-- /.card -->
+              </div><!— /.card —>
             </div>
-          </div>
-        <!-- /.row -->
-        </div>
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+        </div> <!— /.row —>
+      </div> <!— /.container-fluid —>
+    </div> <!— /.content —>
+  </div> <!— /.content-wrapper —>
+  
 
 
-<!-- REQUIRED SCRIPTS -->
+<!— REQUIRED SCRIPTS —>
 
-<!-- jQuery -->
+<!— jQuery —>
 <script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
+<!— Bootstrap 4 —>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
+<!— AdminLTE App —>
 <script src="/js_css/dist/js/adminlte.min.js"></script>
 
 
-  <%@ include file="../inc/sellerFooter.jsp"%>
+<%@ include file="../inc/sellerFooter.jsp"%>
                   

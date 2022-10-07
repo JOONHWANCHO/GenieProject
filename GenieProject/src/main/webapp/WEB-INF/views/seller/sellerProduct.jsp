@@ -2,6 +2,16 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 
 <style>
+
+.content-wrapper{
+	overflow-y:scroll;
+	-ms-overflow-style: none;
+}
+
+.content-wrapper::-webkit-scrollbar{
+  display:none;
+}
+
 #productbody{
 	padding-top: 10px;
 	padding-left: 100px;
@@ -9,6 +19,13 @@
 }
 .table a{
 	color:black;
+}
+.content-wrapper{
+	overflow-y:scroll;
+	-ms-overflow-style: none;
+}
+.content-wrapper::-webkit-scrollbar{
+  display:none;
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
