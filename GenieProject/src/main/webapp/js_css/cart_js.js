@@ -61,7 +61,7 @@ let cart = {
         console.log("newval : " + newval);
         var price=item.parentElement.previousElementSibling.getAttribute('value');
         console.log(price);
-        item.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
+        item.parentElement.nextElementSibling.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
 
         //전송 처리 결과가 성공이면    
         this.reCalc();
