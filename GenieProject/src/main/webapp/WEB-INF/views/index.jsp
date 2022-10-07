@@ -70,6 +70,7 @@
       </div>
    </div>
 
+   <!-- 리스팅 삭제 
    <div class="recommand_listing">      
       <div id="product_order_list">
          <p>
@@ -79,8 +80,8 @@
          <button type="button" onclick="location.href='/mbti/${mbti}/likelist'">인기순</button> </p>
       </div>
    </div>
- 
-      <!--
+   -->
+      
       <div class="recommend">
          <div class="box1">금주의 추천상품</div>
          <a href="/product" class="box2"></a>
@@ -91,7 +92,6 @@
          <div class="box7" style="font-size: 2rem;"><a href="/">브랜드2 상품명</a></div>
          <div class="box8" style="font-size: 1.5rem;"><a href="/">브랜드2 가격</a></div>
       </div>
-      -->
 
    <div class="genieContainer" id="product_list">
       <h1>금주의 추천상품</h1>

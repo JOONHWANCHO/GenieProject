@@ -50,10 +50,14 @@
     $(function(){
         //리스트 전체 선택
         $("#allChk").click(function(){
-            $(".cart-list input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));
-            javascript:cart.checkItem();  
-        });  
+            $(".cart-list input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));  
+            javascript:cart.checkItem();    
+        });
+
     });
+
+
+
 </script>
 <script>
 	$(document).on('click','.cart-list input[value=Del]',function(){
