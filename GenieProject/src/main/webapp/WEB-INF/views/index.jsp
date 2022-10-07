@@ -5,7 +5,8 @@
 <!--Genie 메인화면--->
 <section class="index">
    <div class="index-list">      
-      <a href="/genie"><img src="/image/main_bg.png"></a>
+      <a href="/genie"><img src="/image/main_banner1.png"></a>
+      <button class="button">Click Me!</button>
    </div>
 
    <div class="category" id="category">
@@ -45,7 +46,7 @@
          <button onclick="location.href='/product?product_tag=${tvo.product_tag}'">#${tvo.product_tag}</button>
       </c:forEach>
       -->
-         <button onclick="location.href='/product?product_tag=생일'">#생일</button>
+         <button onclick="location.href='/product?product_tag=집들이'">#집들이</button>
          <button onclick="location.href='/product?product_tag=20대'">#20대</button>
          <button onclick="location.href='/product?product_tag=여성'">#여성</button>
          <button onclick="location.href='/product?product_tag=부모님'">#부모님</button>
@@ -55,7 +56,7 @@
          <button onclick="location.href='/product?product_tag=연인'">#연인</button> 
          <button onclick="location.href='/product?product_tag=가족/친척'">#가족/친척</button> 
          <button onclick="location.href='/product?product_tag=스승/멘토'">#스승/멘토</button> 
-         <button onclick="location.href='/product?product_tag=결혼'">#30대</button> 
+         <button onclick="location.href='/product?product_tag=30대'">#30대</button> 
          <button onclick="location.href='/product?product_tag=친구'">#친구</button> 
          <button onclick="location.href='/product?product_tag=출산'">#출산</button> 
          <button onclick="location.href='/mbti/mbtiMain'">#mbti</button>
@@ -66,22 +67,11 @@
    <div class="mbti" id="mbti">
       <h1>MBTI 추천 선물</h1>
       <div class="mbti-list">      
-         <a href="/mbti/mbtiMain"><img src="/image/mbti_bg.jpg"></a>
+         <a href="/mbti/mbtiMain"><img src="/image/mbti_banner1.png"></a>
       </div>
    </div>
-
-   <!-- 리스팅 삭제 
-   <div class="recommand_listing">      
-      <div id="product_order_list">
-         <p>
-         <button type="button" onclick="location.href='/mbti/${mbti}/pricelist'">가격낮은순</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-         <button type="button" onclick="location.href='/mbti/${mbti}/pricelistdesc'">가격높은순</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-         <button type="button" onclick="location.href='/mbti/${mbti}/recentlist'">최신순</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-         <button type="button" onclick="location.href='/mbti/${mbti}/likelist'">인기순</button> </p>
-      </div>
-   </div>
-   -->
-      
+   
+      <!--
       <div class="recommend">
          <div class="box1">금주의 추천상품</div>
          <a href="/product" class="box2"></a>
@@ -92,6 +82,7 @@
          <div class="box7" style="font-size: 2rem;"><a href="/">브랜드2 상품명</a></div>
          <div class="box8" style="font-size: 1.5rem;"><a href="/">브랜드2 가격</a></div>
       </div>
+      -->
 
    <div class="genieContainer" id="product_list">
       <h1>금주의 추천상품</h1>
