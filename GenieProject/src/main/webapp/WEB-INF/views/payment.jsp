@@ -157,18 +157,18 @@
                 <h3>${uvo.user_name}</h3>
                 <p>${uvo.user_email}<br/>
                    ${uvo.user_tel}<br/>
-            </div><br/>
+            </div>
 
             <div id="project">
             배송목록<br/>
             <c:forEach var="i" begin="0" end="${fn:length(Product_qty)-1}">
-                ${Product_name[i]}  ${Product_price[i]}원 ${Product_qty[i]}개 <br/>
+                ${Product_name[i]} ${Product_price[i]}원 ${Product_qty[i]}개 <br/>
             </c:forEach>
-            <br/><br/><br/>
+            <br/>
 
              <c:set var="total" value="0"/>
-                <c:forEach var="i" begin="0" end="${fn:length(Product_qty)-1}">
-              <c:set var="total" value="${Product_price[i]*Product_qty[i]}"/>
+                <c:forEach var="i" begin="0" end="${fn:length(Product_qty)}">
+              <c:set var="total" value="${total+Product_price[i]*Product_qty[i]}"/>
                 </c:forEach>
             
             </div><br/>
@@ -228,18 +228,8 @@
               pg: 'html5_inicis',                  
               pay_method: 'card',         
               merchant_uid: 'merchant_' + new Date().getTime(), 
-              
-              
-
-
-              name:'${Product_name}',
-              
-
-              amount: '${total}',//가격  
-         
-
-
-
+              name:'${Product_name}',     
+              amount: '${total}',//가격          
               buyer_email: '${uvo.user_email}',
               buyer_name: $("#receiver_name").val(),
               buyer_tel: $("#receiver_tel").val(),      

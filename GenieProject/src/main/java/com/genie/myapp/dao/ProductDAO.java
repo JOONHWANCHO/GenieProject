@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.LikeVO;
 import com.genie.myapp.vo.PagingVO;
-import com.genie.myapp.vo.PaymentVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
 
