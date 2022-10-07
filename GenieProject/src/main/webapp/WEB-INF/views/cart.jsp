@@ -7,7 +7,7 @@
         <h1><i class="fa-solid fa-cart-plus"></i><a href="#">장바구니</li></a></h1>
         <div class="line"></div>
         <div class="cart-product">
-            <div><input type="checkbox" id="allChk"/>전체선택</div>
+            <div><input type="checkbox" id="allChk"/></div>
             <div>상품이미지</div>
             <div>상품정보</div>
             <div>가격</div>
@@ -16,25 +16,26 @@
         </div>
 
         <div class="line"></div>
-        <form type="post" action="/payment">
+        <form type="post" action="/payment" id="multiChk">
             <c:forEach var="cvo" items="${clist}">
                 <div class="cart-list">
-                    <input type="checkbox" id="noList" name="noList" value="${cvo.cart_num}" onclick="javascript:cart.checkItem();"/>
+                    <input type="checkbox" id="cartList" name="cartList" value="${cvo.cart_num}" onclick="javascript:cart.checkItem();"/>
                     <div><img src='${cvo.product_image1}'></div>
                     <div>${cvo.product_name}</div>
+                    <input type="hidden" name="Product_name" value="${cvo.product_name}"/>
                     <div><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원"/></div>
-                    <div input type="hidden" value="${cvo.product_price}" pattern="#,###원"></div>
+                    <input type="hidden" name="Product_price" value="${cvo.product_price}">
 
-                    <div><input type="text" name="p_num${cvo.cart_num}" id="p_num${cvo.cart_num}" class="p_num" size="2" maxlength="4" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});"/></div>
+                    <div><input type="text" name="p_num" id="p_num${cvo.cart_num}" class="p_num" size="2" maxlength="4" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});"/></div>
                     
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-up up"></i></div>
                     <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-down down"></i></div>
-                    <div input type="hidden" size="4" maxlength="4"></div>
+                    <%-- <div input type="hidden" size="4" maxlength="4"></div>--%>
                     <div><input type="button" style="background:#b90e0a; border:none; padding: 10px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
                 </div>
             </c:forEach>
-            <input type="button" class="abutton" value= "선택상품삭제" onclick="javascript:cart.delCheckedItem();">
-            <div input type="hidden" id="total-price" name="total-price"></div>
+            <input type="button" value= "선택상품삭제" onclick="javascript:cart.delCheckedItem();">
+            <div input type="text" id="total" name="total" value="0"></div>
         
         <span class="submit-wrapper">
             <a href="http://localhost:9070/">계속 쇼핑하기</a>
@@ -50,17 +51,7 @@
         $("#allChk").click(function(){
             $(".cart-list input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));
            
-        });
-        
-        $("#multiChk").click(function(){
-            var countChk = 0;
-            $(".cart-list input[name=noList]").each(function(idx,obj){
-                if(obj.checked){ // input 태그가 체크 상태이면 true
-                    countChk++;
-                }
-            });
-            $("#listFrm").submit();
-        });
+        });  
     });
 </script>
 <script>
@@ -68,7 +59,7 @@
 
 		var params = {cart_num: $(this).attr('cart_num')};
 		    $.ajax({
-				url:"/delProduct",
+				url:"/delCart",
 				data:params,
 				success:function(result){
                     alert("제품이 삭제되었습니다.");

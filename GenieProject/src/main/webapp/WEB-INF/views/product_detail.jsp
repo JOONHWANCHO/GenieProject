@@ -6,11 +6,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
-<style>
-    .likeChange{
-        font-size:2em; color:#ddd;        
-    }
-</style>
+
 <script>
     $(function(){
 		function replyAllList(){
@@ -140,16 +136,34 @@
 </script>
 
 <script>
+	// 좋아요
     $(function(){
+    	// 해당상품 좋아요 숫자 가져오기
+		var likeNum = ${lvo.product_like};
+		$("#likeBtn").append("<p>"+likeNum+"</p>");
+		
+		// 로그인 아이디의 해당상품 좋아요 판별
+		if("${cvo.genie_id}"!=""){ // 이미 좋아요를 누른상태면
+			likeRed();
+		}else { // 좋아요를 누른적이 없으면
+			likeGray();
+		}
+		
         $('#likeBtn').click(function(){
             $.ajax({
                 url:"reply/likeStatus",
                 data:{product_id:${pvo.product_id}},
                 success:function(result){
-                    if (result>100){ // 좋아요
+                    if (result>100){ // 좋아요 클릭
                         likeRed();
+                    	likeNum += 1;
+                    	$("#likeBtn>p").remove();
+                        $("#likeBtn").append("<p>"+likeNum+"</p>");
                     }else { // 좋아요 취소
                         likeGray();
+                    	likeNum -= 1;
+                    	$("#likeBtn>p").remove();
+                        $("#likeBtn").append("<p>"+likeNum+"</p>");
                     }
                 },error:function(e){
                     console.log(e.responseText);
@@ -159,12 +173,10 @@
         
         function likeRed(){ // 좋아요 클릭 시 CSS
             $('#likeBtn').css('color','red');
-            console.log("빨강");
         }
         
         function likeGray(){ // 좋아요 취소 시 CSS
             $('#likeBtn').css('color','gray');
-            console.log("회색");
         }        
        
     });
@@ -183,6 +195,10 @@
             <div class="box4" onclick="detail1('${pvo.product_image3}')" style="background-image:url(${pvo.product_image3})"></div>
             <div class="box5">
                 ${pvo.product_name}
+                
+                <div class="w3-button w3-black w3-round" style="text-align:center;">
+    				<i class="fa fa-heart likeChange" id="likeBtn"></i>
+   				</div>
             </div>
             <div class="box6">
                 상품가격 : <fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/>
@@ -211,9 +227,6 @@
         </div>
     </form>
 
-    <div class="w3-button w3-black w3-round" id="likeBtn" style="text-align:center">
-    	<i class="fa fa-heart likeChange"></i>  ${lvo.product_like}
-    </div>
 <!-- ------------------------------------------------------------------------------------------- -->
     <div class="review-wrapper">
         <button class="box_1" onclick="content1()">
