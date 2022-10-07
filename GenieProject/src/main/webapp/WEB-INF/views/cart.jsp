@@ -32,16 +32,16 @@
                         <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-down down"></i></div>
                     </div>
                     <div input type="hidden" size="4" maxlength="4"></div>
-                    <div><input type="button" style="background:#b90e0a; border:none; padding: 10px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
+                    <div><input type="button" style="background:#b90e0a; border:none; padding: 6px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
                 </div>
             </c:forEach>
             <input type="button" value= "선택상품삭제" id="delete" onclick="javascript:cart.delCheckedItem();">
             <div input type="text" id="total" name="total" value="0"></div>
-        
-        <span class="submit-wrapper">
-            <a href="http://localhost:9070/">계속 쇼핑하기</a>
-            <input type="submit" id="buy" value="구매하기"/>
-        </span>
+
+            <span class="submit-wrapper">
+                <a href="http://localhost:9070/">계속 쇼핑하기</a>
+                <input type="submit" id="buy" value="구매하기"/>
+            </span>
 
         </form>
     </div>
@@ -53,11 +53,7 @@
             $(".cart-list input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));  
             javascript:cart.checkItem();    
         });
-
     });
-
-
-
 </script>
 <script>
    $(document).on('click','.cart-list input[value=Del]',function(){

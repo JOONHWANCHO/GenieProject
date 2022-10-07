@@ -31,7 +31,8 @@
     padding: 3%;
     width: 70%;
     position: relative;
-    box-shadow: 0 0 15px #fbfbfb;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.1);
     text-align: center;
   }
   /* 아이디랑 비밀번호 입력란 설정 */

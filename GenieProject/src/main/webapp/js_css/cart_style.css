@@ -33,7 +33,7 @@
 }
 .cart-product{
     display: grid;
-    grid-template-columns: 3vw 15vw 35vw 8vw 10vw 7vw ;
+    grid-template-columns: 3vw 15vw 35vw 8vw 10vw 8vw ;
     padding: 1em;
     align-items: center;
     justify-content: center;
@@ -43,7 +43,7 @@
 /* -----------------db연동 실제 데이터가 들어갈 곳------------------ */
 .cart-list{
     display: grid;
-    grid-template-columns: 3vw 15vw 35vw 8vw 8vw 2vw 7vw;
+    grid-template-columns: 3vw 15vw 35vw 8vw 8vw 2vw 7vw 1vw;
     padding: 1em;
     align-items: center;
     justify-content: center;
@@ -63,7 +63,7 @@
 }
 /* ---------선택상품삭제----------- */
 #delete{
-    margin-left: 5.3vw;
+    margin-left: 4.3vw;
 }
 /* --------------------------총상품가격---------------------- */
 #total{
@@ -71,7 +71,7 @@
     justify-content: center;
     font-size: 2rem;
     padding: 1ch;
-    margin: 0 33vw;
+    margin: 0 27vw;
     border-radius: 5px;
 }
 /* --------------------------------구매하기버튼---------------------- */
