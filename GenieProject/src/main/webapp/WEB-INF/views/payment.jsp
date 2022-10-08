@@ -160,16 +160,7 @@
             </div>
 
             <div id="project">
-            배송목록<br/>
-            <c:forEach var="i" begin="0" end="${fn:length(Product_qty)-1}">
-                ${Product_name[i]} ${Product_price[i]}원 ${Product_qty[i]}개 <br/>
-            </c:forEach>
-            <br/>
-
-             <c:set var="total" value="0"/>
-                <c:forEach var="i" begin="0" end="${fn:length(Product_qty)}">
-              <c:set var="total" value="${total+Product_price[i]*Product_qty[i]}"/>
-                </c:forEach>
+        
             
             </div><br/>
                 ${total}원
