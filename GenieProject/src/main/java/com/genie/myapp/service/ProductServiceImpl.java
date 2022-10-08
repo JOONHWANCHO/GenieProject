@@ -10,7 +10,6 @@ import com.genie.myapp.dao.ProductDAO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.LikeVO;
 import com.genie.myapp.vo.PagingVO;
-import com.genie.myapp.vo.PaymentVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
 
@@ -88,6 +87,11 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public LikeVO likeCheck(int product_id, String genie_id) {
 		return dao.likeCheck(product_id, genie_id);
+	}
+
+	@Override
+	public int updateCart(CartVO cvo) {
+		return dao.updateCart(cvo);
 	}
 
 }

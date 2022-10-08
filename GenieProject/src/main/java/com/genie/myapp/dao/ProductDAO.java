@@ -42,12 +42,14 @@ public interface ProductDAO{
     public int delCart(int cart_num, String genie_id);
     //여러 제품 삭제
     public int delMultiCart(CartVO cvo);
-
+    //장바구니 정보 업데이트
+    public int updateCart(CartVO cvo);
+    
     //구매완료 후, 장바구니에서 삭제
     public int payEndCart(String genie_id);
     //구매 완료 후, myorder로 넘기기
     public int myorder(String genie_id, CartVO cvo, String imp_uid);
-
+   
     // 상세페이지 logid 좋아요 확인
     public LikeVO likeCheck(int product_id, String genie_id);
 

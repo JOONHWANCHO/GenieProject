@@ -164,7 +164,31 @@ public class ProductController{
 		return entity;
 	}
 
+	@PostMapping("updateCart")
+	public ResponseEntity<String> updateCart(CartVO cvo, HttpSession session){
 
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type","text/html; charset=utf-8");
+		String genie_id = (String)session.getAttribute("logId"); 
+
+		try {
+			System.out.println(cvo.toString());
+			int addCart = productService.updateCart(cvo);
+			System.out.println(addCart);
+			
+			entity = new ResponseEntity<String>(headers,HttpStatus.OK);
+
+		}catch(Exception e) {
+
+			entity = new ResponseEntity<String>(headers,HttpStatus.BAD_REQUEST);
+		
+			e.printStackTrace();
+		}
+
+		return entity;
+	}
 
 	//장바구니에서 제품 삭제
 	@GetMapping("delCart")
@@ -193,13 +217,6 @@ public class ProductController{
 	public ModelAndView payment(HttpSession session, PaymentVO pvo){
 		
 		String genie_id = (String)session.getAttribute("logId"); 
-
-		session.setAttribute("Product_name", pvo.getProduct_name());
-		session.setAttribute("Product_qty", pvo.getP_num());
-		session.setAttribute("Product_price", pvo.getProduct_price());
-		session.setAttribute("total", pvo.getTotal());
-		
-		
 
 		mav = new ModelAndView();
 		mav.addObject("plist", pvo);

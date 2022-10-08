@@ -8,7 +8,7 @@ let cart = {
         //document.querySelectorAll("input[name=noList]:checked").forEach(function (item) {
            // item.parentElement.remove();    
             //var cart_num= item.getAttribute('value');
-            var cart_num = jQuery("#multiChk").serialize();
+            var cart_num = $("#multiChk").serialize();
             console.log(cart_num);
                 $.ajax({
                     url:"/delMultiCart",
@@ -31,7 +31,7 @@ let cart = {
         //console.log("count : 999999");
         this.totalCount = 0;
         this.totalPrice = 0;
-        document.querySelectorAll(".p_num").forEach(function (item) {
+        document.querySelectorAll(".cart_qty").forEach(function (item) {
 
             if(item.parentElement.parentElement.firstElementChild.checked==true){
                 //console.log(item.parentElement.parentElement.firstElementChild.checked==true);
@@ -40,7 +40,7 @@ let cart = {
                 var price = item.parentElement.previousElementSibling.getAttribute('value');
                 this.totalPrice += count * price;
             }
-        }, this); // forEach 2번째 파라메터로 객체를 넘겨서 this 가 객체리터럴을 가리키도록 함. - thisArg
+        }, this); 
     },
     //화면 업데이트
     updateUI: function () {
@@ -50,18 +50,38 @@ let cart = {
     },
     //개별 수량 변경
     changePNum: function (pos) {
-        var item = document.querySelector('input[id=p_num'+pos+']');
-        var p_num = parseInt(item.getAttribute('value'));
-        var newval = event.target.classList.contains('up') ? p_num+1 : event.target.classList.contains('down') ? p_num-1 : event.target.value;
+        var item = document.querySelector('input[id=cart_qty'+pos+']');
+        var cart_qty = parseInt(item.getAttribute('value'));
+        var newval = event.target.classList.contains('up') ? cart_qty+1 : event.target.classList.contains('down') ? cart_qty-1 : event.target.value;
+
         
         if (parseInt(newval) < 1 || parseInt(newval) > 99) { return false; }
-
+        
         item.setAttribute('value', newval);
         item.value = newval;
-        console.log("newval : " + newval);
+        //console.log("newval : " + newval);
         var price=item.parentElement.previousElementSibling.getAttribute('value');
-        console.log(price);
-        item.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
+        //console.log(price);
+        item.parentElement.nextElementSibling.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
+        
+        //var cart_num = $('input[id=cart_qty'+pos+']').val();
+       
+         //var asdf = $('input[id=cart_qty'+pos+']').parent().parent().children().val();
+         //console.log(asdf);
+
+        $.ajax({
+            url:"/updateCart",
+            type:"post",
+            data: {cart_num : $('input[id=cart_qty'+pos+']').parent().parent().children().val(),
+                   cart_qty : $('input[id=cart_qty'+pos+']').val()
+            },
+            success:function(result){
+                //console.log("");
+            },error:function(e){
+                console.log(e.responseText);
+            }
+        });
+       
 
         //전송 처리 결과가 성공이면    
         this.reCalc();
@@ -81,3 +101,27 @@ Number.prototype.formatNumber = function(){
     while (regex.test(nstr)) nstr = nstr.replace(regex, '$1' + ',' + '$2');
     return nstr;
 };
+
+$(function(){
+    //리스트 전체 선택
+    $("#allChk").click(function(){
+        $(".cart-list input[type=checkbox]").prop("checked",$("#allChk").prop("checked"));  
+        cart.checkItem();    
+    });
+});
+
+$(document).on('click','.cart-list input[value=Del]',function(){
+    
+    var params = {cart_num: $(this).attr('cart_num')};
+
+        $.ajax({
+            url:"/delCart",
+            data:params,
+            success:function(result){
+                alert("제품이 삭제되었습니다.");
+                location.reload();
+            },error:function(e){
+                console.log(e.responseText);
+            }
+        });   
+});
