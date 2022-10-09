@@ -119,3 +119,30 @@ $(document).on('click','.cart-list input[value=Del]',function(){
             }
         });   
 });
+
+$(function(){
+    $("#multiChk").submit(function(){
+        
+        const query = 'input[name="cartList"]:checked';     
+		if($(query).length=="0"){
+			alert("1개 이상의 상품을 선택해주세요");
+			return false;
+		}  
+    })
+})
+
+
+// function getCheckedCnt()  {
+
+//     const query = 'input[id="cartList"]:checked';
+//     const selectedElements = document.querySelectorAll(query);
+
+//     document.querySelector("#multiChk").submit(function(){
+
+//     console.log("1234");
+//     if(selectedElements.length=="0"){
+//         alert("1개 이상의 상품을 선택해주세요");
+//         return false;
+//     }
+//     })
+// }
