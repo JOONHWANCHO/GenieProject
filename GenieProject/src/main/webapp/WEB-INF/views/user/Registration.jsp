@@ -179,8 +179,6 @@ $(function(){
 		</form>
 		
 	</div>	
-</section>
-<%-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js_css/KakaoAddress.js"></script> --%>
+</section>KakaoAddress
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../js_css/Registration.js"></script>
+<script src="../js_css/js/Registration.js"></script>

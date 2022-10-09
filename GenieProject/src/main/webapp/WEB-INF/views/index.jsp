@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/top.jspf"%>
-<link rel="stylesheet" href="/js_css/index_style.css" type="text/css"/>
+<link rel="stylesheet" href="/js_css/css/index_style.css" type="text/css"/>
 
 <!--Genie 메인화면--->
 <section class="index">

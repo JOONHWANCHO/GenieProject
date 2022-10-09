@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="./inc/top.jspf"%>
 
-<link rel="stylesheet" href="/js_css/cart_style.css" type="text/css"/>
+<link rel="stylesheet" href="/js_css/css/cart_style.css" type="text/css"/>
 
 <!-- jQuery 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
@@ -107,11 +107,6 @@
   #legalcopy{
     margin-top: 30px;
   }
-  form{
-    float:right;
-    margin-top: 30px;
-    text-align: right;
-  }
 
   .legal{
     width:70%;
@@ -147,9 +142,10 @@
                 <p>2022년 10월 6일</p>
             </div><!--End Title-->
             </div><!--End InvoiceTop-->
-            
+
+        <form type="post" action="/completion">
             <div id="invoice-mid">
-            
+    
             <div class="clientlogo"></div>
             <div class="info">
             <h2>구매자 정보</h2>
@@ -160,10 +156,16 @@
             </div>
 
             <div id="project">
-        
-            
-            </div><br/>
-                ${total}원
+              <c:forEach items="${plist}" var="cvo">
+                ${cvo.product_name}  ${cvo.cart_qty}개<br/>
+              </c:forEach></p>
+            </div>  
+
+            <c:set var="total" value="0"/>
+              <c:forEach var="cvo" items="${plist}">
+            <c:set var="total" value="${total+cvo.product_price*cvo.cart_qty}"/>
+              </c:forEach><br/>
+              <fmt:formatNumber value="${total}" pattern="#,###원"/>
             </div><!--End Invoice Mid-->
             
             <div id="invoice-bot">
@@ -200,8 +202,9 @@
                 <p class="legal"><strong>교환 또는 환불을 원하시는 분들은 7일 이내에 가능합니다.</strong>
                 </p>
             </div>
+          </form>
 
-            </div><!--End InvoiceBot-->
+        </div><!--End InvoiceBot-->
         </div><!--End Invoice-->
         </div><!-- End Invoice Holder-->
         <!-- partial -->
@@ -219,7 +222,7 @@
               pg: 'html5_inicis',                  
               pay_method: 'card',         
               merchant_uid: 'merchant_' + new Date().getTime(), 
-              name:'${Product_name}',     
+              name:'<c:forEach var="cvo" items="${plist}">${cvo.product_name} </c:forEach>',     
               amount: '${total}',//가격          
               buyer_email: '${uvo.user_email}',
               buyer_name: $("#receiver_name").val(),
@@ -240,7 +243,8 @@
                       var data = {
                           imp_uid: rsp.imp_uid,
                           merchant_uid: rsp.merchant_uid,
-                          pay_method:rsp.pay_method
+                          pay_method:rsp.pay_method,
+                          
                       };
                       console.log(data);
                       jQuery.ajax({

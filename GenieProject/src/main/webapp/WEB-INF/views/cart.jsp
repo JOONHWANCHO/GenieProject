@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/top.jspf"%>
-<link rel="stylesheet" href="/js_css/cart_style.css" type="text/css"/>
+<link rel="stylesheet" href="/js_css/css/cart_style.css" type="text/css"/>
 
 <div class="wrapper">
     <div class="cart">
@@ -46,4 +46,4 @@
         </form>
     </div>
 </div>
-<script src="/js_css/cart_js.js"></script>
+<script src="/js_css/js/cart_js.js"></script>

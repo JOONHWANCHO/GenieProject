@@ -64,15 +64,7 @@ public class ProductServiceImpl implements ProductService{
 		dao.hitCount(product_id);
 	}
 
-	@Override
-	public int payEndCart(String genie_id) {
-		return dao.payEndCart(genie_id);
-	}
 
-	@Override
-	public int myorder(String genie_id, CartVO cvo, String imp_uid){
-		return dao.myorder(genie_id, cvo, imp_uid);
-	}
 
 	@Override
 	public List<ProductVO> mainAllSelect(PagingVO pVO) {
@@ -93,6 +85,24 @@ public class ProductServiceImpl implements ProductService{
 	public int updateCart(CartVO cvo) {
 		return dao.updateCart(cvo);
 	}
+
+	@Override
+	public List<CartVO> getOrder(CartVO cvo) {
+		return dao.getOrder(cvo);
+	}
+
+	@Override
+	public int afterPayment(CartVO cvo, String imp_uid) {
+		return dao.afterPayment(cvo, imp_uid);
+		
+	}
+
+	@Override
+	public int afterOrderCart(CartVO cvo) {	
+		return dao.afterOrderCart(cvo);
+	}
+
+
 
 }
 
