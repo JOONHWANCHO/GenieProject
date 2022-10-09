@@ -119,3 +119,16 @@ $(document).on('click','.cart-list input[value=Del]',function(){
             }
         });   
 });
+$(function(){
+    $("#multiChk").submit(function(){
+
+		if($("#cartList").is(":checked")==false){
+			alert("1개 이상의 상품을 선택해주세요");
+			return false;
+		}  
+    })
+})
+function is_checked() {
+    const checkbox=document.getElementById("cartList");
+    const is_checked=checkbox.checked;
+}
