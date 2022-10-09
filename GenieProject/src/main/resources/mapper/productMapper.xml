@@ -156,28 +156,21 @@
             order_qty) 
 
         values
-            (#{imp_uid}, 
+            (#{order_num}, 
             #{genie_id}, 
             #{product_id}, 
-            #{receiver_name},
-            #{receiver_tel},
-            #{receiver_addr}, 
-            #{receipent_request}, 
-            #{cart_price},
-            #{cart_qty})
+            #{recipient_name},
+            #{recipient_phone},
+            #{recipient_address}, 
+            #{recipient_request}, 
+            #{order_price},
+            #{order_qty})
 
     </insert>
 
-
-
     <delete id="afterOrderCart">
 
-        delete from cart 
-        <where>
-	  		<foreach collection="cartList" index="index" item ="item" open="cart_num in (" separator ="," close=")">
-	  			#{item}  			
-	  		</foreach>	 
-	  	</where>
+        delete from cart where cart_num=#{cart_num} and genie_id=#{genie_id}
 
     </delete>
 

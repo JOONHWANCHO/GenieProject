@@ -28,6 +28,7 @@ import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
 import com.genie.myapp.vo.AdminVO;
 import com.genie.myapp.vo.CartVO;
+import com.genie.myapp.vo.OrderVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.TagVO;
@@ -220,7 +221,6 @@ public class ProductController {
 		String genie_id = (String) session.getAttribute("logId");
 		//System.out.println("주문정보 받아온 것 cvo : " + cvo.toString());
 
-		//장바구니 정보를 결제/주문 페이지로 이동
 		List<CartVO> vo = productService.getOrder(cvo);
 		//System.out.println("주문정보 이동 vo : " + vo.toString());
 
@@ -232,44 +232,33 @@ public class ProductController {
 		return mav;
 	}
 
-	@PostMapping("orderCompletion")
-	public ModelAndView orderCompletion(CartVO cvo, @RequestParam("order_num") String order_num) {
+	@GetMapping("orderCompletion")
+	public ModelAndView orderCompletion(OrderVO ovo) {
 
-		System.out.println(order_num);
+		mav=new ModelAndView();
 
-		mav= new ModelAndView();
-		status = transactionManager.getTransaction(definition);
-
-		try {
-
-			//myorder테이블로 insert
-			int afterPayment = productService.afterPayment(cvo,order_num);
-
-			//장바구니 데이터 삭제 delete
-			int afterOrderCart = productService.afterOrderCart(cvo);
-
-			transactionManager.commit(status);
-
-			mav.setViewName("/completion");
-
-		} catch (Exception e) {
-			
-			transactionManager.rollback(status);
-			e.printStackTrace();
-		}
+		int afterPayment = productService.afterPayment(ovo);
+		//int afterOrderCart = productService.afterOrderCart(ovo);
+		mav.addObject("ol",ovo);
+		mav.setViewName("/completion");
 
 		return mav;
 
 	}
 
-	@GetMapping("completion")
-	public ModelAndView completion(ProductVO PVO) {
+	// @GetMapping("completion")
+	// public ModelAndView completion(HttpSession session) {
 
-		mav = new ModelAndView();
-		mav.setViewName("completion");
+	// 	String genie_id = (String)session.getAttribute("logId");
+	// 	List<OrderVO> orderList =userService.getOrder(genie_id);
 
-		return mav;
-	}
+	// 	mav = new ModelAndView();
+
+	// 	mav.addObject("olist", orderList);
+	// 	mav.setViewName("completion");
+
+	// 	return mav;
+	// }
 
 	// ----------------------------- 제품 리스트 보이기 index
 	// -----------------------------------//

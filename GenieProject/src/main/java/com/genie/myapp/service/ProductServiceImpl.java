@@ -9,6 +9,7 @@ import java.util.Map;
 import com.genie.myapp.dao.ProductDAO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.LikeVO;
+import com.genie.myapp.vo.OrderVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
@@ -92,15 +93,15 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int afterPayment(CartVO cvo, String imp_uid) {
-		return dao.afterPayment(cvo, imp_uid);
-		
+	public int afterPayment(OrderVO ovo) {
+		return dao.afterPayment(ovo);
 	}
 
 	@Override
-	public int afterOrderCart(CartVO cvo) {	
-		return dao.afterOrderCart(cvo);
+	public int afterOrderCart(OrderVO ovo) {
+		return dao.afterOrderCart(ovo);
 	}
+
 
 
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.LikeVO;
+import com.genie.myapp.vo.OrderVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
@@ -59,13 +60,13 @@ public interface ProductDAO {
     public int getPayment(CartVO cvo);
 
     // 구매완료 후, 장바구니에서 삭제
-    public int afterOrderCart(String genie_id);
+    public int afterOrderCart(OrderVO ovo);
 
     // 상세페이지 logid 좋아요 확인
     public LikeVO likeCheck(int product_id, String genie_id);
 
     // myorder테이블로
-    public int afterPayment(CartVO cvo, String imp_uid);
+    public int afterPayment(OrderVO ovo);
 
     // 장바구니 데이터 삭제
     public int afterOrderCart(CartVO cvo);
