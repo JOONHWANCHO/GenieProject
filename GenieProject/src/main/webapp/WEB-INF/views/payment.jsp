@@ -4,122 +4,10 @@
 <%@ include file="./inc/top.jspf"%>
 
 <link rel="stylesheet" href="/js_css/css/cart_style.css" type="text/css"/>
+<link rel="stylesheet" href="/js_css/css/payment.css" type="text/css"/>
 
-<!-- jQuery 
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
--->
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
-
-<Style>
-  #invoiceholder{
-    width:100%;
-    padding-top: 20px;
-  }
-  #invoice{
-    background: #FFF;
-  }
-
-  [id*='invoice-']{ /* Targets all id with 'col-' */
-    padding: 30px;
-  }
-
-  #invoice-top{min-height: 120px;}
-  #invoice-mid{min-height: 120px;}
-  #invoice-bot{ min-height: 250px;}
-
-  .logo{
-    float: left;
-    width: 60px;
-    height: 37px;
-    background: url(/image/logo_western.png) no-repeat;
-    background-size: 60px 37px;
-  }
-  .clientlogo{
-    float: left;
-    height: 60px;
-    width: 60px;
-    background: url(http://michaeltruong.ca/images/client.jpg) no-repeat;
-    background-size: 60px 60px;
-    border-radius: 50px;
-  }
-  .info{
-    display: block;
-    float:left;
-    margin-left: 20px;
-  }
-  .info h2{
-    margin-bottom: 15px;
-  }
-  .info h3{
-    margin-bottom: 15px;
-  }
-  .info p{
-    margin-bottom: 15px;
-    color: gray;
-  }
-  .title{
-    float: right;
-  }
-  .title p{text-align: right;}
-  
-  table{
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 0 15px #fbfbfb;
-  }
-  td{
-    padding: 5px 0 5px 15px;
-    border-radius: 0 0 15px 15px;
-  }
-  .tabletitle{
-    padding: 5px;
-    background: #EEE;
-
-  }
-  .service{
-    border: 1px solid #EEE; 
-    border-radius: 0 0 15px 15px;
-  }
-  .itemtext-top{
-    background: #2DCEF8;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    color: #fff;
-    margin-bottom: 15px;
-  }
-  .itemtext-inner{
-    border: 1px solid #EEE; 
-    border-radius: 8px;
-    width: 700px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  .item{
-    width: 50%; 
-    background: #0071e3; 
-    border-radius: 15px 15px 0 0;
-  }
-  .itemtext{
-    font-size: .9em;
-  }
-  #legalcopy{
-    margin-top: 30px;
-  }
-
-  .legal{
-    width:70%;
-  }
-
-  .submit-wrapper{
-  margin: 0;
-  }
-
-  #buy{
-  margin-top: 30px;
-  }
-</Style>
 
 <div class="wrapper">
     <div class="cart">
@@ -143,7 +31,6 @@
             </div><!--End Title-->
             </div><!--End InvoiceTop-->
 
-        <form type="post" action="/completion">
             <div id="invoice-mid">
     
             <div class="clientlogo"></div>
@@ -156,14 +43,17 @@
             </div>
 
             <div id="project">
-              <c:forEach items="${plist}" var="cvo">
-                ${cvo.product_name}  ${cvo.cart_qty}개<br/>
-              </c:forEach></p>
+              <c:set var="total" value="0"/>
+
+                <c:forEach items="${plist}" var="pvo">
+              <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
+                  ${pvo.product_name}  ${pvo.cart_qty}개 ${total}원<br/>
+                </c:forEach></p>
             </div>  
 
             <c:set var="total" value="0"/>
-              <c:forEach var="cvo" items="${plist}">
-            <c:set var="total" value="${total+cvo.product_price*cvo.cart_qty}"/>
+              <c:forEach var="pvo" items="${plist}">
+            <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
               </c:forEach><br/>
               <fmt:formatNumber value="${total}" pattern="#,###원"/>
             </div><!--End Invoice Mid-->
@@ -211,65 +101,72 @@
 
     </div>
 </div>
-<script>
-      $(function(){
-          $("#buy").click(function (){        
-          var IMP = window.IMP; // 생략가능        
-          IMP.init('imp48507577');   
-          // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
-          // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드        
-          IMP.request_pay({
-              pg: 'html5_inicis',                  
-              pay_method: 'card',         
-              merchant_uid: 'merchant_' + new Date().getTime(), 
-              name:'<c:forEach var="cvo" items="${plist}">${cvo.product_name} </c:forEach>',     
-              amount: '${total}',//가격          
-              buyer_email: '${uvo.user_email}',
-              buyer_name: $("#receiver_name").val(),
-              buyer_tel: $("#receiver_tel").val(),      
-              buyer_postcode: $("#receiver_zipcode").val(),
-              buyer_addr: $("#receiver_addr").val()
-
-              /*                  
-              모바일 결제시,                
-              결제가 끝나고 랜딩되는 URL을 지정                 
-              (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-              */        
-              }, function (rsp) {                   
-                  if (rsp.success) {                 
-                      var msg = '결제가 완료되었습니다.';
-                      
-                      console.log(rsp.imp_uid);
-                      var data = {
-                          imp_uid: rsp.imp_uid,
-                          merchant_uid: rsp.merchant_uid,
-                          pay_method:rsp.pay_method,
-                          
-                      };
-                      console.log(data);
-                      jQuery.ajax({
-                            url: "/orderCompletion", // 예: https://www.myservice.com/payments/complete
-                            method: "POST",
-                            //headers: { "Content-Type" : "application/json" },
-                            data: data
-                        }).done(function (data1){
-                          console.log("done",data1);
-                        }).fail(function(data2){
-                          console.log("fail",data2);
-                        })
-                  } else {                
-                          var msg = '결제에 실패하였습니다.';                
-                          msg += '에러내용 : ' + rsp.error_msg;            
-                  }          
-                  alert(msg);
-                });      
-            });
-        });
-
+<script> 
   $(function(){
-    $("#selectAddress").click(function(){
-           window.open("/user/addressbook","addressbook","width=500, height=800");
+      $("#buy").click(function (){        
+      var IMP = window.IMP; // 생략가능        
+      IMP.init('imp48507577');   
+      // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
+      // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드        
+      IMP.request_pay({
+          pg: 'html5_inicis',                  
+          pay_method: 'card',         
+          merchant_uid: 'merchant_' + new Date().getTime(), 
+          name:'<c:forEach var="pvo" items="${plist}">${pvo.product_name} </c:forEach>',     
+          amount: '${total}',//가격          
+          buyer_email: '${uvo.user_email}',
+          buyer_name: $("#receiver_name").val(),
+          buyer_tel: $("#receiver_tel").val(),      
+          buyer_postcode: $("#receiver_zipcode").val(),
+          buyer_addr: $("#receiver_addr").val()
+
+          /*                  
+          모바일 결제시,                
+          결제가 끝나고 랜딩되는 URL을 지정                 
+          (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+          */        
+          }, function (rsp) {                   
+              if (rsp.success) {                 
+                  var msg = '결제가 완료되었습니다.';
+                  
+                  console.log(rsp.imp_uid);
+                  var data = {
+                      order_num: rsp.imp_uid,
+                      merchant_uid: rsp.merchant_uid,
+                      product_id: $("#product_id").val(),
+                      prudict_name: $("#product_name").val(),
+                      receiver_name: $("#receiver_name").val(),
+                      receiver_phone: $("#receiver_tel").val(),      
+                      receiver_address: $("#receiver_addr").val(),
+                      receipent_request: $("#receipent_request").val(),
+                      order_price: $("#total"),//가격
+                      payment_method: rsp.pay_method                  
+                  };
+                  console.log(data);
+                  jQuery.ajax({
+                        url: "/orderCompletion", // 예: https://www.myservice.com/payments/complete
+                        method: "POST",
+                        //headers: { "Content-Type" : "application/json" },
+                        data: data
+                    }).done(function (data){
+                      console.log("done",data);
+                    }).fail(function(data2){
+                      console.log("fail",data2);
+                    })
+              } else {                
+                      var msg = '결제에 실패하였습니다.';                
+                      msg += '에러내용 : ' + rsp.error_msg;            
+              }          
+              alert(msg);
+            });      
         });
     });
+
+  $(function(){
+  $("#selectAddress").click(function(){
+      window.open("/user/addressbook","addressbook","width=500, height=800");
+    });
+  });
+
+
 </script>
-        

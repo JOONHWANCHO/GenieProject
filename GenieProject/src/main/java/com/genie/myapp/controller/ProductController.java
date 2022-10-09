@@ -142,7 +142,7 @@ public class ProductController {
 		try {
 
 			int addCart = productService.addCart(cvo);
-			System.out.print(addCart);
+			//System.out.print(addCart);
 
 			String msg = "<script>";
 			msg += "alert('장바구니에 추가되었습니다.');";
@@ -174,9 +174,9 @@ public class ProductController {
 		headers.add("Content-Type", "text/html; charset=utf-8");
 
 		try {
-			System.out.println(cvo.toString());
+			//System.out.println(cvo.toString());
 			int addCart = productService.updateCart(cvo);
-			System.out.println("장바구니 추가" + addCart);
+			//System.out.println("장바구니 추가" + addCart);
 
 			entity = new ResponseEntity<String>(headers, HttpStatus.OK);
 
@@ -203,11 +203,11 @@ public class ProductController {
 	public ModelAndView delMultiCart(HttpSession session, CartVO cvo) {
 
 		mav = new ModelAndView();
-		System.out.println(" 제품 삭제 cvo 정보 " + cvo.toString());
+		//System.out.println(" 제품 삭제 cvo 정보 " + cvo.toString());
 		// String genie_id = (String)session.getAttribute("logId");
 		int cnt = productService.delMultiCart(cvo);
 
-		System.out.println("지워진 상품 : " + cnt);
+		//System.out.println("지워진 상품 : " + cnt);
 		mav.setViewName("redirect:/cart");
 		return mav;
 	}
@@ -218,11 +218,11 @@ public class ProductController {
 	public ModelAndView payment(HttpSession session, CartVO cvo) {
 
 		String genie_id = (String) session.getAttribute("logId");
-		System.out.println("cvo : " + cvo.toString());
+		//System.out.println("주문정보 받아온 것 cvo : " + cvo.toString());
 
 		//장바구니 정보를 결제/주문 페이지로 이동
 		List<CartVO> vo = productService.getOrder(cvo);
-		System.out.println("vo : " + vo.toString());
+		//System.out.println("주문정보 이동 vo : " + vo.toString());
 
 		mav = new ModelAndView();
 		mav.addObject("plist", vo);
@@ -233,18 +233,19 @@ public class ProductController {
 	}
 
 	@PostMapping("orderCompletion")
-	public ModelAndView orderCompletion(CartVO cvo, @RequestParam("imp_uid") String imp_uid) {
+	public ModelAndView orderCompletion(CartVO cvo, @RequestParam("order_num") String order_num) {
 
-		System.out.println(imp_uid);
+		System.out.println(order_num);
 
 		mav= new ModelAndView();
 		status = transactionManager.getTransaction(definition);
 
 		try {
-			//myorder테이블로
-			int afterPayment = productService.afterPayment(cvo,imp_uid);
 
-			//장바구니 데이터 삭제
+			//myorder테이블로 insert
+			int afterPayment = productService.afterPayment(cvo,order_num);
+
+			//장바구니 데이터 삭제 delete
 			int afterOrderCart = productService.afterOrderCart(cvo);
 
 			transactionManager.commit(status);
