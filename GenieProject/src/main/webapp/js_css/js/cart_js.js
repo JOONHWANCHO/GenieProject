@@ -6,7 +6,7 @@ let cart = {
     delCheckedItem: function(){
 
         //document.querySelectorAll("input[name=noList]:checked").forEach(function (item) {
-           // item.parentElement.remove();    
+            //item.parentElement.remove();    
             //var cart_num= item.getAttribute('value');
             var cart_num = $("#multiChk").serialize();
             console.log(cart_num);
@@ -14,7 +14,7 @@ let cart = {
                     url:"/delMultiCart",
                     data: cart_num,
                     success:function(result){
-                        alert("제품이 삭제되었습니다.1234");
+                        alert("제품이 삭제되었습니다.");
                         location.reload();
                     },error:function(e){
                         console.log(e.responseText);
@@ -63,12 +63,7 @@ let cart = {
         var price=item.parentElement.previousElementSibling.getAttribute('value');
         //console.log(price);
         item.parentElement.nextElementSibling.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
-        
-        //var cart_num = $('input[id=cart_qty'+pos+']').val();
-       
-         //var asdf = $('input[id=cart_qty'+pos+']').parent().parent().children().val();
-         //console.log(asdf);
-
+    
         $.ajax({
             url:"/updateCart",
             type:"post",
@@ -82,7 +77,6 @@ let cart = {
             }
         });
        
-
         //전송 처리 결과가 성공이면    
         this.reCalc();
         this.updateUI();

@@ -23,7 +23,4 @@ public class CartVO{
 	private List<Integer> cartList;
 
 
-
-	
-	
 }
