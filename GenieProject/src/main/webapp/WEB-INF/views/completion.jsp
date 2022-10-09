@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                           <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
-                            <small>주문번호</small> {imp_uid}<br />
+                            <small>주문번호</small> {olist.imp_uid}<br />
                             <small>2022년 10월 5일</small>
                           </td>
                         </tr>
@@ -131,14 +131,16 @@
                       <td height="10" colspan="4"></td>
                     </tr>
                     <tr>
+                      <%--  --%>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #3B40FE;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
-                        록시땅 샤워 젤 250ml (12종 중...
+                        ${ol.product_name}
                       </td>
-                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"><small>GN00000001</small></td>
-                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="center">1</td>
-                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">##.###원</td>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"><small>${ol.order_num}</small></td>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="center">${ol.order_qty}</td>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">${ol.order_price}원</td>
                     </tr>
                     <tr>
+                    <%--  --%>
                       <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
                     </tr>
 

@@ -9,7 +9,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class CartVO{
+public class CartVO {
+
     private int cart_num;
     private String genie_id;
     private int product_id;
@@ -20,7 +21,6 @@ public class CartVO{
     private String product_name;
     private int product_quantity;
     private int product_price;
-	private List<Integer> cartList;
-
+    private List<Integer> cartList;
 
 }

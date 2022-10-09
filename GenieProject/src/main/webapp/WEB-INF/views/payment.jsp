@@ -30,32 +30,40 @@
                 <p>2022년 10월 6일</p>
             </div><!--End Title-->
             </div><!--End InvoiceTop-->
-
-            <div id="invoice-mid">
-    
+          <%-- <form type="post" action="/orderCompletion" id="payFrm"> --%>
+            <div id="invoice-mid"></div>
+        
             <div class="clientlogo"></div>
             <div class="info">
-            <h2>구매자 정보</h2>
-            <div>
-                <h3>${uvo.user_name}</h3>
-                <p>${uvo.user_email}<br/>
-                   ${uvo.user_tel}<br/>
-            </div>
-
+              <h2>구매자 정보</h2>
+              <div>
+                  
+                  <h3>${uvo.user_name}</h3>
+                  <li><input type="hidden" name="genie_id" value="${uvo.genie_id}"></li>
+                  <p>${uvo.user_email}<br/>
+                    ${uvo.user_tel}<br/></p>
+              </div>
+  
             <div id="project">
-              <c:set var="total" value="0"/>
+             
+              <c:set var="sum_of_each" value="0"/>
 
                 <c:forEach items="${plist}" var="pvo">
-              <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
-                  ${pvo.product_name}  ${pvo.cart_qty}개 ${total}원<br/>
-                </c:forEach></p>
+              <c:set var="sum_of_each" value="${total+pvo.product_price*pvo.cart_qty}"/>
+                <li><input type="hidden" id="cart_num" name="cart_num" value="${pvo.cart_num}"></li><br/> 
+                <li><input type="hidden" id="product_id" name="product_id" value="${pvo.product_id}"></li><br/>
+                <li><input type="hidden" id="product_name" name="product_name" value="${pvo.product_name}">${pvo.product_name}</li> 
+                <li><input type="hidden" id="cart_qty" name="cart_qty" value="${pvo.cart_qty}">${pvo.cart_qty}개</li> 
+                <li><input type="hidden" id="sum" name="sum" value="${sum_of_each}">${sum_of_each}원</li><br/>
+              </c:forEach></p>
             </div>  
 
             <c:set var="total" value="0"/>
               <c:forEach var="pvo" items="${plist}">
-            <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
+                <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
               </c:forEach><br/>
               <fmt:formatNumber value="${total}" pattern="#,###원"/>
+              <li><input type="hidden" id="total" value="${total}"></li>
             </div><!--End Invoice Mid-->
             
             <div id="invoice-bot">
@@ -77,8 +85,7 @@
                     </tr>
                     <tr class="service">
                           <td class="tableitem"><p class="itemtext">
-                          요청사항 : <input type="text" class="itemtext-inner" id="receipent_request" name="receipent_request" placeholder="요청사항을 적어주세요"></p></td>
-                          <%-- 전체 가격 :<input type="text" value='${total}' name="receipent_request" ></p> --%>
+                          요청사항 : <input type="text" class="itemtext-inner" id="recipient_request" name="recipient_request" placeholder="요청사항을 적어주세요"></p></td>
                     </tr>
                     
                     </table>
@@ -87,12 +94,12 @@
                 <span class="submit-wrapper">
                     <input type="submit" id="buy" value="결제하기"/>
                 </span>
-            
-            <div id="legalcopy">
-                <p class="legal"><strong>교환 또는 환불을 원하시는 분들은 7일 이내에 가능합니다.</strong>
-                </p>
-            </div>
-          </form>
+          <%-- </form> --%>
+
+          <div id="legalcopy">
+              <p class="legal"><strong>교환 또는 환불을 원하시는 분들은 7일 이내에 가능합니다.</strong></p>
+          </div>
+       
 
         </div><!--End InvoiceBot-->
         </div><!--End Invoice-->
@@ -128,30 +135,39 @@
           }, function (rsp) {                   
               if (rsp.success) {                 
                   var msg = '결제가 완료되었습니다.';
-                  
-                  console.log(rsp.imp_uid);
+                  var formValues = $("form[id=payFrm]").serialize();
+
                   var data = {
                       order_num: rsp.imp_uid,
                       merchant_uid: rsp.merchant_uid,
-                      product_id: $("#product_id").val(),
-                      prudict_name: $("#product_name").val(),
-                      receiver_name: $("#receiver_name").val(),
-                      receiver_phone: $("#receiver_tel").val(),      
-                      receiver_address: $("#receiver_addr").val(),
-                      receipent_request: $("#receipent_request").val(),
-                      order_price: $("#total"),//가격
+                      genie_id:$("input[name=genie_id]").val(),
+
+                      cart_num: $("input[name=cart_num]").val(),
+                      product_id: $("input[name=product_id]").val(),
+                      product_name: $("input[name=product_name]").val(),
+                      order_qty: $("input[name=cart_qty]").val(),
+                      order_price: $("input[name=sum]").val(),
+
+                      recipient_name: $("#receiver_name").val(),
+                      recipient_phone: $("#receiver_tel").val(),      
+                      recipient_address: $("#receiver_addr").val(),
+                      recipient_request: $("#recipient_request").val(),
+
                       payment_method: rsp.pay_method                  
                   };
-                  console.log(data);
-                  jQuery.ajax({
+
+                  $.ajax({
                         url: "/orderCompletion", // 예: https://www.myservice.com/payments/complete
-                        method: "POST",
-                        //headers: { "Content-Type" : "application/json" },
+                        method: "get",
                         data: data
+
                     }).done(function (data){
-                      console.log("done",data);
-                    }).fail(function(data2){
-                      console.log("fail",data2);
+                      let url="/completion"
+                      location.replace(url);
+                      console.log(data);
+
+                    }).fail(function(data1){
+                      console.log(data1);
                     })
               } else {                
                       var msg = '결제에 실패하였습니다.';                
@@ -167,6 +183,5 @@
       window.open("/user/addressbook","addressbook","width=500, height=800");
     });
   });
-
 
 </script>
