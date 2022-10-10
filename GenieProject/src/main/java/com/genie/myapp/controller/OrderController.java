@@ -63,8 +63,6 @@ public class OrderController {
 	@GetMapping("orderCompletion")
 	public ResponseEntity<String> orderCompletion(OrderVO ovo) {
 
-		mav=new ModelAndView();
-
 		orderService.afterPayment(ovo);
 		//orderService.afterOrderCart(ovo);
 		return new ResponseEntity<String>(HttpStatus.OK);
