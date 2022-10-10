@@ -1,5 +1,6 @@
 package com.genie.myapp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
- 
+	
 	@Bean
 	public BCryptPasswordEncoder encodePwd() {
 		return new BCryptPasswordEncoder();
@@ -24,12 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/**").permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.antMatchers("/seller/**").hasAnyRole("ADMIN, SELLER")
-			//.antMatchers("/order/**").denyAll()
 			.anyRequest().permitAll()
 		.and()
 			.formLogin()
 			.loginPage("/login") // 인증 필요한 페이지 접근시 이동페이지
 			.loginProcessingUrl("/login")
+			//.successHandler(loginSuccess)
+			//.failureHandler(loginFail)
 		.and()
 			.logout()
 			.logoutSuccessUrl("/myPage")

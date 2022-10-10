@@ -16,37 +16,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.genie.myapp.service.AdminService;
 import com.genie.myapp.service.ProductService;
 import com.genie.myapp.service.SellerService;
-import com.genie.myapp.service.UserService;
 
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
-
-
 
 @RestController
 @RequestMapping("/")
 public class GenieController{
 	
+	@Autowired
+	ProductService productService;
+	
+	@Autowired
+	SellerService sellerService;
 	
 	ModelAndView mav=null;
 
-	@Autowired
-	ProductService productService;
-
-	@Autowired
-	SellerService sellerService;
-
-	@Autowired
-	UserService userService;
-
-	@Autowired
-	AdminService adminService;
-
-		// ----------------------------- 제품 리스트 보이기 index
+	// ----------------------------- 제품 리스트 보이기 index
 	// -----------------------------------//
+
 	@GetMapping("index")
 	public ModelAndView productList(ProductVO PVO) {
 
@@ -57,7 +47,6 @@ public class GenieController{
 
 		return mav;
 	}
-
 
 	@GetMapping("genie")
 	public ModelAndView genie() {
@@ -74,6 +63,7 @@ public class GenieController{
 	}
 
 	// -----------------------------------------------------------장바구니---------------------------------------------------------------//
+	
 	@GetMapping("cart")
 	public ModelAndView cart(CartVO cvo, HttpSession session) {
 
@@ -98,7 +88,7 @@ public class GenieController{
 
 		try {
 
-			int addCart = productService.addCart(cvo);
+			productService.addCart(cvo);
 			//System.out.print(addCart);
 
 			String msg = "<script>";
@@ -132,8 +122,7 @@ public class GenieController{
 
 		try {
 			//System.out.println(cvo.toString());
-			int addCart = productService.updateCart(cvo);
-			//System.out.println("장바구니 추가" + addCart);
+			productService.updateCart(cvo);
 
 			entity = new ResponseEntity<String>(headers, HttpStatus.OK);
 
@@ -155,14 +144,13 @@ public class GenieController{
 
 	}
 
-	// 장바구니에서 제품 삭제
+	// 장바구니에서 여러 제품 삭제
 	@GetMapping("delMultiCart")
-	public ModelAndView delMultiCart(HttpSession session, CartVO cvo) {
+	public ModelAndView delMultiCart(CartVO cvo) {
 
 		mav = new ModelAndView();
 		//System.out.println(" 제품 삭제 cvo 정보 " + cvo.toString());
-		// String genie_id = (String)session.getAttribute("logId");
-		int cnt = productService.delMultiCart(cvo);
+		productService.delMultiCart(cvo);
 
 		//System.out.println("지워진 상품 : " + cnt);
 		mav.setViewName("redirect:/cart");

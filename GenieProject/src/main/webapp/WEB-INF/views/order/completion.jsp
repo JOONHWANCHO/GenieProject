@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="./inc/ad_top.jspf"%>
+<%@ include file="../inc/ad_top.jspf"%>
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                           <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
-                            <small>주문번호</small> {olist.imp_uid}<br />
+                            <small>주문번호</small> ${olist.order_num}<br />
                             <small>2022년 10월 5일</small>
                           </td>
                         </tr>
@@ -133,7 +133,7 @@
                     <tr>
                       <%--  --%>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #3B40FE;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
-                        ${ol.product_name}
+                        ${olist.product_name}
                       </td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"><small>${ol.order_num}</small></td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="center">${ol.order_qty}</td>
@@ -141,7 +141,9 @@
                     </tr>
                     <tr>
                     <%--  --%>
-                      <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
+                      <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4">
+                      
+                      </td>
                     </tr>
 
                   </tbody>

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../inc/top.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="./inc/top.jspf"%>
+
 
 <link rel="stylesheet" href="/js_css/css/cart_style.css" type="text/css"/>
 <link rel="stylesheet" href="/js_css/css/payment.css" type="text/css"/>
@@ -47,7 +48,6 @@
             <div id="project">
              
               <c:set var="sum_of_each" value="0"/>
-
                 <c:forEach items="${plist}" var="pvo">
               <c:set var="sum_of_each" value="${total+pvo.product_price*pvo.cart_qty}"/>
                 <li><input type="hidden" id="cart_num" name="cart_num" value="${pvo.cart_num}"></li><br/> 
@@ -151,7 +151,7 @@
           */        
           }, function (rsp) { 
 
-              if (rsp.success) {                 
+              if(rsp.success) {                 
                   var msg = '결제가 완료되었습니다.';
          
                   var data = {
@@ -174,26 +174,40 @@
                   };//data
 
                   $.ajax({
-                        url: "/orderCompletion", // 예: https://www.myservice.com/payments/complete
-                        method: "get",
-                        data: data
+                      url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
+                      method: "get",
+                      data: data
 
-                    }).done(function (data){
-                      let url="/completion"
-                      location.replace(url);
-                      console.log(data);
+                  }).done(function(data){
 
+                        $.ajax({
+                          url: "/order/completion", // 예: https://www.myservice.com/payments/complete
+                          method: "get",
+                          data: data
+                          
+                        }).done(function (data){
+                          console.log(data);
+                          
+                          let url="/order/completion";
+                          location.replace(url);
+                      
                     }).fail(function(data1){
                       console.log(data1);
                     })
+
+                    
+                  }).fail(function(data1){
+                    console.log(data1);
+                  })
+
               } else {                
                       var msg = '결제에 실패하였습니다.';                
                       msg += '에러내용 : ' + rsp.error_msg;            
               }          
               alert(msg);
             });      
-        });
-    });
+          });
+      });
 
 window.onload=function(){
 
