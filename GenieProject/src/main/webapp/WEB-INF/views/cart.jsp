@@ -25,6 +25,7 @@
                     <div>${cvo.product_name}</div>
                         <input type="hidden" name="Product_name" value="${cvo.product_name}"/>
                     <div><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원"/></div>
+
                         <input type="hidden" name="Product_price" value="${cvo.product_price}">
 
                     <div><input type="text" name="cart_qty" id="cart_qty${cvo.cart_num}" class="cart_qty" size="2" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});" readonly="readonly"/></div>
@@ -32,7 +33,7 @@
                         <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-up up"></i></div>
                         <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-down down"></i></div>
                     </div>
-                    <div input type="hidden" size="4" maxlength="4"></div>
+                    <div input type="hidden" size="4" maxlength="4">${cvo.product_price*cvo.cart_qty}원</div>
                     <div><input type="button" style="background:#b90e0a; border:none; padding: 6px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
                 </div>
             </c:forEach>
