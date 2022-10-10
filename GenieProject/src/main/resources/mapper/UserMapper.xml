@@ -7,7 +7,7 @@
 	<!-- 로그인 -->
 	<select id = "loginOk" resultType = "UserVO">
 
-		select u.genie_id, u.user_name 
+		select u.genie_id, u.user_name, a.ROLE  
 		from user u 
 		join account a 
 		on a.genie_id=u.genie_id 

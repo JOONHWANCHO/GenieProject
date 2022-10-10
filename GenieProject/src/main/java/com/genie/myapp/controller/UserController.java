@@ -53,14 +53,6 @@ public class UserController {
 	@Autowired
 	TransactionDefinition definition;
 
-
-	@GetMapping("login")
-	public ModelAndView adminLogin() {
-		mav = new ModelAndView();
-		mav.setViewName("user/login");
-		return mav;
-	}
-
 	@PostMapping("loginOK")
 	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session) {
 		

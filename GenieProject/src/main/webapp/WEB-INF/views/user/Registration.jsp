@@ -6,7 +6,7 @@
 	<div class="wrapper">
 		<h1>일반회원 회원가입</h1>
 		<form method="post" action="/user/UserWrite" id="logFrm">
-			<input type="hidden" value="1" name="member_type"/>
+			<input type="hidden" value="USER" name="member_type"/>
 			<ul class="idForm">
 				<li>아이디</li>
 				<li>

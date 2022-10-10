@@ -36,7 +36,7 @@
 			<%-- 장바구니 --%>
 			<li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
 			<c:if test ="${logStatus !='Y'}">
-				<li><a href = "/user/login"><i class="fa-solid fa-user"></i></a></li>
+				<li><a href = "/login"><i class="fa-solid fa-user"></i></a></li>
 			</c:if> 
 			
 			<c:if test ="${logStatus =='Y' && memberType == '1'}">
