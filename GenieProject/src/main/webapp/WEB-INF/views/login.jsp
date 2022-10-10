@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../inc/top.jspf" %>
+<%@ include file="./inc/top.jspf" %>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Poppins');
   /* 메인구조 회색부분 */

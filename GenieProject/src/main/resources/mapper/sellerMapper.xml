@@ -37,7 +37,7 @@
 	
 	<select id="loginOk" resultType = "SellerVO">
 
-		select s.genie_id, s.company_name 
+		select s.genie_id, s.company_name, a.ROLE
 		from account a 
 		join seller s 
 		on a.genie_id=s.genie_id 

@@ -83,13 +83,6 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js_css/js/KakaoAddress.js"></script>
 
-
-
-
-
-
-<body>
-
 <body
   class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  "
   data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
