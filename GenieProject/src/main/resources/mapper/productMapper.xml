@@ -124,56 +124,6 @@
 
     </update>
 
-<!-- 구매정보 이동 -->
-
-    <select id="getOrder" resultType="CartVO">
-
-        select * 
-        from cart c 
-        join product p 
-        on c.product_id=p.product_id 
-        where c.cart_num in
-
-	  	<foreach collection="cartList" index="index" item ="item" open="(" separator="," close=")">
-	  		${item}
-	  	</foreach>	 
-	  
-    </select>
-
-
-
-    <insert id="afterPayment">
-
-    	insert into myorder 
-            (order_num, 
-            genie_id, 
-            product_id,
-            recipient_name, 
-            recipient_phone,
-            recipient_address, 
-            recipient_request,
-            order_price,
-            order_qty) 
-
-        values
-            (#{order_num}, 
-            #{genie_id}, 
-            #{product_id}, 
-            #{recipient_name},
-            #{recipient_phone},
-            #{recipient_address}, 
-            #{recipient_request}, 
-            #{order_price},
-            #{order_qty})
-
-    </insert>
-
-    <delete id="afterOrderCart">
-
-        delete from cart where cart_num=#{cart_num} and genie_id=#{genie_id}
-
-    </delete>
-
 <!-- 메인페이지 지니 추천 -->
 
     <select id = "selectProduct" resultType="ProductVO">

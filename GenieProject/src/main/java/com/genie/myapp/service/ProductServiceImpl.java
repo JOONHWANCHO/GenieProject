@@ -9,7 +9,6 @@ import java.util.Map;
 import com.genie.myapp.dao.ProductDAO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.LikeVO;
-import com.genie.myapp.vo.OrderVO;
 import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.SellerVO;
@@ -65,8 +64,6 @@ public class ProductServiceImpl implements ProductService{
 		dao.hitCount(product_id);
 	}
 
-
-
 	@Override
 	public List<ProductVO> mainAllSelect(PagingVO pVO) {
 		return dao.mainAllSelect(pVO);
@@ -86,24 +83,6 @@ public class ProductServiceImpl implements ProductService{
 	public int updateCart(CartVO cvo) {
 		return dao.updateCart(cvo);
 	}
-
-	@Override
-	public List<CartVO> getOrder(CartVO cvo) {
-		return dao.getOrder(cvo);
-	}
-
-	@Override
-	public int afterPayment(OrderVO ovo) {
-		return dao.afterPayment(ovo);
-	}
-
-	@Override
-	public int afterOrderCart(OrderVO ovo) {
-		return dao.afterOrderCart(ovo);
-	}
-
-
-
 
 }
 
