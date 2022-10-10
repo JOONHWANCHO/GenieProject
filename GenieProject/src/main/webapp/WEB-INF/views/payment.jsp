@@ -74,9 +74,10 @@
                         <td class="item"><h2></h2></td>
                     </tr>
                     
-                    <tr class="service">             
+                    <tr class="service">
                         <td class="tableitem">
-                    <input type="button" id="selectAddress" value="배송지 선택" class="itemtext-top">       
+                    <input type="button" id="selectAddress" value="배송지 선택" class="itemtext-top"> 
+                          <input type="hidden" id="addressStatus" value="N"/>      
                           <p class="itemtext"><input type="text" class="itemtext-inner" id="receiver_name" name="receiver_name" placeholder="받는사람 이름" readonly></p>
                           <p class="itemtext"><input type="text" class="itemtext-inner" id="receiver_zipcode" name="receiver_zipcode" placeholder="우편번호" readonly></p>
                           <p class="itemtext"><input type="text" class="itemtext-inner" id="receiver_addr" name="receiver_addr" placeholder="받는사람 주소" readonly></p>
@@ -110,11 +111,27 @@
 </div>
 <script> 
   $(function(){
+
       $("#buy").click(function (){        
       var IMP = window.IMP; // 생략가능        
       IMP.init('imp48507577');   
       // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
-      // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드        
+      // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+      
+      $("#selectAddress").change(function(){
+        $("#addressStatus").val("N");
+      });
+
+      if($("#addressStatus").val()!='Y'){
+        alert("주소를 선택하세요");
+        return false;
+      }
+
+      if($("#recipient_request").val()==""){
+        alert("요청사항을 입력하세요");
+        return false;
+      }
+
       IMP.request_pay({
           pg: 'html5_inicis',                  
           pay_method: 'card',         
@@ -132,11 +149,11 @@
           결제가 끝나고 랜딩되는 URL을 지정                 
           (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
           */        
-          }, function (rsp) {                   
+          }, function (rsp) { 
+
               if (rsp.success) {                 
                   var msg = '결제가 완료되었습니다.';
-                  var formValues = $("form[id=payFrm]").serialize();
-
+         
                   var data = {
                       order_num: rsp.imp_uid,
                       merchant_uid: rsp.merchant_uid,
@@ -154,7 +171,7 @@
                       recipient_request: $("#recipient_request").val(),
 
                       payment_method: rsp.pay_method                  
-                  };
+                  };//data
 
                   $.ajax({
                         url: "/orderCompletion", // 예: https://www.myservice.com/payments/complete
@@ -178,10 +195,10 @@
         });
     });
 
-  $(function(){
+window.onload=function(){
+
   $("#selectAddress").click(function(){
       window.open("/user/addressbook","addressbook","width=500, height=800");
     });
-  });
-
+  };
 </script>
