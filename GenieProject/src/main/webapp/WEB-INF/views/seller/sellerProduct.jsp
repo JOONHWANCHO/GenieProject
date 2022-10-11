@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <style>
 
@@ -105,7 +106,7 @@
                       <tr>
 						    <td>${pvo.product_id }</td>
 							<td><a href="/product_detail?product_id=${pvo.product_id}">${pvo.product_name}</a></td>
-							<td>${pvo.product_price}</td>
+							<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.product_price}"/> 원</td>
 							<td>${pvo.product_quantity}</td>
 							<td>${pvo.product_category}</td>
 							<td>${pvo.product_tag}</td>

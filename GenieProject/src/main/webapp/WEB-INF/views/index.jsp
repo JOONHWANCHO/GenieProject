@@ -6,7 +6,7 @@
 <section class="index">
    <div class="index-list">      
       <a href="/genie"><img src="/image/main_banner1.png"></a>
-      <button class="button">Click Me!</button>
+      <button class="button"><a href="/genie">Genie 바로가기 ▶</a></button>
    </div>
 
    <div class="category" id="category">
@@ -68,6 +68,7 @@
       <h1>MBTI 추천 선물</h1>
       <div class="mbti-list">      
          <a href="/mbti/mbtiMain"><img src="/image/mbti_banner1.png"></a>
+         <button class="button"><a href="/mbti/mbtiMain">추천받기 ▶</a></button>
       </div>
    </div>
    
