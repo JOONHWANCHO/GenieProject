@@ -31,6 +31,7 @@ import com.genie.myapp.service.SellerService;
 import com.genie.myapp.vo.SellerProductVO;
 import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.OrderVO;
+import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.SellerVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -236,13 +237,15 @@ public class SellerController {
 	
 	//seller 상품관리 페이지
 	@GetMapping("sellerProduct")
-	public ModelAndView sellerProduct(SellerProductVO pvo, HttpServletRequest request) {
+	public ModelAndView sellerProduct(PagingVO pVO, HttpServletRequest request) {
 		
-		pvo.setGenie_id((String)request.getSession().getAttribute("logId"));
+		pVO.setGenie_id((String)request.getSession().getAttribute("logId"));
+		pVO.setTotalRecord(service.productTotalRecord(pVO));
+		pVO.setOnePageRecord(10);
 		
 		mav = new ModelAndView();
-		mav.addObject("plist", service.productList(pvo));
-		mav.addObject("pvo", pvo);
+		mav.addObject("plist", service.productList(pVO));
+		mav.addObject("pVO", pVO);
 		
 		mav.setViewName("seller/sellerProduct");
 		return mav;
