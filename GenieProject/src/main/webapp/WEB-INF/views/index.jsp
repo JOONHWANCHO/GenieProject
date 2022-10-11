@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/top.jspf"%>
-<link rel="stylesheet" href="/js_css/index_style.css" type="text/css"/>
+<link rel="stylesheet" href="/js_css/css/index_style.css" type="text/css"/>
 
 <!--Genie 메인화면--->
 <section class="index">
    <div class="index-list">      
       <a href="/genie"><img src="/image/main_banner1.png"></a>
+      <button class="button">Click Me!</button>
    </div>
 
    <div class="category" id="category">
@@ -45,7 +46,7 @@
          <button onclick="location.href='/product?product_tag=${tvo.product_tag}'">#${tvo.product_tag}</button>
       </c:forEach>
       -->
-         <button onclick="location.href='/product?product_tag=생일'">#생일</button>
+         <button onclick="location.href='/product?product_tag=집들이'">#집들이</button>
          <button onclick="location.href='/product?product_tag=20대'">#20대</button>
          <button onclick="location.href='/product?product_tag=여성'">#여성</button>
          <button onclick="location.href='/product?product_tag=부모님'">#부모님</button>
@@ -101,16 +102,16 @@
          </div>
       -->
 
-         <c:forEach var="pvo" items="${plist }">
+         <c:forEach var="pvo" items="${plist}">
             <div class="card-col">
-               <a class="product-title" href="/product_detail?product_id=${pvo.product_id}"></a>
+               <a class="product-title" href="/product_detail?product_id=${pvo.product_id}" >
                <div class="card_header">
                   <img id="img-caption"  src="${pvo.product_image1}" alt="Img_1">
                </div>
                <div class="card_bottom">
                   <h3>${pvo.genie_id}</h3>
                   <p>${pvo.product_name}</p>	
-                  <p><fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/></p>	
+                  <p><fmt:formatNumber value="${pvo.product_price}" pattern="#,###원"/></p></a>	
                </div>
             </div>
          </c:forEach>

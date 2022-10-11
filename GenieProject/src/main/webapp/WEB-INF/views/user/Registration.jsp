@@ -1,128 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/top.jspf" %>
+<link rel="stylesheet" href="../js_css/css/Registration.css">
 
-<style>
-/* 뒤에 회색배경 */
-.registration {
-    width: 100%;
-    padding: 3% 33%;
-    background: #f5f5f7;
-}
-/* 안쪽 흰색폼 설정 */
-.wrapper {
-	display: flex;
-    flex-direction: column; 
-    width: 100%;
-	padding: 5%;
-    background: #fff;
-	border-radius: 10px;
-	box-shadow: 0 0 15px #b4b4b4;
-}
-/* 일반회원 회원가입 */
-.wrapper h1 {
-	margin: 1em;
-	font-weight: bold;
-	text-align: center;
-}
-/* 전체적인 (글자) */
-.wrapper li {
-	font-weight: bold;
-	margin: .5em;
-}
-/* 아이디를 입력하세요 */
-#genie_id {
-	width: 63%;
-}
-/* 아이디중복검사 */
-#idCheck {
-	width: 33%;
-	padding: .5em;
-	font-size: 1em;
-	background: #F7D25A;
-	color: #fff;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
-}
-/* ------------------------------------------------------------------------------- */
-input[type=text], input[type=password], input[type=email] {
-	width: 100%;
-	height: 5vh;
-	background-color: #f5f5f7;
-	color: #1d1d1f;
-	font-size: 1em;
-	padding: 1em;
-	margin: .3em;
-	border: none;
-	border-radius: 10px;
-}
-/* 폰입력 설정 */
-#user_phone_num1 {
-	width: 25%;
-	height: 5vh;
-	margin-left: 1em;
-	background-color: #f5f5f7;
-	color: #1d1d1f;
-	font-size: 1em;
-	border: none;
-	border-radius: 10px;
-}
-#user_phone_num2, #user_phone_num3 {
-	width:30%;
-}
-/* 우편번호 설정*/
-#user_zipcode {
-	width: 63%;
-}
-
-#address_kakao {
-	width: 33%;
-	padding: .5em;
-	font-size: 1em;
-	background: #F7D25A;
-	color: #fff;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
-}
-/* --------------------------------------------------------------------------------- */
-input[type=radio] {
-	margin-left: 1.5em;
-}
-label {
-	font-weight: bold;
-}
-/* --------------------------------------------------------------------------------- */
-#formSubmit {
-	display: flex;
-	justify-content: center;
-	padding: .5em 5em;
-	margin: 10% auto;
-	font-size: 1.5em;
-	background: #F7D25A;
-	color: #fff;
-	border:none;
-	border-radius: 10px;
-	cursor: pointer;
-}
-</style>
-
-<script>
-$(function(){
-	$("#idCheck").click(function(){
-		window.open("/user/idCheck?genie_id="+$("#genie_id").val(),"idCheck","width=400,height=300");
-	});
-
-	$("#genie_id").change(function(){
-		$("#idCheckState").val("N");
-	});
-});
-</script>
 <section class="registration">
 	<div class="wrapper">
 		<h1>일반회원 회원가입</h1>
 		<form method="post" action="/user/UserWrite" id="logFrm">
-			<input type="hidden" value="1" name="member_type"/>
+			<input type="hidden" value="USER" name="member_type"/>
 			<ul class="idForm">
 				<li>아이디</li>
 				<li>
@@ -159,17 +43,6 @@ $(function(){
 				<li>이메일</li>
 				<input type="email" id="user_email" name="user_email" value="ghdtpgh8913@naver.com" placeholder="이메일을 입력하세요">
 			</ul>
-			<%-- <ul id="addrForm">
-				<li>우편번호</li>
-				<li>
-					<input type ="text" name = "user_zipcode" id ="user_zipcode" value="123" readonly/>
-					<input type = "button" value = "우편번호찾기" id = "address_kakao"/>
-				</li>
-				<li>주소</li>
-				<li><input type = "text" name = "user_addr" id ="user_addr" value="123" readonly/></li>
-				<li>상세주소</li>
-				<li><input type ="text" name = "user_detailaddr" id ="user_detailaddr" value="123" /></li>	
-			</ul> --%>
 			<ul id="user_gender">
 				<li>성별</li>
 				<input type="radio" name="user_gender" value="1"><label for="radio_male">남성</label>
@@ -179,8 +52,6 @@ $(function(){
 		</form>
 		
 	</div>	
-</section>
-<%-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js_css/KakaoAddress.js"></script> --%>
+</section>KakaoAddress
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../js_css/Registration.js"></script>
+<script src="../js_css/js/Registration.js"></script>

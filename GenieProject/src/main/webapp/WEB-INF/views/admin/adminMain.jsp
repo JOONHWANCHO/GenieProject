@@ -283,7 +283,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="info-box-content">
                 <span class="info-box-text">셀러 입점요청</span>
                 <span class="info-box-number">
-                  3
+                  ${pVO.notApproved}
                   <small>업체</small>
                 </span>
               </div>
@@ -443,6 +443,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- overlayScrollbars -->
 <script src="/js_css/dist/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="/js_css/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+<script src="/js_css/dist/js/pages/dashboard.js"></script>

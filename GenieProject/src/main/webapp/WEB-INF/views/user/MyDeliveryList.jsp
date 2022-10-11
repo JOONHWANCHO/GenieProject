@@ -53,13 +53,11 @@ nav .sidenav-trigger i {
 .card .card-content{
   padding: 20px;
 }
-.animate.fadeLeft{
-  border-radius: 15px;
-}
+
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
-  height: 2rem;
   border-bottom: 1px solid #e3e3e3;
 }
+
 .select-wrapper {
   width: 30%;
   float: left;
@@ -80,21 +78,10 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 #user_zipcode {
   width: 75%;
 }
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
-  -webkit-box-shadow: none;
-  box-shadow:none;
-}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js_css/KakaoAddress.js"></script>
-
-
-
-
-
-
-<body>
+<script src="../js_css/js/KakaoAddress.js"></script>
 
 <body
   class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  "
