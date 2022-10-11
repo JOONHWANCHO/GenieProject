@@ -164,31 +164,20 @@
                       recipient_address: $("#receiver_addr").val(),
                       recipient_request: $("#recipient_request").val(),
 
-                      payment_method: rsp.pay_method                  
+                      payment_method: rsp.pay_method,
+                                       
                   };//data
 
                   $.ajax({
-                    url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
+                    url: "/order/completion", // 예: https://www.myservice.com/payments/complete
                     data: orderData,
                     method: "get",
                     contentType: "application/json",
                     async: false,
                     success:function(result){
-                                        
-                      let url="/order/completion";
-                      
-                      let params=orderData;
-                      
-                          function sendPost(url, params) {
-                              var form = document.createElement('form');
-                              form.setAttribute('method', 'get'); //POST 메서드 적용
-                              form.setAttribute('action', url);	// 데이터를 전송할 url
-                              document.body.appendChild(form);
-                              form.submit();
-                          }
-                          console.log(orderData);
+                      window.location.replace("/order/completion");
 
-
+                      console.log(orderData);
                     },error:function(e){
                       console.log(e.responseText);
                     }

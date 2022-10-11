@@ -29,5 +29,10 @@ public class OrderServiceImpl implements OrderService{
     public int afterOrderCart(OrderVO ovo) {
         return dao.afterOrderCart(ovo);
     }
+
+    @Override
+    public List<OrderVO> getOrderList(String genie_id) {
+        return dao.getOrderList(genie_id);
+    }
     
 }

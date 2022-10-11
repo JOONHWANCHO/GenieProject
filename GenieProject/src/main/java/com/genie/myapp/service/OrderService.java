@@ -16,5 +16,7 @@ public interface OrderService {
     // 구매완료 후, 장바구니에서 삭제
     public int afterOrderCart(OrderVO ovo);
 
+    //결제 완료 후, 정보 가져오기
+    public List<OrderVO> getOrderList(String genie_id);
     
 }

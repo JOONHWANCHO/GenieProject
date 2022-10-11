@@ -13,7 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Stylish&family=Sunflower:wght@300;500;700&family=Yeon+Sung&display=swap" rel="stylesheet">
-<link rel="stylesheet" href=".../js_css/ad_top.css" type="text/css"/>
+
+<link rel="stylesheet" href="../js_css/css/ad_top.css" type="text/css"/>
 </head>
 
 <body>
