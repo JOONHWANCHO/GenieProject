@@ -242,7 +242,7 @@ public class UserController {
 
 	//배송지 관리
 	@GetMapping("MyDeliveryList") 
-	public ModelAndView MyDeliveryLIst(HttpSession session) {
+	public ModelAndView MyDeliveryList(HttpSession session) {
 		
 		String genie_id = (String)session.getAttribute("logId");
 		UserVO vo = service.getUser(genie_id);
