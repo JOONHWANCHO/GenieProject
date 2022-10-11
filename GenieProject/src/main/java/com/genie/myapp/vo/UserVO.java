@@ -11,7 +11,7 @@ public class UserVO {
     private String genie_id;
 	private String genie_pwd;
     private String genie_pwd2;
-    private String member_type;
+    private String ROLE;
     
   	private String user_num;
     private String user_name;
@@ -36,7 +36,7 @@ public class UserVO {
     @Override
     public String toString() {
         return "UserVO [genie_id=" + genie_id + ", genie_num=" + genie_num + ", genie_pwd=" + genie_pwd
-                + ", genie_pwd2=" + genie_pwd2 + ", member_type=" + member_type + ", payment_method=" + payment_method
+                + ", genie_pwd2=" + genie_pwd2 + ", ROLE=" + ROLE + ", payment_method=" + payment_method
                 + ", sign_in_date=" + sign_in_date + ", user_addr=" + user_addr + ", user_detailaddr=" + user_detailaddr
                 + ", user_email=" + user_email + ", user_gender=" + user_gender + ", user_name=" + user_name
                 + ", user_num=" + user_num + ", user_phone_num1=" + user_phone_num1 + ", user_phone_num2="
@@ -94,14 +94,14 @@ public class UserVO {
 
 
 
-    public String getMember_type() {
-        return member_type;
+    public String getROLE() {
+        return ROLE;
     }
 
 
 
-    public void setMember_type(String member_type) {
-        this.member_type = member_type;
+    public void setROLE(String ROLE) {
+        this.ROLE = ROLE;
     }
 
 

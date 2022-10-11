@@ -3,11 +3,11 @@ package com.genie.myapp.vo;
 public class AccountVO {
     private String genie_id;
 	private String genie_pwd;
-    private int member_type;
+    private String ROLE;
 
     @Override
     public String toString() {
-        return "AccountVO [genie_id=" + genie_id + ", genie_pwd=" + genie_pwd + ", member_type=" + member_type + "]";
+        return "AccountVO [genie_id=" + genie_id + ", genie_pwd=" + genie_pwd + ", ROLE=" + ROLE + "]";
     }
     
     public String getGenie_id() {
@@ -22,11 +22,11 @@ public class AccountVO {
     public void setGenie_pwd(String genie_pwd) {
         this.genie_pwd = genie_pwd;
     }
-    public int getMember_type() {
-        return member_type;
+    public String getROLE() {
+        return ROLE;
     }
-    public void setMember_type(int member_type) {
-        this.member_type = member_type;
+    public void setROLE(String ROLE) {
+        this.ROLE = ROLE;
     }
     
 }

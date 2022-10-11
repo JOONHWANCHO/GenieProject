@@ -39,17 +39,17 @@
 				<li><a href = "/login"><i class="fa-solid fa-user"></i></a></li>
 			</c:if> 
 			
-			<c:if test ="${logStatus =='Y' && memberType == '1'}">
+			<c:if test ="${logStatus=='Y' && ROLE=='ROLE_USER'}">
 				<li><a href = "/user/MyOrderList"><i class="fa-solid fa-address-card"></i></a></li>
-				<li>${logName}님<a href ="/user/logout"> 로그아웃</a></li>
+				<li>${logName}님<a href ="/logout"> 로그아웃</a></li>
 			</c:if>
-			<c:if test ="${logStatus =='Y' && memberType == '2'}">
+			<c:if test ="${logStatus=='Y' && ROLE=='ROLE_SELLER'}">
 				<li><a href = "/seller/sellerMain"><i class="fa-solid fa-address-card"></i></a></li>
-				<li>${logName}님<a href ="/user/logout"> 로그아웃</a></li>
+				<li>${logName}님<a href ="/logout"> 로그아웃</a></li>
 			</c:if>
-			<c:if test ="${logStatus =='Y' && memberType == '3'}">
+			<c:if test ="${logStatus=='Y' && ROLE=='ROLE_ADMIN'}">
 				<li><a href = "/admin/adminMain"><i class="fa-solid fa-address-card"></i></a></li>
-				<li>${logName}님<a href ="/user/logout"> 로그아웃</a></li>
+				<li>${logName}님<a href ="/logout"> 로그아웃</a></li>
 			</c:if>
 		</ul>
 	</nav>

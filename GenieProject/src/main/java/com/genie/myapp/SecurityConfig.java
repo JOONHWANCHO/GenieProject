@@ -22,11 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		
 		http.authorizeRequests()
-			
 			.antMatchers("/**").permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")
-			.antMatchers("/seller/**").hasAnyRole("ADMIN, SELLER")
-			.antMatchers("/user/**").hasRole("USER, SELLER")
+			.antMatchers("/seller/**").hasAnyRole("ADMIN", "SELLER")
+			.antMatchers("/user/**", "/cert/**").hasRole("USER")
 			.anyRequest().permitAll()
 		.and()
 			.formLogin()
