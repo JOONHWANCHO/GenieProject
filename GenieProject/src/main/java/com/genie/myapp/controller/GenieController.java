@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,6 +73,7 @@ public class GenieController{
 	}
 	
 	//로그인
+	
 	@PostMapping("loginOK")
 	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session) {
 		
@@ -80,7 +82,7 @@ public class GenieController{
 		UserVO logVO = userService.loginOk(vo);
 		SellerVO slogVO =sellerService.loginOk(svo);
 		AdministerVO alogVO = administerService.loginOk(avo);
-	
+
 		if(logVO != null) {//로그인 성공
 
 			session.setAttribute("logId", logVO.getGenie_id());		

@@ -12,6 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	@Autowired
+	private LoginFail loginFail;
+
 	@Bean
 	public BCryptPasswordEncoder encodePwd() {
 		return new BCryptPasswordEncoder();
@@ -31,8 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 			.loginPage("/login") // 인증 필요한 페이지 접근시 이동페이지
 			.loginProcessingUrl("/login")
-			//.successHandler(loginSuccess)
-			//.failureHandler(loginFail)
+			.failureHandler(loginFail)
 		.and()
 			.logout()
 			.logoutSuccessUrl("/")

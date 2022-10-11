@@ -1,10 +1,13 @@
 package com.genie.myapp.vo;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-@Getter
-@Setter
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+
 public class UserVO {
 
     private String genie_num;
@@ -30,6 +33,20 @@ public class UserVO {
 	
     private String sign_in_date;
     private String payment_method;
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
+
+		if (this.ROLE.equals("ADMIN")) {
+			auth.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		} else if(this.ROLE.equals("SELLER")){
+			auth.add(new SimpleGrantedAuthority("ROLE_SELLER"));
+		}else{
+            auth.add(new SimpleGrantedAuthority("ROLE_USER"));
+        }
+		
+		return auth;
+	}
 
 
 
@@ -241,6 +258,18 @@ public class UserVO {
     }
     public void setUser_phone_num3(String user_phone_num3) {
         this.user_phone_num3 = user_phone_num3;
+    }
+
+
+
+    public String getAddress_num() {
+        return address_num;
+    }
+
+
+
+    public void setAddress_num(String address_num) {
+        this.address_num = address_num;
     }
 }
 

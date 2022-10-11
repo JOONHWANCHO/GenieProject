@@ -81,11 +81,8 @@ public class UserController {
 		
 		try {//회원가입 성공
 			
-			int account = service.AccountWrite(avo);
-			int user = service.UserWrite(vo);
-
-			System.out.println(account);
-			System.out.println(user);
+			service.AccountWrite(avo);
+			service.UserWrite(vo);
 
 			String msg = "<script>";
 			msg += "alert('회원가입을 성공하였습니다.');";
