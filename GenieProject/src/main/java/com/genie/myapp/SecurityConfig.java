@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/**").permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.antMatchers("/seller/**").hasAnyRole("ADMIN, SELLER")
+			.antMatchers("/user/**").hasRole("USER")
 			.anyRequest().permitAll()
 		.and()
 			.formLogin()
@@ -34,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			//.failureHandler(loginFail)
 		.and()
 			.logout()
-			.logoutSuccessUrl("/myPage")
+			.logoutSuccessUrl("/")
 		;
 		
 	}

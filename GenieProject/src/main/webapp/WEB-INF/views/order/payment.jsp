@@ -112,7 +112,7 @@
 <script> 
   $(function(){
 
-      $("#buy").click(function (){        
+      $("#buy").click(function (){
       var IMP = window.IMP; // 생략가능        
       IMP.init('imp48507577');   
       // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
@@ -143,18 +143,12 @@
           buyer_tel: $("#receiver_tel").val(),      
           buyer_postcode: $("#receiver_zipcode").val(),
           buyer_addr: $("#receiver_addr").val()
-
-          /*                  
-          모바일 결제시,                
-          결제가 끝나고 랜딩되는 URL을 지정                 
-          (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
-          */        
+      
           }, function (rsp) { 
-
-              if(rsp.success) {                 
+              if(rsp.success) {
                   var msg = '결제가 완료되었습니다.';
          
-                  var data = {
+                  var orderData = {
                       order_num: rsp.imp_uid,
                       merchant_uid: rsp.merchant_uid,
                       genie_id:$("input[name=genie_id]").val(),
@@ -174,38 +168,39 @@
                   };//data
 
                   $.ajax({
-                      url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
-                      method: "get",
-                      data: data
-
-                  }).done(function(data){
-
-                        $.ajax({
-                          url: "/order/completion", // 예: https://www.myservice.com/payments/complete
-                          method: "get",
-                          data: data
-                          
-                        }).done(function (data){
-                          console.log(data);
-                          
-                          let url="/order/completion";
-                          location.replace(url);
+                    url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
+                    data: orderData,
+                    method: "get",
+                    contentType: "application/json",
+                    async: false,
+                    success:function(result){
+                                        
+                      let url="/order/completion";
                       
-                    }).fail(function(data1){
-                      console.log(data1);
-                    })
+                      let params=orderData;
+                      
+                          function sendPost(url, params) {
+                              var form = document.createElement('form');
+                              form.setAttribute('method', 'get'); //POST 메서드 적용
+                              form.setAttribute('action', url);	// 데이터를 전송할 url
+                              document.body.appendChild(form);
+                              form.submit();
+                          }
+                          console.log(orderData);
 
-                    
-                  }).fail(function(data1){
-                    console.log(data1);
-                  })
+
+                    },error:function(e){
+                      console.log(e.responseText);
+                    }
+                  });
 
               } else {                
-                      var msg = '결제에 실패하였습니다.';                
-                      msg += '에러내용 : ' + rsp.error_msg;            
+                var msg = '결제에 실패하였습니다.';                
+                msg += '에러내용 : ' + rsp.error_msg;            
               }          
               alert(msg);
-            });      
+            });
+
           });
       });
 

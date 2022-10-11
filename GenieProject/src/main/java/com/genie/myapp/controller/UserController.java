@@ -94,8 +94,7 @@ public class UserController {
 
 		}else{//로그인 실패
 
-			session.setAttribute("msg","아이디 또는 비밀번호 오류입니다.");
-			mav.setViewName("redirect:/user/login");
+			mav.setViewName("redirect:/login");
 
 			return mav;
 			
@@ -132,7 +131,7 @@ public class UserController {
 
 		mav.addObject("idCnt",cnt);
 		mav.addObject("genie_id",genie_id);
-		mav.setViewName("user/idCheck");
+		mav.setViewName("/user/idCheck");
 
 		return mav;
 	}
@@ -158,7 +157,7 @@ public class UserController {
 
 			String msg = "<script>";
 			msg += "alert('회원가입을 성공하였습니다.');";
-			msg += "location.href='/user/login';";
+			msg += "location.href='/login';";
 			msg += "</script>";
 			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
 
