@@ -115,7 +115,7 @@ h1  {
 }
 */
 .best-tag button{
-   background-image: linear-gradient(to bottom right, #2DCEF8, #3B40FE);
+   /*background-image: linear-gradient(to bottom right, #2DCEF8, #3B40FE);*/
    width: 200px;
    height: 70px;
    border-radius: 50px;
@@ -123,15 +123,22 @@ h1  {
    margin-right: 20px;
    padding: 10px 25px;
    font-weight: 500;
+   font-weight: bold;
    font-size: 1.4rem;
    color: #fff;
    display: inline-block;
    border: none;
 }
+.best-tag button:hover{
+   -ms-transform: scale(1.1); /* IE 9 */
+   -webkit-transform: scale(1.1); /* Safari 3-8 */
+   transform: scale(1.1); 
+   transition-duration: 0.3s;
+}
 /* ------------------ 리스팅 추천 부분(recommand_listing) ------------------- */
 .recommand_listing {
    /*background-image: url("/image/listing_bg.png");*/
-   background-image: linear-gradient(to bottom right, #2DCEF8, #3B40FE);
+   /*background-image: linear-gradient(to bottom right, #2DCEF8, #3B40FE);*/
    width: 95%;
    height: 50px;
    border-radius: 15px;
