@@ -66,7 +66,7 @@
 				<div class="info-box" style="background-color: transparent; box-shadow: none;">
 					<span class="info-box-icon elevation-1" id="icon" style="background: linear-gradient(#ff796f, #bd261b);color:white;"><i class="fas fa-credit-card">
 						<div class="info-box-content">
-							<span class="info-box-text">총 매출</span>
+							<span class="info-box-text">이번달 총 매출</span>
 							<span class="info-box-number">
 								<h2><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSum}" /> 원</h2>
 							</span>

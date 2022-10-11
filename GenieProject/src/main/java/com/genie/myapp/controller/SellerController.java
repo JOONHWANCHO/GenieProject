@@ -31,6 +31,7 @@ import com.genie.myapp.service.SellerService;
 import com.genie.myapp.vo.SellerProductVO;
 import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.OrderVO;
+import com.genie.myapp.vo.PagingVO;
 import com.genie.myapp.vo.SellerVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -67,7 +68,8 @@ public class SellerController {
 		int torder = service.todayOrder(seller_id); // 오늘 들어온 주문 
 		int devp = service.deliveryPending(seller_id); 
 		String bs = service.bestSeller(seller_id); // 이달의 상품
-		int tmr = service.thisMonthRevenue(seller_id); // 이번달 매출
+		int osum = service.orderSum(seller_id); //총매출(이번달)
+	
 		List<OrderVO> rlist = service.revenueByProduct(seller_id); // 아이템별 매출
 		String ss = service.sellerStatus(seller_id); // 셀러상태 
 
@@ -120,8 +122,10 @@ public class SellerController {
 			mav.addObject("bestSeller", bs); // 이달의 상품
 			
 			mav.addObject("revenueByProduct", rlist); // 아이템별 매출
-			mav.addObject("thisMonthRevenue", tmr);
+			
 			mav.addObject("json2", json2); // 카테고리별 판매건수
+
+			mav.addObject("orderSum", osum); // 총매출(이번달)
 
 			mav.setViewName("seller/sellerMain");
 			
@@ -211,7 +215,7 @@ public class SellerController {
 		String json = gson.toJson(jArray); // 사용가능한 json 데이터 형태로 변환
 		mav.addObject("json", json); // 일별매출
 		
-		mav.addObject("orderSum", osum); // 총매출
+		mav.addObject("orderSum", osum); // 총매출(이번달)
 		mav.addObject("orderCount", ocnt); // 총결제건수
 		mav.addObject("bestSeller", bs); // 이달의 상품
 		mav.setViewName("seller/sellerSales");
@@ -228,13 +232,15 @@ public class SellerController {
 	
 	//seller 상품관리 페이지
 	@GetMapping("sellerProduct")
-	public ModelAndView sellerProduct(SellerProductVO pvo, HttpServletRequest request) {
+	public ModelAndView sellerProduct(PagingVO pVO, HttpServletRequest request) {
 		
-		pvo.setGenie_id((String)request.getSession().getAttribute("logId"));
+		pVO.setGenie_id((String)request.getSession().getAttribute("logId"));
+		pVO.setTotalRecord(service.productTotalRecord(pVO));
+		pVO.setOnePageRecord(10);
 		
 		mav = new ModelAndView();
-		mav.addObject("plist", service.productList(pvo));
-		mav.addObject("pvo", pvo);
+		mav.addObject("plist", service.productList(pVO));
+		mav.addObject("pVO", pVO);
 		
 		mav.setViewName("seller/sellerProduct");
 		return mav;
