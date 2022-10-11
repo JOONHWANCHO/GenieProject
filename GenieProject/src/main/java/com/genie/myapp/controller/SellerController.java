@@ -51,13 +51,6 @@ public class SellerController {
 	TransactionDefinition definition;
 	ModelAndView mav = null;
 	
-	//업체 회원가입 폼 보기
-	@GetMapping("sellerForm")
-	public ModelAndView sellerForm() {
-		mav = new ModelAndView();
-		mav.setViewName("seller/sellerForm");
-		return mav;
-	}
 	// Seller(UI 참고용)
 	@GetMapping("sellerHome")
 	public ModelAndView sellerHome() {
@@ -278,8 +271,8 @@ public class SellerController {
 		TransactionStatus status= transactionManager.getTransaction(definition);
 		
 		try {//회원가입성공
-			int account = service.AccountWrite(avo);
-			int seller = service.sellerWrite(vo);
+			service.AccountWrite(avo);
+			service.sellerWrite(vo);
 			
 			
 			String msg = "<script>";
@@ -316,7 +309,7 @@ public class SellerController {
 		headers.add("Content-Type", "text/html; charset=utf-8");
 		
 		try {//상품등록 성공
-			int result = service.productWrite(vo);
+			service.productWrite(vo);
 			
 			String msg = "<script>";
 			msg += "alert('상품이 등록되었습니다.');";
@@ -360,7 +353,7 @@ public class SellerController {
 		String msg = "<script>";
 		
 		try {//수정성공 - 상품관리로 이동
-			int cnt = service.productEditOk(pvo);
+			service.productEditOk(pvo);
 			
 			msg += "alert('상품이 수정되었습니다. 상품관리 페이지로 이동합니다. ');";
 			msg += "location.href='/seller/sellerProduct';";

@@ -129,7 +129,7 @@ $(function(){
   <div class="wrapper">
     <div id="formContent">
       <!-- 로그인폼-->
-      <form method="post" action="/user/loginOK" id="logFrm">
+      <form method="post" action="/loginOK" id="logFrm">
         <p>아이디</p>
         <input type="text" id="genie_id" name="genie_id" placeholder="아이디를 입력하세요">
       <!-- 비밀번호 -->
@@ -138,8 +138,8 @@ $(function(){
         <input type="submit" value="로그인">
         <h3><a href="" id="FindId">아이디찾기</a> | <a href="" id="FindPwd">비밀번호 찾기</a></h3>
       <!-- 로그인폼-->
-        <a href="/user/Registration"><input type="button" id="userReg" value="일반회원 회원가입"></a>
-        <a href="/seller/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a>
+        <a href="/Registration"><input type="button" id="userReg" value="일반회원 회원가입"></a>
+        <a href="/sellerForm"><input type="button" id="comReg" value="기업회원 회원가입"></a>
       </form>
     </div>
   </div>

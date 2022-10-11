@@ -23,9 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.genie.myapp.service.AdministerService;
 import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
-
 import com.genie.myapp.vo.AccountVO;
-import com.genie.myapp.vo.AdministerVO;
 import com.genie.myapp.vo.DeliveryVO;
 import com.genie.myapp.vo.OrderVO;
 import com.genie.myapp.vo.SellerVO;
@@ -53,72 +51,6 @@ public class UserController {
 	@Autowired
 	TransactionDefinition definition;
 
-	@PostMapping("loginOK")
-	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session) {
-		
-		mav = new ModelAndView();
-
-		UserVO logVO = service.loginOk(vo);
-		SellerVO slogVO =service_s.loginOk(svo);
-		AdministerVO alogVO = service_a.loginOk(avo);
-	
-		if(logVO != null) {//로그인 성공
-
-			session.setAttribute("logId", logVO.getGenie_id());		
-			session.setAttribute("logName", logVO.getUser_name());
-			session.setAttribute("logStatus","Y");
-			session.setAttribute("memberType", "1");
-			mav.setViewName("redirect:/");
-			
-			return mav;
-
-		}else if(slogVO !=null){
-
-			session.setAttribute("logId", slogVO.getGenie_id());
-			session.setAttribute("logName", slogVO.getCompany_name());
-			session.setAttribute("logStatus","Y");
-			session.setAttribute("memberType", "2");
-			mav.setViewName("redirect:/seller/sellerMain");
-
-			return mav;
-
-		}else if(alogVO != null){
-
-			session.setAttribute("logId", alogVO.getGenie_id());
-			session.setAttribute("logName", alogVO.getAdminister_name());
-			session.setAttribute("logStatus","Y");
-			session.setAttribute("memberType", "3");
-			mav.setViewName("redirect:/admin/adminMain");
-
-			return mav;
-
-		}else{//로그인 실패
-
-			mav.setViewName("redirect:/login");
-
-			return mav;
-			
-		}
-	}
-
-	@GetMapping("logout")
-	public ModelAndView logout(HttpSession session) {
-		mav = new ModelAndView();
-		session.invalidate();
-		mav.setViewName("redirect:/");
-		
-		return mav;
-	}
-
-	//회원가입 폼으로 이동
-	@GetMapping("Registration")
-	public ModelAndView RegistragionForm() {
-
-		mav = new ModelAndView();
-		mav.setViewName("/user/Registration");
-
-		return mav;
-	}
 
 	 //아이디 중복검사
 	@GetMapping("idCheck")
@@ -242,7 +174,7 @@ public class UserController {
 
 	//배송지 관리
 	@GetMapping("MyDeliveryList") 
-	public ModelAndView MyDeliveryList(HttpSession session) {
+	public ModelAndView MyDeliveryLIst(HttpSession session) {
 		
 		String genie_id = (String)session.getAttribute("logId");
 		UserVO vo = service.getUser(genie_id);

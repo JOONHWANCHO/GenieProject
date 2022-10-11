@@ -69,11 +69,13 @@ public class OrderController {
 	}
 
 	@GetMapping("completion")
-	public ModelAndView completion(OrderVO ovo) {
+	public ModelAndView completion(HttpSession session) {
 
-		System.out.println(ovo.toString());
+		String genie_id = (String) session.getAttribute("logId");
+		List<OrderVO> ovo = orderService.getOrderList(genie_id);
 		mav = new ModelAndView();
 
+		System.out.println(ovo.toString());
 		mav.addObject("olist", ovo);
 		mav.setViewName("/order/completion");
 
