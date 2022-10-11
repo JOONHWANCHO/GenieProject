@@ -173,7 +173,8 @@ table {
                             <td><img src="${vo.product_image1}" class="thumb"></td>
                             <td>${vo.product_name}</td>
                             <td>${vo.sold_counts}</td>
-                            <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.total_sales}" /> ${vo.total_sales}</td>
+                            <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.total_sales}"/> ${vo.total_sales} 원</td>
+
                           </tr>
                         </c:forEach>
                         
@@ -191,7 +192,7 @@ table {
                 </div>
                 <div class="card-body">
                   <p class="card-text">
-                    이번 달 총 매출은 ${thisMonthRevenue} 원 이에요.
+                    이번 달 총 매출은 ${orderSum} 원 이에요.
                   </p>
                   <!-- 차트 (chart js)-->
                   <canvas id="chart" style="width:200px; height:75px;"></canvas>

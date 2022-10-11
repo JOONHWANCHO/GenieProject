@@ -75,6 +75,7 @@ public class SellerController {
 		int devp = service.deliveryPending(seller_id); 
 		String bs = service.bestSeller(seller_id); // 이달의 상품
 		int tmr = service.thisMonthRevenue(seller_id); // 이번달 매출
+	
 		List<OrderVO> rlist = service.revenueByProduct(seller_id); // 아이템별 매출
 		String ss = service.sellerStatus(seller_id); // 셀러상태 
 

@@ -153,6 +153,11 @@
                           <th>수량</th>
                           <th>결제금액</th>
                           <th>주문자명</th>
+                          <th>수령자명</th>
+                          <th>주소</th>
+                          <th>전화번호</th>
+                          <th>요청사항</th>
+                          <th>주문상태</th>
                           <th></th>
                         </tr>
                       </thead>
@@ -164,8 +169,12 @@
                             <td>${vo.order_writedate}</td>
                             <td>${vo.product_name}</td>
                             <td>${vo.order_qty}</td>
-                            <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.order_price}" />${vo.order_price}원</td>
+                            <td>${vo.order_price}</td>
                             <td>${vo.genie_id}</td>
+                            <td>${vo.recipient_name}</td>
+                            <td>${vo.recipient_address}</td>
+                            <td>${vo.recipient_phone}</td>
+                            <td>${vo.recipient_request}</td>
                             <td>
                                 <select name="s_delivery_status${i.index }" id="s_delivery_status${i.index }">
                                     <c:choose>

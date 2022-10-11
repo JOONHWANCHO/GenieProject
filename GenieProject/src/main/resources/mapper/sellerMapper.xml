@@ -99,7 +99,7 @@
 		order by i.product_id asc
 	</select>
 
-	<!--  총매출 -->
+	<!-- 이번달 총매출 -->
 	<select id="orderSum" resultType="int">
 		select ifnull(sum(order_price), 0)
 		from myorder m join
@@ -107,6 +107,9 @@
 			from product
 			where genie_id = #{param1}) p
 		on m.product_id = p.product_id
+		where MONTH(order_writedate)=MONTH(now())
+        and YEAR(order_writedate)=YEAR(now());
+		
 	</select>
 	
 	<!--  일별 매출 -->
@@ -117,7 +120,7 @@
 			from product
 			where genie_id = #{param1}) p
 		on m.product_id = p.product_id
-		group by month_day;
+		group by month_day
 
 		<!-- select date_format(order_writedate, '%m-%d') as month_day, sum(order_price) as total_sales
 		from myorder
