@@ -8,7 +8,7 @@ import com.genie.myapp.vo.OrderVO;
 public interface OrderService {
 
     // 구매 결제페이지
-    public List<CartVO> getOrder(CartVO cvo);
+    public List<CartVO> readyToPay(CartVO cvo);
 
     // myorder테이블로
     public int afterPayment(OrderVO ovo);

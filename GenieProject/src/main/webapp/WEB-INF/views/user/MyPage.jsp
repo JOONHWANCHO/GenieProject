@@ -34,30 +34,63 @@ nav .sidenav-trigger i {
   line-height: 64px;
 }
 
+.card .card-content{
+  padding: 20px;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.select-wrapper {
+  width: 30%;
+  float: left;
+
+}
+#user_name{
+  width: 90%;
+}
+#user_phone_num2 {
+  width: 30%;
+  margin-left: 20px;
+  margin-left: 10px;
+}
+#user_phone_num3 {
+  width: 30%;
+  margin-left: 10px;
+}
+#user_zipcode {
+  width: 75%;
+}
+
+
 #PwdEdit {
   background-color: white; 
   color: black; 
-  border: 2px solid #7600bc;
+  border: 2px solid #27b5c5;
   padding: 10px;
   border-radius: 8px;
 }
 
 #PwdEdit:hover {
-  background-color: #7600bc;
+  background-color: #27b5c5;
   color: white;
 }
 
 #formSubmit {
   background-color: white; 
   color: black; 
-  border: 2px solid #7600bc;
+  border: 2px solid #27b5c5;
   padding: 10px;
   border-radius: 8px;
 }
 
 #formSubmit:hover {
-  background-color: #7600bc;
+  background-color: #27b5c5;
   color: white;
+}
+.gradient-45deg-indigo-purple {
+  background: linear-gradient(45deg,#303f9f,#27b5c5)!important;
 }
 </style>
 <body>
