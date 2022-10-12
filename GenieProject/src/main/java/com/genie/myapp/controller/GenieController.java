@@ -80,7 +80,7 @@ public class GenieController{
 		UserVO logVO = userService.loginOk(vo);
 		SellerVO slogVO =sellerService.loginOk(svo);
 		AdministerVO alogVO = administerService.loginOk(avo);
-	
+
 		if(logVO != null) {//로그인 성공
 
 			session.setAttribute("logId", logVO.getGenie_id());		

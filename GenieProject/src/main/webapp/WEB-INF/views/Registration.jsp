@@ -19,13 +19,13 @@
 			</ul>
 			<ul id="passwordForm">
 				<li>비밀번호</li>
-				<input type="password" id="genie_pwd" name="genie_pwd"  placeholder="비밀번호를 입력하세요">
+				<input type="password" id="genie_pwd" name="genie_pwd" value="123" placeholder="비밀번호를 입력하세요">
 				<li>비밀번호 확인</li>
-				<input type="password" id="genie_pwd2" name="genie_pwd2" placeholder="비밀번호를 입력하세요">
+				<input type="password" id="genie_pwd2" name="genie_pwd2" value="123" placeholder="비밀번호를 입력하세요">
 			</ul>
 			<ul id="idForm">
 				<li>이름</li>
-				<input type="text" name="user_name" id="user_name" placeholder="이름을 입력하세요">
+				<input type="text" name="user_name" id="user_name" value="123" placeholder="이름을 입력하세요">
 			</ul>
 			<ul id="phoneForm">
 				<li>휴대폰 번호</li>
@@ -38,12 +38,12 @@
 					<option value="018">018</option>
 					<option value="019">019</option>
 				</select>
-				<input type ="text" name = "user_phone_num2" id ="user_phone_num2" maxlength = "4"/>
-				<input type ="text" name = "user_phone_num3" id ="user_phone_num3" maxlength = "4"/>
+				<input type ="text" name = "user_phone_num2" id ="user_phone_num2" value="1234" maxlength = "4"/>
+				<input type ="text" name = "user_phone_num3" id ="user_phone_num3" value="1234"maxlength = "4"/>
 			</ul>
 			<ul id="emailForm">
 				<li>이메일</li>
-				<input type="email" id="user_email" name="user_email" placeholder="이메일을 입력하세요">
+				<input type="email" id="user_email" name="user_email" value="asdf@gmail.com"placeholder="이메일을 입력하세요">
 			</ul>
 			<ul id="user_gender">
 				<li>성별</li>
