@@ -164,6 +164,7 @@ public class SellerController {
 	
 		return mav;
 	}
+	
 
 	// 주문목록 배송상태 수정
 	@PostMapping("updateDeliveryStatus") // @RequestParam 을 이용해 Map에 전송된 매개변수 이름을 key, 값을 value 로 저장
