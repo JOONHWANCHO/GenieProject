@@ -133,9 +133,10 @@
       }
 
       IMP.request_pay({
-          pg: 'html5_inicis',                         
+          pg: 'html5_inicis',                  
+          pay_method: 'card',         
           merchant_uid: 'merchant_' + new Date().getTime(), 
-          name:'<c:forEach var="pvo" items="${plist}">[${pvo.product_name}]</c:forEach>',     
+          name:'<c:forEach var="pvo" items="${plist}">${pvo.product_name} </c:forEach>',     
           amount: '${total}',//가격          
           buyer_email: '${uvo.user_email}',
           buyer_name: $("#receiver_name").val(),
@@ -144,79 +145,46 @@
           buyer_addr: $("#receiver_addr").val()
       
           }, function (rsp) { 
-            if(rsp.success) {
-
-             var msg = '결제가 완료되었습니다.';
+              if(rsp.success) {
+                  var msg = '결제가 완료되었습니다.';
          
-              var orderData = {
-                  order_num: rsp.imp_uid,
-                  merchant_uid: rsp.merchant_uid,
-                  genie_id:$("input[name=genie_id]").val(),
-                  cart_num: $("input[name=cart_num]").val(),
-                  product_id: $("input[name=product_id]").val(),
-                  product_name: $("input[name=product_name]").val(),
-                  order_qty: $("input[name=cart_qty]").val(),
-                  order_price: $("input[name=sum]").val(),
-                  recipient_name: $("#receiver_name").val(),
-                  recipient_phone: $("#receiver_tel").val(),      
-                  recipient_address: $("#receiver_addr").val(),
-                  recipient_request: $("#recipient_request").val(),
-                  payment_method: rsp.pay_method,
-                                   
-              };//data
-              $.ajax({
-                url: "/order/completion", // 예: https://www.myservice.com/payments/complete
-                data: orderData,
-                method: "get",
-                contentType: "application/json",
-                async: false,
-                success:function(result){
-                  window.location.replace("/order/completion");
-                  console.log(orderData);
-                },error:function(e){
-                  console.log(e.responseText);
-                }
-              });
-                      
-                                    // var msg = '결제가 완료되었습니다.';
-                      
-                                    //     var DataList=[];
-                                    //     var orderData=[];
-                                      
-                                    //   for(let i in 1){
-                                    //     orderData[i] = {
-                      
-                                    //       order_num: rsp.imp_uid,
-                                    //       merchant_uid: rsp.merchant_uid,
-                                          
-                                    //       cart_num: $("input[name=cart_num]").eq(i).val(),
-                                    //       product_id: $("input[name=product_id]").eq(i),
-                                    //       product_name: $("input[name=product_name]").eq(i).val(),
-                                    //       order_qty: $("input[name=cart_qty]").eq(i).val(),
-                                    //       order_price: $("input[name=sum]").eq(i).val(),
-                      
-                      
-                                    //       genie_id:$("input[name=genie_id]").val(),
-                                    //       recipient_name: $("#receiver_name").val(),
-                                    //       recipient_phone: $("#receiver_tel").val(),      
-                                    //       recipient_address: $("#receiver_addr").val(),
-                                    //       recipient_request: $("#recipient_request").val(),
-                      
-                                    //       payment_method: rsp.pay_method,
-                      
-                                        
-                                    //     };//data
-                                    //     DataList.push(orderData[i]);
-                                    //   }
-                                    //   var dataSet={"Data" : JSON.stringify(DataList)};
+                  var orderData = {
+                      order_num: rsp.imp_uid,
+                      merchant_uid: rsp.merchant_uid,
+                      genie_id:$("input[name=genie_id]").val(),
+                      cart_num: $("input[name=cart_num]").val(),
+                      product_id: $("input[name=product_id]").val(),
+                      product_name: $("input[name=product_name]").val(),
+                      order_qty: $("input[name=cart_qty]").val(),
+                      order_price: $("input[name=sum]").val(),
+                      recipient_name: $("#receiver_name").val(),
+                      recipient_phone: $("#receiver_tel").val(),      
+                      recipient_address: $("#receiver_addr").val(),
+                      recipient_request: $("#recipient_request").val(),
+                      payment_method: rsp.pay_method,
+                                       
+                  };//data
+                  $.ajax({
+                    url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
+                    data: orderData,
+                    method: "get",
+                    contentType: "application/json",
+                    async: false,
+                    success:function(result){
 
+                      window.location.replace("/order/completion");
+                      console.log(orderData);
+
+                    },error:function(e){
+                      console.log(e.responseText);
+                    }
+                  });
               } else {                
                 var msg = '결제에 실패하였습니다.';                
                 msg += '에러내용 : ' + rsp.error_msg;            
               }          
               alert(msg);
             });
-
           });
       });
 
