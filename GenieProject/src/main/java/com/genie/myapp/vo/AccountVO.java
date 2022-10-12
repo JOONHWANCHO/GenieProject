@@ -10,9 +10,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class AccountVO {
-    private String genie_id;
+  private String genie_id;
 	private String genie_pwd;
-    private Role role;
+  private Role role;
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
@@ -33,6 +33,7 @@ public class AccountVO {
     @Override
     public String toString() {
         return "AccountVO [genie_id=" + genie_id + ", genie_pwd=" + genie_pwd + ", role=" + role + "]";
+
     }
 
 
@@ -53,12 +54,14 @@ public class AccountVO {
         this.genie_pwd = genie_pwd;
     }
 
+
     public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
+
     }
     
 
