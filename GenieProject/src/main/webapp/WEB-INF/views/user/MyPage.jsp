@@ -34,6 +34,36 @@ nav .sidenav-trigger i {
   line-height: 64px;
 }
 
+.card .card-content{
+  padding: 20px;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.select-wrapper {
+  width: 30%;
+  float: left;
+
+}
+#user_name{
+  width: 90%;
+}
+#user_phone_num2 {
+  width: 30%;
+  margin-left: 20px;
+  margin-left: 10px;
+}
+#user_phone_num3 {
+  width: 30%;
+  margin-left: 10px;
+}
+#user_zipcode {
+  width: 75%;
+}
+
+
 #PwdEdit {
   background-color: white; 
   color: black; 
