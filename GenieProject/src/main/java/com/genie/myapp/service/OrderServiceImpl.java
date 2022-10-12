@@ -16,8 +16,8 @@ public class OrderServiceImpl implements OrderService{
     OrderDAO dao;
     
     @Override
-    public List<CartVO> getOrder(CartVO cvo) {
-        return dao.getOrder(cvo);
+    public List<CartVO> readyToPay(CartVO cvo) {
+        return dao.readyToPay(cvo);
     }
 
     @Override

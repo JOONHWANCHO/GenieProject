@@ -23,17 +23,17 @@
                     <input type="hidden" name="cart_num" value="${cvo.cart_num}"/>
                     <div><a href="/product_detail?product_id=${cvo.product_id}"><img src='${cvo.product_image1}'></a></div>
                     <div><a href="/product_detail?product_id=${cvo.product_id}">${cvo.product_name}</a></div>
-                        <input type="hidden" name="Product_name" value="${cvo.product_name}"/>
+                        <input type="hidden" name="product_name_List" value="${cvo.product_name}"/>
                     <div><fmt:formatNumber value="${cvo.product_price}" pattern="#,###원"/></div>
 
-                        <input type="hidden" name="Product_price" value="${cvo.product_price}">
+                    <input type="hidden" name="product_price_List" value="${cvo.product_price}">
 
                     <div><input type="text" name="cart_qty" id="cart_qty${cvo.cart_num}" class="cart_qty" size="2" value="${cvo.cart_qty}" onkeyup="javascript:cart.changePNum(${cvo.cart_num});" readonly="readonly"/></div>
                     <div>
                         <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-up up"></i></div>
                         <div onclick="javascript:cart.changePNum(${cvo.cart_num});"><i class="fas fa-arrow-alt-circle-down down"></i></div>
                     </div>
-                    <div input type="hidden" size="4" maxlength="4">${cvo.product_price*cvo.cart_qty}원</div>
+                    <div input type="hidden" size="4" maxlength="4"><fmt:formatNumber value="${cvo.product_price*cvo.cart_qty}" pattern="#,###원"/></div>
                     <div><input type="button" style="background:#b90e0a; border:none; padding: 6px; border-radius:8px; color: #fff;" value='Del' cart_num="${cvo.cart_num}"/></div>
                 </div>
             </c:forEach>

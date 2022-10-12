@@ -49,11 +49,11 @@ public class OrderController {
 		String genie_id = (String) session.getAttribute("logId");
 		//System.out.println("주문정보 받아온 것 cvo : " + cvo.toString());
 
-		List<CartVO> vo = orderService.getOrder(cvo);
-		//System.out.println("주문정보 이동 vo : " + vo.toString());
+		List<CartVO> lvo = orderService.readyToPay(cvo);
+		System.out.println("주문정보 가져오기 : " + cvo.toString());
 
 		mav = new ModelAndView();
-		mav.addObject("plist", vo);
+		mav.addObject("plist", lvo);
 		mav.addObject("uvo", userService.getUser(genie_id));
 		mav.setViewName("/order/payment");
 
@@ -63,8 +63,9 @@ public class OrderController {
 	@GetMapping("orderCompletion")
 	public ResponseEntity<String> orderCompletion(OrderVO ovo) {
 
-		orderService.afterPayment(ovo);
-		//orderService.afterOrderCart(ovo);
+		System.out.println("카트에 담긴 정보"+ovo);
+		//orderService.afterPayment(ovo);// myorder테이블에 저장
+		//orderService.afterOrderCart(ovo);// 장바구니 삭제
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 
@@ -73,9 +74,8 @@ public class OrderController {
 
 		String genie_id = (String) session.getAttribute("logId");
 		List<OrderVO> ovo = orderService.getOrderList(genie_id);
-		mav = new ModelAndView();
 
-		System.out.println(ovo.toString());
+		mav = new ModelAndView();
 		mav.addObject("olist", ovo);
 		mav.setViewName("/order/completion");
 

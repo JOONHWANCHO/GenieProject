@@ -72,6 +72,7 @@ public class GenieController{
 	}
 	
 	//로그인
+	
 	@PostMapping("loginOK")
 	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session) {
 		

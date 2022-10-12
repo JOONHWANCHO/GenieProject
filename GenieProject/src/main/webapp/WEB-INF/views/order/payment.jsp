@@ -51,7 +51,7 @@
                 <c:forEach items="${plist}" var="pvo">
               <c:set var="sum_of_each" value="${total+pvo.product_price*pvo.cart_qty}"/>
                 <li><input type="hidden" id="cart_num" name="cart_num" value="${pvo.cart_num}"></li><br/> 
-                <li><input type="hidden" id="product_id" name="product_id" value="${pvo.product_id}"></li><br/>
+                <li><input type="hidden" id="product_id" name="product" value="${pvo.product_id}"></li><br/>
                 <li><input type="hidden" id="product_name" name="product_name" value="${pvo.product_name}">${pvo.product_name}</li> 
                 <li><input type="hidden" id="cart_qty" name="cart_qty" value="${pvo.cart_qty}">${pvo.cart_qty}개</li> 
                 <li><input type="hidden" id="sum" name="sum" value="${sum_of_each}">${sum_of_each}원</li><br/>
@@ -133,10 +133,9 @@
       }
 
       IMP.request_pay({
-          pg: 'html5_inicis',                  
-          pay_method: 'card',         
+          pg: 'html5_inicis',                         
           merchant_uid: 'merchant_' + new Date().getTime(), 
-          name:'<c:forEach var="pvo" items="${plist}">${pvo.product_name} </c:forEach>',     
+          name:'<c:forEach var="pvo" items="${plist}">[${pvo.product_name}]</c:forEach>',     
           amount: '${total}',//가격          
           buyer_email: '${uvo.user_email}',
           buyer_name: $("#receiver_name").val(),
@@ -145,39 +144,49 @@
           buyer_addr: $("#receiver_addr").val()
       
           }, function (rsp) { 
-              if(rsp.success) {
-                  var msg = '결제가 완료되었습니다.';
-         
-                  var orderData = {
-                      order_num: rsp.imp_uid,
-                      merchant_uid: rsp.merchant_uid,
-                      genie_id:$("input[name=genie_id]").val(),
+            if(rsp.success) {
+              var msg = '결제가 완료되었습니다.';
 
-                      cart_num: $("input[name=cart_num]").val(),
-                      product_id: $("input[name=product_id]").val(),
-                      product_name: $("input[name=product_name]").val(),
-                      order_qty: $("input[name=cart_qty]").val(),
-                      order_price: $("input[name=sum]").val(),
+                  var DataList=[];
+                  var orderData=[];
+                
+                for(let i in 1){
+                  orderData[i] = {
 
-                      recipient_name: $("#receiver_name").val(),
-                      recipient_phone: $("#receiver_tel").val(),      
-                      recipient_address: $("#receiver_addr").val(),
-                      recipient_request: $("#recipient_request").val(),
+                    order_num: rsp.imp_uid,
+                    merchant_uid: rsp.merchant_uid,
+                    
+                    cart_num: $("input[name=cart_num]").eq(i).val(),
+                    product_id: $("input[name=product_id]").eq(i),
+                    product_name: $("input[name=product_name]").eq(i).val(),
+                    order_qty: $("input[name=cart_qty]").eq(i).val(),
+                    order_price: $("input[name=sum]").eq(i).val(),
 
-                      payment_method: rsp.pay_method,
-                                       
+
+                    genie_id:$("input[name=genie_id]").val(),
+                    recipient_name: $("#receiver_name").val(),
+                    recipient_phone: $("#receiver_tel").val(),      
+                    recipient_address: $("#receiver_addr").val(),
+                    recipient_request: $("#recipient_request").val(),
+
+                    payment_method: rsp.pay_method,
+
+                  
                   };//data
+                  DataList.push(orderData[i]);
+                }
+                var dataSet={"Data" : JSON.stringify(DataList)};
 
                   $.ajax({
-                    url: "/order/completion", // 예: https://www.myservice.com/payments/complete
-                    data: orderData,
+                    url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
+                    data: dataSet,
                     method: "get",
                     contentType: "application/json",
                     async: false,
                     success:function(result){
-                      window.location.replace("/order/completion");
 
-                      console.log(orderData);
+                      //window.location.replace("/order/completion");
+                      console.log(dataSet);
                     },error:function(e){
                       console.log(e.responseText);
                     }
