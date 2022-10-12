@@ -36,7 +36,7 @@
 
 	}
   .table{
-    font-size: 70%;
+    font-size: 80%;
     text-align: center;
   }
 
@@ -156,6 +156,7 @@
                           <th>수량</th>
                           <th>결제금액</th>
                           <th>주문자명</th>
+                          <th>배송상태</th>
                           <th></th>
                         </tr>
                       </thead>
