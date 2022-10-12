@@ -48,15 +48,19 @@
 
     </insert>
 <!-- 장바구니 삭제 -->
+    <delete id="afterOrderCart1">
+        delete from cart 
+            <where>
+                <foreach collection="cartList" index="index" item ="item" open="cart_num in (" separator ="," close=")">
+                    #{item}  			
+                </foreach>	 
+            </where>
+        and genie_id=#{genie_id}
+    </delete>
+
     <delete id="afterOrderCart">
-            delete from cart 
-                <where>
-                    <foreach collection="cartList" index="index" item ="item" open="cart_num in (" separator ="," close=")">
-                        #{item}  			
-                    </foreach>	 
-                </where>
-            and genie_id=#{genie_id}
-        </delete>
+        delete from cart where cart_num=#{cart_num}
+    </delete>
 
     <!-- 주문 완료 페이지 -->
     <select id="getOrderList" resultType="OrderVO">
