@@ -67,27 +67,30 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 #PwdEdit {
   background-color: white; 
   color: black; 
-  border: 2px solid #7600bc;
+  border: 2px solid #27b5c5;
   padding: 10px;
   border-radius: 8px;
 }
 
 #PwdEdit:hover {
-  background-color: #7600bc;
+  background-color: #27b5c5;
   color: white;
 }
 
 #formSubmit {
   background-color: white; 
   color: black; 
-  border: 2px solid #7600bc;
+  border: 2px solid #27b5c5;
   padding: 10px;
   border-radius: 8px;
 }
 
 #formSubmit:hover {
-  background-color: #7600bc;
+  background-color: #27b5c5;
   color: white;
+}
+.gradient-45deg-indigo-purple {
+  background: linear-gradient(45deg,#303f9f,#27b5c5)!important;
 }
 </style>
 <body>

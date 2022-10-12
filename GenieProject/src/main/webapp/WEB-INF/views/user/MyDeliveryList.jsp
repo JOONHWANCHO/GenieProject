@@ -38,7 +38,7 @@ nav .sidenav-trigger i {
 #address_kakao {
   background-color: white; 
   color: black; 
-  border: 2px solid #7600bc;
+  border: 2px solid #27b5c5;
   padding: 7px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -47,7 +47,7 @@ nav .sidenav-trigger i {
 }
 
 #address_kakao:hover {
-  background-color: #7600bc;
+  background-color: #27b5c5;
   color: white;
 }
 .card .card-content{
@@ -77,6 +77,9 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 }
 #user_zipcode {
   width: 75%;
+}
+.gradient-45deg-indigo-purple {
+  background: linear-gradient(45deg,#303f9f,#27b5c5)!important;
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
