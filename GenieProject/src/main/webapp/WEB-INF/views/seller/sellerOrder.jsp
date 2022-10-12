@@ -17,8 +17,8 @@
 
   #orderbody{
 		padding-top: 10px;
-		padding-left: 100px;
-		padding-right: 100px;
+		padding-left: 50px;
+		padding-right: 50px;
 	}
 	.info-box-text{
 		font-size: 13px;
