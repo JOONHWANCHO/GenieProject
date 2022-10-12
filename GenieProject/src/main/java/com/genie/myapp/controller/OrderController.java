@@ -64,8 +64,8 @@ public class OrderController {
 	public ResponseEntity<String> orderCompletion(OrderVO ovo) {
 
 		System.out.println("카트에 담긴 정보"+ovo);
-		//orderService.afterPayment(ovo);// myorder테이블에 저장
-		//orderService.afterOrderCart(ovo);// 장바구니 삭제
+		orderService.afterPayment(ovo);// myorder테이블에 저장
+		orderService.afterOrderCart(ovo);// 장바구니 삭제
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 
