@@ -128,6 +128,7 @@ h1  {
    color: #fff;
    display: inline-block;
    border: none;
+   box-shadow: 1px 1px 4px 1px lightgray;
 }
 .best-tag button:hover{
    -ms-transform: scale(1.1); /* IE 9 */
