@@ -233,6 +233,14 @@ public class GenieController{
 		return entity;
 	}
 
+	// // 장바구니에서 제품 삭제
+	// @GetMapping("delMultiCart")
+	// public int delCart(HttpSession session, CartVO vo) {
+	// 	vo.setGenie_id( (String) session.getAttribute("logId"));
+	// 	return productService.delMultiCart(vo);
+
+	// }
+
 	// 장바구니에서 제품 삭제
 	@GetMapping("delCart")
 	public int delCart(HttpSession session, int cart_num) {
@@ -253,7 +261,6 @@ public class GenieController{
 		mav.setViewName("redirect:/cart");
 		return mav;
 	}
-
 
 	
 }
