@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class AccountVO {
-  private String genie_id;
+    private String genie_id;
 	private String genie_pwd;
     private Role role;
 
