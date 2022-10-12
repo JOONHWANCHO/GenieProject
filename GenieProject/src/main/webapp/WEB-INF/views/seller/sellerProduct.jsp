@@ -18,6 +18,15 @@
 	padding-left: 100px;
 	padding-right: 100px;
 }
+.card-body{
+	font-size: 80%;
+}
+
+.table{
+	font-size: 95%;
+    text-align: center;
+  }
+
 .table a{
 	color:black;
 }

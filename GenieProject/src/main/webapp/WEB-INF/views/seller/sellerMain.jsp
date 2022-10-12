@@ -71,9 +71,10 @@
   box-shadow: 0 0.5rem 0.5rem rgba(71, 7, 234, 0.2);
 }
 
-table {
+.table {
   table-layout: fixed;
   width: 100%;
+  text-align: center;
 }
 
 

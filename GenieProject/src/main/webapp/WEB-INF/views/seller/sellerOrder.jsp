@@ -6,23 +6,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-  .content-wrapper{
-	overflow-y:scroll;
-	-ms-overflow-style: none;
-}
+ .content-wrapper{
+    overflow-y:scroll;
+    -ms-overflow-style: none;
+  }
 
   .content-wrapper::-webkit-scrollbar{
-  display:none;
-}
+    display:none;
+  }
 
   #orderbody{
 		padding-top: 10px;
 		padding-left: 100px;
 		padding-right: 100px;
 	}
+
 	.info-box-text{
 		font-size: 13px;
 	}
+
 	.info-box{
 		width: 300px;
 		height: 200px;
@@ -34,10 +36,24 @@
     border-radius: 15px;
 
 	}
+
   .table{
-    font-size: 70%;
+    font-size: 80%;
     text-align: center;
   }
+  
+  .table [type="button"]{
+    width: 42px;
+    font-size: 12px;
+    letter-spacing: -1px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #0073e9;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
 
 </style>
 
@@ -155,6 +171,7 @@
                           <th>수량</th>
                           <th>결제금액</th>
                           <th>주문자명</th>
+                          <th>배송상태</th>
                           <th></th>
                         </tr>
                       </thead>

@@ -12,7 +12,8 @@
 			from product
 			where genie_id = #{param2}) p
 		on m.product_id = p.product_id
-		order by m.order_writedate desc;
+		where recipient_delivery_status != 'delivered'
+		order by m.order_writedate desc
 	</select>
 	
 	<select id="idCheck" resultType="int">
@@ -21,7 +22,7 @@
 	
 	<insert id="AccountWrite">
 		insert into account(member_type, genie_id, genie_pwd) 
-		values(#{member_type},#{genie_id}, sha2(#{genie_pwd},256));
+		values(#{member_type},#{genie_id}, sha2(#{genie_pwd},256))
 	</insert>
 	
 	<insert id="sellerWrite">
