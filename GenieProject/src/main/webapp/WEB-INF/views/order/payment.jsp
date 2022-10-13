@@ -77,7 +77,7 @@
                     <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
                     </c:forEach><br/>
                     <fmt:formatNumber value="${total}" pattern="#,###원"/>
-                    <li><input type="text" id="total" name="total" value="${total}"></li>
+                    <li><input type="hidden" id="total" name="total" value="${total}"></li>
               </c:when>
               <c:otherwise>
 
