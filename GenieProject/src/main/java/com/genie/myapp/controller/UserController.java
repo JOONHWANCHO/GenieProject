@@ -336,4 +336,13 @@ public class UserController {
 		return entity;
 	}
 ////////////////////////////////////////////////////////////////
+
+// @ModelAttribute("roles")
+// public Map<String,Role> roles(){
+// 	Map<String, Role> map = new LinkedHashMap<>();
+//         map.put("관리자", Role.ROLE_ADMIN);
+//         map.put("판매자", Role.ROLE_SELLER);
+//         map.put("사용자", Role.ROLE_USER);
+//         return map;
+// }
 }
