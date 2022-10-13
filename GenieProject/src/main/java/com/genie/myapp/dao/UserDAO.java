@@ -47,5 +47,5 @@ public interface UserDAO {
 	//찜한 상품 리스트
 	public List<ProductVO> getLikeList(String genie_id);
 
-	public Optional<AccountVO> findByRole(String ROLE);
+	public Optional<AccountVO> findByGenie_id(String Genie_id);
 }

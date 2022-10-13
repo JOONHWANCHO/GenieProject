@@ -104,4 +104,8 @@
 		on l.product_id=d.product_id 
 		where l.genie_id=#{param1}
 	</select>
+
+	<select id="findByGenie_id">
+		select * from account where genie_id=${param1}
+	</select>
 </mapper>
