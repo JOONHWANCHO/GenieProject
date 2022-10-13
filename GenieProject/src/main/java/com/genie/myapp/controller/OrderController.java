@@ -19,15 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.OrderService;
+import com.genie.myapp.service.ProductService;
 import com.genie.myapp.service.UserService;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.OrderVO;
+
 @RestController
 @RequestMapping("/order/*")
 public class OrderController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	ProductService productService;
 
 	@Autowired
 	OrderService orderService;
@@ -44,17 +49,37 @@ public class OrderController {
 
     // --------------------------------------------상품
 	// 결제페이지-----------------------------------------------------
+	@GetMapping("BuyNow")
+	public ModelAndView BuyNow(HttpSession session, CartVO cvo) {
+		
+		String genie_id=(String)session.getAttribute("logId");
+		System.out.println("BuyNow로 받아온 cvo : "+cvo.toString());
+
+		session.setAttribute("product_id", cvo.getProduct_id());
+		session.setAttribute("product_name", cvo.getProduct_name());
+		session.setAttribute("cart_price", cvo.getCart_price());
+		session.setAttribute("cart_qty", cvo.getCart_qty());
+		
+
+		mav=new ModelAndView();
+		mav.addObject("bn",cvo);
+		mav.addObject("uvo", userService.getUser(genie_id));
+		mav.setViewName("/order/payment");
+
+		return mav;
+	}
+
 	@GetMapping("payment")
 	public ModelAndView payment(HttpSession session, CartVO cvo) {
 
 		String genie_id = (String) session.getAttribute("logId");
 		//System.out.println("주문정보 받아온 것 cvo : " + cvo.toString());
 
-		List<CartVO> lvo = orderService.readyToPay(cvo);
+		List<CartVO> lcvo = orderService.readyToPay(cvo);
 		System.out.println("카트정보 가져오기 : " + cvo.toString());
 
 		mav = new ModelAndView();
-		mav.addObject("plist", lvo);
+		mav.addObject("plist", lcvo);
 		mav.addObject("uvo", userService.getUser(genie_id));
 		mav.setViewName("/order/payment");
 
@@ -93,9 +118,6 @@ public class OrderController {
 				
 				System.out.println(vo.toString());
 				orderService.afterPayment(vo);
-
-				
-			
 
 			}
 			//오더테이블에 저장
