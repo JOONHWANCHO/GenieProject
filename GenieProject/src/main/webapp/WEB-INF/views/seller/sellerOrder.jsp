@@ -17,8 +17,8 @@
 
   #orderbody{
 		padding-top: 10px;
-		padding-left: 100px;
-		padding-right: 100px;
+		padding-left: 50px;
+		padding-right: 50px;
 	}
 	.info-box-text{
 		font-size: 13px;
@@ -32,10 +32,11 @@
 		width: 100%;
 		height: 100%;
     border-radius: 15px;
+    text-shadow: 1px 1px 1px gray;
 
 	}
   .table{
-    font-size: 70%;
+    font-size: 80%;
     text-align: center;
   }
 
@@ -155,6 +156,7 @@
                           <th>수량</th>
                           <th>결제금액</th>
                           <th>주문자명</th>
+                          <th>배송상태</th>
                           <th></th>
                         </tr>
                       </thead>

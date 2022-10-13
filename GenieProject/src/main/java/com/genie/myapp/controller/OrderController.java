@@ -1,15 +1,18 @@
 package com.genie.myapp.controller;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,10 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.genie.myapp.service.OrderService;
 import com.genie.myapp.service.UserService;
-
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.OrderVO;
-
 @RestController
 @RequestMapping("/order/*")
 public class OrderController {
@@ -50,7 +51,7 @@ public class OrderController {
 		//System.out.println("주문정보 받아온 것 cvo : " + cvo.toString());
 
 		List<CartVO> lvo = orderService.readyToPay(cvo);
-		System.out.println("주문정보 가져오기 : " + cvo.toString());
+		System.out.println("카트정보 가져오기 : " + cvo.toString());
 
 		mav = new ModelAndView();
 		mav.addObject("plist", lvo);
@@ -61,12 +62,58 @@ public class OrderController {
 	}
 
 	@GetMapping("orderCompletion")
-	public ResponseEntity<String> orderCompletion(OrderVO ovo) {
+	public ResponseEntity<String> orderCompletion(HttpSession session, OrderVO ovo) {
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type","text/html; charset=utf-8");
+		TransactionStatus status= transactionManager.getTransaction(definition);
 
-		System.out.println("카트에 담긴 정보"+ovo);
-		orderService.afterPayment(ovo);// myorder테이블에 저장
-		orderService.afterOrderCart(ovo);// 장바구니 삭제
-		return new ResponseEntity<String>(HttpStatus.OK);
+		String genie_id = (String) session.getAttribute("logId");
+
+		System.out.println("주문 정보 : "+ovo.toString());
+		
+
+		try{
+			//제품 정보 가져오기
+			List<OrderVO> cList = orderService.getFromCart(ovo);
+			System.out.println("제품정보 : "+cList.size()); /// gfdgfgdg
+			for(OrderVO vo : cList){
+				vo.setOrder_num(ovo.getOrder_num());
+				vo.setGenie_id(genie_id);
+				vo.setRecipient_name(ovo.getRecipient_name());
+				vo.setRecipient_phone(ovo.getRecipient_phone());
+				vo.setRecipient_address(ovo.getRecipient_address());
+				vo.setRecipient_request(ovo.getRecipient_request());
+				vo.setOrder_price(ovo.getOrder_price());
+				vo.setOrder_qty(ovo.getOrder_qty());
+				vo.setPayment_method(ovo.getPayment_method());
+
+				
+				System.out.println(vo.toString());
+				orderService.afterPayment(vo);
+
+				
+			
+
+			}
+			//오더테이블에 저장
+			////장바구니에서 구매한 상품 지우기
+			orderService.afterOrderCart(ovo);// 장바구니 삭제
+
+			transactionManager.commit(status);
+			entity = new ResponseEntity<String>(HttpStatus.OK);
+
+		}catch(Exception e){
+			entity = new ResponseEntity<String>(headers,HttpStatus.BAD_REQUEST);
+			
+			transactionManager.rollback(status);
+			e.printStackTrace();
+
+		}
+
+		return entity;
 	}
 
 	@GetMapping("completion")
