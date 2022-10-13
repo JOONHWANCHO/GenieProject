@@ -78,6 +78,7 @@ public class UserController {
 		headers.add("Content-Type","text/html; charset=utf-8");
 		TransactionStatus status= transactionManager.getTransaction(definition);
 		
+		System.out.println("avo : " + avo.toString());
 		
 		try {//회원가입 성공
 			
