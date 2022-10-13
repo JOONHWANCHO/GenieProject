@@ -60,9 +60,8 @@ public class OrderController {
 		session.setAttribute("cart_price", cvo.getCart_price());
 		session.setAttribute("cart_qty", cvo.getCart_qty());
 		
-
 		mav=new ModelAndView();
-		mav.addObject("bn",cvo);
+		mav.addObject("bvo",cvo);
 		mav.addObject("uvo", userService.getUser(genie_id));
 		mav.setViewName("/order/payment");
 
