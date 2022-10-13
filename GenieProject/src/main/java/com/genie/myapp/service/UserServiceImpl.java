@@ -1,9 +1,17 @@
 package com.genie.myapp.service;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +23,7 @@ import com.genie.myapp.vo.ProductVO;
 import com.genie.myapp.vo.UserVO;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService, UserDetailsService{
 
     @Autowired
     UserDAO dao;
@@ -23,7 +31,7 @@ public class UserServiceImpl implements UserService{
     @Autowired
     PasswordEncoder passwordEncoder;
 
- 
+    private UserDAO userDAO;
 
     @Override
     public int idCheck(String genie_id) {
@@ -89,6 +97,19 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<ProductVO> getLikeList(String genie_id) {
         return dao.getLikeList(genie_id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String ROLE) throws UsernameNotFoundException {
+        Optional<AccountVO> userEntityWrapper = userDAO.findByRole(ROLE);
+        AccountVO userEntity = userEntityWrapper.get();
+        
+        List<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
+    
+        auth.add(new SimpleGrantedAuthority("ROLE_USER"));
+            
+        return (UserDetails) auth;
+        
     }
 
     
