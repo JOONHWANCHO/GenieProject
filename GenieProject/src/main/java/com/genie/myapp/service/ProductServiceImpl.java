@@ -65,16 +65,6 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int payEndCart(String genie_id) {
-		return dao.payEndCart(genie_id);
-	}
-
-	@Override
-	public int myorder(String genie_id, CartVO cvo, String imp_uid){
-		return dao.myorder(genie_id, cvo, imp_uid);
-	}
-
-	@Override
 	public List<ProductVO> mainAllSelect(PagingVO pVO) {
 		return dao.mainAllSelect(pVO);
 	}
