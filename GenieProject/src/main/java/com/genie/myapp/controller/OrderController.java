@@ -54,13 +54,8 @@ public class OrderController {
 	public ModelAndView BuyNow(HttpSession session, CartVO cvo) {
 		
 		String genie_id=(String)session.getAttribute("logId");
-		System.out.println("BuyNow로 받아온 cvo : "+cvo.toString());
+		//System.out.println("BuyNow로 받아온 cvo : "+cvo.toString());
 
-		session.setAttribute("product_id", cvo.getProduct_id());
-		session.setAttribute("product_name", cvo.getProduct_name());
-		session.setAttribute("cart_price", cvo.getCart_price());
-		session.setAttribute("cart_qty", cvo.getCart_qty());
-		
 		mav=new ModelAndView();
 		mav.addObject("bvo",cvo);
 		mav.addObject("uvo", userService.getUser(genie_id));
@@ -76,7 +71,7 @@ public class OrderController {
 		//System.out.println("주문정보 받아온 것 cvo : " + cvo.toString());
 
 		List<CartVO> lcvo = orderService.readyToPay(cvo);
-		System.out.println("카트정보 가져오기 : " + cvo.toString());
+		//System.out.println("카트정보 가져오기 : " + cvo.toString());
 
 		mav = new ModelAndView();
 		mav.addObject("plist", lcvo);
@@ -143,7 +138,6 @@ public class OrderController {
 				entity = new ResponseEntity<String>(HttpStatus.OK);
 
 			}catch(Exception e){
-
 				entity = new ResponseEntity<String>(headers,HttpStatus.BAD_REQUEST);
 				
 				transactionManager.rollback(status);

@@ -91,9 +91,9 @@
                   <th><input type="hidden" id="cart_qty${bvo.cart_num}" name="cart_qty" value="${bvo.cart_qty}"/>${bvo.cart_qty}개</th>
                   <th><fmt:formatNumber value="${bvo.cart_price*bvo.cart_qty}" pattern="#,###원"/></th>
                   <input type="hidden" id="sum${bvo.cart_num}" name="total" value="${bvo.cart_price*bvo.cart_qty}">
- 
                 </tr>
                 </table>
+                <fmt:formatNumber value="${bvo.cart_price*bvo.cart_qty}" pattern="#,###원"/>
               
              </c:otherwise>
             </c:choose>
