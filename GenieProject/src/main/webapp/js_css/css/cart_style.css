@@ -66,16 +66,15 @@
   margin-left: 4.3vw;
 }
 /* --------------------------총상품가격---------------------- */
-#total {
-  display: flex;
-  justify-content: right;
-  font-size: 1.5rem;
-  padding: 1ch;
-  margin: 0 27vw;
-  border-radius: 5px;
-  width: 65%;
-  color: #0077ed;
-}
+#total{
+    display: flex;
+    justify-content: right;
+    width: 63%;
+    font-size: 1.5rem;
+    padding: 1ch;
+    margin: 0 27vw;
+    border-radius: 8px;
+    color: #0077ed;
 /* --------------------------------구매하기버튼---------------------- */
 .submit-wrapper {
   margin: 5vh auto;
