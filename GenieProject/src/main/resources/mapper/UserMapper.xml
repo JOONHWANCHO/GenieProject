@@ -92,7 +92,7 @@
 		from myorder m
 		join product d
 		on m.product_id=d.product_id 
-		where m.genie_id=#{param1} 
+		where m.genie_id=#{param1} order by order_writedate desc
 
 	</select>
 
@@ -102,7 +102,7 @@
 		from product_like l 
 		join product d 
 		on l.product_id=d.product_id 
-		where l.genie_id=#{param1}
+		where l.genie_id=#{param1} order by desc
 	</select>
 
 	<select id="findByGenie_id">
