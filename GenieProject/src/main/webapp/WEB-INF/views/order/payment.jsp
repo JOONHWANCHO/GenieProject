@@ -34,43 +34,76 @@
             </div><!--End Title-->
             </div><!--End InvoiceTop-->
           <%-- <form type="post" action="/orderCompletion" id="payFrm"> --%>
-            <div id="invoice-mid"></div>
         
             <div class="clientlogo"></div>
             <div class="info">
               <h2>구매자 정보</h2>
-              <div>
-                  
-                  <h3>${uvo.user_name}</h3>
-                  <li><input type="hidden" name="genie_id" value="${uvo.genie_id}"></li>
-                  <p>${uvo.user_email}<br/>
-                    ${uvo.user_tel}<br/></p>
+              <div> 
+                <h3>${uvo.user_name}</h3>
+                <li><input type="hidden" name="genie_id" value="${uvo.genie_id}"></li>
+                <p>${uvo.user_email}<br/>
+                  ${uvo.user_tel}<br/></p>
               </div>
-  
-            <div id="project">
-             
-              <c:set var="sum_of_each" value="0"/>
-                <c:forEach items="${plist}" var="pvo">
-              <c:set var="sum_of_each" value="${total+pvo.product_price*pvo.cart_qty}"/>
-              <script>
-                  cartList.push(${pvo.cart_num});
-              </script>
-                <li><input type="hidden" id="cart_num${pvo.cart_num}" name="cartList" value="${pvo.cart_num}"></li><br/> 
-                <li><input type="hidden" id="product_id${pvo.cart_num}" name="product" value="${pvo.product_id}"></li><br/>
-                <li><input type="hidden" id="product_name${pvo.cart_num}" name="product_name" value="${pvo.product_name}">${pvo.product_name}</li> 
-                <li><input type="hidden" id="cart_qty${pvo.cart_num}" name="cart_qty" value="${pvo.cart_qty}">${pvo.cart_qty}개</li> 
-                <li><input type="hidden" id="sum${pvo.cart_num}" name="sum" value="${sum_of_each}">${sum_of_each}원</li><br/>
-              </c:forEach></p>
-            </div>  
 
-            <c:set var="total" value="0"/>
-              <c:forEach var="pvo" items="${plist}">
-                <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
-              </c:forEach><br/>
-              <fmt:formatNumber value="${total}" pattern="#,###원"/>
-              <li><input type="hidden" id="total" value="${total}"></li>
-            </div><!--End Invoice Mid-->
-            
+          <div class="payment-container">
+            <table class="payment-table">
+                <tr>
+                    <%-- <th>카트번호</th> --%>
+                    <th>제품명</th>
+                    <th>가격</th>
+                    <th>개수</th>
+                    <th>금액</th>
+                    <th>총액</th>
+                </tr>
+
+              <%-- 장바구니 구매 --%>
+              <c:choose>
+              <c:when test="${plist ne null}">
+                  <c:set var="total" value="0"/>
+                <c:forEach items="${plist}" var="pvo">
+                    <c:set var="sum_of_each" value="${total+pvo.product_price*pvo.cart_qty}"/>
+                    <script>cartList.push(${pvo.cart_num});</script> 
+                    <tr>
+                        <%-- <th><input type="hidden" id="cart_num${pvo.cart_num}" name="cartList" value="${pvo.cart_num}">${pvo.cart_num}</th> --%>
+                        <th><input type="hidden" id="product_name${pvo.cart_num}" name="product_name" value="${pvo.product_name}"/> ${pvo.product_name}</th>
+                        <th><input type="hidden" id="cart_price${pvo.cart_num}" name="cart_price" value="${pvo.cart_price}"/>${pvo.cart_price}원</th>
+                        <th><input type="hidden" id="cart_qty${pvo.cart_num}" name="cart_qty" value="${pvo.cart_qty}"/>${pvo.cart_qty}개</th>
+                        <th><fmt:formatNumber value="${sum_of_each}" pattern="#,###원"/></th>
+                        <input type="hidden" id="sum${pvo.cart_num}" name="each" value="${sum_of_each}">
+
+                    <c:set var="total" value="0"/>
+                    <c:forEach var="pvo" items="${plist}">
+                    <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
+                    </c:forEach><br/>
+                    <th><fmt:formatNumber value="${total}" pattern="#,###원"/></th>
+                    <li><input type="hidden" id="total" name="total" value="${total}"></li>
+
+                  </tr>
+                </c:forEach>
+            </table>
+
+              </c:when>
+              <c:otherwise>
+
+              <%-- 바로 구매 --%>
+                <tr>
+
+                  <%-- <th><input type="hidden" id="cart_num${pvo.cart_num}" name="cartList" value="${bvo.cart_num}">${bvo.cart_num}</th> --%>
+                  <input type="hidden" name="product_id" value="${bvo.product_id}"/>
+                  <th><input type="hidden" id="product_name${bvo.cart_num}" name="product_name" value="${bvo.product_name}"/>${bvo.product_name}</th>
+                  <th><input type="hidden" id="cart_price${bvo.cart_num}" name="cart_price" value="${bvo.cart_price}"/>${bvo.cart_price}원</th>
+                  <th><input type="hidden" id="cart_qty${bvo.cart_num}" name="cart_qty" value="${bvo.cart_qty}"/>${bvo.cart_qty}개</th>
+                  <th><fmt:formatNumber value="${bvo.cart_price*bvo.cart_qty}" pattern="#,###원"/></th>
+                  <th></th><input type="hidden" id="sum${bvo.cart_num}" name="total" value="${bvo.cart_price*bvo.cart_qty}"></th>
+                </tr>
+                </table>
+                <fmt:formatNumber value="${bvo.cart_price*bvo.cart_qty}" pattern="#,###원"/>
+              
+             </c:otherwise>
+            </c:choose>
+          </div>
+
+            <!--Invoice Mid-->
             <div id="invoice-bot">
             
                 <div id="table">
@@ -141,8 +174,10 @@
           pg: 'html5_inicis',                  
           pay_method: 'card',         
           merchant_uid: 'merchant_' + new Date().getTime(), 
-          name:'<c:forEach var="pvo" items="${plist}">[${pvo.product_name}] </c:forEach>',     
-          amount: '${total}',//가격          
+          name:'<c:forEach var="pvo" items="${plist}">[${pvo.product_name}]</c:forEach>${bvo.product_name}',     
+          
+          amount: $("input[name=total]").val(),//가격          
+          
           buyer_email: '${uvo.user_email}',
           buyer_name: $("#receiver_name").val(),
           buyer_tel: $("#receiver_tel").val(),      
@@ -159,8 +194,9 @@
 
                       genie_id:$("input[name=genie_id]").val(),
                       cartList: cartList,
+                      product_id:$("input[name=product_id").val(),
+                      order_price: $("input[name=cart_price]").val(),
                       order_qty: $("input[name=cart_qty]").val(),
-                      order_price: $("input[name=sum]").val(),
 
                       recipient_name: $("#receiver_name").val(),
                       recipient_phone: $("#receiver_tel").val(),      
