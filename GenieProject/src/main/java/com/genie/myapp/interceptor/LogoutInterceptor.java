@@ -17,7 +17,7 @@ public class LogoutInterceptor implements HandlerInterceptor {
 		String logStatus = (String)session.getAttribute("logStatus"); // 로그인 여부 확인
 		String authority = (String)session.getAttribute("ROLE");
 		
-		if(logStatus == null || authority == null) {
+		if(logStatus == null && authority == null) {
 			
 			return true;
 
