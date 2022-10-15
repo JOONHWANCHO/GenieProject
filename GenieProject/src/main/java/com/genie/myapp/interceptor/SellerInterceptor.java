@@ -23,7 +23,7 @@ public class SellerInterceptor implements HandlerInterceptor {
 
 		}else {
 			//로그인 또는 권한이 없는 경우
-			//response.sendRedirect("/");
+			response.sendRedirect("/");
 			return false;	
 		}	
 	}
