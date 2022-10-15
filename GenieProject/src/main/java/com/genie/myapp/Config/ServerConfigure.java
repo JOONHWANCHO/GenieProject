@@ -11,10 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ServerConfigure implements WebMvcConfigurer {
 
 	@Autowired
-	@Qualifier("BasicInterceptor")
-	HandlerInterceptor BasicInterceptor;
-
-	@Autowired
 	@Qualifier("AdminInterceptor")
 	HandlerInterceptor AdminInterceptor;
 
@@ -32,22 +28,18 @@ public class ServerConfigure implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(BasicInterceptor).excludePathPatterns("/**");
 
-		registry.addInterceptor(UserInterceptor)
-		.addPathPatterns("/user/**");
-
+		registry.addInterceptor(UserInterceptor)//유저 로그인일때
+		.addPathPatterns("/user/**","/order/**")//되도록
+		.order(1);
+		
 		registry.addInterceptor(SellerInterceptor)
-		.addPathPatterns("/seller/**");
-
+		.addPathPatterns("/seller/**")
+		.order(2);
+		
 		registry.addInterceptor(AdminInterceptor)
-		.addPathPatterns("/admin/**");
-
-		registry.addInterceptor(LogoutInterceptor)
-		.addPathPatterns("/login");
-
-
-
-
+		.addPathPatterns("/admin/**")
+		.order(3);		
+		
 	}
 }

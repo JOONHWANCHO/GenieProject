@@ -20,10 +20,10 @@ public class SellerInterceptor implements HandlerInterceptor {
 		if(logStatus !=null && authority.equals("ROLE_SELLER")) {
 			//로그인상태일때
 			return true;
-		}else {
-			//로그인 안된경우
-			response.sendRedirect("/");
 
+		}else {
+			//로그인 또는 권한이 없는 경우
+			//response.sendRedirect("/");
 			return false;	
 		}	
 	}

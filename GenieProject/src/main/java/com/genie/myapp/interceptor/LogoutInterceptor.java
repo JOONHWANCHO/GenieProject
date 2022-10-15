@@ -8,22 +8,22 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 @Component("LogoutInterceptor")
-public class LogoutIntercetor implements HandlerInterceptor {
+public class LogoutInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
 		
 		String logStatus = (String)session.getAttribute("logStatus"); // 로그인 여부 확인
+		String authority = (String)session.getAttribute("ROLE");
 		
-		if(logStatus.equals("Y")) {
-
-			response.sendRedirect("/");
-			return true;
+		if(logStatus == null || authority == null) {
 			
-		}else {
+			return true;
 
-			response.sendRedirect("/login");
+		}else {
+			
+			response.sendRedirect("/");
 			return false;	
 		}	
 	}
