@@ -23,8 +23,8 @@ public class BasicInterceptor implements HandlerInterceptor {
 			return true;
 		}else {
 			//로그인 안된경우
-		response.sendRedirect("/login");
-		return false;	
+			response.sendRedirect("/login");
+			return false;	
 		}	
 	}
 }

@@ -14,15 +14,17 @@ public class SellerInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
 		
+		String logStatus = (String)session.getAttribute("logStatus"); // 로그인 여부 확인
 		String authority = (String)session.getAttribute("ROLE");
 		
-		if(authority.equals("ROLE_SELLER")) {
+		if(logStatus !=null && authority.equals("ROLE_SELLER")) {
 			//로그인상태일때
 			return true;
 		}else {
 			//로그인 안된경우
-		response.sendRedirect("/");
-		return false;	
+			response.sendRedirect("/");
+
+			return false;	
 		}	
 	}
 }
