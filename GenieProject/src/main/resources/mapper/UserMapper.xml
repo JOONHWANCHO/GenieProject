@@ -98,11 +98,13 @@
 
 	<!-- 찜한 상품 리스트-->
 	<select id="getLikeList" resultType="ProductVO">
+
 		select * 
 		from product_like l 
 		join product d 
 		on l.product_id=d.product_id 
-		where l.genie_id=#{param1} order by desc
+		where l.genie_id=#{param1} order by product_like desc
+		
 	</select>
 
 	<select id="findByGenie_id">

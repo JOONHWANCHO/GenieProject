@@ -16,15 +16,15 @@ public class LogoutIntercetor implements HandlerInterceptor {
 		
 		String logStatus = (String)session.getAttribute("logStatus"); // 로그인 여부 확인
 		
-		if(logStatus.equals("N")) {
+		if(logStatus.equals("Y")) {
 
-			//로그인상태일때
+			response.sendRedirect("/");
 			return true;
+			
 		}else {
 
-		//로그인 안된경우
-		response.sendRedirect("/login");
-		return false;	
+			response.sendRedirect("/login");
+			return false;	
 		}	
 	}
 }
