@@ -41,7 +41,7 @@ public class ServerConfigure implements WebMvcConfigurer {
 		.addPathPatterns("/admin/**")
 		.order(3);
 	
-		registry.addInterceptor(LogoutInterceptor)//로그인이 되어있다면
+		registry.addInterceptor(LogoutInterceptor)// 로그인이 안되어 있을때
 		.addPathPatterns("/login")
 		.order(4);//안되게
 
