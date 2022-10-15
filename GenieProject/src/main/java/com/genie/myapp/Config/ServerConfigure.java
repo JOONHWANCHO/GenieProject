@@ -43,8 +43,8 @@ public class ServerConfigure implements WebMvcConfigurer {
 		registry.addInterceptor(AdminInterceptor)
 		.addPathPatterns("/admin/**");
 
-		registry.addInterceptor(LogoutInterceptor)
-		.addPathPatterns("/login");
+		// registry.addInterceptor(LogoutInterceptor)
+		// .addPathPatterns("/login");
 
 
 
