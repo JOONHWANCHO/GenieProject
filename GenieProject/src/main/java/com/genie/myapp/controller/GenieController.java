@@ -10,8 +10,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,7 @@ import com.genie.myapp.service.AdministerService;
 import com.genie.myapp.service.ProductService;
 import com.genie.myapp.service.SellerService;
 import com.genie.myapp.service.UserService;
+import com.genie.myapp.vo.AccountVO;
 import com.genie.myapp.vo.AdministerVO;
 import com.genie.myapp.vo.CartVO;
 import com.genie.myapp.vo.ProductVO;
@@ -52,6 +55,9 @@ public class GenieController{
 	@Autowired
 	TransactionDefinition definition;
 
+	@Autowired
+    PasswordEncoder passwordEncoder;
+
 	
 	//회원가입 폼으로 이동
 	@GetMapping("Registration")
@@ -71,6 +77,63 @@ public class GenieController{
 		return mav;
 	}
 	
+	//아이디 중복검사
+	@GetMapping("idCheck")
+	public ModelAndView idCheck(String genie_id) {
+
+		//DB조회  : 아이디가 존재하는지 확인
+		int cnt = userService.idCheck(genie_id);
+
+		mav = new ModelAndView();
+
+		mav.addObject("idCnt",cnt);
+		mav.addObject("genie_id",genie_id);
+		mav.setViewName("/idCheck");
+
+		return mav;
+	}
+
+	//회원 가입하기
+	@PostMapping("UserWrite") 
+	public ResponseEntity<String> UserWrite(UserVO vo, AccountVO avo) {
+
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type","text/html; charset=utf-8");
+		TransactionStatus status= transactionManager.getTransaction(definition);
+		
+		System.out.println("avo : " + avo.toString());
+		
+		try {//회원가입 성공
+			
+			userService.AccountWrite(avo);
+			userService.UserWrite(vo);
+
+			String msg = "<script>";
+			msg += "alert('회원가입을 성공하였습니다.');";
+			msg += "location.href='/login';";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+
+			transactionManager.commit(status);
+
+		}catch(Exception e) {//회원등록 실패
+
+			String msg = "<script>";
+			msg += "alert('회원가입이 실패하였습니다.');";
+			msg += "history.back()";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
+			
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			
+		}
+
+		return entity;
+	}
+
 	//로그인
 	
 	@PostMapping("loginOK")
@@ -120,6 +183,8 @@ public class GenieController{
 			
 		}
 	}
+
+	
 
 	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session) {
