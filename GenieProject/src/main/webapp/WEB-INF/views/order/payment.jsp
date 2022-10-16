@@ -144,47 +144,48 @@
     </div>
 </div>
 <script> 
-  $(function(){
+    $(function(){
 
-      $("#buy").click(function (){
-      var IMP = window.IMP; // 생략가능        
-      IMP.init('imp48507577');   
-      // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
-      // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
-      
-      $("#selectAddress").change(function(){
-        $("#addressStatus").val("N");
-      });
+        $("#buy").click(function (){
+        var IMP = window.IMP; // 생략가능        
+        IMP.init('imp48507577');   
+        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용        
+        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
 
-      if($("#addressStatus").val()!='Y'){
-        alert("주소를 선택하세요");
-        return false;
-      }
+        $("#selectAddress").change(function(){
+          $("#addressStatus").val("N");
+        });
 
-      if($("#recipient_request").val()==""){
-        alert("요청사항을 입력하세요");
-        return false;
-      }
+        if($("#addressStatus").val()!='Y'){
+          alert("주소를 선택하세요");
+          return false;
+        }
+
+        if($("#recipient_request").val()==""){
+            alert("요청사항을 입력하세요");
+            return false;
+        }
      
-      IMP.request_pay({
-          pg: 'html5_inicis',                  
-          pay_method: 'card',         
-          merchant_uid: 'merchant_' + new Date().getTime(), 
-          name:'<c:forEach var="pvo" items="${plist}">[${pvo.product_name}]</c:forEach>${bvo.product_name}',     
-          
-          amount: $("input[name=total]").val(),//가격          
-          
-          buyer_email: '${uvo.user_email}',
-          buyer_name: $("#receiver_name").val(),
-          buyer_tel: $("#receiver_tel").val(),      
-          buyer_postcode: $("#receiver_zipcode").val(),
-          buyer_addr: $("#receiver_addr").val()
-      
-          }, function (rsp) { 
-              if(rsp.success) {
-                  var msg = '결제가 완료되었습니다.';
-         
-                  var orderData = {
+        IMP.request_pay({
+            pg: 'html5_inicis',                  
+            pay_method: 'card',         
+            merchant_uid: 'merchant_' + new Date().getTime(), 
+            name:'<c:forEach var="pvo" items="${plist}">[${pvo.product_name}]</c:forEach>${bvo.product_name}',     
+
+            amount: $("input[name=total]").val(),//가격          
+
+            buyer_email: '${uvo.user_email}',
+            buyer_name: $("#receiver_name").val(),
+            buyer_tel: $("#receiver_tel").val(),      
+            buyer_postcode: $("#receiver_zipcode").val(),
+            buyer_addr: $("#receiver_addr").val()
+
+            }, function (rsp) { 
+
+            if(rsp.success) {
+
+                var msg = '결제가 완료되었습니다.';
+                var orderData = {
                       order_num: rsp.imp_uid,
                       merchant_uid: rsp.merchant_uid,
 
@@ -199,13 +200,13 @@
                       recipient_address: $("#receiver_addr").val(),
                       recipient_request: $("#recipient_request").val(),
 
-                      payment_method: rsp.pay_method,
+                      payment_method: rsp.card_name,
                                        
-                  };//data
+                };//data
+                //alert(JSON.stringify(orderData));
+                
 
-                  //alert(JSON.stringify(orderData));
-                  
-                  $.ajax({
+                $.ajax({
                     url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
                     data: orderData,
                     method: "get",
@@ -213,14 +214,19 @@
                     async: false,
                     success:function(result){
 
-                      window.location.replace("/order/completion");
-                      console.log(orderData);
+                        if(rsp.paid_amount == orderData.order_price){
+                            window.location.replace("/order/completion");
+                            console.log(orderData);
+                        }else {
+                            alert("결제 실패");
+                        }
 
                     },error:function(e){
-                      console.log(e.responseText);
+                        console.log(e.responseText);
                     }
-                  });
-              } else {                
+                });
+
+            }else{                
                 var msg = '결제에 실패하였습니다.';                
                 msg += '에러내용 : ' + rsp.error_msg;            
               }          
