@@ -29,8 +29,8 @@ public class ServerConfigure implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 
-		registry.addInterceptor(UserInterceptor)//유저 로그인일때
-		.addPathPatterns("/user/**","/order/**")//되도록
+		registry.addInterceptor(UserInterceptor)//로그인 했을 때
+		.addPathPatterns("/user/**","/order/**")//가능한 경로
 		.order(1);
 		
 		registry.addInterceptor(SellerInterceptor)
