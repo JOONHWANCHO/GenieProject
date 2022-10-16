@@ -111,7 +111,7 @@ public class OrderController {
 					vo.setOrder_qty(ovo.getOrder_qty());
 					vo.setPayment_method(ovo.getPayment_method());
 
-					System.out.println(vo.toString());
+					//System.out.println(vo.toString());
 					orderService.afterPayment(vo);
 
 				}
