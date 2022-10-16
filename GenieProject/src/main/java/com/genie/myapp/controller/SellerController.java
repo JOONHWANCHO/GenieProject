@@ -154,6 +154,8 @@ public class SellerController {
 		mav = new ModelAndView();
 		mav.addObject("list", service.sellerOrder(vo, seller_id));
 
+		//mav.addObject("dList", service.deliveredOrder(vo, seller_id));
+
 		mav.addObject("deliveryPending", devp); // 배송대기 중
 		mav.addObject("todayOrder", torder); // 오늘 들어온 주문
 		mav.addObject("deliveringOrder", deo); // 배송 중 
@@ -163,6 +165,18 @@ public class SellerController {
 		mav.setViewName("seller/sellerOrder");
 	
 		return mav;
+	}
+
+	//Seller 배송완료
+	
+	@GetMapping("sellerOrder1")
+	public List<OrderVO> sellerOrder1(HttpServletRequest request) {
+		String seller_id = ((String)request.getSession().getAttribute("logId")); //세션 셀러 아이디
+		
+
+		return service.deliveredOrder(seller_id);
+
+	
 	}
 	
 

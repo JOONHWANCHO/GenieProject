@@ -17,8 +17,8 @@
 
   #orderbody{
 		padding-top: 10px;
-		padding-left: 50px;
-		padding-right: 50px;
+		padding-left: 100px;
+		padding-right: 100px;
 	}
 	.info-box-text{
 		font-size: 13px;
@@ -74,6 +74,78 @@
 			}
 		});	
 	}
+</script>
+<script>
+
+  $(function(){
+  
+
+    $('.deliveredpro').click(function(){
+      console.log("aaaa")
+      $('.table tbody').empty();
+        var deliveryStatus  ="";
+       
+        //서버에 접속하여 배송완료....
+        $.ajax({
+            type: "post",
+            async: false, // 동기요청 필요 -> 한 작업이 끝나야 그 다음 작업 가능
+            url: "/seller/sellerOrder1", // 어디로 보낼까?
+            success: function(data){ // 요청이 성공하면 실행되는 콜백함수
+              $.each(data, function(i, value){
+                deliveryStatus += '<tr>'
+                  +'<td>' + value.order_num + '</td>'
+                  +'<td>' + value.order_writedate + '</td>'
+                  +'<td>' + value.product_name + '</td>'
+                  +'<td>' + value.order_qty + '</td>'
+                  +'<td>'+value.order_price+'</td>'
+                  +'<td>' + value.genie_id +'</td>'
+                  +'<td>' 
+                      +'<select name="s_delivery_status" id="s_delivery_status'+i+'">';
+                      + '<option value="delivery_prepared"';
+                          if (value.recipient_delivery_status=='delivery_prepared'){
+                              deliveryStatus += ' selected';
+                          } 
+                              deliveryStatus += '>배송준비중</option>';
+                      + '<option value="deliverying"';
+                          if (value.recipient_delivery_status=='delivering'){
+                                deliveryStatus += ' selected';
+                              } 
+                                deliveryStatus += '>배송중</option>';
+
+                        + '<option value="delivered"';
+                          if (value.recipient_delivery_status=='delivered'){
+                                deliveryStatus += ' selected';
+                              } 
+                                deliveryStatus += '>배송완료</option>';
+                        
+                        + '<option value="cancelled"';
+                          if (value.recipient_delivery_status=='cancelled'){
+                                deliveryStatus += ' selected';
+                              } 
+                                deliveryStatus += '>주문취소</option>';
+                        
+                        + '<option value="returned"';
+                          if (value.recipient_delivery_status=='returned'){
+                                deliveryStatus += ' selected';
+                              } 
+                                deliveryStatus += '>반품</option>';
+                      + '</select>'
+                    +'</td>'
+                  +'</tr>'
+               });
+              $('.table').append(deliveryStatus);
+              
+            },
+            error: function(data, textStatus){ // 요청이 실패했을때 실행되는 콜백함수
+              alert("에러가 발생했습니다.");
+            }
+          });	
+
+
+        // success 
+     
+    });//click
+  });//function
 </script>
 
 <%@ include file="../inc/sellerNav.jsp"%>
@@ -145,6 +217,7 @@
             <div class="col-lg-12">
               <div class="card card-primary card-outline">
                 <div class="card-body">
+                 <!-- <div class="deliveredpro" onclick="delivered()">배송완료목록 바로가기</div> -->
                   <h5 class="card-title"></h5> <!--주문목록-->
                   <p class="card-text">
                     <table class="table">
@@ -172,43 +245,11 @@
                             <td>${vo.genie_id}</td>
                             <td>
                                 <select name="s_delivery_status${i.index }" id="s_delivery_status${i.index }">
-                                    <c:choose>
-                                        <c:when test="${vo.recipient_delivery_status=='delivery_prepared' }">
-                                            <option value="delivery_prepared" selected>배송준비중</option>
-                                            <option value="delivering">배송중</option>
-                                            <option value="delivered">배송완료</option>
-                                            <option value="cancelled">주문취소</option>
-                                            <option value="returned">반품</option>
-                                        </c:when>
-                                        <c:when test="${vo.recipient_delivery_status=='delivering' }">
-                                            <option value="delivery_prepared">배송준비중</option>
-                                            <option value="delivering" selected>배송중</option>
-                                            <option value="delivered">배송완료</option>
-                                            <option value="cancelled">주문취소</option>
-                                            <option value="returned">반품</option>
-                                        </c:when>
-                                        <c:when test="${vo.recipient_delivery_status=='delivered' }">
-                                            <option value="delivery_prepared">배송준비중</option>
-                                            <option value="delivering">배송중</option>
-                                            <option value="delivered" selected>배송완료</option>
-                                            <option value="cancelled">주문취소</option>
-                                            <option value="returned">반품</option>
-                                        </c:when>
-                                        <c:when test="${vo.recipient_delivery_status=='cancelled' }">
-                                            <option value="delivery_prepared">배송준비중</option>
-                                            <option value="delivering">배송중</option>
-                                            <option value="delivered">배송완료</option>
-                                            <option value="cancelled" selected>주문취소</option>
-                                            <option value="returned">반품</option>
-                                        </c:when>
-                                        <c:when test="${vo.recipient_delivery_status=='returned' }">
-                                            <option value="delivery_prepared">배송준비중</option>
-                                            <option value="delivering">배송중</option>
-                                            <option value="delivered">배송완료</option>
-                                            <option value="cancelled">주문취소</option>
-                                            <option value="returned" selected>반품</option>
-                                        </c:when>
-                                    </c:choose>
+                                  <option value="delivery_prepared" <c:if test="${vo.recipient_delivery_status=='delivery_prepared' }">selected</c:if>>배송준비중</option>
+                                  <option value="delivering" <c:if test="${vo.recipient_delivery_status=='delivering' }">selected</c:if>>배송중</option>
+                                  <option value="delivered" <c:if test="${vo.recipient_delivery_status=='delivered' }">selected</c:if>> 배송완료</option>
+                                  <option value="cancelled" <c:if test="${vo.recipient_delivery_status=='cancelled' }">selected</c:if>>주문취소</option>
+                                  <option value="returned" <c:if test="${vo.recipient_delivery_status=='returned' }">selected</c:if>>반품</option>
                                 </select>
                             </td>
                             <td width=10%>
