@@ -30,7 +30,7 @@ public class ServerConfigure implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 
 		registry.addInterceptor(UserInterceptor)//로그인 했을 때
-		.addPathPatterns("/user/**","/order/**")//가능한 경로
+		.addPathPatterns("/user/**","/order/**")// 가능한 경로
 		.order(1);
 		
 		registry.addInterceptor(SellerInterceptor)
