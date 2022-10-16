@@ -134,8 +134,45 @@ public class GenieController{
 		return entity;
 	}
 
+	//seller 회원가입하기
+	@PostMapping("sellerWrite")
+	public ResponseEntity<String> sellerWrite(SellerVO svo, AccountVO avo){
+		
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("text","html",Charset.forName("UTF-8")));
+		headers.add("Content-Type", "text/html; charset=utf-8");
+		TransactionStatus status= transactionManager.getTransaction(definition);
+		
+		try {//회원가입성공
+			sellerService.AccountWrite(avo);
+			sellerService.sellerWrite(svo);
+			
+			
+			String msg = "<script>";
+			msg += "alert('회원가입을 성공하였습니다.');";
+			msg += "location.href='/login';";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.OK);
+
+			transactionManager.commit(status);
+			
+		}catch(Exception e) {//회원가입실패
+			
+			String msg = "<script>";
+			msg += "alert('회원가입에 실패하였습니다.');";
+			msg += "history.back();";
+			msg += "</script>";
+			entity = new ResponseEntity<String>(msg,headers,HttpStatus.BAD_REQUEST);
+			
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			
+		}
+		return entity;
+	}
+
 	//로그인
-	
 	@PostMapping("loginOK")
 	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session) {
 		
@@ -184,8 +221,6 @@ public class GenieController{
 		}
 	}
 
-	
-
 	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session) {
 		mav = new ModelAndView();
@@ -194,7 +229,6 @@ public class GenieController{
 		
 		return mav;
 	}
-
 
 	// ----------------------------- 제품 리스트 보이기 index
 	// -----------------------------------//
@@ -297,14 +331,6 @@ public class GenieController{
 
 		return entity;
 	}
-
-	// // 장바구니에서 제품 삭제
-	// @GetMapping("delMultiCart")
-	// public int delCart(HttpSession session, CartVO vo) {
-	// 	vo.setGenie_id( (String) session.getAttribute("logId"));
-	// 	return productService.delMultiCart(vo);
-
-	// }
 
 	// 장바구니에서 제품 삭제
 	@GetMapping("delCart")
