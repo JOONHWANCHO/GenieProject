@@ -150,4 +150,13 @@ public class SellerServiceImpl implements SellerService {
 		return dao.productTotalRecord(pVO);
 	}
 
+	@Override
+	public List<OrderVO> deliveredOrder(String seller_id) {
+		return dao.deliveredOrder(seller_id);
+	}
+
+	
+
+	
+
 }
