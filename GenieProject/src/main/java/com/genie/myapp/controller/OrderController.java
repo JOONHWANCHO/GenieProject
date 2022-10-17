@@ -51,7 +51,7 @@ public class OrderController {
     // --------------------------------------------상품
 	// 결제페이지-----------------------------------------------------
 	// 바로 주문
-	@GetMapping("BuyNow")
+	@PostMapping("BuyNow")
 	public ModelAndView BuyNow(HttpSession session, CartVO cvo) {
 		
 		String genie_id=(String)session.getAttribute("logId");

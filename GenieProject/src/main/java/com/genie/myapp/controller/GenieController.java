@@ -106,7 +106,8 @@ public class GenieController{
 		System.out.println("avo : " + avo.toString());
 		
 		try {//회원가입 성공
-			
+			// String enPw=passwordEncoder.encode(avo.getGenie_pwd());
+			// avo.setGenie_pwd(enPw);
 			userService.AccountWrite(avo);
 			userService.UserWrite(vo);
 
