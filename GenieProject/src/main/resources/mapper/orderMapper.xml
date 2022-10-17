@@ -103,7 +103,7 @@
         join product c 
         on m.product_id=c.product_id 
         where order_writedate = 
-        (select max(order_writedate) from myorder where m.genie_id=#{genie_id});
+        (select max(order_writedate) from myorder where genie_id=#{genie_id})
 
     </select>
 
