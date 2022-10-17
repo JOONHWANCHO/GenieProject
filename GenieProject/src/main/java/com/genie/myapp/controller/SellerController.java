@@ -166,7 +166,7 @@ public class SellerController {
 
 	//Seller 배송완료
 	
-	@GetMapping("sellerOrder1")
+	@PostMapping("sellerOrder1")
 	public List<OrderVO> sellerOrder1(HttpServletRequest request) {
 		String seller_id = ((String)request.getSession().getAttribute("logId")); //세션 셀러 아이디
 		

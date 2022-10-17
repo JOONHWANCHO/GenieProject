@@ -20,6 +20,7 @@
 		padding-left: 100px;
 		padding-right: 100px;
 	}
+
 	.info-box-text{
 		font-size: 13px;
 	}
@@ -35,10 +36,21 @@
     text-shadow: 1px 1px 1px gray;
 
 	}
+
   .table{
     font-size: 80%;
     text-align: center;
   }
+
+  #orderListBtn{
+    background-color: #4846f5;
+    opacity: 80%;
+    color: white;
+    border-color: transparent;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+
 
 </style>
 
@@ -88,9 +100,10 @@
         //서버에 접속하여 배송완료....
         $.ajax({
             type: "post",
-            async: false, // 동기요청 필요 -> 한 작업이 끝나야 그 다음 작업 가능
+            //async: false, // 동기요청 필요 -> 한 작업이 끝나야 그 다음 작업 가능
             url: "/seller/sellerOrder1", // 어디로 보낼까?
             success: function(data){ // 요청이 성공하면 실행되는 콜백함수
+              console.log(data);
               $.each(data, function(i, value){
                 deliveryStatus += '<tr>'
                   +'<td>' + value.order_num + '</td>'
@@ -100,45 +113,25 @@
                   +'<td>'+value.order_price+'</td>'
                   +'<td>' + value.genie_id +'</td>'
                   +'<td>' 
-                      +'<select name="s_delivery_status" id="s_delivery_status'+i+'">';
-                      + '<option value="delivery_prepared"';
-                          if (value.recipient_delivery_status=='delivery_prepared'){
-                              deliveryStatus += ' selected';
-                          } 
-                              deliveryStatus += '>배송준비중</option>';
-                      + '<option value="deliverying"';
-                          if (value.recipient_delivery_status=='delivering'){
-                                deliveryStatus += ' selected';
-                              } 
-                                deliveryStatus += '>배송중</option>';
-
-                        + '<option value="delivered"';
-                          if (value.recipient_delivery_status=='delivered'){
-                                deliveryStatus += ' selected';
-                              } 
-                                deliveryStatus += '>배송완료</option>';
-                        
-                        + '<option value="cancelled"';
-                          if (value.recipient_delivery_status=='cancelled'){
-                                deliveryStatus += ' selected';
-                              } 
-                                deliveryStatus += '>주문취소</option>';
-                        
-                        + '<option value="returned"';
-                          if (value.recipient_delivery_status=='returned'){
-                                deliveryStatus += ' selected';
-                              } 
-                                deliveryStatus += '>반품</option>';
+                      +'<select name="s_delivery_status" id="s_delivery_status'+i+'">'
+                      + '<option value="delivered" selected>배송완료</option>'                                              
+                      + '<option value="returned">반품</option>'
                       + '</select>'
-                    +'</td>'
+                  +'</td>'
                   +'</tr>'
                });
               $('.table').append(deliveryStatus);
-              
+              console.log(deliveryStatus)
+              $('.deliveredpro').hide();
+              $('.deliveredpro').after('<button class="deliveryList" id="orderListBtn" style="font-size: 13px;" ><i class="fa fa-arrow-left" aria-hidden="true"></i> 뒤로가기</button>');
+              $('.deliveryList').click(function(){
+                 location.reload();
+              });
             },
             error: function(data, textStatus){ // 요청이 실패했을때 실행되는 콜백함수
               alert("에러가 발생했습니다.");
             }
+           
           });	
 
 
@@ -217,7 +210,8 @@
             <div class="col-lg-12">
               <div class="card card-primary card-outline">
                 <div class="card-body">
-                 <!-- <div class="deliveredpro" onclick="delivered()">배송완료목록 바로가기</div> -->
+                  <button class="deliveredpro" id="orderListBtn" style="font-size: 13px;">배송완료목록 바로가기 <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                  <br>
                   <h5 class="card-title"></h5> <!--주문목록-->
                   <p class="card-text">
                     <table class="table">
