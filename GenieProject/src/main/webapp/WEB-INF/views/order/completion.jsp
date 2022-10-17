@@ -76,10 +76,11 @@
                         </tr>
                         <tr>
                           <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
-                          <c:forEach var="cvo" items="${clist}">
-                            <small>주문번호</small> ${cvo.order_num}<br/>
-                          </c:forEach>
-                            <small>2022년 10월 5일</small>
+                          <c:forEach var="cvo" items="${olist}" varStatus="i">
+                            <c:if test="${i.first}">
+                              <small>주문번호</small> ${cvo.order_num}<br/>
+                            </c:if>
+                            </c:forEach>
                           </td>
                         </tr>
                       </tbody>
