@@ -141,7 +141,7 @@
                         </td>
                         <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"><small></small></td>
                         <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0; text-align: right;" align="center">${ovo.order_qty}</td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">${ovo.order_price}원</td>
+                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right"><fmt:formatNumber value="${ovo.order_price}" pattern="#,###원"/></td>
                       
                       </tr>
                     </c:forEach>
