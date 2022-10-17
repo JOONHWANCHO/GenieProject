@@ -122,7 +122,7 @@ public class OrderController {
 				}
 				//오더테이블에 저장
 				////장바구니에서 구매한 상품 지우기
-				//orderService.afterOrderCart(ovo);// 장바구니 삭제
+				orderService.afterOrderCart(ovo);// 장바구니 삭제
 
 				transactionManager.commit(status);
 				entity = new ResponseEntity<String>(HttpStatus.OK);
