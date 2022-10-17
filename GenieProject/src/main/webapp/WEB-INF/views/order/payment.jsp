@@ -200,6 +200,8 @@
                       recipient_address: $("#receiver_addr").val(),
                       recipient_request: $("#recipient_request").val(),
 
+                      total_price: $("input[name=total]").val(),
+
                       payment_method: rsp.card_name,
                                        
                 };//data
@@ -214,7 +216,7 @@
                     async: false,
                     success:function(result){
 
-                        if(rsp.paid_amount == orderData.order_price){
+                        if(rsp.paid_amount == orderData.total_price){
                             window.location.replace("/order/completion");
                             console.log(orderData);
                         }else {
