@@ -42,6 +42,10 @@
 		border-radius: 6px;
 		box-shadow: 1px 1px 4px 1px lightgray;
 	}
+
+	#subtitle{
+	padding-left:80px;
+	}
 	
 
 </style>
@@ -56,15 +60,13 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">매출관리</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/seller/sellerMain">Home</a></li>
-              <li class="breadcrumb-item active">Sales</li>
-            </ol>
-          </div><!-- /.col -->
+          
+			<div class="col-sm-6" id="subtitle">
+				<ol class="breadcrumb float-sm-left" >
+				  <li class="breadcrumb-item"><a href="/seller/sellerMain"style="color:gray;">Main</a></li>
+				  <li class="breadcrumb-item active" style="color: #047bff;">매출관리</li>
+				  </ol>
+				</div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>

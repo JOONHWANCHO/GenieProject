@@ -70,6 +70,10 @@
   border-radius: 3px;
 }
 
+#subtitle{
+	padding-left:80px;
+}
+
 
 
 </style>
@@ -169,15 +173,13 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0" style="padding-left: 100px;"></h1><!--주문관리-->
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/seller/sellerMain">Home</a></li>
-              <li class="breadcrumb-item active">Order</li>
-            </ol>
-          </div><!-- /.col -->
+         
+          <div class="col-sm-6" id="subtitle">
+            <ol class="breadcrumb float-sm-left" >
+              <li class="breadcrumb-item"><a href="/seller/sellerMain"style="color:gray;">Main</a></li>
+              <li class="breadcrumb-item active" style="color: #047bff;">주문관리</li>
+              </ol>
+            </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
