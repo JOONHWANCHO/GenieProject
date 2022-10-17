@@ -193,7 +193,7 @@ input[type=text]{
 			<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-				<h1 class="m-0">상품등록</h1>
+				<h1 class="m-0"></h1><!--상품등록-->
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
@@ -211,6 +211,12 @@ input[type=text]{
 				<div class="content" id="formbody">
 					<div class="container">
 						<form method="post" action="/seller/productWrite" id="productFrm">
+							<div class="row">
+								<div class="col-25">
+									<label for="product_name" style="font-size: 20px; color:#047bff; margin-bottom: 0px;">상품등록</label>
+								</div>
+							</div>
+							<hr>
 							<div class="row">
 								<div class="col-25">
 									<label for="product_name">상품명</label>

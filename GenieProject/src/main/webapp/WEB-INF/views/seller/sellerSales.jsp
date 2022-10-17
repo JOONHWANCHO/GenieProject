@@ -77,11 +77,11 @@
         <div class="row">
 			<div class="col-12 col-sm-6 col-md-4">
 				<div class="info-box" style="background-color: transparent; box-shadow: none;">
-					<span class="info-box-icon elevation-1" id="icon" style="background: linear-gradient(#ff796f, #bd261b);color:white;"><i class="fas fa-credit-card">
+					<span class="info-box-icon elevation-1" id="icon" style="background: linear-gradient(#a3c0d2, #0f7ac2);color:white;"><i class="fas fa-credit-card">
 						<div class="info-box-content">
 							<span class="info-box-text">이번달 총 매출</span>
 							<span class="info-box-number">
-								<h2><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSum}" /> 원</h2>
+								<h2><b><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderSum}" /> 원</b></h2>
 							</span>
 						</div>
 					</i></span>
@@ -90,11 +90,11 @@
 			</div>
 			<div class="col-12 col-sm-6 col-md-4">
 				<div class="info-box mb-3" style="background-color: transparent; box-shadow: none;">
-					<span class="info-box-icon bg-success elevation-1" id="icon"><i class="fas fa-shopping-cart">
+					<span class="info-box-icon bg-success elevation-1" id="icon" style="background: linear-gradient(#99a1e9, #3753f1);"><i class="fas fa-shopping-cart">
 						<div class="info-box-content">
 							<span class="info-box-text">총 결제건수</span>
 							<span class="info-box-number">
-								<h2><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderCount}" /> 건</h2>
+								<h2><b><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderCount}" /> 건</b></h2>
 							</span>
 						</div>
 					</i></span> 
@@ -102,11 +102,11 @@
 			</div>
 			<div class="col-12 col-sm-6 col-md-4">
 				<div class="info-box mb-3" style="background-color: transparent; box-shadow: none;">
-					<span class="info-box-icon bg-info elevation-1" id="icon"><i class="fas fa-thumbs-up"> 
+					<span class="info-box-icon bg-info elevation-1" id="icon" style="background: linear-gradient(#bca9e3, #824fd3);"><i class="fas fa-thumbs-up"> 
 						<div class="info-box-content">
 							<span class="info-box-text">베스트 셀러</span>
 							<span class="info-box-number">
-								<h2>${bestSeller}</h2>
+								<h2 style="font-size: 28px;"><b>${bestSeller}</b></h2>
 							</span>
 						</div>
 					</i></span>
