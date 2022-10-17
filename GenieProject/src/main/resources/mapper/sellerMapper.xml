@@ -34,7 +34,7 @@
 	
 	<insert id="AccountWrite">
 		insert into account(ROLE, genie_id, genie_pwd) 
-		values(#{ROLE},#{genie_id}, sha2(#{genie_pwd},256))
+		values(#{ROLE},#{genie_id}, #{genie_pwd})
 	</insert>
 	
 	<insert id="sellerWrite">
@@ -54,7 +54,7 @@
 		from account a 
 		join seller s 
 		on a.genie_id=s.genie_id 
-		where a.genie_id=#{genie_id} and a.genie_pwd=sha2(#{genie_pwd},256) and a.withdrawal=1;
+		where a.genie_id=#{genie_id} and a.withdrawal=1;
 
 	</select>
 	
