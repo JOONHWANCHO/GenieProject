@@ -274,7 +274,7 @@ public class GenieController{
 		return mav;
 	}
 
-	@GetMapping("addCart")
+	@PostMapping("addCart")
 	public ResponseEntity<String> addCart(CartVO cvo) {
 
 		ResponseEntity<String> entity = null;
