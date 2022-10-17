@@ -52,7 +52,6 @@
                     <th>제품명</th>
                     <th>가격</th>
                     <th>개수</th>
-                    <th>금액</th>
                     <th>총액</th>
                 </tr>
 
@@ -70,19 +69,16 @@
                         <th><input type="hidden" id="cart_qty${pvo.cart_num}" name="cart_qty" value="${pvo.cart_qty}"/>${pvo.cart_qty}개</th>
                         <th><fmt:formatNumber value="${sum_of_each}" pattern="#,###원"/></th>
                         <input type="hidden" id="sum${pvo.cart_num}" name="each" value="${sum_of_each}">
-
+                    </tr>
+                </c:forEach>
+            </table>
                     <c:set var="total" value="0"/>
                     <c:forEach var="pvo" items="${plist}">
                     <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
                     </c:forEach><br/>
-                    <th><fmt:formatNumber value="${total}" pattern="#,###원"/></th>
+                    <fmt:formatNumber value="${total}" pattern="#,###원"/>
                     <li><input type="hidden" id="total" name="total" value="${total}"></li>
-              
-                        </tr>
-                    </c:forEach>
-                </table>
-              
-                </c:when>
+              </c:when>
               <c:otherwise>
 
               <%-- 바로 구매 --%>
@@ -94,7 +90,7 @@
                   <th><input type="hidden" id="cart_price${bvo.cart_num}" name="cart_price" value="${bvo.cart_price}"/>${bvo.cart_price}원</th>
                   <th><input type="hidden" id="cart_qty${bvo.cart_num}" name="cart_qty" value="${bvo.cart_qty}"/>${bvo.cart_qty}개</th>
                   <th><fmt:formatNumber value="${bvo.cart_price*bvo.cart_qty}" pattern="#,###원"/></th>
-                  <th><input type="hidden" id="sum${bvo.cart_num}" name="total" value="${bvo.cart_price*bvo.cart_qty}"></th>
+                  <input type="hidden" id="sum${bvo.cart_num}" name="total" value="${bvo.cart_price*bvo.cart_qty}">
                 </tr>
                 </table>
                 <fmt:formatNumber value="${bvo.cart_price*bvo.cart_qty}" pattern="#,###원"/>
@@ -108,6 +104,9 @@
             
                 <div id="table">
                     <table>
+                    <tr class="tabletitle">
+                        <td class="item"><h2></h2></td>
+                    </tr>
                     
                     <tr class="service">
                         <td class="tableitem">
@@ -210,7 +209,7 @@
                 $.ajax({
                     url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
                     data: orderData,
-                    type: "get",
+                    method: "get",
                     contentType: "application/json",
                     async: false,
                     success:function(result){
