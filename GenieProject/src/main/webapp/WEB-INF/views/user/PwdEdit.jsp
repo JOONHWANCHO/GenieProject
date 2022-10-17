@@ -1,5 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<style>
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+ }
+
+#passwordForm {
+    background-color: #ff0000;
+}
+
+#genie_pwd {
+    background-color: #fff;
+}
+
+</style>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 <script>

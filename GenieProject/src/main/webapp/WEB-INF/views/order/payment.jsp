@@ -200,18 +200,17 @@
                 };//data
                 //alert(JSON.stringify(orderData));
                 
-
                 $.ajax({
                     url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
                     data: orderData,
-                    method: "get",
+                    type: "get",
                     contentType: "application/json",
                     async: false,
                     success:function(result){
 
                         if(rsp.paid_amount == orderData.total_price){
                             window.location.replace("/order/completion");
-                            console.log(orderData);
+                            //console.log(orderData);
                         }else {
                             alert("결제 실패");
                         }
