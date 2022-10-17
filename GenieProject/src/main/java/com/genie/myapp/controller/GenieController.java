@@ -106,8 +106,8 @@ public class GenieController{
 		System.out.println("avo : " + avo.toString());
 		
 		try {//회원가입 성공
-			// String enPw=passwordEncoder.encode(avo.getGenie_pwd());
-			// avo.setGenie_pwd(enPw);
+			String enPw=passwordEncoder.encode(avo.getGenie_pwd());
+			avo.setGenie_pwd(enPw);
 			userService.AccountWrite(avo);
 			userService.UserWrite(vo);
 
@@ -146,6 +146,8 @@ public class GenieController{
 		TransactionStatus status= transactionManager.getTransaction(definition);
 		
 		try {//회원가입성공
+			String enPw=passwordEncoder.encode(avo.getGenie_pwd());
+			avo.setGenie_pwd(enPw);
 			sellerService.AccountWrite(avo);
 			sellerService.sellerWrite(svo);
 			
@@ -177,50 +179,85 @@ public class GenieController{
 	@PostMapping("loginOK")
 	public ModelAndView loginOk(UserVO vo, SellerVO svo, AdministerVO avo, HttpSession session) {
 		
-		mav = new ModelAndView();
+		mav = new ModelAndView();		
 
-		UserVO logVO = userService.loginOk(vo);
-		SellerVO slogVO =sellerService.loginOk(svo);
-		AdministerVO alogVO = administerService.loginOk(avo);
+		
 
-		if(logVO != null) {//로그인 성공
+		if(vo.getGenie_id() != null) {//일반회원 일때
 
-			session.setAttribute("logId", logVO.getGenie_id());		
-			session.setAttribute("logName", logVO.getUser_name());
-			session.setAttribute("logStatus","Y");
-			session.setAttribute("ROLE", "ROLE_USER");
-			mav.setViewName("redirect:/");
+			UserVO logVO = userService.loginOk(vo);
+			if(logVO!=null){
+				//System.out.println(vo);
+				//System.out.println(logVO);
+				boolean pwdMatch = passwordEncoder.matches(vo.getGenie_pwd(), logVO.getGenie_pwd());
+				//System.out.println(pwdMatch);
+				if(pwdMatch){//로그인 성공
+					session.setAttribute("logId", logVO.getGenie_id());		
+					session.setAttribute("logName", logVO.getUser_name());
+					session.setAttribute("logStatus","Y");
+					session.setAttribute("ROLE", "ROLE_USER");
+					
+					mav.setViewName("redirect:/");
+				}else{//로그인 실패
+					mav.setViewName("redirect:/login");
+				}
+					return mav;
 			
+				}else if(svo.getGenie_id() !=null) {//업체회원일때 
+
+					SellerVO slogVO=sellerService.loginOk(svo);
+					if(slogVO!=null){
+						//System.out.println(svo);
+						//System.out.println(slogVO);
+						boolean pwdMatch = passwordEncoder.matches(svo.getGenie_pwd(), slogVO.getGenie_pwd());
+						//System.out.println(pwdMatch);
+						if(pwdMatch){//로그인 성공
+
+							System.out.println(pwdMatch);
+							session.setAttribute("logId", slogVO.getGenie_id());
+							session.setAttribute("logName", slogVO.getCompany_name());
+							session.setAttribute("logStatus","Y");
+							session.setAttribute("ROLE", "ROLE_SELLER");
+
+							mav.setViewName("redirect:/seller/sellerMain");
+
+						}else{//로그인 실패
+							mav.setViewName("redirect:/login");
+						}
+							return mav;
+					
+					}else if(avo.getGenie_id() != null){
+
+						AdministerVO alogVO = administerService.loginOk(avo);
+
+						if(alogVO!=null){
+							session.setAttribute("logId", alogVO.getGenie_id());
+							session.setAttribute("logName", alogVO.getAdminister_name());
+							session.setAttribute("logStatus","Y");
+							session.setAttribute("ROLE", "ROLE_ADMIN");
+
+							mav.setViewName("redirect:/admin/adminMain");
+
+						}else{//로그인 실패
+							
+							mav.setViewName("redirect:/login");
+						}
+
+						mav.setViewName("redirect:/login");
+
+						return mav;
+
+					}else{//로그인 실패
+
+						mav.setViewName("redirect:/login");
+							
+					}	
+				}		
+			}
 			return mav;
-
-		}else if(slogVO !=null){
-
-			session.setAttribute("logId", slogVO.getGenie_id());
-			session.setAttribute("logName", slogVO.getCompany_name());
-			session.setAttribute("logStatus","Y");
-			session.setAttribute("ROLE", "ROLE_SELLER");
-			mav.setViewName("redirect:/seller/sellerMain");
-
-			return mav;
-
-		}else if(alogVO != null){
-
-			session.setAttribute("logId", alogVO.getGenie_id());
-			session.setAttribute("logName", alogVO.getAdminister_name());
-			session.setAttribute("logStatus","Y");
-			session.setAttribute("ROLE", "ROLE_ADMIN");
-			mav.setViewName("redirect:/admin/adminMain");
-
-			return mav;
-
-		}else{//로그인 실패
-
-			mav.setViewName("redirect:/login");
-
-			return mav;
-			
 		}
-	}
+					
+			
 
 	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session) {
