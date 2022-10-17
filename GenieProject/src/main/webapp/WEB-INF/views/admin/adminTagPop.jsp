@@ -148,7 +148,7 @@ function adminTagDel(){
 <div class="wrapper">
   <div id="formContent">
     <!-- 타이틀 -->
-    <h1>태그정보관리</h1>
+    <h1>태그 관리</h1>
 
     <!-- 로그인폼-->
     <form method="post" action="/admin/adminTagPopEdit" id="adminTagPopFrm">

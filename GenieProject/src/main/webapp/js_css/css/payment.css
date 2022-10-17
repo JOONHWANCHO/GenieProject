@@ -138,3 +138,8 @@ th {
 .payment-table tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.total-price {
+  text-align: right;
+  color: #0800ff;
+}

@@ -28,10 +28,6 @@
                     02-564-5843
                 </p>
             </div><!--End Info-->
-            <div class="title">
-                <h2>Invoice #0001</h2>
-                <p>2022년 10월 6일</p>
-            </div><!--End Title-->
             </div><!--End InvoiceTop-->
           <%-- <form type="post" action="/orderCompletion" id="payFrm"> --%>
         
@@ -76,8 +72,8 @@
                     <c:forEach var="pvo" items="${plist}">
                     <c:set var="total" value="${total+pvo.product_price*pvo.cart_qty}"/>
                     </c:forEach><br/>
-                    <fmt:formatNumber value="${total}" pattern="#,###원"/>
-                    <li><input type="hidden" id="total" name="total" value="${total}"></li>
+                    <div class="total-price">총액: <fmt:formatNumber value="${total}" pattern="#,###원"/>
+                    <li><input type="hidden" id="total" name="total" value="${total}"></li></div>
               </c:when>
               <c:otherwise>
 
@@ -104,9 +100,6 @@
             
                 <div id="table">
                     <table>
-                    <tr class="tabletitle">
-                        <td class="item"><h2></h2></td>
-                    </tr>
                     
                     <tr class="service">
                         <td class="tableitem">

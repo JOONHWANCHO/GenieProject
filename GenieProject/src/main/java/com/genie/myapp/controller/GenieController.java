@@ -181,8 +181,6 @@ public class GenieController{
 		
 		mav = new ModelAndView();		
 
-		
-
 		if(vo.getGenie_id() != null) {//일반회원 일때
 
 			UserVO logVO = userService.loginOk(vo);
