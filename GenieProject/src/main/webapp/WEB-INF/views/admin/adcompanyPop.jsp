@@ -165,8 +165,7 @@ function admemberDel(){
     <p>대표자명</p>
      	<input type="text" id="ceo_name" class="second" name="ceo_name" value=${vo.ceo_name}>
     <p>주소</p>
-     	<input type="text" id="seller_address" class="second" name="seller_address" value=${vo.seller_address}>
-     	<!-- vo 주소 표기법 해결할 것 -->
+     	<input type="text" id="seller_address" class="second" name="seller_address" value="${vo.seller_address}">
     <p>상점사이트</p>
      	<input type="text" id="seller_website" class="second" name="seller_website" value=${vo.seller_website}>
     <p>가입신청일</p>
