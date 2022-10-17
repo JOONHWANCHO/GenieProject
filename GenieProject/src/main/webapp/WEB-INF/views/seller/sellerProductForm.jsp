@@ -90,7 +90,9 @@ input[type=text]{
 	padding-top: 13px;
 }
 
-
+#subtitle{
+	padding-left:80px;
+}
 
 /* Clear floats after the columns */
 .row:after {
@@ -192,14 +194,12 @@ input[type=text]{
 		<div class="content-header">
 			<div class="container-fluid">
 			<div class="row mb-2">
-				<div class="col-sm-6">
-				<h1 class="m-0"></h1><!--상품등록-->
-				</div><!-- /.col -->
-				<div class="col-sm-6">
-				<ol class="breadcrumb float-sm-right">
-					<li class="breadcrumb-item"><a href="/seller/sellerMain">Home</a></li>
-					<li class="breadcrumb-item active">Main</li>
-				</ol>
+				
+				<div class="col-sm-6" id="subtitle">
+				<ol class="breadcrumb float-sm-left" >
+					<li class="breadcrumb-item"><a href="/seller/sellerMain"style="color:gray;">Main</a></li>
+					<li class="breadcrumb-item active" style="color: #047bff;">Product Register</li>
+					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
 			</div><!-- /.container-fluid -->
