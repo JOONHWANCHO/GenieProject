@@ -14,6 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,7 +65,7 @@ public class OrderController {
 		return mav;
 	}
 	// 장바구니에서 주문
-	@GetMapping("payment")
+	@PostMapping("payment")
 	public ModelAndView payment(HttpSession session, CartVO cvo) {
 
 		String genie_id = (String) session.getAttribute("logId");
