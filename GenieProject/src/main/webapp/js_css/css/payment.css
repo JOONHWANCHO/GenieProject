@@ -69,7 +69,6 @@ td {
 }
 .service {
   border: 2px solid #eee;
-  border-radius: 0 0 15px 15px;
 }
 .itemtext-top {
   background: #2dcef8;
@@ -129,16 +128,11 @@ td {
   width: 100%;
 }
 
-.payment-table tr {
-  border-radius: 15px;
-}
-
 .payment-table td,
 th {
-  border: 3px solid #dddddd;
+  border: 2px solid #dddddd;
   text-align: left;
   padding: 8px;
-  border-radius: 15px;
 }
 
 .payment-table tr:nth-child(even) {
