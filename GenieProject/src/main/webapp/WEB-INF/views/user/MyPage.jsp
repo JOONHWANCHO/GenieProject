@@ -129,12 +129,6 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
           </a>
         </li>
         <li>
-          <a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);"
-            data-target="notifications-dropdown">
-            <i class="material-icons">notifications_none<small class="notification-badge">2</small></i>
-          </a>
-        </li>
-        <li>
           <a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right">
             <i class="material-icons">format_indent_increase</i>
           </a>
@@ -234,7 +228,6 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
       >
       <i class="material-icons">mail_outline</i>
       <span class="menu-title" data-i18n="Mail">회원정보확인/수정</span>
-              <span class="new badge pill pink accent-2 float-right mr-2">5</span>
             </a>
         </li>
         <li class="bold ">
