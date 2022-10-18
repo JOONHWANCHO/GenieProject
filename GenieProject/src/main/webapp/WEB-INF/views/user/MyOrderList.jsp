@@ -99,46 +99,12 @@ nav .sidenav-trigger i {
           </a>
         </li>
         <li>
-          <a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);"
-            data-target="notifications-dropdown">
-            <i class="material-icons">notifications_none<small class="notification-badge">5</small></i>
-          </a>
-        </li>
-        <li>
           <a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right">
             <i class="material-icons">format_indent_increase</i>
           </a>
         </li>
       </ul>
-      
-      <!-- notifications-dropdown-->
-      <ul class="dropdown-content" id="notifications-dropdown">
-        <li>
-          <h6>NOTIFICATIONS<span class="new badge">5</span></h6>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a class="black-text" href="javascript:void(0)">
-            <span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span>
-            카트에 새로운 상품이 담겼습니다.
-          </a>
-          <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
-        </li>
-        <li>
-          <a class="black-text" href="javascript:void(0)">
-            <span class="material-icons icon-bg-circle red small">stars</span>
-            2시간 전에 댓글을 남겼습니다.
-          </a>
-          <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
-        </li>
-        <li>
-          <a class="black-text" href="javascript:void(0)">
-            <span class="material-icons icon-bg-circle amber small">trending_up</span>
-            Generate monthly report
-          </a>
-          <time class="media-meta grey-text darken-2" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
-        </li>
-      </ul>
+    
     </div>
     <nav class="display-none search-sm">
       <div class="nav-wrapper">
@@ -205,7 +171,7 @@ nav .sidenav-trigger i {
       >
       <i class="material-icons">mail_outline</i>
       <span class="menu-title" data-i18n="Mail">회원정보확인/수정</span>
-              <span class="new badge pill pink accent-2 float-right mr-2">5</span>
+              
             </a>
         </li>
     <li class="bold ">
@@ -267,7 +233,7 @@ nav .sidenav-trigger i {
                     <div class="card-content">
 
                     <div class="card-content pb-1">
-                       <h4 class="card-title mb-0">주문목록 <i class="material-icons float-right">more_vert</i></h4>
+                       <h4 class="card-title mb-0">주문목록</h4>
                     </div>
                     <table class="subscription-table responsive-table highlight">
                        <thead>

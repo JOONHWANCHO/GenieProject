@@ -164,12 +164,6 @@ thead{
           </a>
         </li>
         <li>
-          <a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);"
-            data-target="notifications-dropdown">
-            <i class="material-icons">notifications_none<small class="notification-badge">5</small></i>
-          </a>
-        </li>
-        <li>
           <a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right">
             <i class="material-icons">format_indent_increase</i>
           </a>
@@ -270,7 +264,7 @@ thead{
       >
       <i class="material-icons">mail_outline</i>
       <span class="menu-title" data-i18n="Mail">회원정보확인/수정</span>
-              <span class="new badge pill pink accent-2 float-right mr-2">5</span>
+            
             </a>
         </li>
     <li class="bold ">
@@ -332,7 +326,7 @@ thead{
                     <div class="card-content">
 
                     <div class="card-content pb-1">
-                       <h4 class="card-title mb-0"><span id="likeTitle">찜한 상품 </span><i class="material-icons float-right">more_vert</i></h4>
+                       <h4 class="card-title mb-0"><span id="likeTitle">찜한 상품 </span></h4>
                     </div>
                     <table class="subscription-table responsive-table highlight">
                       <colgroup>
