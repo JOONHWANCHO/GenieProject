@@ -7,12 +7,28 @@
  }
 
 #passwordForm {
-    background-color: #ff0000;
+    background-color: #fff;
 }
 
 #genie_pwd {
     background-color: #fff;
 }
+
+#Find_Pwd{
+    background-color: #56baed;
+	box-shadow: 0 0 15px #fbfbfb;
+	border: none;
+	padding: 10px;
+	border-radius: 8px;
+	color: #fff;
+}
+
+#genie_pwd{
+    width:11em;
+    height:2em;
+    border-radius:8px;
+}
+
 
 </style>
 
@@ -48,9 +64,9 @@
 		<p>비밀번호</p>
 			<input type="password" id="genie_pwd" name="genie_pwd" placeholder="현재 비밀번호를 입력하세요">
 		<p>새 비밀번호</p>
-			<input type="password" id="genie_pwd1" name="genie_pwd1" placeholder="새 비밀번호를 입력하세요">
+			<input type="password" id="genie_pwd" name="genie_pwd1" placeholder="새 비밀번호를 입력하세요">
 		<p>새 비밀번호 다시 입력</p>
-			<input type="password" id="genie_pwd2" name="genie_pwd2" placeholder="새 비밀번호를 입력하세요"><br/><br/>
+			<input type="password" id="genie_pwd" name="genie_pwd2" placeholder="새 비밀번호를 입력하세요"><br/><br/>
 			<input type="submit" id="Find_pwd" value="비밀번호 변경"/><br/>
 	</div>
 </form>
