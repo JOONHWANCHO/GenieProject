@@ -199,7 +199,7 @@
                                        
                 };//data
                 //alert(JSON.stringify(orderData));
-                
+                if(rsp.paid_amount == orderData.total_price){
                 $.ajax({
                     url: "/order/orderCompletion", // 예: https://www.myservice.com/payments/complete
                     data: orderData,
@@ -208,17 +208,17 @@
                     async: false,
                     success:function(result){
 
-                        if(rsp.paid_amount == orderData.total_price){
                             window.location.replace("/order/completion");
                             //console.log(orderData);
-                        }else {
-                            alert("결제 실패");
-                        }
+                       
 
                     },error:function(e){
                         console.log(e.responseText);
                     }
                 });
+                }else {
+                  alert("결제 실패");
+                }
 
             }else{                
                 var msg = '결제에 실패하였습니다.';                
