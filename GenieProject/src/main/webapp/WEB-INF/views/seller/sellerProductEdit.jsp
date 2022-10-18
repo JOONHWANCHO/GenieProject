@@ -212,13 +212,14 @@ input[type=text]{
 			<div class="card card-primary card-outline">	
 				<div class="content" id="formbody">
 					<div class="container">
-						<form method="post" action="/seller/productWrite" id="productFrm">
+						<form method="post" action="/seller/productEditOk" id="productFrm">
 							<div class="row">
 								<div class="col-25">
 									<label for="product_name" style="font-size: 20px; color:#047bff; margin-bottom: 0px;">상품수정</label>
 								</div>
 							</div>
 							<hr>
+							<input type="hidden" id="product_id" name="product_id" value="${pvo.product_id}">
 							<div class="row">
 								<div class="col-25">
 									<label for="product_name">상품명</label>
